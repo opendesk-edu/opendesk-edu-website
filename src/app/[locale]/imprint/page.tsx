@@ -20,16 +20,17 @@ export default async function ImprintPage({params}: PageProps) {
       <article className="prose">
         <h1>Imprint</h1>
 
-        {/* TODO: Replace with actual legal entity information */}
         <h2>Information according to § 5 TMG</h2>
         <p>
           <strong>Provider:</strong>
           <br />
-          openDesk Edu Project
+          Dr. GraphWiz AI &amp; XR Consulting and Development Services
           <br />
-          {/* TODO: Replace with actual street address */}
-          {/* TODO: Replace with actual postal code and city */}
-          {/* TODO: Replace with actual country */}
+          Grundstraße 69
+          <br />
+          78628 Rottweil
+          <br />
+          Germany
         </p>
 
         <h2>Contact</h2>

@@ -8,6 +8,7 @@
   --accent: #571EFA;
   --accent-button: #341291;
   --border: #30363d;
+  --link: #A78BFA;
 }
 
 [data-theme="light"] {
@@ -18,6 +19,7 @@
   --accent: #571EFA;
   --accent-button: #341291;
   --border: #E5E7EB;
+  --link: #4527CC;
 }
 
 @theme inline {
@@ -28,6 +30,7 @@
   --color-accent: var(--accent);
   --color-accent-button: var(--accent-button);
   --color-border: var(--border);
+  --color-link: var(--link);
   --font-sans: var(--font-inter);
 }
 
@@ -41,7 +44,7 @@ html {
 }
 
 a {
-  color: var(--accent);
+  color: var(--link);
 }
 
 img.img-circle {
@@ -78,7 +81,7 @@ img.img-circle {
 }
 
 .prose a {
-  color: var(--accent);
+  color: var(--link);
 }
 
 .prose ul,
@@ -271,7 +274,7 @@ img.img-circle {
 .prose summary {
   cursor: pointer;
   font-weight: 600;
-  color: var(--accent);
+  color: var(--link);
 }
 
 .prose summary:hover {
