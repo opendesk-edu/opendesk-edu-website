@@ -47,9 +47,12 @@ a {
   color: var(--link);
 }
 
-a.bg-accent {
-  color: #ffffff;
+/* Ensure CTA buttons remain white text even though <a> inherits --link */
+a[class] {
+  color: inherit;
 }
+
+img.img-circle {
   border-radius: 50%;
   object-fit: cover;
 }
