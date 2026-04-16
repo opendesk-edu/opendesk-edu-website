@@ -47,7 +47,9 @@ a {
   color: var(--link);
 }
 
-img.img-circle {
+a.bg-accent {
+  color: #ffffff;
+}
   border-radius: 50%;
   object-fit: cover;
 }
