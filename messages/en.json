@@ -5,7 +5,10 @@
     "architecture": "Architecture",
     "getStarted": "Get Started",
     "blog": "Blog",
-    "about": "About"
+    "about": "About",
+    "languageSwitcher": {
+      "label": "Language"
+    }
   },
   "footer": {
     "imprint": "Imprint",

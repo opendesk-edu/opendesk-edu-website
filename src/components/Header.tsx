@@ -6,6 +6,7 @@ import { SECTIONS } from "@/lib/config";
 import { useTheme } from "@/components/ThemeProvider";
 import {Link} from '@/i18n/navigation';
 import {useTranslations} from 'next-intl';
+import LanguageSwitcher from './LanguageSwitcher';
 
 type Href = React.ComponentProps<typeof Link>['href'];
 
@@ -38,6 +39,7 @@ export default function Header() {
               {item.label}
             </Link>
           ))}
+          <LanguageSwitcher />
           <button
             onClick={toggleTheme}
             className="p-2 rounded-lg hover:bg-background-secondary transition-colors cursor-pointer"
@@ -101,6 +103,9 @@ export default function Header() {
               {item.label}
             </Link>
           ))}
+          <div className="pt-2">
+            <LanguageSwitcher onLocaleChange={() => setMobileMenuOpen(false)} />
+          </div>
         </nav>
       )}
     </header>

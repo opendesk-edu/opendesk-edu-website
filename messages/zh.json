@@ -5,7 +5,10 @@
     "architecture": "架构",
     "getStarted": "快速开始",
     "blog": "博客",
-    "about": "关于"
+    "about": "关于",
+    "languageSwitcher": {
+      "label": "语言"
+    }
   },
   "footer": {
     "imprint": "法律声明",
