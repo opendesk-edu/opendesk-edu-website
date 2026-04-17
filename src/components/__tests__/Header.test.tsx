@@ -11,11 +11,26 @@ vi.mock("next/image", () => ({
   ),
 }));
 
-// Mock next-intl/navigation Link
+// Mock next-intl/navigation
+const mockReplace = vi.fn();
 vi.mock("@/i18n/navigation", () => ({
   Link: (props: { href?: string; children?: React.ReactNode; [key: string]: unknown }) => (
     <a href={props.href}>{props.children}</a>
   ),
+  useRouter: () => ({ replace: mockReplace }),
+  usePathname: () => "/en",
+  getPathname: () => "/en",
+}));
+
+// Mock @/i18n/routing
+vi.mock("@/i18n/routing", () => ({
+  routing: { locales: ["en", "de", "fr", "zh"], defaultLocale: "en" },
+}));
+
+// Mock next/navigation useParams
+vi.mock("next/navigation", () => ({
+  useParams: () => ({ locale: "en" }),
+  usePathname: () => "/en",
 }));
 
 // Mock next-intl useTranslations
@@ -28,8 +43,10 @@ vi.mock("next-intl", () => ({
       getStarted: "Get Started",
       blog: "Blog",
     };
+    if (key === "header.languageSwitcher.label") return "Language";
     return translations[key] ?? key;
   },
+  useLocale: () => "en",
 }));
 
 function renderHeader() {
