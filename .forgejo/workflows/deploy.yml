@@ -1,0 +1,26 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    needs: []  # run independently of CI — CI validates, deploy ships
+    steps:
+      - uses: https://data.forgejo.org/actions/checkout@v4
+
+      - name: Deploy via SSH
+        uses: https://github.com/appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.DEPLOY_USER }}
+          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          script: |
+            cd ${{ secrets.DEPLOY_PATH }}
+            git pull
+            docker compose build --no-cache
+            docker compose up -d
+            echo "Deploy complete"
