@@ -1,6 +1,6 @@
----
+﻿---
 title: "Wiki"
-date: "2026-04-17"
+date: "2026-03-19"
 description: "Plateforme wiki d'entreprise pour la gestion des connaissances et le contenu collaboratif."
 categories: ["connaissance", "composant-de-base"]
 tags: ["xwiki", "wiki", "gestion-des-connaissances", "collaboration"]

@@ -1,6 +1,6 @@
----
+﻿---
 title: "Wiki"
-date: "2026-04-17"
+date: "2026-03-19"
 description: "Enterprise-Wiki-Plattform für Wissensmanagement und kollaborative Inhalte."
 categories: ["wiki", "wissen", "kollaboration"]
 tags: ["xwiki", "wiki", "wissen"]

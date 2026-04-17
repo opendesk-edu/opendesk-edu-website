@@ -1,6 +1,6 @@
----
+﻿---
 title: "Planka（看板）"
-date: "2026-04-17"
+date: "2026-04-04"
 description: "看板应用，支持 OIDC 认证，适用于学生项目和研究计划。"
 categories: ["项目管理"]
 tags: ["planka", "看板", "项目管理", "oidc"]

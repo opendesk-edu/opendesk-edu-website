@@ -1,0 +1,113 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "openDesk Edu openDesk Edu" [ref=e5] [cursor=pointer]:
+        - /url: /en
+        - img "openDesk Edu" [ref=e6]
+        - generic [ref=e7]: openDesk Edu
+      - navigation [ref=e8]:
+        - link "Home" [ref=e9] [cursor=pointer]:
+          - /url: /en
+        - link "Components" [ref=e10] [cursor=pointer]:
+          - /url: /en/components
+        - link "Architecture" [ref=e11] [cursor=pointer]:
+          - /url: /en/architecture
+        - link "Get Started" [ref=e12] [cursor=pointer]:
+          - /url: /en/get-started
+        - link "Blog" [ref=e13] [cursor=pointer]:
+          - /url: /en/blog
+        - button "Language" [ref=e15] [cursor=pointer]:
+          - text: EN
+          - img [ref=e16]
+        - button "Toggle theme" [ref=e18] [cursor=pointer]:
+          - img [ref=e19]
+  - main [ref=e25]:
+    - generic [ref=e26]:
+      - generic [ref=e27]:
+        - img "openDesk Edu logo" [ref=e29]
+        - heading "openDesk Edu" [level=1] [ref=e30]
+        - heading "Educational Digital Infrastructure" [level=2] [ref=e31]
+        - paragraph [ref=e32]: openDesk CE with 15 integrated services for seamless digital transformation in higher education.
+        - generic [ref=e33]:
+          - link "Components" [ref=e34] [cursor=pointer]:
+            - /url: /en/components
+          - link "Architecture" [ref=e35] [cursor=pointer]:
+            - /url: /en/architecture
+          - link "Get Started" [ref=e36] [cursor=pointer]:
+            - /url: /en/get-started
+          - link "Blog" [ref=e37] [cursor=pointer]:
+            - /url: /en/blog
+      - generic [ref=e38]:
+        - heading "Latest Articles" [level=2] [ref=e39]
+        - generic [ref=e40]:
+          - article [ref=e41]:
+            - link "BigBlueButton" [ref=e42] [cursor=pointer]:
+              - /url: /en/components/bigbluebutton
+              - heading "BigBlueButton" [level=3] [ref=e43]
+            - time [ref=e44]: April 17, 2026
+            - paragraph [ref=e45]: Virtual classroom platform with recording, whiteboard, breakout rooms, and polling for lecture-style teaching.
+            - generic [ref=e46]:
+              - generic [ref=e47]: education
+              - generic [ref=e48]: communication
+              - generic [ref=e49]: beta
+              - generic [ref=e50]: bigbluebutton
+              - generic [ref=e51]: lectures
+              - generic [ref=e52]: virtual-classroom
+              - generic [ref=e53]: video-conferencing
+              - generic [ref=e54]: alternative
+          - article [ref=e55]:
+            - link "BookStack" [ref=e56] [cursor=pointer]:
+              - /url: /en/components/bookstack
+              - heading "BookStack" [level=3] [ref=e57]
+            - time [ref=e58]: April 17, 2026
+            - paragraph [ref=e59]: Structured wiki with book, chapter, and page hierarchy for course materials, SOPs, and documentation.
+            - generic [ref=e60]:
+              - generic [ref=e61]: education
+              - generic [ref=e62]: productivity
+              - generic [ref=e63]: beta
+              - generic [ref=e64]: bookstack
+              - generic [ref=e65]: wiki
+              - generic [ref=e66]: documentation
+              - generic [ref=e67]: knowledge-management
+          - article [ref=e68]:
+            - link "Collabora" [ref=e69] [cursor=pointer]:
+              - /url: /en/components/collabora
+              - heading "Collabora" [level=3] [ref=e70]
+            - time [ref=e71]: April 17, 2026
+            - paragraph [ref=e72]: LibreOffice-based online office suite for collaborative editing of documents, spreadsheets, and presentations.
+            - generic [ref=e73]:
+              - generic [ref=e74]: productivity
+              - generic [ref=e75]: office
+              - generic [ref=e76]: base
+              - generic [ref=e77]: collabora
+              - generic [ref=e78]: office
+              - generic [ref=e79]: libreoffice
+              - generic [ref=e80]: document-editing
+        - link "View all articles →" [ref=e82] [cursor=pointer]:
+          - /url: /en/blog
+      - generic [ref=e83]:
+        - heading "Get in Touch" [level=2] [ref=e84]
+        - paragraph [ref=e85]: Questions, feedback, or want to contribute?
+        - link "info@opendesk-edu.org" [ref=e86] [cursor=pointer]:
+          - /url: "#"
+  - contentinfo [ref=e87]:
+    - generic [ref=e89]:
+      - generic [ref=e90]:
+        - link "Imprint" [ref=e91] [cursor=pointer]:
+          - /url: /en/imprint
+        - link "Privacy" [ref=e92] [cursor=pointer]:
+          - /url: /en/privacy
+        - link "Contact" [ref=e93] [cursor=pointer]:
+          - /url: "#"
+      - paragraph [ref=e94]: © 2026 openDesk Edu. Licensed under Apache-2.0.
+  - alert [ref=e95]
+  - generic [ref=e97]:
+    - paragraph [ref=e98]:
+      - text: We use privacy-friendly analytics to understand how visitors use this site. No cookies are set by default.
+      - link "Privacy Policy" [ref=e99] [cursor=pointer]:
+        - /url: /en/privacy
+    - generic [ref=e100]:
+      - button "Decline" [ref=e101]
+      - button "Accept" [ref=e102]

@@ -1,6 +1,6 @@
----
+﻿---
 title: "Etherpad"
-date: "2026-04-17"
+date: "2026-03-31"
 description: "Éditeur de documents collaboratif en temps réel pour les comptes-rendus et les ateliers."
 categories: ["collaboration", "beta-education"]
 tags: ["etherpad", "edition-collaborative", "comptes-rendus", "atelier"]

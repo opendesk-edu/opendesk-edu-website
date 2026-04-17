@@ -1,6 +1,6 @@
----
+﻿---
 title: "OpenCloud"
-date: "2026-04-17"
+date: "2026-03-29"
 description: "Stockage cloud léger basé sur CS3 avec partage organisé par cours."
 categories: ["stockage", "beta-education"]
 tags: ["opencloud", "stockage-cloud", "cs3", "alternative"]

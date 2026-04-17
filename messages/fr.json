@@ -8,6 +8,12 @@
     "about": "À propos",
     "languageSwitcher": {
       "label": "Langue"
+    },
+    "themeToggle": {
+      "label": "Changer le thème"
+    },
+    "mobileMenu": {
+      "label": "Basculer le menu"
     }
   },
   "footer": {
@@ -26,7 +32,8 @@
     "title": "404",
     "heading": "Page non trouvée",
     "message": "La page demandée n'existe pas. Elle a peut-être été déplacée ou supprimée.",
-    "homepage": "Page d'accueil"
+    "homepage": "Page d'accueil",
+    "latestArticles": "Derniers articles"
   },
   "about": {
     "title": "À propos d'openDesk Edu",
@@ -42,5 +49,16 @@
   "sections": {
     "latestArticles": "Derniers articles",
     "viewAll": "Voir tous les articles →"
+  },
+  "tableOfContents": {
+    "title": "Sur cette page"
+  },
+  "errorBoundary": {
+    "title": "Une erreur est survenue",
+    "message": "Une erreur inattendue s'est produite. Veuillez réessayer.",
+    "tryAgain": "Réessayer"
+  },
+  "section": {
+    "noPosts": "Aucun article disponible dans cette section."
   }
 }

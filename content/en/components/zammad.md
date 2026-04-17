@@ -1,6 +1,6 @@
----
+﻿---
 title: "Zammad"
-date: "2026-04-17"
+date: "2026-04-06"
 description: "Helpdesk and ticketing system with multi-channel support and SAML authentication for IT and student support."
 categories: ["education", "communication", "beta"]
 tags: ["zammad", "helpdesk", "ticketing", "support"]
@@ -21,3 +21,7 @@ Zammad is a helpdesk and ticketing system that consolidates support requests fro
 ## Integration with openDesk Edu
 
 Zammad integrates with openDesk Edu through Keycloak-based SSO using SAML 2.0 and OIDC. Support staff and users access the helpdesk from the unified Nubus portal. It deploys as a modular Helm chart as an education-specific Beta component. Persistent ticket data and the knowledge base are backed up through k8up.
+
+## Learn More
+
+- [Official Documentation](https://docs.zammad.org) — Official docs and resources

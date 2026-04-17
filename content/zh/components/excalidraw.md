@@ -1,6 +1,6 @@
----
+﻿---
 title: "Excalidraw（白板）"
-date: "2026-04-17"
+date: "2026-04-13"
 description: "轻量级白板工具，支持手绘草图和头脑风暴。"
 categories: ["白板"]
 tags: ["excalidraw", "白板", "头脑风暴", "草图"]

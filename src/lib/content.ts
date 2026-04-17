@@ -176,14 +176,19 @@ export interface SectionInfo {
   description?: string;
 }
 
-export const SECTION_INFO: SectionInfo[] = [
-  { name: "Components", slug: "components", title: "Components", description: "The 15 integrated openDesk CE services — from learning management (Moodle, ILIAS) to collaboration (BigBlueButton, Etherpad) and productivity (Nextcloud, Grommunio)." },
-  { name: "Architecture", slug: "architecture", title: "Architecture", description: "System design, SAML federation, deployment patterns, and infrastructure architecture for educational digital transformation." },
-  { name: "Get Started", slug: "get-started", title: "Get Started", description: "Step-by-step guides for deploying openDesk Edu, onboarding universities, and integrating with existing campus infrastructure." },
-  { name: "Blog", slug: "blog", title: "Blog", description: "News, announcements, community stories, and insights on open-source digital infrastructure in higher education." },
-];
+const SECTION_METADATA: Record<string, Omit<SectionInfo, 'slug'>> = {
+  components: { name: "Components", title: "Components", description: "The 15 integrated openDesk CE services — from learning management (Moodle, ILIAS) to collaboration (BigBlueButton, Etherpad) and productivity (Nextcloud, Grommunio)." },
+  architecture: { name: "Architecture", title: "Architecture", description: "System design, SAML federation, deployment patterns, and infrastructure architecture for educational digital transformation." },
+  'get-started': { name: "Get Started", title: "Get Started", description: "Step-by-step guides for deploying openDesk Edu, onboarding universities, and integrating with existing campus infrastructure." },
+  blog: { name: "Blog", title: "Blog", description: "News, announcements, community stories, and insights on open-source digital infrastructure in higher education." },
+};
 
-const SECTION_SLUGS = new Set(SECTION_INFO.map((s) => s.slug));
+export const SECTION_INFO: SectionInfo[] = SECTIONS.map((slug) => ({
+  slug,
+  ...SECTION_METADATA[slug],
+}));
+
+const SECTION_SLUGS = new Set<string>(SECTIONS);
 
 export function getSectionBySlug(slug: string): SectionInfo | undefined {
   return SECTION_INFO.find((s) => s.slug === slug);

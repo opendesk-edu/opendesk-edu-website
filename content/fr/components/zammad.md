@@ -1,6 +1,6 @@
----
+﻿---
 title: "Zammad"
-date: "2026-04-17"
+date: "2026-04-06"
 description: "Système de support et tickets multicanal avec authentification SAML pour les services d'assistance."
 categories: ["support", "beta-education"]
 tags: ["zammad", "tickets", "support", "multicanal", "saml"]

@@ -1,6 +1,6 @@
----
+﻿---
 title: "BigBlueButton"
-date: "2026-04-17"
+date: "2026-03-27"
 description: "Virtual classroom platform with recording, whiteboard, breakout rooms, and polling for lecture-style teaching."
 categories: ["education", "communication", "beta"]
 tags: ["bigbluebutton", "lectures", "virtual-classroom", "video-conferencing", "alternative"]
@@ -21,3 +21,8 @@ BigBlueButton is a virtual classroom platform built specifically for online lect
 ## Integration with openDesk Edu
 
 BigBlueButton integrates with openDesk Edu as a SAML 2.0 service provider using Shibboleth, authenticating users through Keycloak. Users access lectures from the unified Nubus portal. It deploys as a modular Helm chart as an education-specific Beta component. BigBlueButton is an alternative to Jitsi for institutions that need recording, breakout rooms, and structured lecture features. Persistent recording data is backed up through k8up.
+
+## Learn More
+
+- [Official Documentation](https://docs.bigbluebutton.org) — Official docs and resources
+

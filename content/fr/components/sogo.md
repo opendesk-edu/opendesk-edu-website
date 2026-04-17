@@ -1,6 +1,6 @@
----
+﻿---
 title: "SOGo"
-date: "2026-04-17"
+date: "2026-03-21"
 description: "Webmail et groupware léger, alternative simple et rapide à OX App Suite."
 categories: ["groupware", "beta-education"]
 tags: ["sogo", "webmail", "groupware", "alternative"]

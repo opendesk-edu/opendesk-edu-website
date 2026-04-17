@@ -18,7 +18,7 @@ const SERVICES = [
   {
     title: "Learning Management",
     description:
-      "Moodle, ILIAS, and OpenOlat — integrated with your campus SSO and data systems for seamless teaching workflows.",
+      "Moodle and ILIAS — integrated with your campus SSO and data systems for seamless teaching workflows.",
   },
   {
     title: "Cloud Infrastructure",

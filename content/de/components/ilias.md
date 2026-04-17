@@ -1,14 +1,14 @@
 ---
-title: "ILIAS Learning Management System"
+title: "ILIAS"
 date: "2026-04-15"
 description: "ILIAS ist ein leistungsstarkes Open-Source-Lernmanagementsystem, das weit verbreitet in der Hochschulbildung und in Unternehmensschulungen eingesetzt wird."
-categories: ["lms", "learning"]
+categories: ["bildung", "beta"]
 tags: ["ilias", "bildung", "lms"]
 ---
 
-# ILIAS Learning Management System
+# ILIAS
 
-ILIAS ist ein leistungsstarkes Open-Source-LMS, das eine umfassende Plattform f체r Lehre und Lernen bietet. Es bietet Werkzeuge f체r Kursverwaltung, Bewertung, Zusammenarbeit und Kommunikation.
+ILIAS ist ein leistungsstarkes Open-Source-LMS, das eine umfassende Plattform f체r Lehre und Lernen bietet. Es bietet Werkzeuge f체r Kursverwaltung, Bewertung, Zusammenarbeit und Kommunikation. ILIAS ist ein bildungsspezifisches Beta-Komponent in openDesk Edu.
 
 ## Hauptfunktionen
 
@@ -20,4 +20,4 @@ ILIAS ist ein leistungsstarkes Open-Source-LMS, das eine umfassende Plattform f�
 
 ## Integration mit openDesk Edu
 
-Als Teil der openDesk Edu-Plattform integriert sich ILIAS nahtlos mit anderen Diensten 체ber SAML-basiertes Single Sign-On und gemeinsame Benutzerverzeichnisse.
+ILIAS integriert sich als SAML 2.0 Service Provider 체ber Shibboleth in openDesk Edu und authentifiziert Benutzer 체ber Keycloak. Nutzer greifen 체ber das einheitliche Nubus-Portal auf Kurse zu. Es wird als modulares Helm-Chart als bildungsspezifische Beta-Komponente bereitgestellt. Persistente Kursdaten, Einreichungen und Bewertungsergebnisse werden durch k8up gesichert.

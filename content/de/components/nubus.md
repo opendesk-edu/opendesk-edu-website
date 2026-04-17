@@ -1,6 +1,6 @@
----
+﻿---
 title: "Portal und IAM"
-date: "2026-04-17"
+date: "2026-03-05"
 description: "Einheitliches Portal und Identitätsmanagement auf Basis von Keycloak mit SAML 2.0 und OIDC."
 categories: ["portal", "iam", "sicherheit"]
 tags: ["nubus", "keycloak", "portal", "iam", "sso"]

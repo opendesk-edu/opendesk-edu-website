@@ -1,6 +1,6 @@
----
+﻿---
 title: "Zammad（服务台）"
-date: "2026-04-17"
+date: "2026-04-06"
 description: "服务台和工单系统，支持多渠道接入和 SAML 认证。"
 categories: ["管理"]
 tags: ["zammad", "服务台", "工单系统", "saml"]

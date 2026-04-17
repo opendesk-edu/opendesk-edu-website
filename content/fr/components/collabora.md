@@ -1,6 +1,6 @@
----
+﻿---
 title: "Bureautique"
-date: "2026-04-17"
+date: "2026-03-11"
 description: "Suite bureautique en ligne basée sur LibreOffice pour l'édition collaborative de documents."
 categories: ["bureautique", "composant-de-base"]
 tags: ["collabora", "bureautique", "libreoffice", "edition-collaborative"]

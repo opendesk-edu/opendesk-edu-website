@@ -1,12 +1,12 @@
 ---
-title: "ILIAS - Système de gestion de l'apprentissage"
+title: "ILIAS"
 date: "2026-04-15"
 description: "ILIAS est un puissant système de gestion de l'apprentissage open source largement utilisé dans l'enseignement supérieur et la formation professionnelle."
-categories: ["lms", "apprentissage"]
+categories: ["education", "beta"]
 tags: ["ilias", "education", "lms"]
 ---
 
-# ILIAS - Système de gestion de l'apprentissage
+# ILIAS
 
 ILIAS est un puissant LMS open source qui offre une plateforme complète pour l'enseignement et l'apprentissage. Il fournit des outils de gestion de cours, d'évaluation, de collaboration et de communication. ILIAS est un composant éducatif Beta dans openDesk Edu.
 
@@ -21,3 +21,7 @@ ILIAS est un puissant LMS open source qui offre une plateforme complète pour l'
 ## Intégration avec openDesk Edu
 
 Dans le cadre de la plateforme openDesk Edu, ILIAS s'intègre de manière transparente avec les autres services via l'authentification unique basée sur SAML et les annuaires d'utilisateurs partagés. ILIAS utilise Shibboleth comme fournisseur de service SAML pour s'authentifier auprès de Keycloak. Déployé comme un composant Beta éducatif via des Helm Charts modulaires, les données persistantes des cours et des évaluations sont sauvegardées par k8up.
+
+## Pour en savoir plus
+
+- [Documentation officielle](https://docu.ilias.de) — Documentation et ressources officielles

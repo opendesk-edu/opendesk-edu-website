@@ -1,6 +1,6 @@
----
+﻿---
 title: "Chat"
-date: "2026-04-17"
+date: "2026-03-01"
 description: "Messagerie en temps réel basée sur Matrix avec widgets Nordeck pour l'éducation."
 categories: ["communication", "composant-de-base"]
 tags: ["element", "matrix", "messagerie", "nordeck"]

@@ -1,6 +1,6 @@
----
+﻿---
 title: "Grommunio"
-date: "2026-04-17"
+date: "2026-03-23"
 description: "Groupware compatible Microsoft 365 avec synchronisation mobile native via ActiveSync 16.1."
 categories: ["groupware", "beta-education"]
 tags: ["grommunio", "webmail", "groupware", "activesync", "alternative"]

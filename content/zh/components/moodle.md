@@ -1,6 +1,6 @@
----
+﻿---
 title: "学习管理系统"
-date: "2026-04-17"
+date: "2026-03-25"
 description: "插件丰富的学习管理系统，支持作业、工作坊、成绩簿和 Shibboleth 认证。"
 categories: ["教学"]
 tags: ["moodle", "学习管理系统", "lms", "shibboleth"]

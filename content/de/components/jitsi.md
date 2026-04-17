@@ -1,6 +1,6 @@
----
+﻿---
 title: "Meetings"
-date: "2026-04-17"
+date: "2026-03-13"
 description: "Videokonferenzen für schnelle Besprechungen, leichtgewichtig und browserbasiert."
 categories: ["kommunikation", "videokonferenz"]
 tags: ["jitsi", "meetings", "videokonferenz"]

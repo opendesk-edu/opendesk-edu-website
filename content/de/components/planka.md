@@ -1,6 +1,6 @@
----
+﻿---
 title: "Planka"
-date: "2026-04-17"
+date: "2026-04-04"
 description: "Kanban-Board-Anwendung mit OIDC-Unterstützung für studentische Projekte."
 categories: ["projektmanagement", "beta"]
 tags: ["planka", "kanban", "projekte", "beta"]

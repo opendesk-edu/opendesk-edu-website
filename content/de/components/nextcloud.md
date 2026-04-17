@@ -1,6 +1,6 @@
----
+﻿---
 title: "Dateien"
-date: "2026-04-17"
+date: "2026-03-07"
 description: "Vollwertige Cloud-Speicher- und Kollaborationssuite mit Dateisynchronisierung, Freigabe und Office-Integration."
 categories: ["speicher", "kollaboration", "office"]
 tags: ["nextcloud", "dateien", "cloud", "speicher"]

@@ -1,6 +1,6 @@
----
+﻿---
 title: "CryptPad（图表）"
-date: "2026-04-17"
+date: "2026-03-15"
 description: "注重隐私的协作办公套件，集成 diagrams.net 图表工具。"
 categories: ["办公", "图表"]
 tags: ["cryptpad", "diagrams", "图表", "隐私"]

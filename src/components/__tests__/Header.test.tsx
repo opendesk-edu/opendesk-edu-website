@@ -42,6 +42,8 @@ vi.mock("next-intl", () => ({
       architecture: "Architecture",
       getStarted: "Get Started",
       blog: "Blog",
+      "themeToggle.label": "Toggle theme",
+      "mobileMenu.label": "Toggle menu",
     };
     if (key === "header.languageSwitcher.label") return "Language";
     return translations[key] ?? key;

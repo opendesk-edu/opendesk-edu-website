@@ -9,6 +9,7 @@ import {
   SECTION_INFO,
 } from "@/lib/content";
 import { SITE_NAME } from "@/lib/config";
+import { getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
 
 interface SectionPageProps {
@@ -57,6 +58,7 @@ export default async function SectionPage({ params }: SectionPageProps) {
   }
 
   const posts = await getPostsBySection(section, locale);
+  const t = await getTranslations("section");
 
   return (
     <main className="max-w-6xl mx-auto px-6 py-16">
@@ -73,7 +75,7 @@ export default async function SectionPage({ params }: SectionPageProps) {
 
       {posts.length === 0 ? (
         <p className="text-foreground-secondary">
-          No posts available in this section yet.
+          {t("noPosts")}
         </p>
       ) : (
         <div className="grid gap-6 md:grid-cols-2">

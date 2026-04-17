@@ -1,6 +1,6 @@
 ---
 title: "OX App Suite"
-date: "2026-04-17"
+date: "2026-03-09"
 description: "Full enterprise groupware suite with email, calendar, contacts, and document management."
 categories: ["communication", "productivity", "base"]
 tags: ["ox-app-suite", "groupware", "email", "calendar"]
@@ -21,3 +21,7 @@ OX App Suite is a full enterprise groupware suite providing email, calendar, con
 ## Integration with openDesk Edu
 
 OX App Suite integrates with openDesk Edu through Keycloak-based SSO using SAML 2.0 and OIDC. Users access email, calendar, and contacts directly from the unified Nubus portal. It deploys as a modular Helm chart and is the default groupware option alongside alternatives like SOGo and Grommunio. Persistent mail and calendar data is backed up through k8up.
+
+## Learn More
+
+- [Official Documentation](https://docs.open-xchange.com) — Official docs and resources

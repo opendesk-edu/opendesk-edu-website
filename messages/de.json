@@ -8,6 +8,12 @@
     "about": "Über uns",
     "languageSwitcher": {
       "label": "Sprache"
+    },
+    "themeToggle": {
+      "label": "Design wechseln"
+    },
+    "mobileMenu": {
+      "label": "Menü umschalten"
     }
   },
   "footer": {
@@ -26,7 +32,8 @@
     "title": "404",
     "heading": "Seite nicht gefunden",
     "message": "Die angeforderte Seite existiert nicht. Sie wurde möglicherweise verschoben oder gelöscht.",
-    "homepage": "Startseite"
+    "homepage": "Startseite",
+    "latestArticles": "Neueste Artikel"
   },
   "about": {
     "title": "Über openDesk Edu",
@@ -42,5 +49,16 @@
   "sections": {
     "latestArticles": "Neueste Artikel",
     "viewAll": "Alle Artikel anzeigen →"
+  },
+  "tableOfContents": {
+    "title": "Auf dieser Seite"
+  },
+  "errorBoundary": {
+    "title": "Etwas ist schiefgelaufen",
+    "message": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
+    "tryAgain": "Erneut versuchen"
+  },
+  "section": {
+    "noPosts": "In diesem Bereich sind noch keine Beiträge verfügbar."
   }
 }

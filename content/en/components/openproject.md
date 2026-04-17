@@ -1,6 +1,6 @@
----
+﻿---
 title: "OpenProject"
-date: "2026-04-17"
+date: "2026-03-17"
 description: "Project management platform with agile boards, Gantt charts, time tracking, and team collaboration."
 categories: ["productivity", "base"]
 tags: ["openproject", "project-management", "agile", "gantt", "kanban"]
@@ -21,3 +21,7 @@ OpenProject is a comprehensive project management platform that supports agile m
 ## Integration with openDesk Edu
 
 OpenProject integrates with openDesk Edu through Keycloak-based SSO using SAML 2.0 and OIDC. Users access project boards directly from the unified Nubus portal. It deploys as a modular Helm chart and is the default project management tool alongside the Beta alternative Planka for lighter Kanban use cases. Persistent project data is backed up through k8up.
+
+## Learn More
+
+- [Official Documentation](https://www.openproject.org/docs/) — Official docs and resources

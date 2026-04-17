@@ -1,6 +1,6 @@
----
+﻿---
 title: "SOGo"
-date: "2026-04-17"
+date: "2026-03-21"
 description: "Lightweight webmail and groupware as a simpler, faster alternative to OX App Suite."
 categories: ["communication", "education", "beta"]
 tags: ["sogo", "groupware", "email", "webmail", "alternative"]
@@ -21,3 +21,7 @@ SOGo is a lightweight webmail and groupware solution that serves as a simpler, f
 ## Integration with openDesk Edu
 
 SOGo integrates with openDesk Edu through Keycloak-based SSO using SAML 2.0 and OIDC. Users access mail and calendar from the unified Nubus portal. It deploys as a modular Helm chart as an education-specific Beta component. SOGo is a lightweight alternative to OX App Suite and Grommunio for email and groupware. Persistent data is backed up through k8up.
+
+## Learn More
+
+- [Official Documentation](https://www.sogo.nu/docs) — Official docs and resources

@@ -1,6 +1,6 @@
----
+﻿---
 title: "聊天"
-date: "2026-04-17"
+date: "2026-03-01"
 description: "基于 Matrix 的即时通讯应用，集成 Nordeck 教育小部件。"
 categories: ["通信"]
 tags: ["element", "matrix", "nordeck", "聊天"]

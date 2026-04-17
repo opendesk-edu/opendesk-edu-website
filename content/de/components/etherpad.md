@@ -1,6 +1,6 @@
----
+﻿---
 title: "Etherpad"
-date: "2026-04-17"
+date: "2026-03-31"
 description: "Echtzeit-kollaborativer Dokumenteneditor für Meetingprotokolle und Workshops."
 categories: ["kollaboration", "beta"]
 tags: ["etherpad", "kollaboration", "editor", "beta"]

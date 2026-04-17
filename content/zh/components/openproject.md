@@ -1,6 +1,6 @@
----
+﻿---
 title: "项目"
-date: "2026-04-17"
+date: "2026-03-17"
 description: "项目管理平台，包含敏捷看板、甘特图和时间跟踪。"
 categories: ["项目管理"]
 tags: ["openproject", "项目管理", "看板", "甘特图"]

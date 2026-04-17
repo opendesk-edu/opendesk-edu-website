@@ -15,7 +15,7 @@ import {SITE_URL, SITE_NAME, SITE_DESCRIPTION} from '@/lib/config';
 
 const inter = Inter({
   variable: "--font-inter",
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
   display: "swap",
 });
 

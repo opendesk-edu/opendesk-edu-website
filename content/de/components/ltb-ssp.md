@@ -1,6 +1,6 @@
----
+﻿---
 title: "LTB SSP"
-date: "2026-04-17"
+date: "2026-04-10"
 description: "LDAP-Passwort-Selbstservice zur Reduzierung von Helpdesk-Tickets durch eigenständige Passwortzurücksetzung."
 categories: ["iam", "selbstservice", "beta"]
 tags: ["ltb-ssp", "passwort", "ldap", "beta"]

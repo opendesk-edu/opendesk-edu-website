@@ -1,6 +1,6 @@
----
+﻿---
 title: "OpenCloud"
-date: "2026-04-17"
+date: "2026-03-29"
 description: "Lightweight CS3-based cloud storage with per-course sharing capabilities as an alternative to Nextcloud."
 categories: ["storage", "education", "beta"]
 tags: ["opencloud", "files", "cloud-storage", "alternative"]
@@ -21,3 +21,8 @@ OpenCloud is a lightweight cloud storage solution built on the Collaborative Ser
 ## Integration with openDesk Edu
 
 OpenCloud integrates with openDesk Edu through Keycloak-based SSO using SAML 2.0 and OIDC. Users access their files from the unified Nubus portal. It deploys as a modular Helm chart as an education-specific Beta component. OpenCloud is an alternative to Nextcloud for institutions that prefer a lighter storage solution with per-course sharing. Persistent file data is backed up through k8up.
+
+## Learn More
+
+- [Official Documentation](https://opencloud.eu/support/documentation/) — Official docs and resources
+

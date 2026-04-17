@@ -1,6 +1,6 @@
----
+﻿---
 title: "LimeSurvey"
-date: "2026-04-17"
+date: "2026-04-08"
 description: "Plateforme de sondages pour les évaluations de cours et la recherche académique."
 categories: ["evaluation", "beta-education"]
 tags: ["limesurvey", "sondages", "evaluations", "enquetes"]

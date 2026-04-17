@@ -1,6 +1,6 @@
----
+﻿---
 title: "Réunions"
-date: "2026-04-17"
+date: "2026-03-13"
 description: "Visioconférence légère basée sur navigateur pour des réunions rapides et spontanées."
 categories: ["communication", "composant-de-base"]
 tags: ["jitsi", "visioconference", "reunions", "audio-video"]

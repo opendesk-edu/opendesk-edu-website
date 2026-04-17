@@ -1,6 +1,6 @@
----
+﻿---
 title: "LimeSurvey"
-date: "2026-04-17"
+date: "2026-04-08"
 description: "Survey platform for course evaluations, academic research, and institutional feedback collection."
 categories: ["education", "productivity", "beta"]
 tags: ["limesurvey", "surveys", "evaluations", "research"]
@@ -21,3 +21,8 @@ LimeSurvey is a full-featured survey platform for creating, deploying, and analy
 ## Integration with openDesk Edu
 
 LimeSurvey integrates with openDesk Edu through Keycloak-based SSO using SAML 2.0 and OIDC. Users access the survey platform from the unified Nubus portal. It deploys as a modular Helm chart as an education-specific Beta component. Persistent survey data and response sets are backed up through k8up.
+
+## Learn More
+
+- [Official Documentation](https://manual.limesurvey.org) — Official docs and resources
+

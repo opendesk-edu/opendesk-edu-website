@@ -1,6 +1,6 @@
----
+﻿---
 title: "CryptPad"
-date: "2026-04-17"
+date: "2026-03-15"
 description: "Privacy-first collaborative office suite with integrated diagrams.net for diagramming and whiteboard functionality."
 categories: ["productivity", "office", "base"]
 tags: ["cryptpad", "diagrams", "drawio", "whiteboard", "privacy"]
@@ -21,3 +21,7 @@ CryptPad is a privacy-first collaborative office suite that encrypts content end
 ## Integration with openDesk Edu
 
 CryptPad integrates with openDesk Edu through Keycloak-based SSO using SAML 2.0 and OIDC. Users access the suite directly from the unified Nubus portal. It deploys as a modular Helm chart and provides an alternative whiteboard and diagramming option alongside Excalidraw and standalone Draw.io. Persistent data is backed up through k8up.
+
+## Learn More
+
+- [Official Documentation](https://docs.cryptpad.org) — Official docs and resources

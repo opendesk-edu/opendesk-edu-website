@@ -1,6 +1,6 @@
----
+﻿---
 title: "Zammad"
-date: "2026-04-17"
+date: "2026-04-06"
 description: "Helpdesk- und Ticket-System mit Multi-Kanal-Support und SAML-Authentifizierung."
 categories: ["helpdesk", "support", "beta"]
 tags: ["zammad", "helpdesk", "tickets", "beta"]

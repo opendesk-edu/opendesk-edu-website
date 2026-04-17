@@ -44,10 +44,10 @@ describe("Icons", () => {
   });
 
   describe("EduServicesIconSet", () => {
-    it("renders 16 service icons", () => {
+    it("renders 25 service icons", () => {
       render(<EduServicesIconSet />);
       const icons = screen.getAllByTestId("service-icon");
-      expect(icons).toHaveLength(16);
+      expect(icons).toHaveLength(25);
     });
 
     it("applies custom className to container", () => {

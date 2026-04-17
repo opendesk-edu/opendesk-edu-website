@@ -1,6 +1,6 @@
----
+﻿---
 title: "TYPO3"
-date: "2026-04-17"
+date: "2026-04-14"
 description: "CMS d'entreprise pour les sites universitaires, les portails de recherche et la communication institutionnelle."
 categories: ["web", "beta-education"]
 tags: ["typo3", "cms", "site-web", "portail", "recherche"]

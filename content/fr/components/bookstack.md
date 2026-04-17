@@ -1,6 +1,6 @@
----
+﻿---
 title: "BookStack"
-date: "2026-04-17"
+date: "2026-04-02"
 description: "Wiki structuré avec hiérarchie livre/chapitre/page, idéal pour les supports de cours."
 categories: ["connaissance", "beta-education"]
 tags: ["bookstack", "wiki", "supports-de-cours", "documentation"]

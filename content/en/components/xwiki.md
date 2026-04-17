@@ -1,6 +1,6 @@
----
+﻿---
 title: "XWiki"
-date: "2026-04-17"
+date: "2026-03-19"
 description: "Enterprise wiki platform for knowledge management, documentation, and collaborative content creation."
 categories: ["productivity", "base"]
 tags: ["xwiki", "wiki", "knowledge-management", "documentation"]
@@ -21,3 +21,7 @@ XWiki is an enterprise wiki platform designed for knowledge management, document
 ## Integration with openDesk Edu
 
 XWiki integrates with openDesk Edu through Keycloak-based SSO using SAML 2.0 and OIDC. Users access the wiki directly from the unified Nubus portal. It deploys as a modular Helm chart and serves as the default wiki solution alongside the Beta alternative BookStack. Persistent data is backed up through k8up.
+
+## Learn More
+
+- [Official Documentation](https://www.xwiki.org/xwiki/bin/view/Documentation/) — Official docs and resources

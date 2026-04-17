@@ -43,7 +43,7 @@ export default function Header() {
           <button
             onClick={toggleTheme}
             className="p-2 rounded-lg hover:bg-background-secondary transition-colors cursor-pointer"
-            aria-label="Toggle theme"
+            aria-label={t("themeToggle.label")}
           >
             {theme === "dark" ? <SunIcon className="w-5 h-5" /> : <MoonIcon className="w-5 h-5" />}
           </button>
@@ -54,14 +54,14 @@ export default function Header() {
           <button
             onClick={toggleTheme}
             className="p-2 rounded-lg hover:bg-background-secondary transition-colors cursor-pointer"
-            aria-label="Toggle theme"
+            aria-label={t("themeToggle.label")}
           >
             {theme === "dark" ? <SunIcon className="w-5 h-5" /> : <MoonIcon className="w-5 h-5" />}
           </button>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="p-2 rounded-lg hover:bg-background-secondary transition-colors cursor-pointer"
-            aria-label="Toggle menu"
+            aria-label={t("mobileMenu.label")}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -91,23 +91,29 @@ export default function Header() {
       </div>
 
       {/* Mobile menu */}
-      {mobileMenuOpen && (
-        <nav className="md:hidden border-t border-border bg-background px-4 py-4 space-y-2">
-          {NAV_ITEMS.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="block py-2 text-sm text-foreground-secondary hover:text-foreground transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {item.label}
-            </Link>
-          ))}
-          <div className="pt-2">
-            <LanguageSwitcher onLocaleChange={() => setMobileMenuOpen(false)} />
-          </div>
-        </nav>
-      )}
+      <nav
+        className={`md:hidden border-t border-border bg-background px-4 py-4 space-y-2 transition-all duration-300 ${
+          mobileMenuOpen ? 'max-h-[500px]' : 'max-h-0 overflow-hidden'
+        }`}
+      >
+        {mobileMenuOpen && (
+          <>
+            {NAV_ITEMS.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="block py-2 text-sm text-foreground-secondary hover:text-foreground transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {item.label}
+              </Link>
+            ))}
+            <div className="pt-2">
+              <LanguageSwitcher onLocaleChange={() => setMobileMenuOpen(false)} />
+            </div>
+          </>
+        )}
+      </nav>
     </header>
   );
 }

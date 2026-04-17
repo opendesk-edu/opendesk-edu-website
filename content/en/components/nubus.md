@@ -1,6 +1,6 @@
 ---
 title: "Nubus"
-date: "2026-04-17"
+date: "2026-03-05"
 description: "Unified portal and identity management built on Keycloak with SAML 2.0 and OIDC authentication."
 categories: ["infrastructure", "base"]
 tags: ["nubus", "keycloak", "portal", "iam", "sso"]
@@ -21,3 +21,7 @@ Nubus is the unified portal and identity access management layer in openDesk Edu
 ## Integration with openDesk Edu
 
 Nubus is the central IAM component of openDesk Edu. All other components authenticate through Keycloak using SAML 2.0 or OIDC. It deploys as a modular Helm chart and serves as the gateway to the unified portal. As the identity backbone, it does not require backup through k8up itself, but its configuration and realm data are preserved through standard Kubernetes secret and config management.
+
+## Learn More
+
+- [Official Documentation](https://www.open-desk.org/docs) — Official openDesk portal and IAM docs

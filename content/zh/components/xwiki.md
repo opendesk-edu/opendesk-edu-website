@@ -1,6 +1,6 @@
----
+﻿---
 title: "Wiki"
-date: "2026-04-17"
+date: "2026-03-19"
 description: "企业级 Wiki 平台，用于知识管理和协作内容创建。"
 categories: ["知识管理"]
 tags: ["xwiki", "wiki", "知识管理"]

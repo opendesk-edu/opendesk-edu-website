@@ -1,6 +1,6 @@
 ---
 title: "Collabora"
-date: "2026-04-17"
+date: "2026-03-11"
 description: "LibreOffice-based online office suite for collaborative editing of documents, spreadsheets, and presentations."
 categories: ["productivity", "office", "base"]
 tags: ["collabora", "office", "libreoffice", "document-editing"]
@@ -21,3 +21,7 @@ Collabora Online is a browser-based office suite built on LibreOffice technology
 ## Integration with openDesk Edu
 
 Collabora integrates with openDesk Edu through Keycloak-based SSO using SAML 2.0 and OIDC. It connects to Nextcloud as the document editing backend, so users open and edit files from the Nextcloud interface accessed through the unified Nubus portal. It deploys as a modular Helm chart alongside Nextcloud.
+
+## Learn More
+
+- [Official Documentation](https://www.collaboraoffice.com/documentation/) — Official docs and resources

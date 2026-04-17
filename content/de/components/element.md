@@ -1,6 +1,6 @@
----
+﻿---
 title: "Chat"
-date: "2026-04-17"
+date: "2026-03-01"
 description: "Matrix-basierter Chat mit Nordeck-Widgets für Bildung, Echtzeit-Nachrichten, Räume und Dateifreigabe."
 categories: ["kommunikation", "messaging"]
 tags: ["element", "chat", "matrix", "bildung"]

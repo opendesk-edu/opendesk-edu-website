@@ -1,6 +1,6 @@
----
+﻿---
 title: "Moodle"
-date: "2026-04-17"
+date: "2026-03-25"
 description: "Plugin-rich learning management system with assignments, workshops, gradebook, and Shibboleth authentication."
 categories: ["education", "beta"]
 tags: ["moodle", "lms", "learning-management", "e-learning"]
@@ -21,3 +21,7 @@ Moodle is a plugin-rich learning management system (LMS) designed for creating a
 ## Integration with openDesk Edu
 
 Moodle integrates with openDesk Edu as a SAML 2.0 service provider using Shibboleth, authenticating users through Keycloak. Users access courses from the unified Nubus portal. It deploys as a modular Helm chart as an education-specific Beta component. Persistent course data, user submissions, and the gradebook are backed up through k8up.
+
+## Learn More
+
+- [Official Documentation](https://docs.moodle.org) — Official docs and resources

@@ -1,6 +1,6 @@
 ---
 title: "Nextcloud"
-date: "2026-04-17"
+date: "2026-03-07"
 description: "Full-featured cloud storage and collaboration suite with file sync, sharing, and office integration."
 categories: ["storage", "productivity", "base"]
 tags: ["nextcloud", "files", "cloud-storage", "collaboration"]
@@ -21,3 +21,7 @@ Nextcloud is a full-featured cloud storage and collaboration platform that handl
 ## Integration with openDesk Edu
 
 Nextcloud integrates with openDesk Edu through Keycloak-based SSO using SAML 2.0 and OIDC. Users access their files directly from the unified Nubus portal. It deploys as a modular Helm chart and serves as the default cloud storage component. Persistent file data is backed up through k8up.
+
+## Learn More
+
+- [Official Documentation](https://docs.nextcloud.com) — Official docs and resources

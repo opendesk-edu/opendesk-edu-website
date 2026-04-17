@@ -1,6 +1,6 @@
----
+﻿---
 title: "Fichiers"
-date: "2026-04-17"
+date: "2026-03-07"
 description: "Suite complète de stockage cloud et de collaboration pour le partage et la synchronisation de documents."
 categories: ["stockage", "composant-de-base"]
 tags: ["nextcloud", "stockage-cloud", "partage", "synchronisation"]

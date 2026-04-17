@@ -1,6 +1,6 @@
----
+﻿---
 title: "Etherpad"
-date: "2026-04-17"
+date: "2026-03-31"
 description: "Real-time collaborative document editor for meeting notes, workshops, and live editing sessions."
 categories: ["education", "productivity", "beta"]
 tags: ["etherpad", "collaborative-editing", "real-time", "documents"]
@@ -21,3 +21,7 @@ Etherpad is a real-time collaborative document editor that lets multiple users w
 ## Integration with openDesk Edu
 
 Etherpad integrates with openDesk Edu through Keycloak-based SSO using SAML 2.0 and OIDC. Users create and join pads from the unified Nubus portal. It deploys as a modular Helm chart as an education-specific Beta component. Pad content can be backed up through k8up for persistent document recovery.
+
+## Learn More
+
+- [Official Documentation](https://docs.etherpad.org) — Official docs and resources

@@ -1,6 +1,6 @@
----
+﻿---
 title: "Projekte"
-date: "2026-04-17"
+date: "2026-03-17"
 description: "Projektmanagement-Plattform mit agilen Boards, Gantt-Diagrammen und Zeiterfassung."
 categories: ["projektmanagement", "produktivitaet"]
 tags: ["openproject", "projekte", "agile", "kanban"]

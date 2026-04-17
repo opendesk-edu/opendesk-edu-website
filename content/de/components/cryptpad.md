@@ -1,6 +1,6 @@
----
+﻿---
 title: "CryptPad"
-date: "2026-04-17"
+date: "2026-03-15"
 description: "Datenschutzorientierte kollaborative Office-Suite mit integriertem diagrams.net für sichere Zusammenarbeit."
 categories: ["office", "kollaboration", "datenschutz"]
 tags: ["cryptpad", "diagramme", "whiteboard", "office"]

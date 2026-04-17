@@ -1,6 +1,6 @@
----
+﻿---
 title: "Draw.io"
-date: "2026-04-17"
+date: "2026-04-12"
 description: "Outil de diagrammes pour l'architecture, les organigrammes et UML avec export PDF et VSDX."
 categories: ["diagrammes", "beta-education"]
 tags: ["drawio", "diagrammes", "architecture", "uml", "organigrammes"]

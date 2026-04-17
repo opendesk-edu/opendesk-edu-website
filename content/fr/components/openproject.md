@@ -1,6 +1,6 @@
----
+﻿---
 title: "Projets"
-date: "2026-04-17"
+date: "2026-03-17"
 description: "Plateforme de gestion de projet avec tableaux agiles, diagrammes de Gantt et suivi du temps."
 categories: ["gestion-de-projet", "composant-de-base"]
 tags: ["openproject", "gestion-de-projet", "agile", "gantt", "kanban"]

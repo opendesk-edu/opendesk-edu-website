@@ -1,6 +1,6 @@
----
+﻿---
 title: "LTB SSP"
-date: "2026-04-17"
+date: "2026-04-10"
 description: "Libre-service de réinitialisation de mot de passe LDAP pour réduire les tickets de support."
 categories: ["identite", "beta-education"]
 tags: ["ltb-ssp", "mot-de-passe", "ldap", "libre-service"]

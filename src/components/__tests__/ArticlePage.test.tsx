@@ -64,7 +64,7 @@ describe("ArticlePage", () => {
     const data = JSON.parse(script!.textContent!);
     expect(data["@type"]).toBe("BlogPosting");
     expect(data.headline).toBe("Getting Started with openDesk");
-    expect(data.url).toBe("https://opendesk-edu.org/blog/getting-started");
+    expect(data.url).toBe("https://opendesk-edu.org/en/blog/getting-started");
   });
 
   it("renders the HTML content", () => {

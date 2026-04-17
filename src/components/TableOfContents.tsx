@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useTranslations } from "next-intl";
 
 interface TocItem {
   id: string;
@@ -29,6 +30,7 @@ interface TableOfContentsProps {
 
 export default function TableOfContents({ html }: TableOfContentsProps) {
   const headings = extractHeadings(html);
+  const t = useTranslations("tableOfContents");
   const [activeId, setActiveId] = useState<string>("");
   const observerRef = useRef<IntersectionObserver | null>(null);
 
@@ -70,7 +72,7 @@ export default function TableOfContents({ html }: TableOfContentsProps) {
   return (
     <nav aria-label="Table of contents">
       <p className="text-xs font-semibold uppercase tracking-wider text-foreground-secondary mb-3">
-        On this page
+        {t("title")}
       </p>
       <ul className="space-y-1 border-l border-border">
         {headings.map((heading) => (

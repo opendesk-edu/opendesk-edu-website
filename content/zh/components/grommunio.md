@@ -1,6 +1,6 @@
----
+﻿---
 title: "Grommunio（替代邮件）"
-date: "2026-04-17"
+date: "2026-03-23"
 description: "兼容 Microsoft 365 的协同办公套件，支持 ActiveSync 移动同步。"
 categories: ["办公", "邮件"]
 tags: ["grommunio", "邮件", "activesync", "替代方案"]

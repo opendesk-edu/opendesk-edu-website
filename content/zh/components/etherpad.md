@@ -1,6 +1,6 @@
----
+﻿---
 title: "Etherpad（协作编辑）"
-date: "2026-04-17"
+date: "2026-03-31"
 description: "实时协作文档编辑器，适用于会议记录和工作坊。"
 categories: ["办公", "教学"]
 tags: ["etherpad", "协作编辑", "文档", "工作坊"]

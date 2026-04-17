@@ -1,6 +1,6 @@
 ---
 title: "Element"
-date: "2026-04-17"
+date: "2026-03-01"
 description: "Matrix-based chat with Nordeck education widgets for real-time messaging, rooms, and file sharing."
 categories: ["communication", "base"]
 tags: ["element", "matrix", "chat", "messaging"]
@@ -21,3 +21,7 @@ Element is a Matrix-based chat client powered by the Element Web frontend with N
 ## Integration with openDesk Edu
 
 Element integrates with openDesk Edu through Keycloak-based SSO using SAML 2.0 and OIDC. Users access the chat directly from the unified Nubus portal with a single sign-on experience. It deploys as a modular Helm chart alongside the Synapse Matrix homeserver. Persistent message data is backed up through k8up.
+
+## Learn More
+
+- [Official Documentation](https://element.io/docs) — Official docs and resources

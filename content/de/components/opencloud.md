@@ -1,6 +1,6 @@
----
+﻿---
 title: "OpenCloud"
-date: "2026-04-17"
+date: "2026-03-29"
 description: "Leichtgewichtiger CS3-basierter Cloud-Speicher mit kursbezogener Freigabe als Alternative zu Nextcloud."
 categories: ["speicher", "beta"]
 tags: ["opencloud", "dateien", "cloud", "alternative", "beta"]

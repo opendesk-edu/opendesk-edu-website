@@ -22,7 +22,7 @@ export default function ArticlePage({ post, backHref, backLabel, locale = 'en' }
     description: post.description ?? "",
     datePublished: post.date,
     dateModified: post.date,
-    url: `${SITE_URL}/${post.section}/${post.slug}`,
+    url: `${SITE_URL}/${locale}/${post.section}/${post.slug}`,
     author: {
       "@type": "Organization",
       name: SITE_NAME,
@@ -35,7 +35,7 @@ export default function ArticlePage({ post, backHref, backLabel, locale = 'en' }
         url: `${SITE_URL}/static/brand/icon.svg`,
       },
     },
-    mainEntityOfPage: `${SITE_URL}/${post.section}/${post.slug}`,
+    mainEntityOfPage: `${SITE_URL}/${locale}/${post.section}/${post.slug}`,
     keywords: post.tags?.join(", ") ?? "",
   };
 

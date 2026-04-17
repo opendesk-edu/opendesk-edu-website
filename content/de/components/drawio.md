@@ -1,6 +1,6 @@
----
+﻿---
 title: "Draw.io"
-date: "2026-04-17"
+date: "2026-04-12"
 description: "Diagrammwerkzeug für Architekturdiagramme, Flussdiagramme und UML."
 categories: ["diagramme", "tools", "beta"]
 tags: ["drawio", "diagramme", "tools", "beta"]

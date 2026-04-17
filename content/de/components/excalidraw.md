@@ -1,6 +1,6 @@
----
+﻿---
 title: "Excalidraw"
-date: "2026-04-17"
+date: "2026-04-13"
 description: "Leichtgewichtiges Whiteboard für handgezeichnete Skizzen und Brainstorming."
 categories: ["whiteboard", "tools", "beta"]
 tags: ["excalidraw", "whiteboard", "brainstorming", "beta"]

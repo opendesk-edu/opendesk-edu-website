@@ -1,6 +1,6 @@
----
+﻿---
 title: "OX App Suite"
-date: "2026-04-17"
+date: "2026-03-09"
 description: "Suite groupware d'entreprise complète avec e-mail, calendrier, contacts et gestion de documents."
 categories: ["groupware", "composant-de-base"]
 tags: ["ox-app-suite", "groupware", "email", "calendrier", "contacts"]

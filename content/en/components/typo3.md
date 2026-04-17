@@ -1,6 +1,6 @@
----
+﻿---
 title: "TYPO3"
-date: "2026-04-17"
+date: "2026-04-14"
 description: "Enterprise content management system for university websites, department pages, and research portals."
 categories: ["education", "beta"]
 tags: ["typo3", "cms", "content-management", "websites"]
@@ -20,4 +20,9 @@ TYPO3 is an enterprise-grade content management system designed for building and
 
 ## Integration with openDesk Edu
 
-TYPO3 integrates with openDesk Edu through Keycloak-based SSO using SAML 2.0 and OIDC. Content editors access the CMS from the unified Nubus portal. It deploys as a modular Helm chart as an education-specific Beta component. Persistent page content, media assets, and configuration data are backed up through k8up.
+TYPO3 integrates with openDesk Edu through Keycloak-based SSO using SAML 2..0 and OIDC. Content editors access the CMS from the unified Nubus portal. It deploys as a modular Helm chart as an education-specific Beta component. Persistent page content, media assets, and configuration data are backed up through k8up.
+
+## Learn More
+
+- [Official Documentation](https://docs.typo3.org) — Official docs and resources
+

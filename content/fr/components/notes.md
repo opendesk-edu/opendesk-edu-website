@@ -1,6 +1,6 @@
----
+﻿---
 title: "Notes"
-date: "2026-04-17"
+date: "2026-03-03"
 description: "Application de prise de notes légère pour des notes textuelles rapides et des documents structurés."
 categories: ["productivite", "composant-de-base"]
 tags: ["notes", "docs", "prise-de-notes"]

@@ -1,6 +1,6 @@
----
+﻿---
 title: "OpenCloud（替代文件存储）"
-date: "2026-04-17"
+date: "2026-03-29"
 description: "基于 CS3 的轻量级云存储，支持按课程共享文件。"
 categories: ["存储"]
 tags: ["opencloud", "文件存储", "cs3", "替代方案"]

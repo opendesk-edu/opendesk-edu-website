@@ -41,7 +41,7 @@ export default async function NotFound({params}: PageProps) {
 
       {latestPosts.length > 0 && (
         <div className="text-left">
-          <h2 className="text-2xl font-bold text-foreground mb-6">Latest Articles</h2>
+          <h2 className="text-2xl font-bold text-foreground mb-6">{t('latestArticles')}</h2>
           <div className="grid gap-6 sm:grid-cols-2">
             {latestPosts.map((post) => (
               <PostCard key={`${post.section}/${post.slug}`} post={post} locale={locale} />

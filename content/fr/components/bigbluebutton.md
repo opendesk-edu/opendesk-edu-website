@@ -1,6 +1,6 @@
----
+﻿---
 title: "Cours en ligne"
-date: "2026-04-17"
+date: "2026-03-27"
 description: "Salle de classe virtuelle avec enregistrement, tableau blanc, sous-groupes et sondages."
 categories: ["enseignement", "beta-education"]
 tags: ["bigbluebutton", "visioconference", "salle-de-classe-virtuelle", "shibboleth"]

@@ -12,6 +12,9 @@ interface PostCardProps {
 }
 
 export default function PostCard({ post, locale = 'en' }: PostCardProps) {
+  const isBeta = post.categories?.includes('beta') || post.tags?.includes('beta');
+  const isComponent = post.section === 'components';
+
   return (
     <article className="rounded-lg border border-border bg-background p-6 hover:shadow-lg transition-shadow">
       <Link href={`/${post.section}/${post.slug}` as Href} className="block">
@@ -19,9 +22,16 @@ export default function PostCard({ post, locale = 'en' }: PostCardProps) {
           {post.title}
         </h3>
       </Link>
-      <time dateTime={post.date} className="text-sm text-foreground-secondary block mb-3">
-        {formatDate(post.date, locale)}
-      </time>
+      <div className="flex items-center gap-2 mb-3">
+        <time dateTime={post.date} className="text-sm text-foreground-secondary">
+          {formatDate(post.date, locale)}
+        </time>
+        {isComponent && isBeta && (
+          <span className="text-xs px-2 py-1 rounded-full bg-amber-100 text-amber-800 border border-amber-200">
+            Beta
+          </span>
+        )}
+      </div>
       {post.description && (
         <p className="text-sm text-foreground-secondary mb-4 line-clamp-2">
           {post.description}

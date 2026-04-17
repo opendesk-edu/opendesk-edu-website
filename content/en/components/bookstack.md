@@ -1,6 +1,6 @@
----
+﻿---
 title: "BookStack"
-date: "2026-04-17"
+date: "2026-04-02"
 description: "Structured wiki with book, chapter, and page hierarchy for course materials, SOPs, and documentation."
 categories: ["education", "productivity", "beta"]
 tags: ["bookstack", "wiki", "documentation", "knowledge-management"]
@@ -21,3 +21,7 @@ BookStack is a structured wiki platform that organizes content into shelves, boo
 ## Integration with openDesk Edu
 
 BookStack integrates with openDesk Edu through Keycloak-based SSO using SAML 2.0 and OIDC. Users access content directly from the unified Nubus portal. It deploys as a modular Helm chart as an education-specific Beta component. BookStack is an alternative to XWiki for institutions that prefer a simpler, more structured wiki. Persistent content data is backed up through k8up.
+
+## Learn More
+
+- [Official Documentation](https://www.bookstackapp.com/docs/) — Official docs and resources

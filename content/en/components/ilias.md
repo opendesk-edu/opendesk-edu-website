@@ -1,23 +1,27 @@
 ---
-title: "ILIAS Learning Management System"
+title: "ILIAS"
 date: "2026-04-15"
 description: "ILIAS is a powerful open-source learning management system widely used in higher education and corporate training environments."
-categories: ["lms", "learning"]
+categories: ["education", "beta"]
 tags: ["ilias", "education", "lms"]
 ---
 
-# ILIAS Learning Management System
+# ILIAS
 
-ILIAS is a powerful open-source LMS that provides a comprehensive platform for teaching and learning. It offers tools for course management, assessment, collaboration, and communication.
+ILIAS is a powerful open-source learning management system (LMS) that provides a comprehensive platform for teaching and learning. It offers tools for course management, assessment, collaboration, and communication. ILIAS is an education-specific Beta component in openDesk Edu.
 
 ## Key Features
 
-- **Course Management**: Create and organize courses with flexible content structures
-- **Assessment**: Built-in test and survey tools with extensive question types
-- **Collaboration**: Forums, wikis, group rooms, and file sharing
-- **Communication**: Integrated messaging and notification systems
-- **SCORM Compliance**: Full support for SCORM 1.2 and 2004 content packages
+- **Course Management**: Create and organize courses with flexible content structures.
+- **Assessment**: Built-in test and survey tools with extensive question types.
+- **Collaboration**: Forums, wikis, group rooms, and file sharing.
+- **Communication**: Integrated messaging and notification systems.
+- **SCORM Compliance**: Full support for SCORM 1.2 and 2004 content packages.
 
 ## Integration with openDesk Edu
 
-As part of the openDesk Edu platform, ILIAS integrates seamlessly with other services through SAML-based single sign-on and shared user directories.
+ILIAS integrates with openDesk Edu as a SAML 2.0 service provider using Shibboleth, authenticating users through Keycloak. Users access courses from the unified Nubus portal. It deploys as a modular Helm chart as an education-specific Beta component. Persistent course data, user submissions, and assessment results are backed up through k8up.
+
+## Learn More
+
+- [Official Documentation](https://docu.ilias.de) — Official docs and resources

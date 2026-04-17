@@ -1,6 +1,6 @@
----
+﻿---
 title: "LimeSurvey"
-date: "2026-04-17"
+date: "2026-04-08"
 description: "Umfrageplattform für Kursbewertungen und akademische Forschung."
 categories: ["umfragen", "forschung", "beta"]
 tags: ["limesurvey", "umfragen", "bewertung", "beta"]

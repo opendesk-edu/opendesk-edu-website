@@ -1,6 +1,6 @@
----
+﻿---
 title: "SOGo（替代邮件）"
-date: "2026-04-17"
+date: "2026-03-21"
 description: "轻量级网页邮件和协同办公，OX App Suite 的替代方案。"
 categories: ["办公", "邮件"]
 tags: ["sogo", "邮件", "替代方案"]

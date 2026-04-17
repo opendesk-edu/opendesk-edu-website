@@ -1,6 +1,7 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
 import React from "react";
+import { NextIntlClientProvider } from "next-intl";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 
 // Component that throws on render
@@ -11,6 +12,22 @@ function ThrowingComponent(): React.ReactElement {
 // Component that never throws
 function GoodComponent(): React.ReactElement {
   return <div>Good content</div>;
+}
+
+const messages = {
+  errorBoundary: {
+    title: "Something went wrong",
+    message: "We encountered an unexpected error. Please try again.",
+    tryAgain: "Try again",
+  },
+};
+
+function renderWithProvider(ui: React.ReactElement) {
+  return render(
+    <NextIntlClientProvider locale="en" messages={messages}>
+      {ui}
+    </NextIntlClientProvider>
+  );
 }
 
 describe("ErrorBoundary", () => {
@@ -24,7 +41,7 @@ describe("ErrorBoundary", () => {
   });
 
   it("renders children when no error", () => {
-    render(
+    renderWithProvider(
       <ErrorBoundary>
         <GoodComponent />
       </ErrorBoundary>
@@ -33,7 +50,7 @@ describe("ErrorBoundary", () => {
   });
 
   it("renders fallback UI when child throws", () => {
-    render(
+    renderWithProvider(
       <ErrorBoundary>
         <ThrowingComponent />
       </ErrorBoundary>
@@ -43,7 +60,7 @@ describe("ErrorBoundary", () => {
   });
 
   it("renders custom fallback when provided", () => {
-    render(
+    renderWithProvider(
       <ErrorBoundary fallback={<div>Custom fallback</div>}>
         <ThrowingComponent />
       </ErrorBoundary>
@@ -53,7 +70,7 @@ describe("ErrorBoundary", () => {
   });
 
   it("calls console.error in componentDidCatch", () => {
-    render(
+    renderWithProvider(
       <ErrorBoundary>
         <ThrowingComponent />
       </ErrorBoundary>
@@ -69,7 +86,7 @@ describe("ErrorBoundary", () => {
       return <div>Recovered</div>;
     }
 
-    render(
+    renderWithProvider(
       <ErrorBoundary>
         <ConditionalThrower />
       </ErrorBoundary>

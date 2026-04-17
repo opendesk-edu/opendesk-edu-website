@@ -1,6 +1,6 @@
----
+﻿---
 title: "办公套件"
-date: "2026-04-17"
+date: "2026-03-11"
 description: "基于 LibreOffice 的在线办公套件，支持文档、表格和演示文稿协作编辑。"
 categories: ["办公"]
 tags: ["collabora", "libreoffice", "办公套件", "文档编辑"]

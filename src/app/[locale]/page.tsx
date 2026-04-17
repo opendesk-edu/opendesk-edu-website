@@ -15,7 +15,8 @@ export default async function Home({ params }: PageProps) {
   const {locale} = await params;
   const t = await getTranslations();
   const allPosts = await getAllPosts(locale);
-  const latestPosts = allPosts.slice(0, 3);
+  const blogPosts = allPosts.filter(p => p.section === 'blog');
+  const latestPosts = blogPosts.slice(0, 3);
 
   return (
     <div className="mx-auto max-w-4xl px-6 py-12">
@@ -37,6 +38,19 @@ export default async function Home({ params }: PageProps) {
         <p className="text-foreground-secondary mb-8 max-w-2xl mx-auto">
           {t('hero.description')}
         </p>
+        
+        {/* Visual Enhancement - Service Icon Set */}
+        <div className="mb-8 flex justify-center">
+          <Image
+            src="/static/brand/banner.svg"
+            alt=""
+            width={400}
+            height={120}
+            priority
+            className="opacity-80 max-w-full h-auto"
+          />
+        </div>
+        
         <div className="flex flex-wrap justify-center gap-4">
           {SECTION_INFO.map((section) => (
             <Link
@@ -51,7 +65,7 @@ export default async function Home({ params }: PageProps) {
       </section>
 
       {/* Latest Posts */}
-      {latestPosts.length > 0 && (
+      {blogPosts.length > 0 && (
         <section className="mb-16">
           <h2 className="text-2xl font-bold text-foreground mb-6">{t('sections.latestArticles')}</h2>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -72,9 +86,9 @@ export default async function Home({ params }: PageProps) {
 
       {/* Contact */}
       <section className="text-center">
-        <h2 className="text-2xl font-bold text-foreground mb-4">Get in Touch</h2>
+        <h2 className="text-2xl font-bold text-foreground mb-4">{t('home.getInTouch')}</h2>
         <p className="text-foreground-secondary mb-4">
-          Questions, feedback, or want to contribute?
+          {t('home.getInTouchDescription')}
         </p>
         <EmailLink className="text-accent hover:text-accent-button transition-colors font-semibold">
           info@opendesk-edu.org

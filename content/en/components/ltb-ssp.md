@@ -1,6 +1,6 @@
----
+﻿---
 title: "LTB SSP"
-date: "2026-04-17"
+date: "2026-04-10"
 description: "LDAP password self-service that lets users reset their own passwords without helpdesk intervention."
 categories: ["education", "infrastructure", "beta"]
 tags: ["ltb-ssp", "password-reset", "ldap", "self-service"]
@@ -21,3 +21,7 @@ LTB SSP (Self-Service Password) is a simple web application that allows users to
 ## Integration with openDesk Edu
 
 LTB SSP integrates with openDesk Edu by connecting directly to the LDAP directory used by Keycloak. It deploys as a modular Helm chart as an education-specific Beta component. By reducing password-related helpdesk tickets, it lightens the administrative burden for IT staff at educational institutions.
+
+## Learn More
+
+- [Official Documentation](https://ltb-project.org/documentation/self-service-password) — Official docs and resources

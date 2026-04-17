@@ -1,6 +1,6 @@
----
+﻿---
 title: "Jitsi"
-date: "2026-04-17"
+date: "2026-03-13"
 description: "Lightweight, browser-based video conferencing for quick meetings without registration."
 categories: ["communication", "base"]
 tags: ["jitsi", "video-conferencing", "meetings", "webinar"]
@@ -21,3 +21,7 @@ Jitsi is a lightweight, browser-based video conferencing platform designed for q
 ## Integration with openDesk Edu
 
 Jitsi integrates with openDesk Edu through Keycloak-based SSO using SAML 2.0 and OIDC. Users can launch meetings directly from the unified Nubus portal. It deploys as a modular Helm chart and is the default video conferencing option alongside the Beta alternative BigBlueButton for lecture-style teaching.
+
+## Learn More
+
+- [Official Documentation](https://jitsi.github.io/handbook/docs/intro) — Official docs and resources

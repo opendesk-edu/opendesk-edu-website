@@ -1,6 +1,6 @@
----
+﻿---
 title: "Excalidraw"
-date: "2026-04-17"
+date: "2026-04-13"
 description: "Lightweight whiteboard for hand-drawn sketches, brainstorming, and visual collaboration."
 categories: ["education", "productivity", "beta"]
 tags: ["excalidraw", "whiteboard", "sketching", "brainstorming", "alternative"]
@@ -21,3 +21,7 @@ Excalidraw is a lightweight virtual whiteboard designed for hand-drawn sketches 
 ## Integration with openDesk Edu
 
 Excalidraw integrates with openDesk Edu through Keycloak-based SSO using SAML 2.0 and OIDC. Users access the whiteboard from the unified Nubus portal. It deploys as a modular Helm chart as an education-specific Beta component. Excalidraw is an alternative whiteboard option to CryptPad diagrams for institutions that prefer a lighter, sketch-focused tool.
+
+## Learn More
+
+- [Official Documentation](https://docs.excalidraw.com) — Official docs and resources

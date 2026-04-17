@@ -4,7 +4,7 @@ import { useRouter, usePathname } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { useTranslations, useLocale } from "next-intl";
 import { useParams } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 interface LanguageSwitcherProps {
   onLocaleChange?: () => void;
@@ -25,6 +25,7 @@ export default function LanguageSwitcher({ onLocaleChange }: LanguageSwitcherPro
   const t = useTranslations("header.languageSwitcher");
 
   const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const currentLocaleName = localeLabels[currentLocale] ?? currentLocale.toUpperCase();
 
   const handleLocaleChange = (newLocale: string) => {
@@ -39,8 +40,24 @@ export default function LanguageSwitcher({ onLocaleChange }: LanguageSwitcherPro
     setIsOpen(!isOpen);
   };
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
+
   return (
-    <div className="relative">
+    <div className="relative" ref={dropdownRef}>
       <button
         onClick={toggleDropdown}
         className="text-sm text-foreground-secondary hover:text-foreground transition-colors rounded-lg hover:bg-background-secondary cursor-pointer p-2"

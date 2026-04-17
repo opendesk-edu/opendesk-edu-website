@@ -1,6 +1,6 @@
----
+﻿---
 title: "Excalidraw"
-date: "2026-04-17"
+date: "2026-04-13"
 description: "Tableau blanc léger pour les croquis à main levée et les sessions de brainstorming."
 categories: ["diagrammes", "beta-education"]
 tags: ["excalidraw", "tableau-blanc", "brainstorming", "croquis"]

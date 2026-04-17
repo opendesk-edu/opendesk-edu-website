@@ -1,6 +1,6 @@
----
+﻿---
 title: "Planka"
-date: "2026-04-17"
+date: "2026-04-04"
 description: "Kanban board application with OIDC support for student projects and research planning."
 categories: ["education", "productivity", "beta"]
 tags: ["planka", "kanban", "project-management", "boards"]
@@ -21,3 +21,7 @@ Planka is a focused Kanban board application that provides drag-and-drop task ma
 ## Integration with openDesk Edu
 
 Planka integrates with openDesk Edu through Keycloak-based SSO using OIDC. Users access boards from the unified Nubus portal. It deploys as a modular Helm chart as an education-specific Beta component. Planka is a lighter alternative to OpenProject for student projects and research groups that only need Kanban boards. Persistent board data is backed up through k8up.
+
+## Learn More
+
+- [Official Documentation](https://docs.planka.cloud) — Official docs and resources

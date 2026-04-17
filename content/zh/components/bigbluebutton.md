@@ -1,6 +1,6 @@
----
+﻿---
 title: "在线课堂"
-date: "2026-04-17"
+date: "2026-03-27"
 description: "虚拟课堂平台，支持录制、白板、分组讨论室和投票。"
 categories: ["教学", "通信"]
 tags: ["bigbluebutton", "在线课堂", "视频会议", "shibboleth"]

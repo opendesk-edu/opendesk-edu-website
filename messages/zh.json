@@ -8,6 +8,12 @@
     "about": "关于",
     "languageSwitcher": {
       "label": "语言"
+    },
+    "themeToggle": {
+      "label": "切换主题"
+    },
+    "mobileMenu": {
+      "label": "切换菜单"
     }
   },
   "footer": {
@@ -26,7 +32,8 @@
     "title": "404",
     "heading": "页面未找到",
     "message": "请求的页面不存在。可能已被移动或删除。",
-    "homepage": "首页"
+    "homepage": "首页",
+    "latestArticles": "最新文章"
   },
   "about": {
     "title": "关于 openDesk Edu",
@@ -42,5 +49,16 @@
   "sections": {
     "latestArticles": "最新文章",
     "viewAll": "查看所有文章 →"
+  },
+  "tableOfContents": {
+    "title": "本页内容"
+  },
+  "errorBoundary": {
+    "title": "出现了问题",
+    "message": "遇到了意外错误，请重试。",
+    "tryAgain": "重试"
+  },
+  "section": {
+    "noPosts": "该部分暂无文章。"
   }
 }

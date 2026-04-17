@@ -17,7 +17,7 @@ const nextConfig: NextConfig = {
   output: "standalone",
   poweredByHeader: false,
   turbopack: { root: path.resolve(__dirname, "..") },
-  images: { unoptimized: true },
+  images: { unoptimized: false },
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
   async headers() {
     return [{ source: "/(.*)", headers: securityHeaders }];

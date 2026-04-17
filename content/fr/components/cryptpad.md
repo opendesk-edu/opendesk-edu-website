@@ -1,6 +1,6 @@
----
+﻿---
 title: "CryptPad"
-date: "2026-04-17"
+date: "2026-03-15"
 description: "Suite bureautique collaborative et chiffrée avec éditeur de diagrammes intégré."
 categories: ["bureautique", "composant-de-base"]
 tags: ["cryptpad", "diagrammes", "suite-bureautique", "confidentialite"]

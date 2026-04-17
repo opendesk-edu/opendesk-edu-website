@@ -1,6 +1,6 @@
----
+﻿---
 title: "LMS"
-date: "2026-04-17"
+date: "2026-03-25"
 description: "Plateforme d'apprentissage riche en plugins avec devoirs, ateliers et carnet de notes."
 categories: ["enseignement", "beta-education"]
 tags: ["moodle", "lms", "apprentissage", "devoirs", "shibboleth"]

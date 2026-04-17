@@ -1,6 +1,6 @@
----
+﻿---
 title: "LMS"
-date: "2026-04-17"
+date: "2026-03-25"
 description: "Plugin-reiches Lernmanagementsystem mit Aufgaben, Workshops, Notenbuch und Shibboleth-Authentifizierung."
 categories: ["lms", "learning", "beta"]
 tags: ["moodle", "lms", "bildung", "shibboleth", "beta"]

@@ -1,6 +1,6 @@
----
+﻿---
 title: "门户和身份管理"
-date: "2026-04-17"
+date: "2026-03-05"
 description: "基于 Keycloak 的统一门户和身份管理，支持 SAML 2.0 和 OIDC。"
 categories: ["基础设施"]
 tags: ["nubus", "keycloak", "身份管理", "门户", "sso"]

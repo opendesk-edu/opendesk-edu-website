@@ -1,6 +1,6 @@
----
+﻿---
 title: "Vorlesungen"
-date: "2026-04-17"
+date: "2026-03-27"
 description: "Virtuelle Klassenzimmer-Plattform mit Aufnahme, Whiteboard, Breakout-Räumen und Umfragen."
 categories: ["lms", "videokonferenz", "beta"]
 tags: ["bigbluebutton", "vorlesungen", "videokonferenz", "beta"]

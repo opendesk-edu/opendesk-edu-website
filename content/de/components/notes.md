@@ -1,6 +1,6 @@
----
+﻿---
 title: "Notizen"
-date: "2026-04-17"
+date: "2026-03-03"
 description: "Leichtgewichtige Notizanwendung für schnelle Textnotizen und Dokumente."
 categories: ["produktivitaet", "notizen"]
 tags: ["notes", "notizen", "dokumente"]

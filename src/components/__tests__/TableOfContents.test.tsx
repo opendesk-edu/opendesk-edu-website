@@ -1,6 +1,17 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
+import { NextIntlClientProvider } from "next-intl";
 import TableOfContents, { extractHeadings } from "@/components/TableOfContents";
+
+const messages = { tableOfContents: { title: "On this page" } };
+
+function renderWithProvider(ui: React.ReactElement) {
+  return render(
+    <NextIntlClientProvider locale="en" messages={messages}>
+      {ui}
+    </NextIntlClientProvider>
+  );
+}
 
 describe("extractHeadings", () => {
   it("extracts h2 and h3 headings with ids", () => {
@@ -32,19 +43,19 @@ describe("extractHeadings", () => {
 
 describe("TableOfContents", () => {
   it("returns null when no headings found", () => {
-    const { container } = render(<TableOfContents html="<p>No headings</p>" />);
+    const { container } = renderWithProvider(<TableOfContents html="<p>No headings</p>" />);
     expect(container.innerHTML).toBe("");
   });
 
   it("renders nav with On this page label", () => {
-    render(
+    renderWithProvider(
       <TableOfContents html='<h2 id="sec1">Section 1</h2><h3 id="sub1">Sub 1</h3>' />
     );
     expect(screen.getByText("On this page")).toBeInTheDocument();
   });
 
   it("renders heading text as buttons", () => {
-    render(<TableOfContents html='<h2 id="sec1">Section 1</h2>' />);
+    renderWithProvider(<TableOfContents html='<h2 id="sec1">Section 1</h2>' />);
     expect(screen.getByText("Section 1")).toBeInTheDocument();
   });
 
@@ -54,7 +65,7 @@ describe("TableOfContents", () => {
       scrollIntoView: mockScrollIntoView,
     } as unknown as HTMLElement);
 
-    render(<TableOfContents html='<h2 id="sec1">Section 1</h2>' />);
+    renderWithProvider(<TableOfContents html='<h2 id="sec1">Section 1</h2>' />);
     screen.getByText("Section 1").click();
     expect(mockScrollIntoView).toHaveBeenCalledWith({ behavior: "smooth" });
 

@@ -1,6 +1,6 @@
----
+﻿---
 title: "BookStack（知识库）"
-date: "2026-04-17"
+date: "2026-04-02"
 description: "结构化 Wiki，采用书/章节/页面层级结构，适合课程材料管理。"
 categories: ["知识管理", "教学"]
 tags: ["bookstack", "知识库", "wiki", "课程材料"]

@@ -1,6 +1,6 @@
----
+﻿---
 title: "LTB SSP（密码重置）"
-date: "2026-04-17"
+date: "2026-04-10"
 description: "LDAP 密码自助服务，允许用户自行重置密码。"
 categories: ["基础设施"]
 tags: ["ltb-ssp", "密码重置", "ldap", "自助服务"]

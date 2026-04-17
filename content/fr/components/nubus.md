@@ -1,6 +1,6 @@
----
+﻿---
 title: "Portail & IAM"
-date: "2026-04-17"
+date: "2026-03-05"
 description: "Portail unifié et gestion des identités basé sur Keycloak avec support SAML 2.0 et OIDC."
 categories: ["identite", "composant-de-base"]
 tags: ["nubus", "keycloak", "portail", "iam", "sso", "saml", "oidc"]

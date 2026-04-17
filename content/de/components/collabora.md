@@ -1,6 +1,6 @@
 ---
 title: "Office"
-date: "2026-04-17"
+date: "2026-03-11"
 description: "Online-Office-Suite auf LibreOffice-Basis für kollaboratives Bearbeiten von Dokumenten."
 categories: ["office", "kollaboration"]
 tags: ["collabora", "office", "libreoffice", "dokumente"]
