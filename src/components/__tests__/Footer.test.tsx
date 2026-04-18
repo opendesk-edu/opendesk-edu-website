@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from "vitest";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import Footer from "@/components/Footer";
 
 // Mock @/i18n/navigation Link
@@ -83,20 +83,9 @@ describe("Footer", () => {
     expect(link).toHaveAttribute("href", "/privacy");
   });
 
-  it("Contact link sets mailto on click", () => {
-    // Mock window.location.href to prevent jsdom navigation
-    const originalLocation = window.location;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    delete (window as any).location;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (window as any).location = { href: "" };
-
+  it("Contact link has mailto href", () => {
     render(<Footer />);
-    fireEvent.click(screen.getByText("Contact"));
-    expect(window.location.href).toBe("mailto:info@opendesk-edu.org");
-
-    // Restore
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (window as any).location = originalLocation;
+    const link = screen.getByText("Contact").closest("a");
+    expect(link).toHaveAttribute("href", "mailto:info@opendesk-edu.org");
   });
 });

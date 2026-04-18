@@ -15,6 +15,9 @@ interface ArticlePageProps {
 }
 
 export default function ArticlePage({ post, backHref, backLabel, locale = 'en' }: ArticlePageProps) {
+  // Strip first h1 from rendered HTML to avoid duplicate with the explicit h1 below
+  const contentWithoutH1 = post.htmlContent.replace(/<h1[^>]*>[\s\S]*?<\/h1>\s*/, '');
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -91,7 +94,7 @@ export default function ArticlePage({ post, backHref, backLabel, locale = 'en' }
         <div className="flex gap-12">
           <div
             className="prose flex-1 min-w-0"
-            dangerouslySetInnerHTML={{ __html: post.htmlContent }}
+            dangerouslySetInnerHTML={{ __html: contentWithoutH1 }}
           />
           <aside className="hidden lg:block w-52 shrink-0">
             <div className="sticky top-24">

@@ -14,7 +14,8 @@
     },
     "mobileMenu": {
       "label": "Toggle menu"
-    }
+    },
+    "searchLabel": "Search"
   },
   "footer": {
     "imprint": "Imprint",
@@ -110,5 +111,52 @@
   "home": {
     "getInTouch": "Get in Touch",
     "getInTouchDescription": "Interested in deploying openDesk Edu at your university? We'd love to hear from you."
+  },
+  "search": {
+    "placeholder": "Search components, guides, blog posts...",
+    "title": "Search",
+    "noResults": "No results found",
+    "loading": "Loading...",
+    "shortcutHint": "Press ⌘K to search",
+    "groupLabels": {
+      "components": "Components",
+      "architecture": "Architecture",
+      "getStarted": "Get Started",
+      "blog": "Blog"
+    }
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "generalInfoHeading": "1. General Information",
+    "generalInfoP1": "We take the protection of your personal data very seriously. We treat your personal data confidentially and in accordance with the statutory data protection regulations and this privacy policy.",
+    "generalInfoP2": "When you use this website, various personal data are collected. Personal data is any data with which you could be personally identified.",
+    "dataProcessingHeading": "2. Data Processing",
+    "analyticsCookiesHeading": "2.1 Analytics & Cookies",
+    "analyticsCookiesP1": "This website uses <strong>privacy-friendly analytics</strong> only. No cookies are set by default. If you give your consent, we use the following services:",
+    "plausibleItem": "<strong>Plausible Analytics</strong> — a cookie-free, open-source, and privacy-friendly analytics tool. Data is processed on our behalf by Plausible Labs OÜ (Estonia). No personal data is collected; all data is aggregated and anonymous. For more information, see <link>plausible.io/privacy-focused-web-analytics</link>.",
+    "clarityItem": "<strong>Microsoft Clarity</strong> — a session recording and heatmap tool. Clarity may collect device information, usage patterns, and page interaction data. Data is processed by Microsoft Corporation (USA). For more information, see <link>clarity.microsoft.com/privacy</link>.",
+    "analyticsConsentP": "You can withdraw your consent at any time by clearing your browser's local storage or using the cookie consent banner at the bottom of each page.",
+    "serverLogsHeading": "2.2 Server Logs",
+    "serverLogsP1": "The website hosting provider automatically collects and stores information in server log files, which your browser automatically transmits to us. These are:",
+    "serverLog1": "Browser type and browser version",
+    "serverLog2": "Operating system used",
+    "serverLog3": "Referrer URL",
+    "serverLog4": "Hostname of the accessing computer",
+    "serverLog5": "Time of the server request",
+    "serverLog6": "IP address (anonymized)",
+    "serverLogsP2": "These data are not combined with other data sources. The basis for data processing is Art. 6 (1) (f) GDPR.",
+    "contactSectionHeading": "2.3 Contact",
+    "contactSectionP": "If you contact us via e-mail, your data from the e-mail (sender, recipients, date, subject, content) will be stored for the purpose of processing your inquiry. We do not pass on this data without your consent. The processing of the data sent to us is carried out on the basis of Art. 6 (1) (b) GDPR.",
+    "sslHeading": "3. SSL/TLS Encryption",
+    "sslP": "This site uses SSL/TLS encryption for security reasons and to protect the transmission of confidential content. You can recognize an encrypted connection by the \"https://\" in the address line of your browser and the lock symbol.",
+    "cookiesHeading": "4. Cookies",
+    "cookiesP": "Our website does not set any cookies by default. Analytics scripts are only loaded after you explicitly consent via the cookie consent banner. If you accept analytics, the services listed in section 2.1 may set their own cookies as described in their respective privacy policies.",
+    "externalLinksHeading": "5. External Links",
+    "externalLinksP": "Our website contains links to external websites. We have no influence on the content and privacy practices of those sites. We recommend reading the privacy policies of the linked websites.",
+    "yourRightsHeading": "6. Your Rights",
+    "yourRightsP": "You have the right at any time to receive information about your stored personal data, its origin and recipients, and the purpose of data processing. You also have a right to correct, block, or delete this data. For this purpose, as well as for questions about personal data, you can contact us at any time at <email>info@opendesk-edu.org</email>.",
+    "contactHeading": "7. Contact",
+    "contactP": "If you have any questions about this privacy policy, please contact us:",
+    "contactEmail": "E-Mail: <email>info@opendesk-edu.org</email>"
   }
 }

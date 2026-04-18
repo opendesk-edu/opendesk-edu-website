@@ -8,7 +8,7 @@ export function Tag({ children }: { children: React.ReactNode }) {
 
 export function CategoryBadge({ children }: { children: React.ReactNode }) {
   return (
-    <span className="text-xs px-2 py-1 rounded-full bg-accent/10 text-white border border-accent/20">
+    <span className="text-xs px-2 py-1 rounded-full bg-accent/10 text-accent border border-accent/20">
       {children}
     </span>
   );

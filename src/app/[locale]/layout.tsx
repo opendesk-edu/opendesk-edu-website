@@ -12,6 +12,8 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
 import CookieConsent from '@/components/CookieConsent';
+import SearchDialogWrapper from '@/components/SearchDialogWrapper';
+import {SearchProvider} from '@/components/SearchContext';
 import {SITE_URL, SITE_NAME, SITE_DESCRIPTION} from '@/lib/config';
 
 const inter = Inter({
@@ -33,13 +35,14 @@ export async function generateMetadata({params}: {params: Promise<{locale: strin
     metadataBase: new URL(SITE_URL),
     openGraph: {
       type: "website",
-      url: SITE_URL,
+      url: `${SITE_URL}/${locale}`,
       locale,
       siteName: SITE_NAME,
       images: ["/static/brand/og-image.png"],
       alternateLocale: routing.locales.filter((l) => l !== locale),
     },
     alternates: {
+      canonical: `${SITE_URL}/${locale}`,
       languages: Object.fromEntries(
         routing.locales.map((l) => [l, `${SITE_URL}/${l}`])
       ),
@@ -122,7 +125,8 @@ export default async function LocaleLayout({
             Skip to content
           </a>
           <NextIntlClientProvider messages={messages}>
-            <Header />
+            <SearchProvider>
+              <Header />
             <ErrorBoundary>
               <main id="main-content">
                 {children}
@@ -131,6 +135,8 @@ export default async function LocaleLayout({
             <Footer />
             <ScrollToTop />
             <CookieConsent />
+            <SearchDialogWrapper />
+            </SearchProvider>
           </NextIntlClientProvider>
         </ThemeProvider>
       </body>

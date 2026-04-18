@@ -14,7 +14,8 @@
     },
     "mobileMenu": {
       "label": "切换菜单"
-    }
+    },
+    "searchLabel": "搜索"
   },
   "footer": {
     "imprint": "法律声明",
@@ -110,5 +111,52 @@
   "home": {
     "getInTouch": "联系我们",
     "getInTouchDescription": "您是否希望在大学部署 openDesk Edu？我们期待您的来信。"
+  },
+  "search": {
+    "placeholder": "搜索组件、指南、博客文章...",
+    "title": "搜索",
+    "noResults": "未找到结果",
+    "loading": "加载中...",
+    "shortcutHint": "按 ⌘K 搜索",
+    "groupLabels": {
+      "components": "组件",
+      "architecture": "架构",
+      "getStarted": "快速开始",
+      "blog": "博客"
+    }
+  },
+  "privacy": {
+    "title": "隐私政策",
+    "generalInfoHeading": "1. 一般信息",
+    "generalInfoP1": "我们非常重视保护您的个人数据。我们根据法定数据保护法规和本隐私政策，对您的个人数据进行保密处理。",
+    "generalInfoP2": "当您使用本网站时，我们会收集各种个人数据。个人数据是指可以用来识别您身份的任何数据。",
+    "dataProcessingHeading": "2. 数据处理",
+    "analyticsCookiesHeading": "2.1 分析与 Cookie",
+    "analyticsCookiesP1": "本网站仅使用<strong>注重隐私的分析工具</strong>。默认不设置任何 Cookie。如果您同意，我们将使用以下服务：",
+    "plausibleItem": "<strong>Plausible Analytics</strong> — 一款无 Cookie、开源且注重隐私的分析工具。数据由 Plausible Labs OÜ（爱沙尼亚）代表我们处理。不收集个人数据；所有数据均为聚合匿名数据。更多信息请参阅 <link>plausible.io/privacy-focused-web-analytics</link>。",
+    "clarityItem": "<strong>Microsoft Clarity</strong> — 一款会话录制和热图工具。Clarity 可能会收集设备信息、使用模式和页面交互数据。数据由 Microsoft Corporation（美国）处理。更多信息请参阅 <link>clarity.microsoft.com/privacy</link>。",
+    "analyticsConsentP": "您可以随时通过清除浏览器的本地存储或使用每个页面底部的 Cookie 同意横幅来撤回您的同意。",
+    "serverLogsHeading": "2.2 服务器日志",
+    "serverLogsP1": "网站托管服务商会自动收集并存储服务器日志文件中的信息，这些信息由您的浏览器自动传输给我们。包括：",
+    "serverLog1": "浏览器类型和浏览器版本",
+    "serverLog2": "使用的操作系统",
+    "serverLog3": "引荐来源 URL",
+    "serverLog4": "访问计算机的主机名",
+    "serverLog5": "服务器请求时间",
+    "serverLog6": "IP 地址（已匿名化）",
+    "serverLogsP2": "这些数据不会与其他数据源合并。数据处理的法律依据是《通用数据保护条例》（GDPR）第 6 条第 1 款第 f 项。",
+    "contactSectionHeading": "2.3 联系方式",
+    "contactSectionP": "如果您通过电子邮件联系我们，您的电子邮件数据（发件人、收件人、日期、主题、内容）将被存储，以便处理您的咨询。未经您的同意，我们不会将这些数据传递给第三方。所发送数据的处理依据是 GDPR 第 6 条第 1 款第 b 项。",
+    "sslHeading": "3. SSL/TLS 加密",
+    "sslP": "出于安全考虑，本网站使用 SSL/TLS 加密来保护机密内容的传输。您可以通过浏览器地址栏中的 \"https://\" 和锁形图标来识别加密连接。",
+    "cookiesHeading": "4. Cookie",
+    "cookiesP": "我们的网站默认不设置任何 Cookie。分析脚本仅在您通过 Cookie 同意横幅明确同意后才加载。如果您接受分析，第 2.1 节中列出的服务可能会根据其各自的隐私政策设置自己的 Cookie。",
+    "externalLinksHeading": "5. 外部链接",
+    "externalLinksP": "我们的网站包含指向外部网站的链接。我们无法控制这些网站的内容和隐私实践。我们建议您阅读所链接网站的隐私政策。",
+    "yourRightsHeading": "6. 您的权利",
+    "yourRightsP": "您有权随时获取有关您存储的个人数据、其来源和接收者以及数据处理目的的信息。您还有权更正、阻止或删除这些数据。为此，以及有关个人数据的任何问题，您可以随时通过 <email>info@opendesk-edu.org</email> 联系我们。",
+    "contactHeading": "7. 联系方式",
+    "contactP": "如果您对本隐私政策有任何疑问，请联系我们：",
+    "contactEmail": "电子邮件：<email>info@opendesk-edu.org</email>"
   }
 }

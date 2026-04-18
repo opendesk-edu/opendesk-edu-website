@@ -14,7 +14,8 @@
     },
     "mobileMenu": {
       "label": "Basculer le menu"
-    }
+    },
+    "searchLabel": "Rechercher"
   },
   "footer": {
     "imprint": "Mentions légales",
@@ -110,5 +111,52 @@
   "home": {
     "getInTouch": "Nous contacter",
     "getInTouchDescription": "Vous souhaitez déployer openDesk Edu dans votre université ? Nous serions ravis d'échanger avec vous."
+  },
+  "search": {
+    "placeholder": "Rechercher des composants, guides, articles...",
+    "title": "Recherche",
+    "noResults": "Aucun résultat trouvé",
+    "loading": "Chargement...",
+    "shortcutHint": "Appuyez sur ⌘K pour rechercher",
+    "groupLabels": {
+      "components": "Composants",
+      "architecture": "Architecture",
+      "getStarted": "Premiers pas",
+      "blog": "Blog"
+    }
+  },
+  "privacy": {
+    "title": "Politique de confidentialité",
+    "generalInfoHeading": "1. Informations générales",
+    "generalInfoP1": "Nous prenons la protection de vos données personnelles très au sérieux. Nous traitons vos données personnelles de manière confidentielle et conformément aux réglementations légales en matière de protection des données et à cette politique de confidentialité.",
+    "generalInfoP2": "Lorsque vous utilisez ce site web, diverses données personnelles sont collectées. Les données personnelles sont toutes les données permettant de vous identifier personnellement.",
+    "dataProcessingHeading": "2. Traitement des données",
+    "analyticsCookiesHeading": "2.1 Analytique et Cookies",
+    "analyticsCookiesP1": "Ce site web utilise uniquement des <strong>analyses respectueuses de la vie privée</strong>. Aucun cookie n'est défini par défaut. Si vous donnez votre consentement, nous utilisons les services suivants :",
+    "plausibleItem": "<strong>Plausible Analytics</strong> — un outil d'analyse open-source, sans cookies et respectueux de la vie privée. Les données sont traitées en notre nom par Plausible Labs OÜ (Estonie). Aucune donnée personnelle n'est collectée ; toutes les données sont agrégées et anonymes. Pour plus d'informations, consultez <link>plausible.io/privacy-focused-web-analytics</link>.",
+    "clarityItem": "<strong>Microsoft Clarity</strong> — un outil d'enregistrement de sessions et de cartes de chaleur. Clarity peut collecter des informations sur l'appareil, les habitudes d'utilisation et les données d'interaction avec les pages. Les données sont traitées par Microsoft Corporation (États-Unis). Pour plus d'informations, consultez <link>clarity.microsoft.com/privacy</link>.",
+    "analyticsConsentP": "Vous pouvez retirer votre consentement à tout moment en effaçant le stockage local de votre navigateur ou en utilisant la bannière de consentement aux cookies en bas de chaque page.",
+    "serverLogsHeading": "2.2 Journaux du serveur",
+    "serverLogsP1": "Le fournisseur d'hébergement du site web collecte et stocke automatiquement des informations dans les fichiers journaux du serveur, que votre navigateur transmet automatiquement à notre attention. Il s'agit de :",
+    "serverLog1": "Type et version du navigateur",
+    "serverLog2": "Système d'exploitation utilisé",
+    "serverLog3": "URL de provenance",
+    "serverLog4": "Nom d'hôte de l'ordinateur accédant",
+    "serverLog5": "Heure de la requête du serveur",
+    "serverLog6": "Adresse IP (anonymisée)",
+    "serverLogsP2": "Ces données ne sont pas combinées avec d'autres sources de données. La base du traitement des données est l'art. 6 (1) (f) du RGPD.",
+    "contactSectionHeading": "2.3 Contact",
+    "contactSectionP": "Si vous nous contactez par e-mail, vos données issues de l'e-mail (expéditeur, destinataires, date, objet, contenu) seront stockées aux fins de traitement de votre demande. Nous ne transmettons pas ces données sans votre consentement. Le traitement des données qui nous sont envoyées est effectué sur la base de l'art. 6 (1) (b) du RGPD.",
+    "sslHeading": "3. Chiffrement SSL/TLS",
+    "sslP": "Ce site utilise le chiffrement SSL/TLS pour des raisons de sécurité et pour protéger la transmission de contenu confidentiel. Vous pouvez reconnaître une connexion chiffrée par le « https:// » dans la barre d'adresse de votre navigateur et le symbole de cadenas.",
+    "cookiesHeading": "4. Cookies",
+    "cookiesP": "Notre site web ne définit aucun cookie par défaut. Les scripts d'analyse ne sont chargés qu'après que vous avez explicitement donné votre consentement via la bannière de consentement aux cookies. Si vous acceptez l'analyse, les services énumérés à la section 2.1 peuvent définir leurs propres cookies comme décrit dans leurs politiques de confidentialité respectives.",
+    "externalLinksHeading": "5. Liens externes",
+    "externalLinksP": "Notre site web contient des liens vers des sites web externes. Nous n'avons aucune influence sur le contenu et les pratiques de confidentialité de ces sites. Nous vous recommandons de lire les politiques de confidentialité des sites liés.",
+    "yourRightsHeading": "6. Vos droits",
+    "yourRightsP": "Vous avez le droit à tout moment de recevoir des informations sur vos données personnelles stockées, leur origine et leurs destinataires, ainsi que sur l'objectif du traitement des données. Vous avez également le droit de faire corriger, bloquer ou supprimer ces données. À cette fin, ainsi que pour toute question relative aux données personnelles, vous pouvez nous contacter à tout moment à l'adresse <email>info@opendesk-edu.org</email>.",
+    "contactHeading": "7. Contact",
+    "contactP": "Si vous avez des questions concernant cette politique de confidentialité, veuillez nous contacter :",
+    "contactEmail": "E-mail : <email>info@opendesk-edu.org</email>"
   }
 }

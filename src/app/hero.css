@@ -1,0 +1,323 @@
+/* ============================================================
+   Hero Background — Full-screen animated hero for openDesk Edu
+   Pure CSS animations, no JavaScript required.
+   ============================================================ */
+
+/* --- Base hero container --- */
+.hero-background {
+  position: relative;
+  overflow: hidden;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  color: var(--foreground);
+  margin: 0;
+}
+
+/* --- Animated gradient background --- */
+.hero-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    #0a0014 0%,
+    #0d0020 25%,
+    #120028 50%,
+    #0d0020 75%,
+    #0a0014 100%
+  );
+  background-size: 400% 400%;
+  animation: gradientShift 35s ease infinite;
+  z-index: 0;
+}
+
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  25%  { background-position: 50% 0%; }
+  50%  { background-position: 100% 50%; }
+  75%  { background-position: 50% 100%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* --- Grid patterns (slow diagonal pan) --- */
+.hero-grid {
+  position: absolute;
+  inset: -60px;
+  background-image:
+    linear-gradient(rgba(87, 30, 250, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(87, 30, 250, 0.07) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: gridPan 120s linear infinite;
+  z-index: 1;
+}
+
+.hero-dot-grid {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(146, 122, 250, 0.12) 1px, transparent 1px);
+  background-size: 40px 40px;
+  z-index: 1;
+}
+
+@keyframes gridPan {
+  0%   { transform: translate(0, 0); }
+  100% { transform: translate(60px, 60px); }
+}
+
+/* --- Pulsing glow blobs --- */
+.glow-blob-1 {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle,
+    rgba(87, 30, 250, 0.18) 0%,
+    rgba(87, 30, 250, 0.08) 40%,
+    transparent 70%);
+  border-radius: 50%;
+  top: 10%;
+  left: 5%;
+  animation: pulseBlob 16s ease-in-out infinite;
+  z-index: 1;
+}
+
+.glow-blob-2 {
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle,
+    rgba(146, 122, 250, 0.14) 0%,
+    rgba(146, 122, 250, 0.06) 40%,
+    transparent 70%);
+  border-radius: 50%;
+  top: 30%;
+  right: 5%;
+  animation: pulseBlob 22s ease-in-out infinite;
+  animation-delay: -7s;
+  z-index: 1;
+}
+
+.glow-blob-3 {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle,
+    rgba(221, 214, 254, 0.08) 0%,
+    rgba(221, 214, 254, 0.03) 40%,
+    transparent 70%);
+  border-radius: 50%;
+  bottom: 10%;
+  left: 25%;
+  animation: pulseBlob 19s ease-in-out infinite;
+  animation-delay: -12s;
+  z-index: 1;
+}
+
+@keyframes pulseBlob {
+  0%, 100% { transform: scale(1) translate(0, 0); opacity: 0.5; }
+  25%      { transform: scale(1.05) translate(10px, -5px); opacity: 0.7; }
+  50%      { transform: scale(1.1) translate(-5px, 10px); opacity: 0.8; }
+  75%      { transform: scale(1.03) translate(-10px, -5px); opacity: 0.6; }
+}
+
+/* --- Floating particles --- */
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.particle-1 { width: 4px; height: 4px; background: rgba(87, 30, 250, 0.4);  left: 15%; animation: floatUp 14s ease-in-out infinite; animation-delay: 0s; }
+.particle-2 { width: 3px; height: 3px; background: rgba(146, 122, 250, 0.5); left: 25%; animation: floatUp 11s ease-in-out infinite; animation-delay: -3s; }
+.particle-3 { width: 5px; height: 5px; background: rgba(221, 214, 254, 0.3); left: 40%; animation: floatUp 16s ease-in-out infinite; animation-delay: -6s; }
+.particle-4 { width: 2px; height: 2px; background: rgba(87, 30, 250, 0.6);  left: 55%; animation: floatUp 10s ease-in-out infinite; animation-delay: -2s; }
+.particle-5 { width: 4px; height: 4px; background: rgba(146, 122, 250, 0.35); left: 65%; animation: floatUp 13s ease-in-out infinite; animation-delay: -8s; }
+.particle-6 { width: 3px; height: 3px; background: rgba(221, 214, 254, 0.4); left: 75%; animation: floatUp 15s ease-in-out infinite; animation-delay: -5s; }
+.particle-7 { width: 2px; height: 2px; background: rgba(87, 30, 250, 0.5);  left: 85%; animation: floatUp 12s ease-in-out infinite; animation-delay: -10s; }
+.particle-8 { width: 3px; height: 3px; background: rgba(146, 122, 250, 0.3); left: 90%; animation: floatUp 17s ease-in-out infinite; animation-delay: -4s; }
+
+@keyframes floatUp {
+  0%   { transform: translateY(0) translateX(0); opacity: 0; bottom: -10%; }
+  5%   { opacity: 1; }
+  90%  { opacity: 0.8; }
+  100% { transform: translateY(-110vh) translateX(30px); opacity: 0; bottom: 100%; }
+}
+
+/* --- Connection lines --- */
+.connection-line {
+  position: absolute;
+  height: 1px;
+  z-index: 2;
+  pointer-events: none;
+  animation: pulseLine 8s ease-in-out infinite;
+}
+
+.connection-1 { width: 120px; top: 25%; left: 20%; transform: rotate(35deg);  background: linear-gradient(90deg, transparent, rgba(87, 30, 250, 0.15), transparent); }
+.connection-2 { width: 150px; top: 55%; left: 55%; transform: rotate(-25deg); background: linear-gradient(90deg, transparent, rgba(146, 122, 250, 0.12), transparent); animation-delay: -3s; }
+.connection-3 { width: 100px; top: 70%; left: 75%; transform: rotate(15deg);  background: linear-gradient(90deg, transparent, rgba(87, 30, 250, 0.1), transparent);  animation-delay: -5s; }
+
+@keyframes pulseLine {
+  0%, 100% { opacity: 0.2; }
+  50%      { opacity: 0.6; }
+}
+
+/* --- Edge accents (left/right purple fades) --- */
+.hero-edge-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(87, 30, 250, 0.12) 0%, transparent 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-edge-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 250px;
+  height: 100%;
+  background: linear-gradient(270deg, rgba(146, 122, 250, 0.08) 0%, transparent 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* --- Top/bottom accent lines --- */
+.hero-background::before,
+.hero-background::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.hero-background::before {
+  top: 0;
+  background: linear-gradient(90deg, rgba(87, 30, 250, 0.3), rgba(146, 122, 250, 0.2), rgba(87, 30, 250, 0.3));
+}
+
+.hero-background::after {
+  bottom: 0;
+  background: linear-gradient(90deg, rgba(87, 30, 250, 0.15), rgba(146, 122, 250, 0.1), rgba(87, 30, 250, 0.15));
+}
+
+/* --- Hero content (centered text overlay) --- */
+.hero-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 3rem 2rem;
+  max-width: 700px;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 40px rgba(87, 30, 250, 0.3);
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  font-weight: 300;
+  color: #DDD6FE;
+  letter-spacing: 0.15em;
+  margin-bottom: 1rem;
+}
+
+.hero-description {
+  font-size: 1rem;
+  color: rgba(240, 246, 252, 0.7);
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* --- Corner accent marks --- */
+.hero-corner-tl,
+.hero-corner-tr,
+.hero-corner-bl,
+.hero-corner-br {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.hero-corner-tl { top: 16px; left: 16px;  border-top: 1.5px solid rgba(87, 30, 250, 0.3);  border-left: 1.5px solid rgba(87, 30, 250, 0.3); }
+.hero-corner-tr { top: 16px; right: 16px; border-top: 1.5px solid rgba(146, 122, 250, 0.2); border-right: 1.5px solid rgba(146, 122, 250, 0.2); }
+.hero-corner-bl { bottom: 16px; left: 16px;  border-bottom: 1.5px solid rgba(87, 30, 250, 0.3);  border-left: 1.5px solid rgba(87, 30, 250, 0.3); }
+.hero-corner-br { bottom: 16px; right: 16px; border-bottom: 1.5px solid rgba(146, 122, 250, 0.2); border-right: 1.5px solid rgba(146, 122, 250, 0.2); }
+
+/* ============================================================
+   Mobile responsive
+   ============================================================ */
+@media (max-width: 768px) {
+  .hero-background {
+    min-height: 70vh;
+  }
+
+  .hero-title {
+    font-size: 2.25rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+  }
+
+  .hero-description {
+    font-size: 0.9rem;
+  }
+
+  .hero-content {
+    padding: 2rem 1.25rem;
+  }
+
+  .glow-blob-1, .glow-blob-2, .glow-blob-3 {
+    width: 200px;
+    height: 200px;
+  }
+
+  .particle-7, .particle-8 {
+    display: none;
+  }
+
+  .connection-2, .connection-3 {
+    display: none;
+  }
+
+  .hero-edge-left, .hero-edge-right {
+    width: 100px;
+  }
+}
+
+/* ============================================================
+   Reduced motion — disable all animations
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .hero-gradient,
+  .hero-grid,
+  .particle,
+  .glow-blob-1,
+  .glow-blob-2,
+  .glow-blob-3,
+  .connection-line {
+    animation: none !important;
+  }
+
+  .particle {
+    display: none;
+  }
+}

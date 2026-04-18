@@ -14,7 +14,8 @@
     },
     "mobileMenu": {
       "label": "Menü umschalten"
-    }
+    },
+    "searchLabel": "Suche"
   },
   "footer": {
     "imprint": "Impressum",
@@ -110,5 +111,52 @@
   "home": {
     "getInTouch": "Kontakt aufnehmen",
     "getInTouchDescription": "Sie möchten openDesk Edu an Ihrer Hochschule einsetzen? Wir freuen uns auf Ihre Nachricht."
+  },
+  "search": {
+    "placeholder": "Komponenten, Anleitungen, Blogbeiträge suchen...",
+    "title": "Suche",
+    "noResults": "Keine Ergebnisse gefunden",
+    "loading": "Laden...",
+    "shortcutHint": "Drücken Sie ⌘K zum Suchen",
+    "groupLabels": {
+      "components": "Komponenten",
+      "architecture": "Architektur",
+      "getStarted": "Erste Schritte",
+      "blog": "Blog"
+    }
+  },
+  "privacy": {
+    "title": "Datenschutzerklärung",
+    "generalInfoHeading": "1. Allgemeine Informationen",
+    "generalInfoP1": "Wir nehmen den Schutz Ihrer personenbezogenen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und gemäß den gesetzlichen Datenschutzvorschriften und dieser Datenschutzerklärung.",
+    "generalInfoP2": "Wenn Sie diese Website nutzen, werden verschiedene personenbezogene Daten erhoben. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden könnten.",
+    "dataProcessingHeading": "2. Datenverarbeitung",
+    "analyticsCookiesHeading": "2.1 Analytik & Cookies",
+    "analyticsCookiesP1": "Diese Website verwendet ausschließlich <strong>datenschutzfreundliche Analytik</strong>. Standardmäßig werden keine Cookies gesetzt. Wenn Sie Ihre Einwilligung erteilen, nutzen wir folgende Dienste:",
+    "plausibleItem": "<strong>Plausible Analytics</strong> — ein cookie-freies, Open-Source- und datenschutzfreundliches Analytik-Tool. Daten werden in unserem Auftrag von Plausible Labs OÜ (Estland) verarbeitet. Es werden keine personenbezogenen Daten erhoben; alle Daten sind aggregiert und anonym. Weitere Informationen finden Sie unter <link>plausible.io/privacy-focused-web-analytics</link>.",
+    "clarityItem": "<strong>Microsoft Clarity</strong> — ein Tool für Sitzungsaufzeichnungen und Heatmaps. Clarity kann Geräteinformationen, Nutzungsmuster und Seiteninteraktionsdaten erfassen. Daten werden von der Microsoft Corporation (USA) verarbeitet. Weitere Informationen finden Sie unter <link>clarity.microsoft.com/privacy</link>.",
+    "analyticsConsentP": "Sie können Ihre Einwilligung jederzeit widerrufen, indem Sie den lokalen Speicher Ihres Browsers löschen oder das Cookie-Einwilligungs-Banner am Ende jeder Seite verwenden.",
+    "serverLogsHeading": "2.2 Serverprotokolle",
+    "serverLogsP1": "Der Website-Hostinganbieter erfasst und speichert automatisch Informationen in Serverprotokolldateien, die Ihr Browser automatisch an uns übermittelt. Diese sind:",
+    "serverLog1": "Browsertyp und Browserversion",
+    "serverLog2": "Verwendetes Betriebssystem",
+    "serverLog3": "Referrer-URL",
+    "serverLog4": "Hostname des zugreifenden Rechners",
+    "serverLog5": "Uhrzeit der Serveranfrage",
+    "serverLog6": "IP-Adresse (anonymisiert)",
+    "serverLogsP2": "Diese Daten werden nicht mit anderen Datenquellen zusammengeführt. Grundlage der Datenverarbeitung ist Art. 6 Abs. 1 lit. f DSGVO.",
+    "contactSectionHeading": "2.3 Kontakt",
+    "contactSectionP": "Wenn Sie uns per E-Mail kontaktieren, werden Ihre Daten aus der E-Mail (Absender, Empfänger, Datum, Betreff, Inhalt) zum Zweck der Bearbeitung Ihrer Anfrage gespeichert. Wir geben diese Daten ohne Ihre Einwilligung nicht weiter. Die Verarbeitung der an uns gesendeten Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO.",
+    "sslHeading": "3. SSL/TLS-Verschlüsselung",
+    "sslP": "Diese Seite verwendet aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte eine SSL/TLS-Verschlüsselung. Sie erkennen eine verschlüsselte Verbindung an dem \"https://\" in der Adresszeile Ihres Browsers und dem Schloss-Symbol.",
+    "cookiesHeading": "4. Cookies",
+    "cookiesP": "Unsere Website setzt standardmäßig keine Cookies. Analytik-Skripte werden erst geladen, nachdem Sie über das Cookie-Einwilligungs-Banner ausdrücklich zugestimmt haben. Wenn Sie Analytik akzeptieren, können die in Abschnitt 2.1 aufgeführten Dienste eigene Cookies setzen, wie in ihren jeweiligen Datenschutzerklärungen beschrieben.",
+    "externalLinksHeading": "5. Externe Links",
+    "externalLinksP": "Unsere Website enthält Links zu externen Websites. Wir haben keinen Einfluss auf den Inhalt und die Datenschutzpraktiken dieser Websites. Wir empfehlen, die Datenschutzerklärungen der verlinkten Websites zu lesen.",
+    "yourRightsHeading": "6. Ihre Rechte",
+    "yourRightsP": "Sie haben jederzeit das Recht, Auskunft über Ihre gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger sowie den Zweck der Datenverarbeitung zu erhalten. Sie haben außerdem ein Recht auf Berichtigung, Sperrung oder Löschung dieser Daten. Zu diesem Zweck sowie für Fragen zu personenbezogenen Daten können Sie sich jederzeit an <email>info@opendesk-edu.org</email> wenden.",
+    "contactHeading": "7. Kontakt",
+    "contactP": "Wenn Sie Fragen zu dieser Datenschutzerklärung haben, kontaktieren Sie uns bitte:",
+    "contactEmail": "E-Mail: <email>info@opendesk-edu.org</email>"
   }
 }

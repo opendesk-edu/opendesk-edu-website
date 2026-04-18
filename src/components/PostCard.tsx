@@ -27,7 +27,7 @@ export default function PostCard({ post, locale = 'en' }: PostCardProps) {
           {formatDate(post.date, locale)}
         </time>
         {isComponent && isBeta && (
-          <span className="text-xs px-2 py-1 rounded-full bg-amber-100 text-amber-800 border border-amber-200">
+          <span className="text-xs px-2 py-1 rounded-full bg-amber-500/15 text-amber-600 border border-amber-500/25">
             Beta
           </span>
         )}

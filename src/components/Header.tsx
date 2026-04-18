@@ -7,6 +7,7 @@ import { useTheme } from "@/components/ThemeProvider";
 import {Link} from '@/i18n/navigation';
 import {useTranslations} from 'next-intl';
 import LanguageSwitcher from './LanguageSwitcher';
+import { useSearchOpen } from './SearchContext';
 
 type Href = React.ComponentProps<typeof Link>['href'];
 
@@ -14,6 +15,7 @@ export default function Header() {
   const { theme, toggleTheme } = useTheme();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const t = useTranslations('header');
+  const { openSearch } = useSearchOpen();
 
   const NAV_ITEMS: { href: string & Href; label: string }[] = [
     { href: "/" as const, label: t('home') },
@@ -40,6 +42,30 @@ export default function Header() {
             </Link>
           ))}
           <LanguageSwitcher />
+          <button
+            onClick={openSearch}
+            className="hidden md:inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-border text-sm text-foreground-secondary hover:text-foreground hover:bg-background-secondary transition-colors cursor-pointer"
+            aria-label={t("searchLabel")}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={2}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="w-4 h-4"
+              aria-hidden="true"
+            >
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+            <span className="hidden lg:inline">Search...</span>
+            <kbd className="hidden lg:inline-flex items-center rounded-md border border-border bg-background-secondary px-1.5 py-0.5 text-xs font-mono text-foreground-secondary">
+              ⌘K
+            </kbd>
+          </button>
           <button
             onClick={toggleTheme}
             className="p-2 rounded-lg hover:bg-background-secondary transition-colors cursor-pointer"
