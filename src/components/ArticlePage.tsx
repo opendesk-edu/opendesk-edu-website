@@ -32,7 +32,7 @@ export default function ArticlePage({ post, backHref, backLabel, locale = 'en' }
       name: SITE_NAME,
       logo: {
         "@type": "ImageObject",
-        url: `${SITE_URL}/static/brand/icon.svg`,
+        url: `${SITE_URL}/static/brand/og-image.png`,
       },
     },
     mainEntityOfPage: `${SITE_URL}/${locale}/${post.section}/${post.slug}`,
@@ -52,6 +52,18 @@ export default function ArticlePage({ post, backHref, backLabel, locale = 'en' }
         >
           &larr; Back to {backLabel}
         </Link>
+
+        <div className="flex items-center gap-2 text-sm mb-8">
+          <Link href="/" className="text-foreground-secondary hover:text-foreground transition-colors">
+            Home
+          </Link>
+          <span className="text-foreground-secondary">/</span>
+          <Link href={backHref as Href} className="text-foreground-secondary hover:text-foreground transition-colors">
+            {backLabel}
+          </Link>
+          <span className="text-foreground-secondary">/</span>
+          <span className="text-foreground font-medium">{post.title}</span>
+        </div>
 
         <header className="mb-10">
           <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-3">

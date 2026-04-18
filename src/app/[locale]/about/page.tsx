@@ -3,51 +3,42 @@ import EmailLink from "@/components/EmailLink";
 import type { Metadata } from "next";
 import { getTranslations } from 'next-intl/server';
 
-interface PageProps {
-  params: Promise<{locale: string}>;
-}
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export async function generateMetadata(_props: PageProps): Promise<Metadata> {
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations('about');
   return {
-    title: "About | openDesk Edu",
+    title: `${t('title')} | openDesk Edu`,
   };
 }
 
-const SERVICES = [
-  {
-    title: "Learning Management",
-    description:
-      "Moodle and ILIAS — integrated with your campus SSO and data systems for seamless teaching workflows.",
-  },
-  {
-    title: "Cloud Infrastructure",
-    description:
-      "Scalable container-based deployment on university cloud infrastructure with automated updates and monitoring.",
-  },
-  {
-    title: "Digital Sovereignty",
-    description:
-      "Full data residency in your jurisdiction. GDPR-compliant by design with transparent data handling.",
-  },
-  {
-    title: "SSO & Federation",
-    description:
-      "SAML-based single sign-on integration with existing university identity providers and research federations.",
-  },
-];
-
-const PROJECTS = [
-  { title: "Components", description: "The 15 integrated services", href: "/components" as const },
-  { title: "Architecture", description: "System design and patterns", href: "/architecture" as const },
-  { title: "Get Started", description: "Deployment guides", href: "/get-started" as const },
-  { title: "Blog", description: "News and updates", href: "/blog" as const },
-];
-
-export default async function AboutPage({params}: PageProps) {
-  const _locale = await params;
-  void _locale;
+export default async function AboutPage() {
   const t = await getTranslations('about');
+  const tHeader = await getTranslations('header');
+
+  const SERVICES = [
+    {
+      title: t('serviceLearning.title'),
+      description: t('serviceLearning.description'),
+    },
+    {
+      title: t('serviceCloud.title'),
+      description: t('serviceCloud.description'),
+    },
+    {
+      title: t('serviceSovereignty.title'),
+      description: t('serviceSovereignty.description'),
+    },
+    {
+      title: t('serviceSso.title'),
+      description: t('serviceSso.description'),
+    },
+  ];
+
+  const PROJECTS = [
+    { title: tHeader('components'), description: t('projectComponents'), href: "/components" as const },
+    { title: tHeader('architecture'), description: t('projectArchitecture'), href: "/architecture" as const },
+    { title: tHeader('getStarted'), description: t('projectGetStarted'), href: "/get-started" as const },
+    { title: tHeader('blog'), description: t('projectBlog'), href: "/blog" as const },
+  ];
 
   return (
     <main className="max-w-6xl mx-auto px-6 py-16">
@@ -94,10 +85,10 @@ export default async function AboutPage({params}: PageProps) {
       <section className="rounded-lg border border-border bg-background-secondary p-8 text-center">
         <h2 className="text-2xl font-bold text-foreground mb-3">{t('contact')}</h2>
         <p className="text-foreground-secondary mb-4">
-          Interested in deploying openDesk Edu at your university?
+          {t('contactDescription')}
         </p>
         <EmailLink className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-accent-button text-white hover:opacity-90 transition-opacity">
-          Contact us
+          {t('contactCta')}
         </EmailLink>
       </section>
     </main>

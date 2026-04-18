@@ -20,7 +20,8 @@
     "imprint": "Imprint",
     "privacy": "Privacy",
     "contact": "Contact",
-    "copyright": "© {year} openDesk Edu. Licensed under Apache-2.0."
+    "copyright": "© {year} openDesk Edu. Licensed under Apache-2.0.",
+    "sourceCode": "Source Code"
   },
   "cookieConsent": {
     "message": "We use privacy-friendly analytics to understand how visitors use this site. No cookies are set by default.",
@@ -40,7 +41,29 @@
     "description": "openDesk Edu brings together openDesk CE and 15 education services for seamless digital transformation in higher education.",
     "services": "Integrated Services",
     "projects": "Explore",
-    "contact": "Get in Touch"
+    "contact": "Get in Touch",
+    "contactCta": "Contact us",
+    "contactDescription": "Interested in deploying openDesk Edu at your university?",
+    "serviceLearning": {
+      "title": "Learning Management",
+      "description": "Moodle and ILIAS — integrated with your campus SSO and data systems for seamless teaching workflows."
+    },
+    "serviceCloud": {
+      "title": "Cloud Infrastructure",
+      "description": "Scalable container-based deployment on university cloud infrastructure with automated updates and monitoring."
+    },
+    "serviceSovereignty": {
+      "title": "Digital Sovereignty",
+      "description": "Full data residency in your jurisdiction. GDPR-compliant by design with transparent data handling."
+    },
+    "serviceSso": {
+      "title": "SSO & Federation",
+      "description": "SAML-based single sign-on integration with existing university identity providers and research federations."
+    },
+    "projectComponents": "The 15 integrated services",
+    "projectArchitecture": "System design and patterns",
+    "projectGetStarted": "Deployment guides",
+    "projectBlog": "News and updates"
   },
   "hero": {
     "subtitle": "Educational Digital Infrastructure",
@@ -60,5 +83,32 @@
   },
   "section": {
     "noPosts": "No posts available in this section yet."
+  },
+  "imprint": {
+    "title": "Imprint",
+    "infoAccordingTo": "Information according to § 5 TMG",
+    "provider": "Provider:",
+    "contactHeading": "Contact",
+    "emailLabel": "E-Mail:",
+    "contentResponsibility": "Content Responsibility",
+    "contentResponsibilityText": "The content of this website has been created with the greatest care. However, we cannot guarantee the accuracy, completeness, or timeliness of the content. As a service provider, we are responsible for our own content on these pages in accordance with § 7 para. 1 TMG under the general laws. According to §§ 8 to 10 TMG, however, we are not obligated as a service provider to monitor transmitted or stored third-party information or to investigate circumstances that indicate illegal activity.",
+    "referencesAndLinks": "References and Links",
+    "referencesAndLinksText": "Our offer contains links to external third-party websites, the content of which we have no influence over. Therefore, we cannot assume any liability for these external contents. The respective provider or operator of the pages is always responsible for the content of the linked pages.",
+    "copyrightHeading": "Copyright",
+    "copyrightText": "The content and works created by the site operators on these pages are subject to German copyright law. Duplication, processing, distribution, and any form of commercialization of such material beyond the scope of the copyright law shall require the prior written consent of its respective author or creator.",
+    "warrantyHeading": "Warranty",
+    "warrantyText": "This website and its content are provided \"as is\" without any warranty, either express or implied. We do not warrant that the information on this website is complete, accurate, or up-to-date.",
+    "privacyHeading": "Privacy Protection",
+    "privacyText": "Please refer to our",
+    "privacyLinkText": "Privacy Policy",
+    "privacyTextAfter": "for information on how we handle your personal data.",
+    "disputeResolution": "Consumer Dispute Resolution",
+    "disputeResolutionText": "The European Commission provides a platform for online dispute resolution (ODR):",
+    "disputeResolutionAfter": "We are neither willing nor obliged to participate in dispute resolution proceedings before a consumer arbitration board.",
+    "privacyLinkLabel": "Privacy Policy"
+  },
+  "home": {
+    "getInTouch": "Get in Touch",
+    "getInTouchDescription": "Interested in deploying openDesk Edu at your university? We'd love to hear from you."
   }
 }

@@ -33,7 +33,7 @@ const mockPost: Post = {
 describe("ArticlePage", () => {
   it("renders the post title", () => {
     render(<ArticlePage post={mockPost} backHref="/blog" backLabel="Blog" />);
-    expect(screen.getByText("Getting Started with openDesk")).toBeInTheDocument();
+    expect(screen.getAllByText("Getting Started with openDesk").length).toBeGreaterThanOrEqual(1);
   });
 
   it("renders the formatted date", () => {

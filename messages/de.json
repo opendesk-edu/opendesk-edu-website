@@ -20,7 +20,8 @@
     "imprint": "Impressum",
     "privacy": "Datenschutz",
     "contact": "Kontakt",
-    "copyright": "© {year} openDesk Edu. Lizenziert unter Apache-2.0."
+    "copyright": "© {year} openDesk Edu. Lizenziert unter Apache-2.0.",
+    "sourceCode": "Quellcode"
   },
   "cookieConsent": {
     "message": "Wir verwenden datenschutzfreundliche Analysen, um zu verstehen, wie Besucher diese Website nutzen. Standardmäßig werden keine Cookies gesetzt.",
@@ -40,7 +41,29 @@
     "description": "openDesk Edu vereint openDesk CE und 15 Bildungs services für eine nahtlose digitale Transformation im Hochschulbereich.",
     "services": "Integrierte Dienste",
     "projects": "Entdecken",
-    "contact": "Kontakt aufnehmen"
+    "contact": "Kontakt aufnehmen",
+    "contactCta": "Kontaktieren Sie uns",
+    "contactDescription": "Sie möchten openDesk Edu an Ihrer Hochschule einsetzen?",
+    "serviceLearning": {
+      "title": "Lernmanagement",
+      "description": "Moodle und ILIAS — integriert mit Ihrem Campus-SSO und Datensystemen für nahtlose Lehrabläufe."
+    },
+    "serviceCloud": {
+      "title": "Cloud-Infrastruktur",
+      "description": "Skalierbare containerbasierte Bereitstellung auf Hochschul-Cloud-Infrastruktur mit automatisierten Updates und Monitoring."
+    },
+    "serviceSovereignty": {
+      "title": "Digitale Souveränität",
+      "description": "Vollständiger Datenresidenz in Ihrer Gerichtsbarkeit. DSGVO-konform nach Design mit transparentem Datenhandling."
+    },
+    "serviceSso": {
+      "title": "SSO & Föderation",
+      "description": "SAML-basierte Single-Sign-On-Integration mit bestehenden Hochschul-Identitätsanbietern und Forschungsföderationen."
+    },
+    "projectComponents": "Die 15 integrierten Dienste",
+    "projectArchitecture": "Systemdesign und Muster",
+    "projectGetStarted": "Bereitstellungsleitfäden",
+    "projectBlog": "Neuigkeiten und Updates"
   },
   "hero": {
     "subtitle": "Digitale Bildungsinfrastruktur",
@@ -60,5 +83,32 @@
   },
   "section": {
     "noPosts": "In diesem Bereich sind noch keine Beiträge verfügbar."
+  },
+  "imprint": {
+    "title": "Impressum",
+    "infoAccordingTo": "Angaben gemäß § 5 TMG",
+    "provider": "Anbieter:",
+    "contactHeading": "Kontakt",
+    "emailLabel": "E-Mail:",
+    "contentResponsibility": "Haftung für Inhalte",
+    "contentResponsibilityText": "Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.",
+    "referencesAndLinks": "Links",
+    "referencesAndLinksText": "Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.",
+    "copyrightHeading": "Urheberrecht",
+    "copyrightText": "Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.",
+    "warrantyHeading": "Haftungsausschluss",
+    "warrantyText": "Diese Website und deren Inhalte werden ohne jegliche Gewährleistung zur Verfügung gestellt, weder ausdrücklich noch stillschweigend. Wir übernehmen keine Gewähr dafür, dass die Informationen auf dieser Website vollständig, korrekt oder aktuell sind.",
+    "privacyHeading": "Datenschutz",
+    "privacyText": "Bitte beachten Sie unsere",
+    "privacyLinkText": "Datenschutzerklärung",
+    "privacyTextAfter": "für Informationen zur Verarbeitung Ihrer personenbezogenen Daten.",
+    "disputeResolution": "Verbraucherstreitbeilegung",
+    "disputeResolutionText": "Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:",
+    "disputeResolutionAfter": "Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.",
+    "privacyLinkLabel": "Datenschutzerklärung"
+  },
+  "home": {
+    "getInTouch": "Kontakt aufnehmen",
+    "getInTouchDescription": "Sie möchten openDesk Edu an Ihrer Hochschule einsetzen? Wir freuen uns auf Ihre Nachricht."
   }
 }

@@ -20,7 +20,8 @@
     "imprint": "法律声明",
     "privacy": "隐私政策",
     "contact": "联系方式",
-    "copyright": "© {year} openDesk Edu. 基于 Apache-2.0 许可。"
+    "copyright": "© {year} openDesk Edu. 基于 Apache-2.0 许可。",
+    "sourceCode": "源代码"
   },
   "cookieConsent": {
     "message": "我们使用注重隐私的分析工具来了解访客如何使用本站。默认不设置任何 Cookie。",
@@ -40,7 +41,29 @@
     "description": "openDesk Edu 将 openDesk CE 与 15 个教育服务整合，为高等教育提供无缝数字化转型。",
     "services": "集成服务",
     "projects": "探索",
-    "contact": "联系我们"
+    "contact": "联系我们",
+    "contactCta": "联系我们",
+    "contactDescription": "您是否希望在大学部署 openDesk Edu？",
+    "serviceLearning": {
+      "title": "学习管理",
+      "description": "Moodle 和 ILIAS — 与校园 SSO 及数据系统集成，实现无缝教学流程。"
+    },
+    "serviceCloud": {
+      "title": "云基础设施",
+      "description": "基于容器的可扩展部署，运行在大学云基础设施上，支持自动更新和监控。"
+    },
+    "serviceSovereignty": {
+      "title": "数字主权",
+      "description": "数据完全驻留在您所在的司法管辖区。设计即符合 GDPR，数据处理透明。"
+    },
+    "serviceSso": {
+      "title": "SSO 与联邦认证",
+      "description": "基于 SAML 的单点登录集成，兼容现有大学身份提供商和研究联邦。"
+    },
+    "projectComponents": "15 个集成服务",
+    "projectArchitecture": "系统设计与模式",
+    "projectGetStarted": "部署指南",
+    "projectBlog": "新闻与更新"
   },
   "hero": {
     "subtitle": "教育数字基础设施",
@@ -60,5 +83,32 @@
   },
   "section": {
     "noPosts": "该部分暂无文章。"
+  },
+  "imprint": {
+    "title": "法律声明",
+    "infoAccordingTo": "根据 § 5 TMG 的信息",
+    "provider": "提供者：",
+    "contactHeading": "联系方式",
+    "emailLabel": "电子邮件：",
+    "contentResponsibility": "内容责任",
+    "contentResponsibilityText": "本网站的内容已尽最大努力创建。但是，我们无法保证内容的准确性、完整性或时效性。作为服务提供者，我们根据 § 7 第 1 款 TMG 按照一般法律对我们自己在本页面上的内容负责。但是，根据 §§ 8 至 10 TMG，我们没有义务监控传输或存储的第三方信息。",
+    "referencesAndLinks": "引用和链接",
+    "referencesAndLinksText": "我们的服务包含指向外部第三方网站的链接，其内容我们无法控制。因此，我们无法对这些外部内容承担任何责任。链接页面的内容始终由相应的提供者或运营者负责。",
+    "copyrightHeading": "版权",
+    "copyrightText": "本网站运营者在本页面上创建的内容和作品受德国版权法保护。超出版权法范围的复制、处理、分发和任何形式的商业化都需要相关作者或创作者的事先书面同意。",
+    "warrantyHeading": "免责声明",
+    "warrantyText": "本网站及其内容按「原样」提供，不提供任何明示或暗示的保证。我们不保证本网站上的信息完整、准确或最新。",
+    "privacyHeading": "隐私保护",
+    "privacyText": "请参阅我们的",
+    "privacyLinkText": "隐私政策",
+    "privacyTextAfter": "了解我们如何处理您的个人数据。",
+    "disputeResolution": "消费者争议解决",
+    "disputeResolutionText": "欧盟委员会提供在线争议解决（ODR）平台：",
+    "disputeResolutionAfter": "我们不愿意也没有义务参与消费者仲裁委员会的争议解决程序。",
+    "privacyLinkLabel": "隐私政策"
+  },
+  "home": {
+    "getInTouch": "联系我们",
+    "getInTouchDescription": "您是否希望在大学部署 openDesk Edu？我们期待您的来信。"
   }
 }

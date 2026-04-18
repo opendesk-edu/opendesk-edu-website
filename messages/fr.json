@@ -20,7 +20,8 @@
     "imprint": "Mentions légales",
     "privacy": "Politique de confidentialité",
     "contact": "Contact",
-    "copyright": "© {year} openDesk Edu. Sous licence Apache-2.0."
+    "copyright": "© {year} openDesk Edu. Sous licence Apache-2.0.",
+    "sourceCode": "Code source"
   },
   "cookieConsent": {
     "message": "Nous utilisons des analyses respectueuses de la vie privée pour comprendre comment les visiteurs utilisent ce site. Aucun cookie n'est défini par défaut.",
@@ -40,7 +41,29 @@
     "description": "openDesk Edu rassemble openDesk CE et 15 services éducatifs pour une transformation numérique fluide dans l'enseignement supérieur.",
     "services": "Services intégrés",
     "projects": "Explorer",
-    "contact": "Nous contacter"
+    "contact": "Nous contacter",
+    "contactCta": "Nous contacter",
+    "contactDescription": "Vous souhaitez déployer openDesk Edu dans votre université ?",
+    "serviceLearning": {
+      "title": "Gestion de l'apprentissage",
+      "description": "Moodle et ILIAS — intégrés avec le SSO de votre campus et vos systèmes de données pour des flux d'enseignement fluides."
+    },
+    "serviceCloud": {
+      "title": "Infrastructure cloud",
+      "description": "Déploiement conteneurisé scalable sur l'infrastructure cloud universitaire avec mises à jour et surveillance automatisées."
+    },
+    "serviceSovereignty": {
+      "title": "Souveraineté numérique",
+      "description": "Hébergement complet des données dans votre juridiction. Conforme au RGPD par conception avec gestion transparente des données."
+    },
+    "serviceSso": {
+      "title": "SSO & Fédération",
+      "description": "Authentification unique basée sur SAML intégrée avec les fournisseurs d'identité universitaires et les fédérations de recherche existants."
+    },
+    "projectComponents": "Les 15 services intégrés",
+    "projectArchitecture": "Conception système et patterns",
+    "projectGetStarted": "Guides de déploiement",
+    "projectBlog": "Actualités et mises à jour"
   },
   "hero": {
     "subtitle": "Infrastructure numérique éducative",
@@ -60,5 +83,32 @@
   },
   "section": {
     "noPosts": "Aucun article disponible dans cette section."
+  },
+  "imprint": {
+    "title": "Mentions légales",
+    "infoAccordingTo": "Informations conformément au § 5 TMG",
+    "provider": "Prestataire :",
+    "contactHeading": "Contact",
+    "emailLabel": "E-mail :",
+    "contentResponsibility": "Responsabilité du contenu",
+    "contentResponsibilityText": "Le contenu de ce site a été créé avec le plus grand soin. Cependant, nous ne pouvons garantir l'exactitude, l'exhaustivité ou l'actualité du contenu. En tant que prestataire de services, nous sommes responsables de notre propre contenu sur ces pages conformément au § 7 alinéa 1 TMG selon les lois générales. Cependant, conformément aux §§ 8 à 10 TMG, nous ne sommes pas tenus en tant que prestataire de services de surveiller les informations de tiers transmises ou stockées.",
+    "referencesAndLinks": "Références et liens",
+    "referencesAndLinksText": "Notre offre contient des liens vers des sites tiers externes dont nous n'avons aucune influence sur le contenu. Par conséquent, nous ne pouvons assumer aucune responsabilité pour ces contenus externes. Le fournisseur ou exploitant respectif des pages est toujours responsable du contenu des pages liées.",
+    "copyrightHeading": "Droits d'auteur",
+    "copyrightText": "Les contenus et œuvres créés par les exploitants du site sur ces pages sont soumis au droit d'auteur allemand. La duplication, le traitement, la distribution et toute forme de commercialisation de ce matériel au-delà du cadre du droit d'auteur nécessitent le consentement écrit préalable de l'auteur ou du créateur respectif.",
+    "warrantyHeading": "Garantie",
+    "warrantyText": "Ce site web et son contenu sont fournis « en l'état » sans aucune garantie, expresse ou implicite. Nous ne garantissons pas que les informations sur ce site sont complètes, exactes ou à jour.",
+    "privacyHeading": "Protection de la vie privée",
+    "privacyText": "Veuillez vous référer à notre",
+    "privacyLinkText": "Politique de confidentialité",
+    "privacyTextAfter": "pour des informations sur la façon dont nous traitons vos données personnelles.",
+    "disputeResolution": "Résolution des litiges de consommation",
+    "disputeResolutionText": "La Commission européenne fournit une plateforme de résolution des litiges en ligne (RLL) :",
+    "disputeResolutionAfter": "Nous ne sommes ni disposés ni obligés de participer à des procédures de résolution des litiges devant un organisme de médiation des consommateurs.",
+    "privacyLinkLabel": "Politique de confidentialité"
+  },
+  "home": {
+    "getInTouch": "Nous contacter",
+    "getInTouchDescription": "Vous souhaitez déployer openDesk Edu dans votre université ? Nous serions ravis d'échanger avec vous."
   }
 }

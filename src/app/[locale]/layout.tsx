@@ -10,6 +10,7 @@ import {ThemeProvider} from '@/components/ThemeProvider';
 import ErrorBoundary from '@/components/ErrorBoundary';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import ScrollToTop from '@/components/ScrollToTop';
 import CookieConsent from '@/components/CookieConsent';
 import {SITE_URL, SITE_NAME, SITE_DESCRIPTION} from '@/lib/config';
 
@@ -35,7 +36,7 @@ export async function generateMetadata({params}: {params: Promise<{locale: strin
       url: SITE_URL,
       locale,
       siteName: SITE_NAME,
-      images: ["/static/brand/icon.svg"],
+      images: ["/static/brand/og-image.png"],
       alternateLocale: routing.locales.filter((l) => l !== locale),
     },
     alternates: {
@@ -59,7 +60,13 @@ function JsonLdOrganization({ locale }: { locale: string }) {
     name: SITE_NAME,
     url: SITE_URL,
     logo: `${SITE_URL}/static/brand/icon.svg`,
-    description: "Open-source digital workplace for higher education.",
+    description: locale === 'de'
+      ? "Open-Source-Digitalarbeitsplatz für Hochschulen."
+      : locale === 'fr'
+        ? "Espace de travail numérique open source pour l'enseignement supérieur."
+        : locale === 'zh'
+          ? "面向高等教育的开源数字化工作平台。"
+          : "Open-source digital workplace for higher education.",
     inLanguage: locale,
     contactPoint: {
       "@type": "ContactPoint",
@@ -122,6 +129,7 @@ export default async function LocaleLayout({
               </main>
             </ErrorBoundary>
             <Footer />
+            <ScrollToTop />
             <CookieConsent />
           </NextIntlClientProvider>
         </ThemeProvider>

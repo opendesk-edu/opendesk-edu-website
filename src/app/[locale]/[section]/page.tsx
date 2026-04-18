@@ -11,6 +11,7 @@ import {
 import { SITE_NAME } from "@/lib/config";
 import { getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
+import { Tag, CategoryBadge } from "@/components/Badges";
 
 interface SectionPageProps {
   params: Promise<{ locale: string; section: string }>;
@@ -79,27 +80,45 @@ export default async function SectionPage({ params }: SectionPageProps) {
         </p>
       ) : (
         <div className="grid gap-6 md:grid-cols-2">
-          {posts.map((post) => (
-            <Link
-              key={post.slug}
-              href={`/${section}/${post.slug}` as React.ComponentProps<typeof Link>['href']}
-              className="rounded-lg border border-border bg-background p-6 hover:shadow-lg transition-shadow group"
-            >
-              <h2 className="text-lg font-semibold text-foreground group-hover:text-accent transition-colors mb-1">
-                {post.title}
-              </h2>
-              {post.date && (
-                <time className="text-sm text-foreground-secondary mb-2 block">
-                  {formatDate(post.date, locale)}
-                </time>
-              )}
-              {post.description && (
-                <p className="text-sm text-foreground-secondary">
-                  {post.description}
-                </p>
-              )}
-            </Link>
-          ))}
+{posts.map((post) => {
+              const isBeta = post.categories?.includes('beta') || post.tags?.includes('beta');
+              const isComponent = post.section === 'components';
+              
+              return (
+                <Link
+                  key={post.slug}
+                  href={`/${section}/${post.slug}` as React.ComponentProps<typeof Link>['href']}
+                  className="rounded-lg border border-border bg-background p-6 hover:shadow-lg transition-shadow group"
+                >
+                  <h2 className="text-lg font-semibold text-foreground group-hover:text-accent transition-colors mb-1">
+                    {post.title}
+                  </h2>
+                  <div className="flex items-center gap-2 mb-3">
+                    <time dateTime={post.date} className="text-sm text-foreground-secondary">
+                      {formatDate(post.date, locale)}
+                    </time>
+                    {isComponent && isBeta && (
+                      <span className="text-xs px-2 py-1 rounded-full bg-amber-100 text-amber-800 border border-amber-200">
+                        Beta
+                      </span>
+                    )}
+                  </div>
+                  {post.description && (
+                    <p className="text-sm text-foreground-secondary mb-4 line-clamp-2">
+                      {post.description}
+                    </p>
+                  )}
+                  <div className="flex flex-wrap gap-2">
+                    {post.categories?.map((category) => (
+                      <CategoryBadge key={category}>{category}</CategoryBadge>
+                    ))}
+                    {post.tags?.map((tag) => (
+                      <Tag key={tag}>{tag}</Tag>
+                    ))}
+                  </div>
+                </Link>
+              );
+            })}
         </div>
       )}
     </main>
