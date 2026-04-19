@@ -1,0 +1,46 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "openDesk Edu openDesk Edu" [ref=e5] [cursor=pointer]:
+        - /url: /en
+        - img "openDesk Edu" [ref=e6]
+        - generic [ref=e7]: openDesk Edu
+      - navigation "Main navigation" [ref=e8]:
+        - link "Home" [ref=e9] [cursor=pointer]:
+          - /url: /en
+        - link "Components" [ref=e10] [cursor=pointer]:
+          - /url: /en/components
+        - link "Architecture" [ref=e11] [cursor=pointer]:
+          - /url: /en/architecture
+        - link "Get Started" [ref=e12] [cursor=pointer]:
+          - /url: /en/get-started
+        - link "Blog" [ref=e13] [cursor=pointer]:
+          - /url: /en/blog
+        - button "Language" [ref=e15] [cursor=pointer]:
+          - text: EN
+          - img [ref=e16]
+        - button "Search" [ref=e18] [cursor=pointer]:
+          - img [ref=e19]
+        - button "Toggle theme" [ref=e22] [cursor=pointer]:
+          - img [ref=e23]
+  - main [ref=e29]
+  - contentinfo [ref=e64]:
+    - generic [ref=e66]:
+      - generic [ref=e67]:
+        - link "Imprint" [ref=e68] [cursor=pointer]:
+          - /url: /en/imprint
+        - link "Privacy" [ref=e69] [cursor=pointer]:
+          - /url: /en/privacy
+        - link "Contact" [ref=e70] [cursor=pointer]:
+          - /url: mailto:info@opendesk-edu.org
+        - generic [ref=e71]: "|"
+        - link "Source Code (opens in new tab)" [ref=e72] [cursor=pointer]:
+          - /url: https://codeberg.org/opendesk-edu/opendesk-edu-website
+          - text: Source Code
+          - generic [ref=e73]: (opens in new tab)
+      - paragraph [ref=e74]: © 2026 openDesk Edu. Licensed under Apache-2.0.
+  - button "Scroll to top":
+    - img
+  - alert [ref=e75]

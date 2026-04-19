@@ -25,8 +25,8 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
       <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-          <Image src="/static/brand/icon.svg" alt="openDesk Edu" width={32} height={32} />
+        <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity" aria-label="openDesk Edu home">
+          <Image src="/static/brand/icon.svg" alt="" width={32} height={32} />
           <span className="font-semibold text-foreground">openDesk Edu</span>
         </Link>
 
