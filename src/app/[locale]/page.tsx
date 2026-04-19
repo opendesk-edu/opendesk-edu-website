@@ -37,34 +37,34 @@ export default async function Home({ params }: PageProps) {
   return (
     <>
       {/* Full-screen Animated Hero */}
-      <section className="hero-background">
-        <div className="hero-gradient" />
-        <div className="hero-grid" />
-        <div className="hero-dot-grid" />
+      <section className="hero-background" aria-label="Hero">
+        <div className="hero-gradient" aria-hidden="true" />
+        <div className="hero-grid" aria-hidden="true" />
+        <div className="hero-dot-grid" aria-hidden="true" />
 
         {/* Floating particles */}
-        <div className="particle particle-1" />
-        <div className="particle particle-2" />
-        <div className="particle particle-3" />
-        <div className="particle particle-4" />
-        <div className="particle particle-5" />
-        <div className="particle particle-6" />
-        <div className="particle particle-7" />
-        <div className="particle particle-8" />
+        <div className="particle particle-1" aria-hidden="true" />
+        <div className="particle particle-2" aria-hidden="true" />
+        <div className="particle particle-3" aria-hidden="true" />
+        <div className="particle particle-4" aria-hidden="true" />
+        <div className="particle particle-5" aria-hidden="true" />
+        <div className="particle particle-6" aria-hidden="true" />
+        <div className="particle particle-7" aria-hidden="true" />
+        <div className="particle particle-8" aria-hidden="true" />
 
         {/* Pulsing glow blobs */}
-        <div className="glow-blob-1" />
-        <div className="glow-blob-2" />
-        <div className="glow-blob-3" />
+        <div className="glow-blob-1" aria-hidden="true" />
+        <div className="glow-blob-2" aria-hidden="true" />
+        <div className="glow-blob-3" aria-hidden="true" />
 
         {/* Connection lines */}
-        <div className="connection-line connection-1" />
-        <div className="connection-line connection-2" />
-        <div className="connection-line connection-3" />
+        <div className="connection-line connection-1" aria-hidden="true" />
+        <div className="connection-line connection-2" aria-hidden="true" />
+        <div className="connection-line connection-3" aria-hidden="true" />
 
         {/* Edge accents */}
-        <div className="hero-edge-left" />
-        <div className="hero-edge-right" />
+        <div className="hero-edge-left" aria-hidden="true" />
+        <div className="hero-edge-right" aria-hidden="true" />
 
         {/* Hero content */}
         <div className="hero-content">

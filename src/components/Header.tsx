@@ -31,7 +31,7 @@ export default function Header() {
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-6">
+        <nav className="hidden md:flex items-center gap-6" aria-label="Main navigation">
           {NAV_ITEMS.map((item) => (
             <Link
               key={item.href}
@@ -88,6 +88,8 @@ export default function Header() {
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="p-2 rounded-lg hover:bg-background-secondary transition-colors cursor-pointer"
             aria-label={t("mobileMenu.label")}
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-nav"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -98,6 +100,7 @@ export default function Header() {
               strokeLinecap="round"
               strokeLinejoin="round"
               className="w-5 h-5"
+              aria-hidden="true"
             >
               {mobileMenuOpen ? (
                 <>
@@ -118,9 +121,12 @@ export default function Header() {
 
       {/* Mobile menu */}
       <nav
+        id="mobile-nav"
+        aria-label="Mobile navigation"
         className={`md:hidden border-t border-border bg-background px-4 py-4 space-y-2 transition-all duration-300 ${
           mobileMenuOpen ? 'max-h-[500px]' : 'max-h-0 overflow-hidden'
         }`}
+        aria-hidden={!mobileMenuOpen}
       >
         {mobileMenuOpen && (
           <>
@@ -155,6 +161,7 @@ function SunIcon({ className }: { className?: string }) {
       strokeLinecap="round"
       strokeLinejoin="round"
       className={className}
+      aria-hidden="true"
     >
       <circle cx="12" cy="12" r="5" />
       <line x1="12" y1="1" x2="12" y2="3" />
@@ -180,6 +187,7 @@ function MoonIcon({ className }: { className?: string }) {
       strokeLinecap="round"
       strokeLinejoin="round"
       className={className}
+      aria-hidden="true"
     >
       <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
     </svg>

@@ -150,7 +150,8 @@ export default function SearchDialog({ open, onClose }: SearchDialogProps) {
   // Scroll active item into view
   useEffect(() => {
     if (activeIndex >= 0) {
-      resultsEndRef.current?.scrollIntoView({ block: "nearest" });
+      const activeEl = document.getElementById(`search-result-${activeIndex}`);
+      activeEl?.scrollIntoView({ block: "nearest" });
     }
   }, [activeIndex]);
 
@@ -219,6 +220,11 @@ export default function SearchDialog({ open, onClose }: SearchDialogProps) {
             }}
             onKeyDown={handleKeyDown}
             aria-label={t("placeholder")}
+            aria-activedescendant={activeIndex >= 0 ? `search-result-${activeIndex}` : undefined}
+            aria-controls="search-results-listbox"
+            role="combobox"
+            aria-expanded="true"
+            aria-autocomplete="list"
             autoComplete="off"
             spellCheck={false}
           />
@@ -241,7 +247,7 @@ export default function SearchDialog({ open, onClose }: SearchDialogProps) {
               {t("noResults")}
             </div>
           ) : (
-            <div role="listbox" aria-label="Search results">
+            <div role="listbox" aria-label="Search results" id="search-results-listbox">
               {Array.from(results.entries()).map(([section, items], groupIdx) => {
                 const startIndex = flatResults.findIndex(
                   (f) => f.section === section
@@ -257,6 +263,7 @@ export default function SearchDialog({ open, onClose }: SearchDialogProps) {
                       return (
                         <button
                           key={`${entry.section}-${entry.slug}`}
+                          id={`search-result-${globalIdx}`}
                           role="option"
                           aria-selected={isActive}
                           className={`w-full text-left px-3 py-2.5 rounded-lg transition-colors cursor-pointer flex items-start gap-3 ${

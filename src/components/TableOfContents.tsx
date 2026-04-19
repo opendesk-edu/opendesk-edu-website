@@ -79,6 +79,7 @@ export default function TableOfContents({ html }: TableOfContentsProps) {
           <li key={heading.id}>
             <button
               onClick={() => handleClick(heading.id)}
+              aria-current={activeId === heading.id ? "true" : undefined}
               className={`block w-full text-left text-sm py-1 transition-colors cursor-pointer ${
                 heading.level === 3 ? "pl-6" : "pl-3"
               } ${

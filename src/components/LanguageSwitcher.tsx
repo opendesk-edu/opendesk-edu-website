@@ -63,6 +63,7 @@ export default function LanguageSwitcher({ onLocaleChange }: LanguageSwitcherPro
         className="text-sm text-foreground-secondary hover:text-foreground transition-colors rounded-lg hover:bg-background-secondary cursor-pointer p-2"
         aria-label={t("label")}
         aria-expanded={isOpen}
+        aria-haspopup="listbox"
       >
         {currentLocaleName}
         <svg
@@ -74,18 +75,21 @@ export default function LanguageSwitcher({ onLocaleChange }: LanguageSwitcherPro
           strokeLinecap="round"
           strokeLinejoin="round"
           className="w-4 h-4 ml-1 inline-block"
+          aria-hidden="true"
         >
           <polyline points="6 9 12 15 18 9" />
         </svg>
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-24 bg-background border border-border rounded-lg shadow-lg z-50">
+        <div className="absolute right-0 mt-2 w-24 bg-background border border-border rounded-lg shadow-lg z-50" role="listbox" aria-label={t("label")}>
           {routing.locales
             .filter((locale) => locale !== currentLocale)
             .map((locale) => (
               <button
                 key={locale}
+                role="option"
+                aria-selected={false}
                 onClick={() => handleLocaleChange(locale)}
                 className="block w-full text-left text-sm text-foreground-secondary hover:text-foreground hover:bg-background-secondary transition-colors px-3 py-2 rounded-lg cursor-pointer"
               >

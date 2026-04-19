@@ -13,6 +13,7 @@ function ExternalLink({href, children, className}: {href: string; children: Reac
       className={className}
     >
       {children}
+      <span className="sr-only"> (opens in new tab)</span>
     </a>
   );
 }

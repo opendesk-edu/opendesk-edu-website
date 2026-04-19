@@ -15,6 +15,7 @@ import CookieConsent from '@/components/CookieConsent';
 import SearchDialogWrapper from '@/components/SearchDialogWrapper';
 import {SearchProvider} from '@/components/SearchContext';
 import {SITE_URL, SITE_NAME, SITE_DESCRIPTION} from '@/lib/config';
+import Script from 'next/script';
 
 const inter = Inter({
   variable: "--font-inter",
@@ -136,6 +137,11 @@ export default async function LocaleLayout({
             <ScrollToTop />
             <CookieConsent />
             <SearchDialogWrapper />
+            <Script
+              src="https://analytics.opendesk-edu.org/script.js"
+              data-website-id="REPLACE_WITH_WEBSITE_ID"
+              strategy="afterInteractive"
+            />
             </SearchProvider>
           </NextIntlClientProvider>
         </ThemeProvider>

@@ -34,6 +34,17 @@
   z-index: 0;
 }
 
+[data-theme="light"] .hero-gradient {
+  background: linear-gradient(
+    135deg,
+    #f5f3ff 0%,
+    #ede9fe 25%,
+    #f5f3ff 50%,
+    #ede9fe 75%,
+    #f5f3ff 100%
+  );
+}
+
 @keyframes gradientShift {
   0%   { background-position: 0% 50%; }
   25%  { background-position: 50% 0%; }
@@ -54,12 +65,22 @@
   z-index: 1;
 }
 
+[data-theme="light"] .hero-grid {
+  background-image:
+    linear-gradient(rgba(87, 30, 250, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(87, 30, 250, 0.03) 1px, transparent 1px);
+}
+
 .hero-dot-grid {
   position: absolute;
   inset: 0;
   background-image: radial-gradient(circle, rgba(146, 122, 250, 0.12) 1px, transparent 1px);
   background-size: 40px 40px;
   z-index: 1;
+}
+
+[data-theme="light"] .hero-dot-grid {
+  background-image: radial-gradient(circle, rgba(87, 30, 250, 0.06) 1px, transparent 1px);
 }
 
 @keyframes gridPan {
@@ -83,6 +104,13 @@
   z-index: 1;
 }
 
+[data-theme="light"] .glow-blob-1 {
+  background: radial-gradient(circle,
+    rgba(87, 30, 250, 0.08) 0%,
+    rgba(87, 30, 250, 0.03) 40%,
+    transparent 70%);
+}
+
 .glow-blob-2 {
   position: absolute;
   width: 350px;
@@ -99,6 +127,13 @@
   z-index: 1;
 }
 
+[data-theme="light"] .glow-blob-2 {
+  background: radial-gradient(circle,
+    rgba(146, 122, 250, 0.06) 0%,
+    rgba(146, 122, 250, 0.02) 40%,
+    transparent 70%);
+}
+
 .glow-blob-3 {
   position: absolute;
   width: 300px;
@@ -113,6 +148,13 @@
   animation: pulseBlob 19s ease-in-out infinite;
   animation-delay: -12s;
   z-index: 1;
+}
+
+[data-theme="light"] .glow-blob-3 {
+  background: radial-gradient(circle,
+    rgba(87, 30, 250, 0.05) 0%,
+    rgba(87, 30, 250, 0.02) 40%,
+    transparent 70%);
 }
 
 @keyframes pulseBlob {
@@ -139,6 +181,15 @@
 .particle-7 { width: 2px; height: 2px; background: rgba(87, 30, 250, 0.5);  left: 85%; animation: floatUp 12s ease-in-out infinite; animation-delay: -10s; }
 .particle-8 { width: 3px; height: 3px; background: rgba(146, 122, 250, 0.3); left: 90%; animation: floatUp 17s ease-in-out infinite; animation-delay: -4s; }
 
+[data-theme="light"] .particle-1 { background: rgba(87, 30, 250, 0.25); }
+[data-theme="light"] .particle-2 { background: rgba(146, 122, 250, 0.3); }
+[data-theme="light"] .particle-3 { background: rgba(87, 30, 250, 0.2); }
+[data-theme="light"] .particle-4 { background: rgba(87, 30, 250, 0.35); }
+[data-theme="light"] .particle-5 { background: rgba(146, 122, 250, 0.2); }
+[data-theme="light"] .particle-6 { background: rgba(87, 30, 250, 0.25); }
+[data-theme="light"] .particle-7 { background: rgba(87, 30, 250, 0.3); }
+[data-theme="light"] .particle-8 { background: rgba(146, 122, 250, 0.18); }
+
 @keyframes floatUp {
   0%   { transform: translateY(0) translateX(0); opacity: 0; bottom: -10%; }
   5%   { opacity: 1; }
@@ -159,6 +210,10 @@
 .connection-2 { width: 150px; top: 55%; left: 55%; transform: rotate(-25deg); background: linear-gradient(90deg, transparent, rgba(146, 122, 250, 0.12), transparent); animation-delay: -3s; }
 .connection-3 { width: 100px; top: 70%; left: 75%; transform: rotate(15deg);  background: linear-gradient(90deg, transparent, rgba(87, 30, 250, 0.1), transparent);  animation-delay: -5s; }
 
+[data-theme="light"] .connection-1 { background: linear-gradient(90deg, transparent, rgba(87, 30, 250, 0.08), transparent); }
+[data-theme="light"] .connection-2 { background: linear-gradient(90deg, transparent, rgba(146, 122, 250, 0.06), transparent); }
+[data-theme="light"] .connection-3 { background: linear-gradient(90deg, transparent, rgba(87, 30, 250, 0.05), transparent); }
+
 @keyframes pulseLine {
   0%, 100% { opacity: 0.2; }
   50%      { opacity: 0.6; }
@@ -176,6 +231,10 @@
   pointer-events: none;
 }
 
+[data-theme="light"] .hero-edge-left {
+  background: linear-gradient(90deg, rgba(87, 30, 250, 0.06) 0%, transparent 100%);
+}
+
 .hero-edge-right {
   position: absolute;
   top: 0;
@@ -185,6 +244,10 @@
   background: linear-gradient(270deg, rgba(146, 122, 250, 0.08) 0%, transparent 100%);
   z-index: 1;
   pointer-events: none;
+}
+
+[data-theme="light"] .hero-edge-right {
+  background: linear-gradient(270deg, rgba(146, 122, 250, 0.04) 0%, transparent 100%);
 }
 
 /* --- Top/bottom accent lines --- */
@@ -204,9 +267,17 @@
   background: linear-gradient(90deg, rgba(87, 30, 250, 0.3), rgba(146, 122, 250, 0.2), rgba(87, 30, 250, 0.3));
 }
 
+[data-theme="light"] .hero-background::before {
+  background: linear-gradient(90deg, rgba(87, 30, 250, 0.15), rgba(146, 122, 250, 0.1), rgba(87, 30, 250, 0.15));
+}
+
 .hero-background::after {
   bottom: 0;
   background: linear-gradient(90deg, rgba(87, 30, 250, 0.15), rgba(146, 122, 250, 0.1), rgba(87, 30, 250, 0.15));
+}
+
+[data-theme="light"] .hero-background::after {
+  background: linear-gradient(90deg, rgba(87, 30, 250, 0.08), rgba(146, 122, 250, 0.05), rgba(87, 30, 250, 0.08));
 }
 
 /* --- Hero content (centered text overlay) --- */
@@ -227,6 +298,11 @@
   text-shadow: 0 0 40px rgba(87, 30, 250, 0.3);
 }
 
+[data-theme="light"] .hero-title {
+  color: var(--foreground);
+  text-shadow: 0 0 20px rgba(87, 30, 250, 0.1);
+}
+
 .hero-subtitle {
   font-size: 1.25rem;
   font-weight: 300;
@@ -235,12 +311,20 @@
   margin-bottom: 1rem;
 }
 
+[data-theme="light"] .hero-subtitle {
+  color: var(--accent);
+}
+
 .hero-description {
   font-size: 1rem;
   color: rgba(240, 246, 252, 0.7);
   max-width: 520px;
   margin: 0 auto;
   line-height: 1.6;
+}
+
+[data-theme="light"] .hero-description {
+  color: var(--foreground-secondary);
 }
 
 /* --- Corner accent marks --- */
@@ -259,6 +343,11 @@
 .hero-corner-tr { top: 16px; right: 16px; border-top: 1.5px solid rgba(146, 122, 250, 0.2); border-right: 1.5px solid rgba(146, 122, 250, 0.2); }
 .hero-corner-bl { bottom: 16px; left: 16px;  border-bottom: 1.5px solid rgba(87, 30, 250, 0.3);  border-left: 1.5px solid rgba(87, 30, 250, 0.3); }
 .hero-corner-br { bottom: 16px; right: 16px; border-bottom: 1.5px solid rgba(146, 122, 250, 0.2); border-right: 1.5px solid rgba(146, 122, 250, 0.2); }
+
+[data-theme="light"] .hero-corner-tl { border-top: 1.5px solid rgba(87, 30, 250, 0.15);  border-left: 1.5px solid rgba(87, 30, 250, 0.15); }
+[data-theme="light"] .hero-corner-tr { border-top: 1.5px solid rgba(146, 122, 250, 0.1); border-right: 1.5px solid rgba(146, 122, 250, 0.1); }
+[data-theme="light"] .hero-corner-bl { border-bottom: 1.5px solid rgba(87, 30, 250, 0.15);  border-left: 1.5px solid rgba(87, 30, 250, 0.15); }
+[data-theme="light"] .hero-corner-br { border-bottom: 1.5px solid rgba(146, 122, 250, 0.1); border-right: 1.5px solid rgba(146, 122, 250, 0.1); }
 
 /* ============================================================
    Mobile responsive
