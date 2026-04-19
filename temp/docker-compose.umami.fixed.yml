@@ -1,0 +1,51 @@
+services:
+  umami:
+    image: docker.umami.is/umami-software/umami:postgresql-latest
+    container_name: umami
+    restart: unless-stopped
+    ports:
+      - "3001:3000"
+    environment:
+      DATABASE_URL: postgresql://umami:umami_secure_password@umami-db:5432/umami
+      APP_URL: https://analytics.opendesk-edu.org
+    depends_on:
+      umami-db:
+        condition: service_healthy
+    networks:
+      - traefik-web
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=traefik-web
+      - traefik.http.services.umami.loadbalancer.server.port=3000
+      # HTTPS router
+      - traefik.http.routers.umami-secure.rule=Host(`analytics.opendesk-edu.org`)
+      - traefik.http.routers.umami-secure.entrypoints=websecure
+      - traefik.http.routers.umami-secure.tls=true
+      - traefik.http.routers.umami-secure.tls.certresolver=mytlschallenge
+      # HTTP router (HTTPS redirect)
+      # Note: No !PathPrefix exclusion needed - internal ACME router handles it automatically
+      - traefik.http.routers.umami.rule=Host(`analytics.opendesk-edu.org`)
+      - traefik.http.routers.umami.entrypoints=web
+      - traefik.http.routers.umami.middlewares=https-redirect@file
+
+  umami-db:
+    image: postgres:15-alpine
+    container_name: umami-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: umami
+      POSTGRES_USER: umami
+      POSTGRES_PASSWORD: umami_secure_password
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    networks:
+      - traefik-web
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U umami"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+networks:
+  traefik-web:
+    external: true

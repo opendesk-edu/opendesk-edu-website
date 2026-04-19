@@ -1,0 +1,1 @@
+docker exec umami-db psql -U umami -d umami -c 'SELECT website_id, name FROM website ORDER BY created_at'

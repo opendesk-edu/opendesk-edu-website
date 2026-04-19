@@ -1,0 +1,1 @@
+docker exec umami-db psql -U umami -d umami -c 'SELECT user_id, username, role FROM user;'

@@ -1,0 +1,1 @@
+docker exec umami-db psql -U umami -d umami -c "INSERT INTO website (website_id, name, domain) VALUES ($(uuidgen | tr -d '\n'), 'openDesk Edu', 'opendesk-edu.org') RETURNING name, domain;"

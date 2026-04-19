@@ -139,7 +139,7 @@ export default async function LocaleLayout({
             <SearchDialogWrapper />
             <Script
               src="https://analytics.opendesk-edu.org/script.js"
-              data-website-id="REPLACE_WITH_WEBSITE_ID"
+              data-website-id="2a3018c7-757c-40cb-b4ce-4c70d851c348"
               strategy="afterInteractive"
             />
             </SearchProvider>
