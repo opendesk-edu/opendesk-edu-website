@@ -13,6 +13,13 @@ const securityHeaders = [
   { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },
 ];
 
+const cacheHeaders = [
+  {
+    key: "Cache-Control",
+    value: "public, max-age=3600, s-maxage=3600, must-revalidate",
+  },
+];
+
 const nextConfig: NextConfig = {
   output: "standalone",
   poweredByHeader: false,
@@ -20,7 +27,12 @@ const nextConfig: NextConfig = {
   images: { unoptimized: false },
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
   async headers() {
-    return [{ source: "/(.*)", headers: securityHeaders }];
+    return [
+      {
+        source: "/(.*)",
+        headers: [...securityHeaders, ...cacheHeaders],
+      },
+    ];
   },
 };
 
