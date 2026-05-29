@@ -274,6 +274,13 @@ export default function SearchDialog({ open, onClose }: SearchDialogProps) {
                           onClick={() => navigateTo(entry)}
                           onMouseEnter={() => setActiveIndex(globalIdx)}
                         >
+                          {entry.image && (
+                            <img
+                              src={entry.image}
+                              alt=""
+                              className={`w-12 h-auto rounded aspect-[1200/630] object-cover shrink-0 ${isActive ? "opacity-90" : ""}`}
+                            />
+                          )}
                           <div className="flex-1 min-w-0">
                             <div className="font-medium text-sm truncate">
                               {entry.title}

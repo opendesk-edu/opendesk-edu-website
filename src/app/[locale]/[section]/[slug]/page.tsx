@@ -9,6 +9,7 @@ import {
 import { SITE_URL, SITE_NAME } from "@/lib/config";
 import type { Metadata } from "next";
 import ArticlePage from "@/components/ArticlePage";
+import RelatedPosts from "@/components/RelatedPosts";
 import { routing } from "@/i18n/routing";
 
 interface PageProps {
@@ -44,6 +45,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title: post.title,
       description: post.description,
       url: `${SITE_URL}/${locale}/${section}/${slug}`,
+      images: post.image
+        ? [{ url: `${SITE_URL}${post.image}`, width: 1200, height: 630 }]
+        : undefined,
     },
     alternates: {
       canonical: `${SITE_URL}/${locale}/${section}/${slug}`,
@@ -66,5 +70,10 @@ export default async function ArticleSlugPage({ params }: PageProps) {
   const sectionInfo = getSectionBySlug(section);
   const backLabel = sectionInfo?.title ?? section;
 
-  return <ArticlePage post={post} backHref={`/${section}`} backLabel={backLabel} locale={locale} />;
+  return (
+    <>
+      <ArticlePage post={post} backHref={`/${section}`} backLabel={backLabel} locale={locale} />
+      <RelatedPosts currentPost={post} locale={locale} />
+    </>
+  );
 }

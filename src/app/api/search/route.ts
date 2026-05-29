@@ -9,6 +9,7 @@ export interface SearchEntry {
   description?: string;
   categories?: string[];
   tags?: string[];
+  image?: string;
 }
 
 export async function GET(request: NextRequest) {
@@ -28,6 +29,7 @@ export async function GET(request: NextRequest) {
     description: post.description,
     categories: post.categories,
     tags: post.tags,
+    image: post.image,
   }));
 
   return NextResponse.json(entries);

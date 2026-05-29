@@ -4,7 +4,7 @@ date: "2026-05-29"
 description: "LinkedIn article version of the Collab Services announcement."
 categories: ["linkedin"]
 tags: ["opendesk", "scientific-computing", "kubernetes", "opensource"]
-draft: true
+draft: false
 ---
 
 # Collab Services: Scientific Computing Tools Join openDesk Edu
