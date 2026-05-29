@@ -1,9 +1,9 @@
 "use client";
 
-import { useRouter, usePathname } from "@/i18n/navigation";
+import { useRouter } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { useTranslations, useLocale } from "next-intl";
-import { useParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 
 interface LanguageSwitcherProps {
@@ -19,8 +19,7 @@ const localeLabels: Record<string, string> = {
 
 export default function LanguageSwitcher({ onLocaleChange }: LanguageSwitcherProps) {
   const router = useRouter();
-  const pathname = usePathname();
-  const params = useParams();
+  const rawPathname = usePathname();
   const currentLocale = useLocale();
   const t = useTranslations("header.languageSwitcher");
 
@@ -29,9 +28,12 @@ export default function LanguageSwitcher({ onLocaleChange }: LanguageSwitcherPro
   const currentLocaleName = localeLabels[currentLocale] ?? currentLocale.toUpperCase();
 
   const handleLocaleChange = (newLocale: string) => {
-    // next-intl requires params when using pathnames config
-    // @ts-expect-error -- pathname and params always match for the current route
-    router.replace({ pathname, params }, { locale: newLocale });
+    const localePrefix = `/${currentLocale}`;
+    const pathWithoutLocale = rawPathname.startsWith(localePrefix)
+      ? rawPathname.slice(localePrefix.length) || "/"
+      : rawPathname;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    router.replace(pathWithoutLocale as any, { locale: newLocale });
     setIsOpen(false);
     onLocaleChange?.();
   };

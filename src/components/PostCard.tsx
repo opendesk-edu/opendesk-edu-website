@@ -16,12 +16,22 @@ export default function PostCard({ post, locale = 'en' }: PostCardProps) {
   const isComponent = post.section === 'components';
 
   return (
-    <article className="rounded-lg border border-border bg-background p-6 hover:shadow-lg transition-shadow">
-      <Link href={`/${post.section}/${post.slug}` as Href} className="block">
-        <h3 className="text-lg font-semibold text-foreground hover:text-accent transition-colors mb-2">
-          {post.title}
-        </h3>
-      </Link>
+    <article className="rounded-lg border border-border bg-background hover:shadow-lg transition-shadow">
+      {post.image && (
+        <Link href={`/${post.section}/${post.slug}` as Href} className="block">
+          <img
+            src={post.image}
+            alt=""
+            className="w-full rounded-t-lg aspect-[1200/630] object-cover"
+          />
+        </Link>
+      )}
+      <div className="p-6">
+        <Link href={`/${post.section}/${post.slug}` as Href} className="block">
+          <h3 className="text-lg font-semibold text-foreground hover:text-accent transition-colors mb-2">
+            {post.title}
+          </h3>
+        </Link>
       <div className="flex items-center gap-2 mb-3">
         <time dateTime={post.date} className="text-sm text-foreground-secondary">
           {formatDate(post.date, locale)}
@@ -44,6 +54,7 @@ export default function PostCard({ post, locale = 'en' }: PostCardProps) {
         {post.tags?.map((tag) => (
           <Tag key={tag}>{tag}</Tag>
         ))}
+      </div>
       </div>
     </article>
   );

@@ -85,11 +85,27 @@ export default async function SectionPage({ params }: SectionPageProps) {
               const isComponent = post.section === 'components';
               
               return (
-                <Link
+                <div
                   key={post.slug}
-                  href={`/${section}/${post.slug}` as React.ComponentProps<typeof Link>['href']}
-                  className="rounded-lg border border-border bg-background p-6 hover:shadow-lg transition-shadow group"
+                  className="rounded-lg border border-border bg-background hover:shadow-lg transition-shadow"
                 >
+                  {post.image && (
+                    <Link
+                      href={`/${section}/${post.slug}` as React.ComponentProps<typeof Link>['href']}
+                      className="block"
+                    >
+                      <img
+                        src={post.image}
+                        alt=""
+                        className="w-full rounded-t-lg aspect-[1200/630] object-cover"
+                      />
+                    </Link>
+                  )}
+                  <div className="p-6">
+                  <Link
+                    href={`/${section}/${post.slug}` as React.ComponentProps<typeof Link>['href']}
+                    className="group"
+                  >
                   <h2 className="text-lg font-semibold text-foreground group-hover:text-accent transition-colors mb-1">
                     {post.title}
                   </h2>
@@ -117,6 +133,8 @@ export default async function SectionPage({ params }: SectionPageProps) {
                     ))}
                   </div>
                 </Link>
+                </div>
+                </div>
               );
             })}
         </div>

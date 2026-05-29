@@ -68,6 +68,16 @@ export default function ArticlePage({ post, backHref, backLabel, locale = 'en' }
           <span className="text-foreground font-medium">{post.title}</span>
         </div>
 
+        {post.image && (
+          <div className="mb-10 -mx-6 md:-mx-0">
+            <img
+              src={post.image}
+              alt=""
+              className="w-full rounded-none md:rounded-xl aspect-[1200/630] object-cover"
+            />
+          </div>
+        )}
+
         <header className="mb-10">
           <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
             {post.title}
