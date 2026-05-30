@@ -1,9 +1,10 @@
 ---
 title: "Nubus"
-date: "2026-03-05"
-description: "Unified portal and identity management built on Keycloak with SAML 2.0 and OIDC authentication."
-categories: ["infrastructure", "base"]
-tags: ["nubus", "keycloak", "portal", "iam", "sso"]
+date: "2026-03-25"
+description: "Portal platform that serves as the unified entry point and integration surface for all openDesk components."
+categories: ["portal", "base"]
+tags: ["nubus", "portal", "interface", "integration"]
+version: "1.3"
 ---
 
 # Nubus

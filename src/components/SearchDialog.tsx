@@ -43,9 +43,12 @@ export default function SearchDialog({ open, onClose }: SearchDialogProps) {
   const [query, setQuery] = useState("");
   const [activeIndex, setActiveIndex] = useState(-1);
   const [animating, setAnimating] = useState(false);
+  const [showAll, setShowAll] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
   const resultsEndRef = useRef<HTMLDivElement>(null);
+
+  const MAX_INITIAL_PER_SECTION = 5;
 
   // Filtered and grouped results
   const results = useMemo(() => {
@@ -54,8 +57,29 @@ export default function SearchDialog({ open, onClose }: SearchDialogProps) {
     return groupBySection(filtered);
   }, [entries, query]);
 
+  // Limit displayed results per section
+  const displayResults = useMemo(() => {
+    if (showAll) return results;
+    const limited = new Map<string, SearchEntry[]>();
+    for (const [section, items] of results) {
+      limited.set(section, items.slice(0, MAX_INITIAL_PER_SECTION));
+    }
+    return limited;
+  }, [results, showAll]);
+
   // Flatten for keyboard navigation
   const flatResults = useMemo(() => {
+    const flat: { entry: SearchEntry; section: string }[] = [];
+    for (const [section, items] of displayResults) {
+      for (const entry of items) {
+        flat.push({ entry, section });
+      }
+    }
+    return flat;
+  }, [displayResults]);
+
+  // Count all results (not just displayed ones)
+  const allResults = useMemo(() => {
     const flat: { entry: SearchEntry; section: string }[] = [];
     for (const [section, items] of results) {
       for (const entry of items) {
@@ -64,8 +88,8 @@ export default function SearchDialog({ open, onClose }: SearchDialogProps) {
     }
     return flat;
   }, [results]);
-
-  const totalResults = flatResults.length;
+  
+  const totalResults = allResults.length;
 
   // Reset state when opening/closing dialog
   useEffect(() => {
@@ -238,88 +262,85 @@ export default function SearchDialog({ open, onClose }: SearchDialogProps) {
           className="overflow-y-auto px-2 py-2"
           style={{ maxHeight: "calc(min(70vh, 560px) - 65px)" }}
         >
-          {loading ? (
-            <div className="flex items-center justify-center py-12 text-foreground-secondary text-sm">
-              <LoadingSpinner label={t("loading")} />
-            </div>
-          ) : totalResults === 0 ? (
-            <div className="py-12 text-center text-foreground-secondary text-sm">
-              {t("noResults")}
-            </div>
-          ) : (
-            <div role="listbox" aria-label="Search results" id="search-results-listbox">
-              {Array.from(results.entries()).map(([section, items], groupIdx) => {
-                const startIndex = flatResults.findIndex(
-                  (f) => f.section === section
-                );
-                return (
-                  <div key={section} className="mb-2">
-                    <div className="px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-foreground-secondary">
-                      {sectionLabel(section)}
-                    </div>
-                    {items.map((entry, itemIdx) => {
-                      const globalIdx = startIndex + itemIdx;
-                      const isActive = globalIdx === activeIndex;
-                      return (
-                        <button
-                          key={`${entry.section}-${entry.slug}`}
-                          id={`search-result-${globalIdx}`}
-                          role="option"
-                          aria-selected={isActive}
-                          className={`w-full text-left px-3 py-2.5 rounded-lg transition-colors cursor-pointer flex items-start gap-3 ${
-                            isActive
-                              ? "bg-accent text-white"
-                              : "hover:bg-background-secondary text-foreground"
-                          }`}
-                          onClick={() => navigateTo(entry)}
-                          onMouseEnter={() => setActiveIndex(globalIdx)}
-                        >
-                          {entry.image && (
-                            <img
-                              src={entry.image}
-                              alt=""
-                              className={`w-12 h-auto rounded aspect-[1200/630] object-cover shrink-0 ${isActive ? "opacity-90" : ""}`}
-                            />
-                          )}
-                          <div className="flex-1 min-w-0">
-                            <div className="font-medium text-sm truncate">
-                              {entry.title}
-                            </div>
-                            {entry.description && (
-                              <div
-                                className={`text-xs mt-0.5 line-clamp-1 ${
-                                  isActive
-                                    ? "text-white/70"
-                                    : "text-foreground-secondary"
-                                }`}
-                              >
-                                {entry.description}
-                              </div>
-                            )}
-                          </div>
-                          {entry.categories && entry.categories.length > 0 && (
-                            <span
-                              className={`text-xs px-1.5 py-0.5 rounded shrink-0 ${
-                                isActive
-                                  ? "bg-white/20 text-white/80"
-                                  : "bg-background-secondary text-foreground-secondary"
-                              }`}
-                            >
-                              {entry.categories[0]}
-                            </span>
-                          )}
-                        </button>
-                      );
-                    })}
-                    {/* Scroll anchor for active item */}
-                    {groupIdx === Array.from(results.entries()).length - 1 && (
-                      <div ref={resultsEndRef} />
-                    )}
-                  </div>
-                );
-              })}
-            </div>
-          )}
+           {loading ? (
+             <div className="flex items-center justify-center py-12 text-foreground-secondary text-sm">
+               <LoadingSpinner label={t("loading")} />
+             </div>
+           ) : totalResults === 0 ? (
+             <div className="py-12 text-center text-foreground-secondary text-sm">
+               {t("noResults")}
+             </div>
+           ) : (
+             <div role="listbox" aria-label="Search results" id="search-results-listbox">
+               {Array.from(displayResults.entries()).map(([section, items], groupIdx) => {
+                 // Calculate start index for this section based on displayResults (not allResults)
+                 const startIndex = flatResults.findIndex(
+                   (f) => f.section === section
+                 );
+                 return (
+                   <div key={section} className="mb-2">
+                     <div className="px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-foreground-secondary">
+                       {sectionLabel(section)}
+                     </div>
+                     {items.map((entry, itemIdx) => {
+                       const globalIdx = startIndex + itemIdx;
+                       const isActive = globalIdx === activeIndex;
+                       return (
+                         <button
+                           key={`${entry.section}-${entry.slug}`}
+                           id={`search-result-${globalIdx}`}
+                           role="option"
+                           aria-selected={isActive}
+                           className={`w-full text-left px-3 py-2.5 rounded-lg transition-colors cursor-pointer flex items-start gap-3 ${isActive ? "bg-accent text-white" : "hover:bg-background-secondary text-foreground"}`}
+                           onClick={() => navigateTo(entry)}
+                           onMouseEnter={() => setActiveIndex(globalIdx)}
+                         >
+                           {entry.image && (
+                             <img
+                               src={entry.image}
+                               alt=""
+                               className={`w-12 h-auto rounded aspect-[1200/630] object-cover shrink-0 ${isActive ? "opacity-90" : ""}`}
+                             />
+                           )}
+                           <div className="flex-1 min-w-0">
+                             <div className="font-medium text-sm truncate">
+                               {entry.title}
+                             </div>
+                             {entry.description && (
+                               <div
+                                 className={`text-xs mt-0.5 line-clamp-1 ${isActive ? "text-white/70" : "text-foreground-secondary"}`}
+                               >
+                                 {entry.description}
+                               </div>
+                             )}
+                           </div>
+                           {entry.categories && entry.categories.length > 0 && (
+                             <span
+                               className={`text-xs px-1.5 py-0.5 rounded shrink-0 ${isActive ? "bg-white/20 text-white/80" : "bg-background-secondary text-foreground-secondary"}`}
+                             >
+                               {entry.categories[0]}
+                             </span>
+                           )}
+                         </button>
+                       );
+                     })}
+                     {/* Scroll anchor for active item */}
+                     {groupIdx === Array.from(displayResults.entries()).length - 1 && (
+                       <div ref={resultsEndRef} />
+                     )}
+                   </div>
+                 );
+               })}
+               {totalResults > MAX_INITIAL_PER_SECTION * displayResults.size && !showAll && (
+                 <button
+                   onClick={() => setShowAll(true)}
+                   className="w-full text-center py-3 text-sm text-accent hover:text-accent/80 transition-colors font-medium"
+                 >
+                   Show all {totalResults} results
+                 </button>
+               )}
+             </div>
+           )}
         </div>
       </div>
     </div>

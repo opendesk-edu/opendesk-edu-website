@@ -1,9 +1,10 @@
 ﻿---
 title: "OpenProject"
-date: "2026-03-17"
-description: "Project management platform with agile boards, Gantt charts, time tracking, and team collaboration."
-categories: ["productivity", "base"]
-tags: ["openproject", "project-management", "agile", "gantt", "kanban"]
+date: "2026-03-05"
+description: "Project collaboration tool for agile and classic project management with Gantt charts and issue tracking."
+categories: ["project-management", "productivity"]
+tags: ["openproject", "pm", "project-management", "agile"]
+version: "15.4"
 ---
 
 # OpenProject

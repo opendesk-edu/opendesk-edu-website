@@ -1,9 +1,10 @@
 ---
 title: "ILIAS"
-date: "2026-04-15"
-description: "ILIAS is a powerful open-source learning management system widely used in higher education and corporate training environments."
-categories: ["education", "beta"]
-tags: ["ilias", "education", "lms"]
+date: "2026-02-25"
+description: "Modular learning management system for resource management, testing, and interactive learning experiences."
+categories: ["lms", "teaching", "e-learning", "base"]
+tags: ["ilias", "lms", "learning-management", "education"]
+version: "9"
 ---
 
 # ILIAS

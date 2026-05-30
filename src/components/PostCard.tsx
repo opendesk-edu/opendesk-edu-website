@@ -1,7 +1,7 @@
 import Image from "next/image";
 import {Link} from '@/i18n/navigation';
 import { formatDate } from "@/lib/format";
-import { Tag, CategoryBadge } from "@/components/Badges";
+import { Tag, CategoryBadge, StatusBadge } from "@/components/Badges";
 import type { Post } from "@/lib/content";
 
 type LinkProps = React.ComponentProps<typeof Link>;
@@ -35,18 +35,21 @@ export default function PostCard({ post, locale = 'en' }: PostCardProps) {
             {post.title}
           </h3>
         </Link>
-       <div className="flex items-center gap-2 mb-3">
-         <time dateTime={post.date} className="text-sm text-foreground-secondary">
-           {formatDate(post.date, locale)}
-         </time>
-         <span className="text-foreground-secondary mx-1.5">·</span>
-         <span className="text-sm text-foreground-secondary">{post.readingTime} min read</span>
-         {isComponent && isBeta && (
-           <span className="text-xs px-2 py-1 rounded-full bg-amber-500/15 text-amber-600 border border-amber-500/25">
-             Beta
-           </span>
-         )}
-       </div>
+        <div className="flex items-center gap-2 mb-3">
+          <time dateTime={post.date} className="text-sm text-foreground-secondary">
+            {formatDate(post.date, locale)}
+          </time>
+          <span className="text-foreground-secondary mx-1.5">·</span>
+          <span className="text-sm text-foreground-secondary">{post.readingTime} min read</span>
+          {post.version && post.section === 'components' && (
+            <span className="text-xs px-2 py-0.5 rounded bg-background-secondary text-foreground-secondary border border-border ml-auto">
+              v{post.version}
+            </span>
+          )}
+          {isComponent && (
+            <StatusBadge status={isBeta ? "Beta" : "Stable"} />
+          )}
+        </div>
       {post.description && (
         <p className="text-sm text-foreground-secondary mb-4 line-clamp-2">
           {post.description}

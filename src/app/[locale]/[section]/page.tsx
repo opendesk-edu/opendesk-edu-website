@@ -6,10 +6,11 @@ import {
   isValidSection,
   SECTION_INFO,
 } from "@/lib/content";
-import { SITE_NAME } from "@/lib/config";
+import { SITE_URL, SITE_NAME } from "@/lib/config";
 import { getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
 import PostList from "@/components/PostList";
+import ComponentGrid from "@/components/ComponentGrid";
 
 interface SectionPageProps {
   params: Promise<{ locale: string; section: string }>;
@@ -58,9 +59,20 @@ export default async function SectionPage({ params }: SectionPageProps) {
 
   const posts = await getPostsBySection(section, locale);
   const t = await getTranslations("section");
+  
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/${locale}` },
+      { "@type": "ListItem", position: 2, name: sectionInfo.title, item: `${SITE_URL}/${locale}/${section}` },
+    ],
+  };
 
   return (
-    <main className="max-w-6xl mx-auto px-6 py-16">
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
+      <main className="max-w-6xl mx-auto px-6 py-16">
       <div className="mb-12">
         <h1 className="text-4xl font-bold text-foreground mb-4">
           {sectionInfo.title}
@@ -72,13 +84,16 @@ export default async function SectionPage({ params }: SectionPageProps) {
         )}
       </div>
 
-      {posts.length === 0 ? (
+        {posts.length === 0 ? (
         <p className="text-foreground-secondary">
           {t("noPosts")}
         </p>
+      ) : section === "components" ? (
+        <ComponentGrid posts={posts} />
       ) : (
         <PostList posts={posts} section={section} locale={locale} />
       )}
     </main>
+    </>
   );
 }

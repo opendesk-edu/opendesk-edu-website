@@ -4,6 +4,7 @@ date: "2026-03-11"
 description: "LibreOffice-based online office suite for collaborative editing of documents, spreadsheets, and presentations."
 categories: ["productivity", "office", "base"]
 tags: ["collabora", "office", "libreoffice", "document-editing"]
+version: "24.04"
 ---
 
 # Collabora

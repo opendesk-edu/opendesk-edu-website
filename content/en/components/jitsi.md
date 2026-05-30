@@ -1,9 +1,10 @@
 ﻿---
 title: "Jitsi"
-date: "2026-03-13"
-description: "Lightweight, browser-based video conferencing for quick meetings without registration."
-categories: ["communication", "base"]
-tags: ["jitsi", "video-conferencing", "meetings", "webinar"]
+date: "2026-03-15"
+description: "Secure, scalable video conferencing platform with screen sharing and recording capabilities."
+categories: ["communication", "add-on"]
+tags: ["jitsi", "video-conferencing", "meetings", "collaboration"]
+version: "2.0"
 ---
 
 # Jitsi

@@ -1,9 +1,10 @@
 ﻿---
 title: "BookStack"
-date: "2026-04-02"
-description: "Structured wiki with book, chapter, and page hierarchy for course materials, SOPs, and documentation."
-categories: ["education", "productivity", "beta"]
-tags: ["bookstack", "wiki", "documentation", "knowledge-management"]
+date: "2026-03-13"
+description: "Simple, self-hosted wiki system designed for collaborative documentation."
+categories: ["productivity", "documentation"]
+tags: ["bookstack", "wiki", "knowledge-base", "documentation"]
+version: "24.12"
 ---
 
 # BookStack

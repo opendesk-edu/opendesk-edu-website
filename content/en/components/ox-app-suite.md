@@ -1,9 +1,10 @@
 ---
 title: "OX App Suite"
-date: "2026-03-09"
-description: "Full enterprise groupware suite with email, calendar, contacts, and document management."
+date: "2026-03-20"
+description: "Enterprise-ready groupware solution with email, calendar, and document collaboration tools."
 categories: ["communication", "productivity", "base"]
-tags: ["ox-app-suite", "groupware", "email", "calendar"]
+tags: ["open-xchange", "email", "calendar", "contacts", "collaboration"]
+version: "7.10"
 ---
 
 # OX App Suite

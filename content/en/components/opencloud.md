@@ -4,6 +4,7 @@ date: "2026-03-29"
 description: "Lightweight CS3-based cloud storage with per-course sharing capabilities as an alternative to Nextcloud."
 categories: ["storage", "education", "beta"]
 tags: ["opencloud", "files", "cloud-storage", "alternative"]
+version: "1.0"
 ---
 
 # OpenCloud

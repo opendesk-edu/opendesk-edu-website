@@ -1,9 +1,10 @@
 ﻿---
 title: "LimeSurvey"
-date: "2026-04-08"
-description: "Survey platform for course evaluations, academic research, and institutional feedback collection."
-categories: ["education", "productivity", "beta"]
-tags: ["limesurvey", "surveys", "evaluations", "research"]
+date: "2026-03-14"
+description: "Advanced survey and questionnaire creator for collecting and analyzing responses."
+categories: ["teaching", "research", "feedback"]
+tags: ["limesurvey", "survey", "questionnaire", "research"]
+version: "6"
 ---
 
 # LimeSurvey

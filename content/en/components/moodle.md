@@ -1,9 +1,10 @@
 ﻿---
 title: "Moodle"
-date: "2026-03-25"
-description: "Plugin-rich learning management system with assignments, workshops, gradebook, and Shibboleth authentication."
-categories: ["education", "beta"]
-tags: ["moodle", "lms", "learning-management", "e-learning"]
+date: "2026-02-22"
+description: "Leading open-source learning management system for creating and managing digital learning environments."
+categories: ["lms", "teaching", "e-learning", "base"]
+tags: ["moodle", "lms", "learning-management", "education"]
+version: "4.5"
 ---
 
 # Moodle

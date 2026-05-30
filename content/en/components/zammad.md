@@ -1,9 +1,10 @@
 ﻿---
 title: "Zammad"
-date: "2026-04-06"
-description: "Helpdesk and ticketing system with multi-channel support and SAML authentication for IT and student support."
-categories: ["education", "communication", "beta"]
-tags: ["zammad", "helpdesk", "ticketing", "support"]
+date: "2026-03-22"
+description: "Flexible ticket and helpdesk system for multi-channel support management."
+categories: ["productivity", "support"]
+tags: ["zammad", "support", "ticketing", "helpdesk"]
+version: "6.4"
 ---
 
 # Zammad

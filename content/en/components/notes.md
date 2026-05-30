@@ -1,9 +1,10 @@
 ---
-title: "Notes"
-date: "2026-03-03"
-description: "Lightweight note-taking application for quick text notes and documents."
-categories: ["productivity", "base"]
-tags: ["notes", "docs", "note-takers"]
+title: "Memorandums - Digital Notebook"
+date: "2025-12-10"
+description: "Lightweight digital notebook and simple integration connector module for note-taking."
+categories: ["productivity", "note-taking"]
+tags: ["notes", "memorandum", "write"]
+version: "1.0"
 ---
 
 # Notes

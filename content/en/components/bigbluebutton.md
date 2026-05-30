@@ -1,9 +1,10 @@
 ﻿---
 title: "BigBlueButton"
-date: "2026-03-27"
-description: "Virtual classroom platform with recording, whiteboard, breakout rooms, and polling for lecture-style teaching."
-categories: ["education", "communication", "beta"]
-tags: ["bigbluebutton", "lectures", "virtual-classroom", "video-conferencing", "alternative"]
+date: "2026-03-12"
+description: "Web conferencing and virtual classroom system for online lessons and seminars with interactive whiteboard."
+categories: ["communication", "teaching", "add-on"]
+tags: ["bigbluebutton", "web-conferencing", "virtual-classroom", "education"]
+version: "4.0"
 ---
 
 # BigBlueButton

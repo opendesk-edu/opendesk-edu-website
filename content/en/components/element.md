@@ -4,6 +4,7 @@ date: "2026-03-01"
 description: "Matrix-based chat with Nordeck education widgets for real-time messaging, rooms, and file sharing."
 categories: ["communication", "base"]
 tags: ["element", "matrix", "chat", "messaging"]
+version: "1.11"
 ---
 
 # Element

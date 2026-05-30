@@ -1,9 +1,10 @@
 ﻿---
 title: "XWiki"
-date: "2026-03-19"
-description: "Enterprise wiki platform for knowledge management, documentation, and collaborative content creation."
-categories: ["productivity", "base"]
-tags: ["xwiki", "wiki", "knowledge-management", "documentation"]
+date: "2026-03-03"
+description: "Enterprise wiki platform for scalable and collaborative documentation."
+categories: ["productivity", "documentation", "collaboration"]
+tags: ["xwiki", "wiki", "knowledge-base", "documentation"]
+version: "16.10"
 ---
 
 # XWiki

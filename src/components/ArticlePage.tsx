@@ -1,6 +1,6 @@
 import {Link} from '@/i18n/navigation';
 import { formatDate } from "@/lib/format";
-import { Tag, CategoryBadge } from "@/components/Badges";
+import { Tag, CategoryBadge, StatusBadge } from "@/components/Badges";
 import TableOfContents from "@/components/TableOfContents";
 import Image from "next/image";
 import ShareButtons from "@/components/ShareButtons";
@@ -115,21 +115,35 @@ export default function ArticlePage({ post, backHref, backLabel, locale = 'en' }
            <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
              {post.title}
            </h1>
-             <div className="flex items-center gap-1 text-sm text-foreground-secondary mb-4">
-               <time dateTime={post.date}>
-                 {formatDate(post.date, locale)}
-               </time>
-               <span aria-hidden="true">·</span>
-               <span>{post.readingTime} min read</span>
-               <span aria-hidden="true">·</span>
-               <span>By {SITE_NAME}</span>
-             </div>
+              <div className="flex items-center gap-1 text-sm text-foreground-secondary mb-4">
+                <time dateTime={post.date}>
+                  {formatDate(post.date, locale)}
+                </time>
+                <span aria-hidden="true">·</span>
+                <span>{post.readingTime} min read</span>
+                {post.version && (
+                  <>
+                    <span aria-hidden="true">·</span>
+                    <span className="text-xs px-2 py-0.5 rounded bg-background-secondary text-foreground-secondary border border-border">
+                      v{post.version}
+                    </span>
+                  </>
+                )}
+                <span aria-hidden="true">·</span>
+                <span>By {SITE_NAME}</span>
+              </div>
           {post.categories && post.categories.length > 0 && (
             <div className="flex flex-wrap gap-2 mb-2">
               {post.categories.map((category) => (
                 <CategoryBadge key={category}>{category}</CategoryBadge>
               ))}
             </div>
+          )}
+          {post.section === 'components' && (
+            <StatusBadge
+              status={post.categories?.includes('beta') ? 'Beta' : 'Stable'}
+              className="mt-2"
+            />
           )}
           {post.tags && post.tags.length > 0 && (
             <div className="flex flex-wrap gap-2">

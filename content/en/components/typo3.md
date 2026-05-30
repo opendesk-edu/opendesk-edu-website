@@ -1,9 +1,10 @@
 ﻿---
 title: "TYPO3"
-date: "2026-04-14"
-description: "Enterprise content management system for university websites, department pages, and research portals."
-categories: ["education", "beta"]
-tags: ["typo3", "cms", "content-management", "websites"]
+date: "2026-03-04"
+description: "Enterprise-grade content management system for creating and managing institutional websites and portals."
+categories: ["cms", "portal", "content"]
+tags: ["typo3", "cms", "content-management", "website"]
+version: "13"
 ---
 
 # TYPO3

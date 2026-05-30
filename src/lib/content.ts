@@ -18,6 +18,7 @@ export interface PostMeta {
   slug?: string;
   image?: string;
   draft?: boolean;
+  version?: string;
 }
 
 export interface Post {
@@ -31,6 +32,7 @@ export interface Post {
   slug: string;
   section: string;
   readingTime: number;
+  version?: string;
 }
 
 function buildPost(data: PostMeta, htmlContent: string, slug: string, section: string, rawContent: string): Post {
@@ -47,6 +49,7 @@ function buildPost(data: PostMeta, htmlContent: string, slug: string, section: s
     slug,
     section,
     readingTime,
+    version: data.version,
   };
 }
 

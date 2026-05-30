@@ -4,6 +4,7 @@ date: "2026-03-07"
 description: "Full-featured cloud storage and collaboration suite with file sync, sharing, and office integration."
 categories: ["storage", "productivity", "base"]
 tags: ["nextcloud", "files", "cloud-storage", "collaboration"]
+version: "31"
 ---
 
 # Nextcloud

@@ -1,9 +1,10 @@
 ﻿---
 title: "Planka"
-date: "2026-04-04"
-description: "Kanban board application with OIDC support for student projects and research planning."
-categories: ["education", "productivity", "beta"]
-tags: ["planka", "kanban", "project-management", "boards"]
+date: "2026-03-17"
+description: "Trello-inspired kanban boards for visual task and workflow management."
+categories: ["productivity", "project-management"]
+tags: ["planka", "kanban", "task-management", "productivity"]
+version: "1.24"
 ---
 
 # Planka

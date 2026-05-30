@@ -1,9 +1,10 @@
 ﻿---
 title: "LTB SSP"
-date: "2026-04-10"
-description: "LDAP password self-service that lets users reset their own passwords without helpdesk intervention."
-categories: ["education", "infrastructure", "beta"]
-tags: ["ltb-ssp", "password-reset", "ldap", "self-service"]
+date: "2026-03-16"
+description: "Self-service password reset solution for secure password recovery."
+categories: ["productivity", "security"]
+tags: ["ltb-ssp", "password", "security", "self-service"]
+version: "1.7"
 ---
 
 # LTB SSP

@@ -1,9 +1,10 @@
 ﻿---
 title: "CryptPad"
-date: "2026-03-15"
-description: "Privacy-first collaborative office suite with integrated diagrams.net for diagramming and whiteboard functionality."
-categories: ["productivity", "office", "base"]
-tags: ["cryptpad", "diagrams", "drawio", "whiteboard", "privacy"]
+date: "2026-03-10"
+description: "Zero-knowledge privacy-focused collaborative document and spreadsheet editor."
+categories: ["productivity", "document-editing", "privacy"]
+tags: ["cryptpad", "privacy", "editing", "collaboration"]
+version: "2025"
 ---
 
 # CryptPad

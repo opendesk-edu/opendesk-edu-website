@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Link } from "@/i18n/navigation";
 import { formatDate } from "@/lib/format";
-import { Tag, CategoryBadge } from "@/components/Badges";
+import { Tag, CategoryBadge, StatusBadge } from "@/components/Badges";
 import type { Post } from "@/lib/content";
 
 const ITEMS_PER_PAGE = 10;
@@ -62,10 +62,8 @@ export default function PostList({ posts, section, locale }: PostListProps) {
                     >
                       {formatDate(post.date, locale)}
                     </time>
-                    {isComponent && isBeta && (
-                      <span className="text-xs px-2 py-1 rounded-full bg-amber-100 text-amber-800 border border-amber-200">
-                        Beta
-                      </span>
+                    {isComponent && (
+                      <StatusBadge status={isBeta ? "Beta" : "Stable"} />
                     )}
                   </div>
                   {post.description && (

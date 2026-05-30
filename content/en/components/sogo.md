@@ -1,9 +1,10 @@
 ﻿---
 title: "SOGo"
-date: "2026-03-21"
-description: "Lightweight webmail and groupware as a simpler, faster alternative to OX App Suite."
-categories: ["communication", "education", "beta"]
-tags: ["sogo", "groupware", "email", "webmail", "alternative"]
+date: "2026-03-09"
+description: "Open-source groupware server with email, calendaring, address books, and ActiveSync support."
+categories: ["communication", "productivity", "base"]
+tags: ["sogo", "email", "calendar", "contacts"]
+version: "5.11"
 ---
 
 # SOGo

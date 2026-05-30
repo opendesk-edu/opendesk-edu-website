@@ -77,6 +77,14 @@ function JsonLdOrganization({ locale }: { locale: string }) {
       email: "info@opendesk-edu.org",
       contactType: "customer service",
     },
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${SITE_URL}/${locale}/api/search?q={search_term_string}`
+      },
+      "query-input": "required name=search_term_string",
+    },
   };
 
   return (
@@ -116,6 +124,7 @@ export default async function LocaleLayout({
         <meta name="theme-color" content="#341291" />
         <ThemeScript />
         <JsonLdOrganization locale={locale} />
+        <link rel="alternate" type="application/rss+xml" title={`openDesk Edu - ${locale.toUpperCase()}`} href={`/${locale}/rss`} />
       </head>
       <body>
         <ThemeProvider>

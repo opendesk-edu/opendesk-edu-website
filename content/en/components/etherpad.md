@@ -1,9 +1,10 @@
 ﻿---
 title: "Etherpad"
-date: "2026-03-31"
-description: "Real-time collaborative document editor for meeting notes, workshops, and live editing sessions."
-categories: ["education", "productivity", "beta"]
-tags: ["etherpad", "collaborative-editing", "real-time", "documents"]
+date: "2026-03-18"
+description: "Real-time collaborative web-based document editor with instant collaboration support."
+categories: ["productivity", "document-editing"]
+tags: ["etherpad", "collaboration", "editing", "real-time"]
+version: "1.9"
 ---
 
 # Etherpad

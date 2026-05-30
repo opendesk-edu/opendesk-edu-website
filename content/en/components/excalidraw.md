@@ -1,9 +1,10 @@
 ﻿---
 title: "Excalidraw"
-date: "2026-04-13"
-description: "Lightweight whiteboard for hand-drawn sketches, brainstorming, and visual collaboration."
-categories: ["education", "productivity", "beta"]
-tags: ["excalidraw", "whiteboard", "sketching", "brainstorming", "alternative"]
+date: "2026-03-18"
+description: "Virtual hand-drawn style diagramming tool for sketching diagrams, flowcharts, and wireframes."
+categories: ["productivity", "diagramming"]
+tags: ["excalidraw", "diagramming", "sketching", "visual-thinking"]
+version: "0.18"
 ---
 
 # Excalidraw

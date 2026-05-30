@@ -4,6 +4,7 @@ date: "2026-04-12"
 description: "Diagramming tool for architecture diagrams, flowcharts, UML, and other visual documentation with PDF and VSDX export."
 categories: ["education", "productivity", "beta"]
 tags: ["drawio", "diagrams", "flowcharts", "uml", "visual-documentation"]
+version: "26.0"
 ---
 
 # Draw.io

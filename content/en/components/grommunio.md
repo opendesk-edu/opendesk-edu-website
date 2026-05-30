@@ -1,9 +1,10 @@
 ﻿---
 title: "Grommunio"
-date: "2026-03-23"
-description: "Microsoft 365-compatible groupware with ActiveSync 16.1 for native mobile sync."
-categories: ["communication", "education", "beta"]
-tags: ["grommunio", "groupware", "email", "activesync", "alternative"]
+date: "2026-03-08"
+description: "Enterprise-ready email server with Outlook compatibility, calendar, contacts, and web-accessible groupware."
+categories: ["communication", "productivity", "base"]
+tags: ["grommunio", "email", "contacts", "calendar", "groupware"]
+version: "1.2"
 ---
 
 # Grommunio
