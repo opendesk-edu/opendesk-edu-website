@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { formatDate } from "@/lib/format";
 import { getPostsBySection, getAllPosts } from "@/lib/content";
@@ -58,9 +59,11 @@ export default async function RelatedPosts({
             className="rounded-lg border border-border bg-background hover:shadow-lg transition-shadow p-6 block group"
           >
             {post.image && (
-              <img
+              <Image
                 src={post.image}
                 alt=""
+                width={1200}
+                height={630}
                 className="w-full rounded-lg aspect-[1200/630] object-cover mb-4"
               />
             )}

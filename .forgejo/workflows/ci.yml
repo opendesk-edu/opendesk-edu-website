@@ -17,3 +17,11 @@ jobs:
       - run: npm run lint
       - run: npm run test
       - run: npm run build
+      - name: Bundle size
+        run: |
+          echo "### Bundle Size" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          du -sh .next/ >> $GITHUB_STEP_SUMMARY
+          du -sh .next/static/ >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          echo "Bundle size recorded."

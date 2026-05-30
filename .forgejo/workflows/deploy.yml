@@ -21,9 +21,12 @@ jobs:
           script: |
             cd ${{ secrets.DEPLOY_PATH }}
             git pull
+            export COMMIT_SHA=$(git rev-parse --short HEAD)
+            export IMAGE_TAG="opendesk-edu:${COMMIT_SHA}"
             docker compose build --no-cache
+            docker tag opendesk-edu:latest ${IMAGE_TAG} 2>/dev/null || true
             docker compose up -d
             echo "Waiting for app..."
             sleep 10
             curl -sf --retry 5 --retry-delay 5 http://localhost:3000/en > /dev/null && echo "Smoke test: PASS" || echo "Smoke test: FAIL"
-            echo "Deploy complete"
+            echo "Deploy complete (tag: ${COMMIT_SHA})"

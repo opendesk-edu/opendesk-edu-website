@@ -1,0 +1,17 @@
+name: Uptime Check
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check EN homepage
+        run: curl -sf --retry 3 --retry-delay 5 https://opendesk-edu.org/en > /dev/null && echo "EN: OK" || echo "EN: FAIL"
+      - name: Check DE homepage
+        run: curl -sf --retry 3 --retry-delay 5 https://opendesk-edu.org/de > /dev/null && echo "DE: OK" || echo "DE: FAIL"
+      - name: Check blog
+        run: curl -sf --retry 3 --retry-delay 5 https://opendesk-edu.org/en/blog > /dev/null && echo "Blog: OK" || echo "Blog: FAIL"

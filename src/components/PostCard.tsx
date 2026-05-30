@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {Link} from '@/i18n/navigation';
 import { formatDate } from "@/lib/format";
 import { Tag, CategoryBadge } from "@/components/Badges";
@@ -19,9 +20,11 @@ export default function PostCard({ post, locale = 'en' }: PostCardProps) {
     <article className="rounded-lg border border-border bg-background hover:shadow-lg transition-shadow">
       {post.image && (
         <Link href={`/${post.section}/${post.slug}` as Href} className="block">
-          <img
+          <Image
             src={post.image}
             alt=""
+            width={1200}
+            height={630}
             className="w-full rounded-t-lg aspect-[1200/630] object-cover"
           />
         </Link>

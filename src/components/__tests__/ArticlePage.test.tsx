@@ -19,6 +19,18 @@ vi.mock("@/components/TableOfContents", () => ({
   default: () => <nav data-testid="toc">TOC</nav>,
 }));
 
+vi.mock("@/components/ShareButtons", () => ({
+  default: () => (
+    <div data-testid="share-buttons">
+      <h3 className="text-sm font-semibold text-foreground mb-3">Share this article</h3>
+      <button aria-label="Copy Link">Copy Link</button>
+      <a aria-label="Share on X" href="#">X</a>
+      <a aria-label="Share on LinkedIn" href="#">LinkedIn</a>
+      <a aria-label="Share on Matrix" href="#">Matrix</a>
+    </div>
+  ),
+}));
+
 const mockPost: Post = {
   title: "Getting Started with openDesk",
   date: "2024-03-15",
@@ -40,6 +52,16 @@ describe("ArticlePage", () => {
   it("renders the formatted date", () => {
     render(<ArticlePage post={mockPost} backHref="/blog" backLabel="Blog" />);
     expect(screen.getByText("March 15, 2024")).toBeInTheDocument();
+  });
+  
+  it("renders the author byline", () => {
+    render(<ArticlePage post={mockPost} backHref="/blog" backLabel="Blog" />);
+    expect(screen.getByText(/By openDesk Edu/)).toBeInTheDocument();
+  });
+
+  it("renders reading time", () => {
+    render(<ArticlePage post={mockPost} backHref="/blog" backLabel="Blog" />);
+    expect(screen.getByText(/5 min read/)).toBeInTheDocument();
   });
 
   it("renders category badges", () => {
@@ -76,5 +98,18 @@ describe("ArticlePage", () => {
   it("renders the HTML content", () => {
     render(<ArticlePage post={mockPost} backHref="/blog" backLabel="Blog" />);
     expect(screen.getByText("Content here.")).toBeInTheDocument();
+  });
+  
+  it("renders the share buttons section", () => {
+    render(<ArticlePage post={mockPost} backHref="/blog" backLabel="Blog" />);
+    expect(screen.getByText("Share this article")).toBeInTheDocument();
+  });
+  
+  it("renders share buttons for each platform", () => {
+    render(<ArticlePage post={mockPost} backHref="/blog" backLabel="Blog" />);
+    expect(screen.getByLabelText("Copy Link")).toBeInTheDocument();
+    expect(screen.getByLabelText("Share on X")).toBeInTheDocument();
+    expect(screen.getByLabelText("Share on LinkedIn")).toBeInTheDocument();
+    expect(screen.getByLabelText("Share on Matrix")).toBeInTheDocument();
   });
 });

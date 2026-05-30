@@ -2,6 +2,8 @@ import {Link} from '@/i18n/navigation';
 import { formatDate } from "@/lib/format";
 import { Tag, CategoryBadge } from "@/components/Badges";
 import TableOfContents from "@/components/TableOfContents";
+import Image from "next/image";
+import ShareButtons from "@/components/ShareButtons";
 import type { Post } from "@/lib/content";
 import { SITE_URL, SITE_NAME } from "@/lib/config";
 
@@ -99,9 +101,11 @@ export default function ArticlePage({ post, backHref, backLabel, locale = 'en' }
 
         {post.image && (
           <div className="mb-10 -mx-6 md:-mx-0">
-            <img
+            <Image
               src={post.image}
               alt=""
+              width={1200}
+              height={630}
               className="w-full rounded-none md:rounded-xl aspect-[1200/630] object-cover"
             />
           </div>
@@ -111,13 +115,15 @@ export default function ArticlePage({ post, backHref, backLabel, locale = 'en' }
            <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
              {post.title}
            </h1>
-            <div className="flex items-center gap-1 text-sm text-foreground-secondary mb-4">
-              <time dateTime={post.date}>
-                {formatDate(post.date, locale)}
-              </time>
-              <span aria-hidden="true">·</span>
-              <span>{post.readingTime} min read</span>
-            </div>
+             <div className="flex items-center gap-1 text-sm text-foreground-secondary mb-4">
+               <time dateTime={post.date}>
+                 {formatDate(post.date, locale)}
+               </time>
+               <span aria-hidden="true">·</span>
+               <span>{post.readingTime} min read</span>
+               <span aria-hidden="true">·</span>
+               <span>By {SITE_NAME}</span>
+             </div>
           {post.categories && post.categories.length > 0 && (
             <div className="flex flex-wrap gap-2 mb-2">
               {post.categories.map((category) => (
@@ -145,6 +151,7 @@ export default function ArticlePage({ post, backHref, backLabel, locale = 'en' }
             </div>
           </aside>
         </div>
+        <ShareButtons title={post.title} url={`${SITE_URL}/${locale}/${post.section}/${post.slug}`} />
       </article>
     </>
   );
