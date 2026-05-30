@@ -22,7 +22,8 @@
     "privacy": "隐私政策",
     "contact": "联系方式",
     "copyright": "© {year} openDesk Edu. 基于 Apache-2.0 许可。",
-    "sourceCode": "源代码"
+    "sourceCode": "源代码",
+    "rss": "RSS"
   },
   "cookieConsent": {
     "message": "我们使用注重隐私的分析工具来了解访客如何使用本站。默认不设置任何 Cookie。",

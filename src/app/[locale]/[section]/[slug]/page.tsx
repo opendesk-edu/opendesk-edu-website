@@ -48,6 +48,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       images: post.image
         ? [{ url: `${SITE_URL}${post.image}`, width: 1200, height: 630 }]
         : undefined,
+      publishedTime: post.date,
+      authors: [SITE_NAME],
+      section: sectionInfo?.title,
+      tags: post.tags ?? [],
     },
     alternates: {
       canonical: `${SITE_URL}/${locale}/${section}/${slug}`,

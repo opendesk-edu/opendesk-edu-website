@@ -45,5 +45,5 @@ next-env.d.ts
 /playwright/.cache/
 
 # sisyphus
-.sisyphus/evidence/
+.sisyphus/
 jest-report.json

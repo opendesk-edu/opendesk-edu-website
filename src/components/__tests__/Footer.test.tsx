@@ -17,13 +17,15 @@ vi.mock("next/image", () => ({
   ),
 }));
 
-// Mock next-intl useTranslations
+// Mock next-intl useTranslations and useLocale
 vi.mock("next-intl", () => ({
   useTranslations: () => (key: string, params?: Record<string, string | number>) => {
     const translations: Record<string, string> = {
       imprint: "Imprint",
       privacy: "Privacy",
       contact: "Contact",
+      sourceCode: "Source Code",
+      rss: "RSS",
       copyright: "© {year} openDesk Edu. Licensed under Apache-2.0.",
     };
     let text = translations[key] ?? key;
@@ -34,6 +36,7 @@ vi.mock("next-intl", () => ({
     }
     return text;
   },
+  useLocale: () => "en",
 }));
 
 describe("Footer", () => {

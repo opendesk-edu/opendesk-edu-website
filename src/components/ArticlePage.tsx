@@ -108,12 +108,16 @@ export default function ArticlePage({ post, backHref, backLabel, locale = 'en' }
         )}
 
         <header className="mb-10">
-          <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
-            {post.title}
-          </h1>
-          <time dateTime={post.date} className="text-sm text-foreground-secondary block mb-4">
-            {formatDate(post.date, locale)}
-          </time>
+           <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
+             {post.title}
+           </h1>
+            <div className="flex items-center gap-1 text-sm text-foreground-secondary mb-4">
+              <time dateTime={post.date}>
+                {formatDate(post.date, locale)}
+              </time>
+              <span aria-hidden="true">·</span>
+              <span>{post.readingTime} min read</span>
+            </div>
           {post.categories && post.categories.length > 0 && (
             <div className="flex flex-wrap gap-2 mb-2">
               {post.categories.map((category) => (

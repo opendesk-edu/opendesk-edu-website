@@ -28,6 +28,7 @@ const mockPost: Post = {
   htmlContent: '<h2 id="overview">Overview</h2><p>Content here.</p>',
   slug: "getting-started",
   section: "blog",
+  readingTime: 5,
 };
 
 describe("ArticlePage", () => {
@@ -59,12 +60,17 @@ describe("ArticlePage", () => {
 
   it("renders JSON-LD BlogPosting structured data", () => {
     render(<ArticlePage post={mockPost} backHref="/blog" backLabel="Blog" />);
-    const script = document.querySelector('script[type="application/ld+json"]');
-    expect(script).toBeInTheDocument();
-    const data = JSON.parse(script!.textContent!);
-    expect(data["@type"]).toBe("BlogPosting");
-    expect(data.headline).toBe("Getting Started with openDesk");
-    expect(data.url).toBe("https://opendesk-edu.org/en/blog/getting-started");
+    const scripts = document.querySelectorAll('script[type="application/ld+json"]');
+    expect(scripts.length).toBe(2);
+    const breadcrumb = JSON.parse(scripts[0].textContent!);
+    expect(breadcrumb["@type"]).toBe("BreadcrumbList");
+    expect(breadcrumb.itemListElement).toHaveLength(3);
+    expect(breadcrumb.itemListElement[0].name).toBe("Home");
+    expect(breadcrumb.itemListElement[2].name).toBe("Getting Started with openDesk");
+    const blogPosting = JSON.parse(scripts[1].textContent!);
+    expect(blogPosting["@type"]).toBe("BlogPosting");
+    expect(blogPosting.headline).toBe("Getting Started with openDesk");
+    expect(blogPosting.url).toBe("https://opendesk-edu.org/en/blog/getting-started");
   });
 
   it("renders the HTML content", () => {

@@ -22,7 +22,8 @@
     "privacy": "Datenschutz",
     "contact": "Kontakt",
     "copyright": "© {year} openDesk Edu. Lizenziert unter Apache-2.0.",
-    "sourceCode": "Quellcode"
+    "sourceCode": "Quellcode",
+    "rss": "RSS"
   },
   "cookieConsent": {
     "message": "Wir verwenden datenschutzfreundliche Analysen, um zu verstehen, wie Besucher diese Website nutzen. Standardmäßig werden keine Cookies gesetzt.",

@@ -30,9 +30,12 @@ export interface Post {
   htmlContent: string;
   slug: string;
   section: string;
+  readingTime: number;
 }
 
-function buildPost(data: PostMeta, htmlContent: string, slug: string, section: string): Post {
+function buildPost(data: PostMeta, htmlContent: string, slug: string, section: string, rawContent: string): Post {
+  const wordCount = rawContent.split(/\s+/).filter(Boolean).length;
+  const readingTime = Math.max(1, Math.round(wordCount / 200));
   return {
     title: data.title,
     date: data.date,
@@ -43,6 +46,7 @@ function buildPost(data: PostMeta, htmlContent: string, slug: string, section: s
     htmlContent,
     slug,
     section,
+    readingTime,
   };
 }
 
@@ -110,11 +114,11 @@ export async function getPostBySlug(
   const candidatePath = path.join(sectionDir, `${slug}.md`);
   if (fs.existsSync(candidatePath)) {
     try {
-      const { data, content } = await readFile(candidatePath);
-      if (getSlugFromFilename(`${slug}.md`, data) === slug) {
-        const htmlContent = await markdownToHtml(content);
-        return buildPost(data, htmlContent, slug, section);
-      }
+       const { data, content } = await readFile(candidatePath);
+       if (getSlugFromFilename(`${slug}.md`, data) === slug) {
+         const htmlContent = await markdownToHtml(content);
+         return buildPost(data, htmlContent, slug, section, content);
+       }
     } catch {
       // Fall through to full scan
     }
@@ -126,10 +130,10 @@ export async function getPostBySlug(
     if (!isValidContentFile(file)) continue;
     const { data, content } = await readFile(path.join(sectionDir, file));
     const fileSlug = getSlugFromFilename(file, data);
-    if (fileSlug === slug) {
-      const htmlContent = await markdownToHtml(content);
-      return buildPost(data, htmlContent, fileSlug, section);
-    }
+     if (fileSlug === slug) {
+       const htmlContent = await markdownToHtml(content);
+       return buildPost(data, htmlContent, fileSlug, section, content);
+     }
   }
   return null;
 }
@@ -147,7 +151,7 @@ export async function getPostsBySection(section: string, locale: string = 'en'):
         if (data.draft === true) return null;
         const slug = getSlugFromFilename(file, data);
         const htmlContent = await markdownToHtml(content);
-        return buildPost(data, htmlContent, slug, section);
+        return buildPost(data, htmlContent, slug, section, content);
       } catch (err) {
         console.error(`Failed to process ${path.join(sectionDir, file)}:`, err);
         return null;

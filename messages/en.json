@@ -22,7 +22,8 @@
     "privacy": "Privacy",
     "contact": "Contact",
     "copyright": "© {year} openDesk Edu. Licensed under Apache-2.0.",
-    "sourceCode": "Source Code"
+    "sourceCode": "Source Code",
+    "rss": "RSS"
   },
   "cookieConsent": {
     "message": "We use privacy-friendly analytics to understand how visitors use this site. No cookies are set by default.",

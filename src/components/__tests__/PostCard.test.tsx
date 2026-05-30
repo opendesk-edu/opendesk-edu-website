@@ -19,6 +19,7 @@ const mockPost: Post = {
   htmlContent: "<p>Content here</p>",
   slug: "getting-started",
   section: "blog",
+  readingTime: 5,
 };
 
 describe("PostCard", () => {
