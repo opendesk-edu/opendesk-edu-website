@@ -261,6 +261,9 @@ export default function SearchDialog({ open, onClose }: SearchDialogProps) {
         <div
           className="overflow-y-auto px-2 py-2"
           style={{ maxHeight: "calc(min(70vh, 560px) - 65px)" }}
+          role="region"
+          aria-live="polite"
+          aria-label="Search results"
         >
            {loading ? (
              <div className="flex items-center justify-center py-12 text-foreground-secondary text-sm">

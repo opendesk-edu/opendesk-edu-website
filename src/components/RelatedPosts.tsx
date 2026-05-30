@@ -61,7 +61,7 @@ export default async function RelatedPosts({
             {post.image && (
               <Image
                 src={post.image}
-                alt=""
+                alt={post.title}
                 width={1200}
                 height={630}
                 className="w-full rounded-lg aspect-[1200/630] object-cover mb-4"

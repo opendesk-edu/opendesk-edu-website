@@ -42,7 +42,7 @@ export default function PostList({ posts, section, locale }: PostListProps) {
                 >
                   <img
                     src={post.image}
-                    alt=""
+                    alt={post.title}
                     className="w-full rounded-t-lg aspect-[1200/630] object-cover"
                   />
                 </Link>

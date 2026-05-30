@@ -103,7 +103,7 @@ export default function ArticlePage({ post, backHref, backLabel, locale = 'en' }
           <div className="mb-10 -mx-6 md:-mx-0">
             <Image
               src={post.image}
-              alt=""
+              alt={post.title}
               width={1200}
               height={630}
               className="w-full rounded-none md:rounded-xl aspect-[1200/630] object-cover"

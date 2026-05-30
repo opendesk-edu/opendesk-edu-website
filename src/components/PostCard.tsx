@@ -22,7 +22,7 @@ export default function PostCard({ post, locale = 'en' }: PostCardProps) {
         <Link href={`/${post.section}/${post.slug}` as Href} className="block">
           <Image
             src={post.image}
-            alt=""
+            alt={post.title}
             width={1200}
             height={630}
             className="w-full rounded-t-lg aspect-[1200/630] object-cover"
