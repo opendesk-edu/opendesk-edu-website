@@ -21,7 +21,7 @@ export default async function ImprintPage() {
         <p>
           <strong>{t('provider')}</strong>
           <br />
-          Dr. GraphWiz AI &amp; XR Consulting and Development Services
+          Tobias Weiß
           <br />
           Grundstraße 69
           <br />
