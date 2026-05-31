@@ -12,6 +12,8 @@ import ArticlePage from "@/components/ArticlePage";
 import RelatedPosts from "@/components/RelatedPosts";
 import { routing } from "@/i18n/routing";
 
+export const revalidate = 3600;
+
 interface PageProps {
   params: Promise<{ locale: string; section: string; slug: string }>;
 }

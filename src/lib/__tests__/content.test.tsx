@@ -30,7 +30,7 @@ vi.mock("remark", () => ({
 }));
 
 // Import after mocks
-import { getPostBySlug, getPostsBySection, getAllPosts, isValidSection, getSectionBySlug, getStaticPathsForSection } from "@/lib/content";
+import { getPostBySlug, getPostsBySection, getAllPosts, isValidSection, getSectionBySlug, getStaticPathsForSection, getPostsByTag, getAllTags, getStaticPathsForTags } from "@/lib/content";
 
 const mockExistsSync = vi.mocked(fs.existsSync);
 const mockReaddirSync = vi.mocked(fs.readdirSync);
@@ -56,13 +56,37 @@ const sampleData = {
 beforeEach(() => {
   vi.clearAllMocks();
   mockExistsSync.mockReturnValue(true);
-  mockReaddirSync.mockReturnValue(["test-post.md"] as never);
-  mockReadFile.mockResolvedValue(sampleFrontmatter as never);
-  mockMatter.mockReturnValue({
-    data: sampleData,
-    content: "# Hello World\n",
-    excerpt: "",
-  } as never);
+  mockReaddirSync.mockImplementation(((source: string) => {
+    if (source.includes("blog")) return ["test-post.md", "tagged-post.md"];
+    return ["test-post.md"];
+  }) as never);
+  mockReadFile.mockImplementation(((path: string) => {
+    if (typeof path === "string" && path.includes("tagged-post.md")) {
+      return `---
+title: Tagged Post
+date: 2024-06-01
+description: A post with specific tags
+tags: [security, compliance]
+---
+# Tagged Content
+`;
+    }
+    return sampleFrontmatter;
+  }) as never);
+  mockMatter.mockImplementation(((raw: string) => {
+    if (raw.includes("Tagged Post") || raw.includes("Tagged Content")) {
+      return {
+        data: { title: "Tagged Post", date: "2024-06-01", description: "A post with specific tags", tags: ["security", "compliance"] },
+        content: "# Tagged Content\n",
+        excerpt: "",
+      } as never;
+    }
+    return {
+      data: sampleData,
+      content: "# Hello World\n",
+      excerpt: "",
+    } as never;
+  }) as never);
 });
 
 describe("content.ts", () => {
@@ -164,6 +188,50 @@ describe("content.ts", () => {
     it("returns slug array for a section", async () => {
       const paths = await getStaticPathsForSection("components");
       expect(paths).toEqual(["test-post"]);
+    });
+  });
+
+  describe("getAllTags", () => {
+    it("returns sorted unique tags from blog posts", async () => {
+      const tags = await getAllTags();
+      expect(tags).toContain("test");
+      expect(tags).toContain("edu");
+      expect(tags).toContain("security");
+      expect(tags).toContain("compliance");
+      expect(tags.length).toBeGreaterThanOrEqual(4);
+    });
+
+    it("returns empty array when blog section has no posts", async () => {
+      mockExistsSync.mockReturnValue(false);
+      const tags = await getAllTags();
+      expect(tags).toEqual([]);
+    });
+  });
+
+  describe("getPostsByTag", () => {
+    it("returns only posts matching the given tag", async () => {
+      const posts = await getPostsByTag("security");
+      expect(posts).toHaveLength(1);
+      expect(posts[0].title).toBe("Tagged Post");
+    });
+
+    it("returns empty array when no posts match", async () => {
+      const posts = await getPostsByTag("nonexistent-tag");
+      expect(posts).toEqual([]);
+    });
+
+    it("returns empty array when blog section does not exist", async () => {
+      mockExistsSync.mockReturnValue(false);
+      const posts = await getPostsByTag("security");
+      expect(posts).toEqual([]);
+    });
+  });
+
+  describe("getStaticPathsForTags", () => {
+    it("returns tag strings for a locale", async () => {
+      const tags = await getStaticPathsForTags();
+      expect(tags.length).toBeGreaterThan(0);
+      expect(tags.every((t: string) => typeof t === "string")).toBe(true);
     });
   });
 });

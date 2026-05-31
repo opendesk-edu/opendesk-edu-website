@@ -205,7 +205,25 @@ export function isValidSection(slug: string): boolean {
   return SECTION_SLUGS.has(slug);
 }
 
+export async function getPostsByTag(tag: string, locale: string = 'en'): Promise<Post[]> {
+  const posts = await getPostsBySection('blog', locale);
+  return posts.filter((p) => p.tags?.includes(tag));
+}
+
+export async function getAllTags(locale: string = 'en'): Promise<string[]> {
+  const posts = await getPostsBySection('blog', locale);
+  const tagSet = new Set<string>();
+  for (const post of posts) {
+    post.tags?.forEach((t) => tagSet.add(t));
+  }
+  return [...tagSet].sort();
+}
+
 export async function getStaticPathsForSection(section: string, locale: string = 'en'): Promise<string[]> {
   const posts = await getPostsBySection(section, locale);
   return posts.map((p) => p.slug);
+}
+
+export async function getStaticPathsForTags(locale: string = 'en'): Promise<string[]> {
+  return getAllTags(locale);
 }

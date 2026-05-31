@@ -28,6 +28,7 @@ export const routing = defineRouting({
     '/architecture': '/architecture',
     '/get-started': '/get-started',
     '/blog': '/blog',
+    '/blog/tag/[tag]': '/blog/tag/[tag]',
     '/[...slug]': '/[...slug]',
   }
 });

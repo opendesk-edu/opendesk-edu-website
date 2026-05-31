@@ -12,6 +12,8 @@ import type { Metadata } from "next";
 import PostList from "@/components/PostList";
 import ComponentGrid from "@/components/ComponentGrid";
 
+export const revalidate = 3600;
+
 interface SectionPageProps {
   params: Promise<{ locale: string; section: string }>;
 }
