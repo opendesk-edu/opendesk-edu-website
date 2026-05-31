@@ -2,8 +2,8 @@
 title: "Excalidraw"
 date: "2026-03-18"
 description: "Virtual hand-drawn style diagramming tool for sketching diagrams, flowcharts, and wireframes."
-categories: ["productivity", "diagramming"]
-tags: ["excalidraw", "diagramming", "sketching", "visual-thinking"]
+categories: ["productivity", "diagramming", "scientific-computing"]
+tags: ["excalidraw", "diagramming", "sketching", "visual-thinking", "scientific-computing"]
 version: "0.18"
 ---
 

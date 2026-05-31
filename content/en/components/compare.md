@@ -11,9 +11,24 @@ tags:
 
 # Component Comparison Matrix
 
-openDesk Edu combines the **10 base services** from openDesk Community Edition with **15 education-specific Beta services**, delivering a comprehensive digital workplace tailored for schools, universities, and research institutions. All 25 services integrate through **Keycloak SSO** (SAML 2.0 / OIDC) and are accessible from the unified Nubus portal.
+openDesk Edu combines **10 base services** from openDesk Community Edition with **15 education-specific Beta services** and **11 scientific computing tools** from the Collab Services suite, delivering a comprehensive digital workplace tailored for schools, universities, and research institutions. All 36 services integrate through **Keycloak SSO** (SAML 2.0 / OIDC) and are accessible from the unified Nubus portal.
 
-Services within the same category may serve as alternatives to each other — for example, you can choose between Jitsi and BigBlueButton for video conferencing, or between OX App Suite, SOGo, and Grommunio for groupware. **Beta** services are fully functional but still under active development; they may change in future releases.
+Services within the same category may serve as alternatives to each other — for example, you can choose between Jitsi and BigBlueButton for video conferencing, or between OX App Suite, SOGo, and Grommunio for groupware. **Beta** services are fully functional but still under active development; they may change in future releases. **Planned** services are on the roadmap and not yet available in production.
+
+## Scientific Computing & Research
+
+| Service | Type | Status | License | Key Features |
+|---|---|---|---|---|
+| JupyterHub | Interactive Notebooks | Stable | BSD-3-Clause | Multi-user notebooks (Python, R, Julia, SageMath, Octave), native OIDC |
+| RStudio Server | R IDE | Beta | AGPL-3.0 | Shiny apps, workspace management, OpenCloud WebDAV sync |
+| Overleaf CE | LaTeX Editor | Stable | AGPL-3.0 | Real-time collaborative LaTeX, version history, template gallery |
+| code-server | Browser IDE | Stable | MIT | Full VS Code in the browser, extension marketplace, built-in terminal |
+| Slidev | Presentations | Beta | MIT | Markdown-to-slides, code highlighting, KaTeX math, Mermaid diagrams |
+| Open WebUI | LLM Chat Interface | Beta | MIT | ChatGPT-like UI, model switching, native OIDC, document upload |
+| Ollama | LLM Backend | Beta | MIT | Local open-source LLMs (llama3.2, Mistral, Gemma), REST API |
+| ttyd | Browser Terminal | Stable | MIT | Full Linux terminal in browser, clipboard support, session persistence |
+| KasmVNC | Remote Desktop | Beta | GPL-2.0 | Full Linux desktop in browser, GPU acceleration, audio support |
+| Dask Gateway | Distributed Computing | Planned | BSD-3-Clause | On-demand parallel clusters, Python-native, job queue |
 
 ## Communication & Collaboration
 

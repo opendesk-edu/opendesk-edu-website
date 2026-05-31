@@ -184,7 +184,7 @@ export interface SectionInfo {
 }
 
 const SECTION_METADATA: Record<string, Omit<SectionInfo, 'slug'>> = {
-  components: { name: "Components", title: "Components", description: "The 15 integrated openDesk CE services — from learning management (Moodle, ILIAS) to collaboration (BigBlueButton, Etherpad) and productivity (Nextcloud, Grommunio)." },
+  components: { name: "Components", title: "Components", description: "36 integrated services — from learning management (Moodle, ILIAS) and collaboration (BigBlueButton, Etherpad) to scientific computing (JupyterHub, Overleaf, RStudio) and productivity (Nextcloud, Grommunio)." },
   docs: { name: "Docs", title: "Docs", description: "System architecture, deployment guides, SAML federation, and infrastructure patterns for educational digital transformation." },
   blog: { name: "Blog", title: "Blog", description: "News, announcements, community stories, and insights on open-source digital infrastructure in higher education." },
 };
