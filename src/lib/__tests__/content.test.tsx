@@ -93,8 +93,7 @@ describe("content.ts", () => {
   describe("isValidSection", () => {
     it("returns true for valid sections", () => {
       expect(isValidSection("components")).toBe(true);
-      expect(isValidSection("architecture")).toBe(true);
-      expect(isValidSection("get-started")).toBe(true);
+      expect(isValidSection("docs")).toBe(true);
       expect(isValidSection("blog")).toBe(true);
     });
 
@@ -179,8 +178,8 @@ describe("content.ts", () => {
   describe("getAllPosts", () => {
     it("returns posts from all sections", async () => {
       const posts = await getAllPosts();
-      // 4 sections, each with 1 post = 4 posts
-      expect(posts.length).toBeGreaterThanOrEqual(4);
+      // 3 sections, each with 1 post = 3 posts
+      expect(posts.length).toBeGreaterThanOrEqual(3);
     });
   });
 

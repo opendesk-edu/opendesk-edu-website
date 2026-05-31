@@ -39,8 +39,7 @@ vi.mock("next-intl", () => ({
     const translations: Record<string, string> = {
       home: "Home",
       components: "Components",
-      architecture: "Architecture",
-      getStarted: "Get Started",
+      docs: "Docs",
       blog: "Blog",
       "themeToggle.label": "Toggle theme",
       "mobileMenu.label": "Toggle menu",
@@ -65,12 +64,11 @@ describe("Header", () => {
     expect(screen.getByText("openDesk Edu")).toBeInTheDocument();
   });
 
-  it("renders all 5 nav items (Home + 4 sections)", () => {
+  it("renders all 4 nav items (Home + 3 sections)", () => {
     renderHeader();
     expect(screen.getByText("Home")).toBeInTheDocument();
     expect(screen.getByText("Components")).toBeInTheDocument();
-    expect(screen.getByText("Architecture")).toBeInTheDocument();
-    expect(screen.getByText("Get Started")).toBeInTheDocument();
+    expect(screen.getByText("Docs")).toBeInTheDocument();
     expect(screen.getByText("Blog")).toBeInTheDocument();
   });
 

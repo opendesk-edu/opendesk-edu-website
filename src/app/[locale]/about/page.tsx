@@ -35,8 +35,7 @@ export default async function AboutPage() {
 
   const PROJECTS = [
     { title: tHeader('components'), description: t('projectComponents'), href: "/components" as const },
-    { title: tHeader('architecture'), description: t('projectArchitecture'), href: "/architecture" as const },
-    { title: tHeader('getStarted'), description: t('projectGetStarted'), href: "/get-started" as const },
+    { title: tHeader('docs'), description: t('projectDocs'), href: "/docs" as const },
     { title: tHeader('blog'), description: t('projectBlog'), href: "/blog" as const },
   ];
 

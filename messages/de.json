@@ -2,8 +2,6 @@
   "header": {
     "home": "Startseite",
     "components": "Komponenten",
-    "architecture": "Architektur",
-    "getStarted": "Erste Schritte",
     "blog": "Blog",
     "about": "Über uns",
     "languageSwitcher": {
@@ -15,7 +13,8 @@
     "mobileMenu": {
       "label": "Menü umschalten"
     },
-    "searchLabel": "Suche"
+    "searchLabel": "Suche",
+    "docs": "Architektur"
   },
   "footer": {
     "imprint": "Impressum",
@@ -63,9 +62,8 @@
       "description": "SAML-basierte Single-Sign-On-Integration mit bestehenden Hochschul-Identitätsanbietern und Forschungsföderationen."
     },
     "projectComponents": "Die 15 integrierten Dienste",
-    "projectArchitecture": "Systemdesign und Muster",
-    "projectGetStarted": "Bereitstellungsleitfäden",
-    "projectBlog": "Neuigkeiten und Updates"
+    "projectBlog": "Neuigkeiten und Updates",
+    "projectDocs": "Systemdesign und Muster"
   },
   "hero": {
     "subtitle": "Digitale Bildungsinfrastruktur",
@@ -121,9 +119,8 @@
     "shortcutHint": "Drücken Sie ⌘K zum Suchen",
     "groupLabels": {
       "components": "Komponenten",
-      "architecture": "Architektur",
-      "getStarted": "Erste Schritte",
-      "blog": "Blog"
+      "blog": "Blog",
+      "docs": "Architektur"
     }
   },
   "privacy": {

@@ -19,7 +19,7 @@ export default function Header() {
 
   const NAV_ITEMS: { href: string & Href; label: string }[] = [
     { href: "/" as const, label: t('home') },
-    ...SECTIONS.map((s) => ({ href: `/${s}` as string & Href, label: t(s === 'get-started' ? 'getStarted' : s) })),
+    ...SECTIONS.map((s) => ({ href: `/${s}` as string & Href, label: t(s) })),
   ];
 
   return (

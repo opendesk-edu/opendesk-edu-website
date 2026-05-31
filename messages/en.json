@@ -2,8 +2,6 @@
   "header": {
     "home": "Home",
     "components": "Components",
-    "architecture": "Architecture",
-    "getStarted": "Get Started",
     "blog": "Blog",
     "about": "About",
     "languageSwitcher": {
@@ -15,7 +13,8 @@
     "mobileMenu": {
       "label": "Toggle menu"
     },
-    "searchLabel": "Search"
+    "searchLabel": "Search",
+    "docs": "Architecture"
   },
   "footer": {
     "imprint": "Imprint",
@@ -63,9 +62,8 @@
       "description": "SAML-based single sign-on integration with existing university identity providers and research federations."
     },
     "projectComponents": "The 15 integrated services",
-    "projectArchitecture": "System design and patterns",
-    "projectGetStarted": "Deployment guides",
-    "projectBlog": "News and updates"
+    "projectBlog": "News and updates",
+    "projectDocs": "System design and patterns"
   },
   "hero": {
     "subtitle": "Educational Digital Infrastructure",
@@ -121,9 +119,8 @@
     "shortcutHint": "Press ⌘K to search",
     "groupLabels": {
       "components": "Components",
-      "architecture": "Architecture",
-      "getStarted": "Get Started",
-      "blog": "Blog"
+      "blog": "Blog",
+      "docs": "Architecture"
     }
   },
   "privacy": {

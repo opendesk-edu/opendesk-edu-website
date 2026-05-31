@@ -4,4 +4,4 @@ export const SITE_DESCRIPTION = 'Educational digital infrastructure for universi
 export const PLAUSIBLE_DOMAIN = 'opendesk-edu.org';
 export const CLARITY_ID = process.env.NEXT_PUBLIC_CLARITY_ID ?? '';
 
-export const SECTIONS = ['components', 'architecture', 'get-started', 'blog'] as const;
+export const SECTIONS = ['components', 'docs', 'blog'] as const;
