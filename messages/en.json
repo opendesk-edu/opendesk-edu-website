@@ -159,5 +159,11 @@
     "contactHeading": "7. Contact",
     "contactP": "If you have any questions about this privacy policy, please contact us:",
     "contactEmail": "E-Mail: <email>info@opendesk-edu.org</email>"
+  },
+  "subscribe": {
+    "heading": "Stay Updated",
+    "rss": "RSS Feed",
+    "contact": "Contact Us",
+    "description": "Follow our blog or get in touch for deployment inquiries."
   }
 }

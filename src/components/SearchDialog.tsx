@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { useRouter } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import { useSearchData } from "@/hooks/useSearchData";
+import { useDebounce } from "@/hooks/useDebounce";
 import type { SearchEntry } from "@/app/api/search/route";
 
 /* Href type matches the PostCard pattern */
@@ -50,12 +51,13 @@ export default function SearchDialog({ open, onClose }: SearchDialogProps) {
 
   const MAX_INITIAL_PER_SECTION = 5;
 
-  // Filtered and grouped results
+  const debouncedQuery = useDebounce(query, 200);
+
   const results = useMemo(() => {
-    if (!query.trim()) return groupBySection(entries);
-    const filtered = entries.filter((e) => matchesQuery(e, query));
+    if (!debouncedQuery.trim()) return groupBySection(entries);
+    const filtered = entries.filter((e) => matchesQuery(e, debouncedQuery));
     return groupBySection(filtered);
-  }, [entries, query]);
+  }, [entries, debouncedQuery]);
 
   // Limit displayed results per section
   const displayResults = useMemo(() => {

@@ -159,5 +159,11 @@
     "contactHeading": "7. 联系方式",
     "contactP": "如果您对本隐私政策有任何疑问，请联系我们：",
     "contactEmail": "电子邮件：<email>info@opendesk-edu.org</email>"
+  },
+  "subscribe": {
+    "heading": "保持关注",
+    "rss": "RSS 订阅",
+    "contact": "联系我们",
+    "description": "关注我们的博客或联系我们咨询部署事宜。"
   }
 }

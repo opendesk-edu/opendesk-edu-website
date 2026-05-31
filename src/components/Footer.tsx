@@ -20,11 +20,60 @@ function ExternalLink({href, children, className}: {href: string; children: Reac
 
 export default function Footer() {
   const t = useTranslations('footer');
+  const tSub = useTranslations('subscribe');
   const locale = useLocale();
 
   return (
     <footer className="border-t border-border bg-background-secondary">
       <div className="max-w-6xl mx-auto px-4 py-8">
+        <div className="flex flex-col items-center gap-3 pb-6 mb-6 border-b border-border">
+          <p className="text-sm font-medium text-foreground">
+            {tSub("heading")}
+          </p>
+          <p className="text-xs text-foreground-secondary text-center max-w-md">
+            {tSub("description")}
+          </p>
+          <div className="flex items-center gap-6 mt-1">
+            <a
+              href={`/${locale}/rss`}
+              className="flex items-center gap-1.5 text-sm text-foreground-secondary hover:text-foreground transition-colors"
+              aria-label={tSub("rss")}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="w-4 h-4"
+                aria-hidden="true"
+              >
+                <path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20C5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93v-2.83Z" />
+              </svg>
+              <span>{tSub("rss")}</span>
+            </a>
+            <a
+              href="mailto:info@opendesk-edu.org"
+              className="flex items-center gap-1.5 text-sm text-foreground-secondary hover:text-foreground transition-colors"
+              aria-label={tSub("contact")}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="w-4 h-4"
+                aria-hidden="true"
+              >
+                <rect x="2" y="4" width="20" height="16" rx="2" />
+                <path d="M22 4l-10 8L2 4" />
+              </svg>
+              <span>{tSub("contact")}</span>
+            </a>
+          </div>
+        </div>
+
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-4 flex-wrap justify-center">
             <Link href="/imprint" className="text-sm text-foreground-secondary hover:text-foreground transition-colors">

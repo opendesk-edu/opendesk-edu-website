@@ -159,5 +159,11 @@
     "contactHeading": "7. Contact",
     "contactP": "Si vous avez des questions concernant cette politique de confidentialité, veuillez nous contacter :",
     "contactEmail": "E-mail : <email>info@opendesk-edu.org</email>"
+  },
+  "subscribe": {
+    "heading": "Restez informé",
+    "rss": "Flux RSS",
+    "contact": "Contactez-nous",
+    "description": "Suivez notre blog ou contactez-nous pour des demandes de déploiement."
   }
 }

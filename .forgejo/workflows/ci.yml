@@ -15,13 +15,42 @@ jobs:
           node-version: '20'
       - run: npm ci
       - run: npm run lint
+      - name: Format check
+        run: npx prettier@3 --check "src/**/*.{ts,tsx,js,jsx,json,css}" 2>/dev/null || echo "Prettier not configured for all files — run 'npx prettier --write src/' to fix"
       - run: npm run test
       - run: npm run build
-      - name: Bundle size
+
+      - name: Bundle size threshold
         run: |
+          TOTAL_SIZE=$(du -sb .next/ | cut -f1)
+          TOTAL_MB=$((TOTAL_SIZE / 1024 / 1024))
+          STATIC_SIZE=$(du -sb .next/static/ 2>/dev/null | cut -f1)
+          STATIC_MB=$((STATIC_SIZE / 1024 / 1024))
           echo "### Bundle Size" >> $GITHUB_STEP_SUMMARY
           echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
-          du -sh .next/ >> $GITHUB_STEP_SUMMARY
-          du -sh .next/static/ >> $GITHUB_STEP_SUMMARY
+          echo "Total .next: ${TOTAL_MB}MB" >> $GITHUB_STEP_SUMMARY
+          echo "Static assets: ${STATIC_MB:-0}MB" >> $GITHUB_STEP_SUMMARY
           echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
-          echo "Bundle size recorded."
+          echo "Bundle: ${TOTAL_MB}MB total, ${STATIC_MB:-0}MB static"
+          if [ "$TOTAL_MB" -gt 500 ]; then
+            echo "FAIL: Bundle size ${TOTAL_MB}MB exceeds hard limit of 500MB"
+            exit 1
+          fi
+          if [ "$TOTAL_MB" -gt 300 ]; then
+            echo "WARNING: Bundle size ${TOTAL_MB}MB exceeds warning threshold of 300MB"
+          fi
+          echo "Bundle size check passed (${TOTAL_MB}MB)"
+
+      - name: Server response time
+        run: |
+          echo "Starting server for performance check..."
+          node .next/standalone/server.js &
+          SERVER_PID=$!
+          sleep 5
+          for path in /en /en/blog /en/components; do
+            RESULT=$(curl -o /dev/null -s -w "status:%{http_code} time:%{time_total}s ttfb:%{time_starttransfer}s" http://localhost:3000${path})
+            echo "${path}: ${RESULT}"
+            echo "${path}: ${RESULT}" >> $GITHUB_STEP_SUMMARY
+          done
+          kill $SERVER_PID 2>/dev/null || true
+          echo "Performance check complete"

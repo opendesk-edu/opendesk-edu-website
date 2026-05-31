@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { Link } from "@/i18n/navigation";
 import { formatDate } from "@/lib/format";
 import { Tag, CategoryBadge, StatusBadge } from "@/components/Badges";
@@ -16,14 +16,86 @@ interface PostListProps {
 
 export default function PostList({ posts, section, locale }: PostListProps) {
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = Math.max(1, Math.ceil(posts.length / ITEMS_PER_PAGE));
+  const [activeFilter, setActiveFilter] = useState<string | null>(null);
+
+  const allFilters = useMemo(() => {
+    const tagSet = new Set<string>();
+    const catSet = new Set<string>();
+    for (const post of posts) {
+      post.tags?.forEach((t) => tagSet.add(t));
+      post.categories?.forEach((c) => catSet.add(c));
+    }
+    return {
+      tags: [...tagSet].sort(),
+      categories: [...catSet].sort(),
+    };
+  }, [posts]);
+
+  const filteredPosts = useMemo(() => {
+    if (!activeFilter) return posts;
+    return posts.filter(
+      (post) =>
+        post.tags?.includes(activeFilter) ||
+        post.categories?.includes(activeFilter)
+    );
+  }, [posts, activeFilter]);
+
+  const totalPages = Math.max(1, Math.ceil(filteredPosts.length / ITEMS_PER_PAGE));
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-  const visiblePosts = posts.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+  const visiblePosts = filteredPosts.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+
+  const handleFilter = (filter: string | null) => {
+    setActiveFilter(filter);
+    setCurrentPage(1);
+  };
 
   if (posts.length === 0) return null;
 
+  const hasFilters = allFilters.categories.length > 0 || allFilters.tags.length > 0;
+
   return (
     <>
+      {hasFilters && (
+        <div className="flex flex-wrap gap-2 mb-8" role="group" aria-label="Filter by topic">
+          <button
+            onClick={() => handleFilter(null)}
+            className={`px-3 py-1 rounded-full text-sm font-medium transition-colors cursor-pointer ${
+              activeFilter === null
+                ? "bg-accent text-white"
+                : "bg-background-secondary text-foreground-secondary hover:bg-border"
+            }`}
+          >
+            All
+          </button>
+          {allFilters.categories.map((cat) => (
+            <button
+              key={`cat-${cat}`}
+              onClick={() => handleFilter(cat)}
+              className={`px-3 py-1 rounded-full text-sm font-medium transition-colors cursor-pointer ${
+                activeFilter === cat
+                  ? "bg-accent text-white"
+                  : "bg-background-secondary text-foreground-secondary hover:bg-border"
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
+          {allFilters.tags.map((tag) => (
+            <button
+              key={`tag-${tag}`}
+              onClick={() => handleFilter(tag)}
+              className={`px-3 py-1 rounded-full text-sm font-medium transition-colors cursor-pointer ${
+                activeFilter === tag
+                  ? "bg-accent text-white"
+                  : "bg-background-secondary text-foreground-secondary hover:bg-border"
+              }`}
+            >
+              {tag}
+            </button>
+          ))}
+        </div>
+      )}
+
       <div className="grid gap-6 md:grid-cols-2">
         {visiblePosts.map((post) => {
           const isBeta =

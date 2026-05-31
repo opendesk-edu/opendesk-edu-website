@@ -6,3 +6,15 @@ README.md
 .next
 .git
 .gitignore
+.env
+.env.local
+.env.*.local
+*.md
+coverage
+e2e
+tests
+.playwright-mcp
+.vscode
+.idea
+*.tsbuildinfo
+next-env.d.ts

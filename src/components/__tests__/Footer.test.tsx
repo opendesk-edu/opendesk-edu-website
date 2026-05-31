@@ -61,7 +61,7 @@ describe("Footer", () => {
 
   it("renders the Contact email link", () => {
     render(<Footer />);
-    expect(screen.getByText("Contact")).toBeInTheDocument();
+    expect(screen.getAllByText("Contact").length).toBeGreaterThanOrEqual(1);
   });
 
   it("copyright text contains 'openDesk Edu'", () => {
@@ -88,7 +88,13 @@ describe("Footer", () => {
 
   it("Contact link has mailto href", () => {
     render(<Footer />);
-    const link = screen.getByText("Contact").closest("a");
-    expect(link).toHaveAttribute("href", "mailto:info@opendesk-edu.org");
+    const contactLinks = screen
+      .getAllByText("Contact")
+      .map((el) => el.closest("a"))
+      .filter(Boolean);
+    expect(contactLinks.length).toBeGreaterThanOrEqual(1);
+    contactLinks.forEach((link) => {
+      expect(link).toHaveAttribute("href", "mailto:info@opendesk-edu.org");
+    });
   });
 });
