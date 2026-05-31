@@ -41,6 +41,28 @@ jobs:
           fi
           echo "Bundle size check passed (${TOTAL_MB}MB)"
 
+      - name: Lighthouse scores (PageSpeed Insights)
+        run: |
+          echo "### Lighthouse Scores" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          for url in "https://opendesk-edu.org/en" "https://opendesk-edu.org/en/blog" "https://opendesk-edu.org/en/components"; do
+            DATA=$(curl -s "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${url}&strategy=mobile")
+            SCORE=$(echo "$DATA" | python3 -c "
+import sys,json
+try:
+    r=json.load(sys.stdin)
+    c=r.get('lighthouseResult',{}).get('categories',{})
+    perf=int(c.get('performance',{}).get('score',0)*100)
+    a11y=int(c.get('accessibility',{}).get('score',0)*100)
+    seo=int(c.get('seo',{}).get('score',0)*100)
+    print(f'{perf}/{a11y}/{seo}')
+except: print('error')
+" 2>/dev/null || echo "timeout/error")
+            echo "${url}: perf/a11y/seo = ${SCORE}"
+            echo "${url}: perf/a11y/seo = ${SCORE}" >> $GITHUB_STEP_SUMMARY
+          done
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+
       - name: Server response time
         run: |
           echo "Starting server for performance check..."

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { useRouter } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
@@ -300,13 +301,15 @@ export default function SearchDialog({ open, onClose }: SearchDialogProps) {
                            onClick={() => navigateTo(entry)}
                            onMouseEnter={() => setActiveIndex(globalIdx)}
                          >
-                           {entry.image && (
-                             <img
-                               src={entry.image}
-                               alt=""
-                               className={`w-12 h-auto rounded aspect-[1200/630] object-cover shrink-0 ${isActive ? "opacity-90" : ""}`}
-                             />
-                           )}
+                            {entry.image && (
+                              <Image
+                                src={entry.image}
+                                alt=""
+                                width={96}
+                                height={50}
+                                className={`w-12 h-auto rounded aspect-[1200/630] object-cover shrink-0 ${isActive ? "opacity-90" : ""}`}
+                              />
+                            )}
                            <div className="flex-1 min-w-0">
                              <div className="font-medium text-sm truncate">
                                {entry.title}

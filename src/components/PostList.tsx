@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState, useMemo } from "react";
 import { Link } from "@/i18n/navigation";
 import { formatDate } from "@/lib/format";
@@ -112,9 +113,11 @@ export default function PostList({ posts, section, locale }: PostListProps) {
                   href={`/${section}/${post.slug}` as React.ComponentProps<typeof Link>["href"]}
                   className="block"
                 >
-                  <img
+                  <Image
                     src={post.image}
                     alt={post.title}
+                    width={1200}
+                    height={630}
                     className="w-full rounded-t-lg aspect-[1200/630] object-cover"
                   />
                 </Link>
