@@ -6,6 +6,7 @@ import Image from "next/image";
 import ShareButtons from "@/components/ShareButtons";
 import type { Post } from "@/lib/content";
 import { SITE_URL, SITE_NAME } from "@/lib/config";
+import { BLUR_TEASER } from "@/lib/blur";
 
 type Href = React.ComponentProps<typeof Link>['href'];
 
@@ -106,6 +107,8 @@ export default function ArticlePage({ post, backHref, backLabel, locale = 'en' }
               alt={post.title}
               width={1200}
               height={630}
+              placeholder="blur"
+              blurDataURL={BLUR_TEASER}
               className="w-full rounded-none md:rounded-xl aspect-[1200/630] object-cover"
             />
           </div>

@@ -1,0 +1,47 @@
+{
+  "folders": [
+    { "name": "opendesk-edu-website", "path": ".." }
+  ],
+  "settings": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+    },
+    "typescript.preferences.importModuleSpecifier": "shortest",
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "files.exclude": {
+      "**/.next": true,
+      "**/node_modules": true
+    },
+    "search.exclude": {
+      "**/.next": true,
+      "**/node_modules": true
+    },
+    "files.watcherExclude": {
+      "**/.next/**": true,
+      "**/node_modules/**": true
+    },
+    "tailwindCSS.experimental.classRegex": [
+      ["clsx\\(([^)]*)\\)", "\"([^\"]*)\""]
+    ],
+    "[typescript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescriptreact]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[json]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
+  },
+  "extensions": {
+    "recommendations": [
+      "dbaeumer.vscode-eslint",
+      "esbenp.prettier-vscode",
+      "bradlc.vscode-tailwindcss",
+      "Gruntfuggly.todo-tree",
+      "unifiedjs.vscode-mdx"
+    ]
+  }
+}

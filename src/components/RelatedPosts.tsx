@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { formatDate } from "@/lib/format";
 import { getPostsBySection, getAllPosts } from "@/lib/content";
+import { BLUR_TEASER } from "@/lib/blur";
 import type { Post } from "@/lib/content";
 
 interface RelatedPostsProps {
@@ -64,6 +65,8 @@ export default async function RelatedPosts({
                 alt={post.title}
                 width={1200}
                 height={630}
+                placeholder="blur"
+                blurDataURL={BLUR_TEASER}
                 className="w-full rounded-lg aspect-[1200/630] object-cover mb-4"
               />
             )}

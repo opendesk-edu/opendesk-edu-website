@@ -14,6 +14,9 @@
     "validate:svg": "node scripts/validate-svg.mjs",
     "optimize:svg": "node scripts/optimize-svg.mjs",
     "check:palette": "node scripts/check-palette.mjs",
+    "create-post": "node scripts/create-post.mjs",
+    "validate:content": "node scripts/validate-content.mjs",
+    "check:env": "node scripts/check-env.mjs",
     "export:png": "node scripts/export-png.mjs"
   },
   "dependencies": {

@@ -63,6 +63,26 @@ except: print('error')
           done
           echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
 
+      - name: Bundle composition report
+        run: |
+          echo "### Bundle Composition" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          echo "Breakdown of .next/ build output:" >> $GITHUB_STEP_SUMMARY
+          for dir in server static standalone; do
+            if [ -d ".next/$dir" ]; then
+              SIZE=$(du -sh ".next/$dir" 2>/dev/null | cut -f1)
+              FILES=$(find ".next/$dir" -type f 2>/dev/null | wc -l)
+              echo "  $dir: ${SIZE} (${FILES} files)" >> $GITHUB_STEP_SUMMARY
+            fi
+          done
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Largest JS chunks:" >> $GITHUB_STEP_SUMMARY
+          find .next -name "*.js" -exec du -Sh {} + 2>/dev/null | sort -rh | head -10 | while read size file; do
+            echo "  $size  ${file#.next/}" >> $GITHUB_STEP_SUMMARY
+          done
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          echo "Bundle composition report generated"
+
       - name: Server response time
         run: |
           echo "Starting server for performance check..."

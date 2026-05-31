@@ -5,6 +5,7 @@ import { useState, useMemo } from "react";
 import { Link } from "@/i18n/navigation";
 import { formatDate } from "@/lib/format";
 import { Tag, CategoryBadge, StatusBadge } from "@/components/Badges";
+import { BLUR_TEASER } from "@/lib/blur";
 import type { Post } from "@/lib/content";
 
 const ITEMS_PER_PAGE = 10;
@@ -118,6 +119,8 @@ export default function PostList({ posts, section, locale }: PostListProps) {
                     alt={post.title}
                     width={1200}
                     height={630}
+                    placeholder="blur"
+                    blurDataURL={BLUR_TEASER}
                     className="w-full rounded-t-lg aspect-[1200/630] object-cover"
                   />
                 </Link>

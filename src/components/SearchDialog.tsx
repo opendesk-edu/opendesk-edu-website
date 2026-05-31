@@ -6,6 +6,7 @@ import { useRouter } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import { useSearchData } from "@/hooks/useSearchData";
 import { useDebounce } from "@/hooks/useDebounce";
+import { BLUR_TEASER } from "@/lib/blur";
 import type { SearchEntry } from "@/app/api/search/route";
 
 /* Href type matches the PostCard pattern */
@@ -36,6 +37,55 @@ function matchesQuery(entry: SearchEntry, query: string): boolean {
     (entry.categories?.some((c) => c.toLowerCase().includes(q)) ?? false) ||
     (entry.tags?.some((t) => t.toLowerCase().includes(q)) ?? false)
   );
+}
+
+/** Highlight matched query terms in text */
+function highlightMatch(text: string, query: string): React.ReactNode {
+  if (!query.trim()) return text;
+  const escaped = query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const parts = text.split(new RegExp(`(${escaped})`, "gi"));
+  if (parts.length === 1) return text;
+  return parts.map((part, i) =>
+    part.toLowerCase() === query.toLowerCase()
+      ? <mark key={i} className="bg-accent/20 text-inherit rounded-sm px-0.5">{part}</mark>
+      : part
+  );
+}
+
+/** Extract popular tags from all entries for zero-result suggestions */
+function getPopularTags(entries: SearchEntry[], query: string, count = 6): string[] {
+  const q = query.toLowerCase();
+  const tagScores = new Map<string, number>();
+  for (const entry of entries) {
+    for (const tag of entry.tags ?? []) {
+      if (tag.toLowerCase().includes(q)) {
+        tagScores.set(tag, (tagScores.get(tag) ?? 0) + 1);
+      }
+    }
+    for (const cat of entry.categories ?? []) {
+      // Boost categories that match the query
+      if (cat.toLowerCase().includes(q)) {
+        tagScores.set(cat, (tagScores.get(cat) ?? 0) + 5);
+      }
+    }
+  }
+  // If no direct matches, return most common tags overall
+  if (tagScores.size === 0) {
+    const allCounts = new Map<string, number>();
+    for (const entry of entries) {
+      for (const tag of entry.tags ?? []) {
+        allCounts.set(tag, (allCounts.get(tag) ?? 0) + 1);
+      }
+    }
+    return [...allCounts.entries()]
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, count)
+      .map(([tag]) => tag);
+  }
+  return [...tagScores.entries()]
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, count)
+    .map(([tag]) => tag);
 }
 
 export default function SearchDialog({ open, onClose }: SearchDialogProps) {
@@ -182,6 +232,18 @@ export default function SearchDialog({ open, onClose }: SearchDialogProps) {
     }
   }, [activeIndex]);
 
+  // Track search queries to Plausible (when debounced query is non-empty)
+  useEffect(() => {
+    if (!debouncedQuery.trim()) return;
+    // fire-and-forget — Plausible might not be loaded yet
+    try {
+      const w = window as typeof window & { plausible?: (event: string, opts?: { props?: Record<string, string> }) => void };
+      w.plausible?.("Search", { props: { query: debouncedQuery } });
+    } catch {
+      // Plausible not loaded — silently ignore
+    }
+  }, [debouncedQuery]);
+
   // Backdrop click
   const handleBackdropClick = useCallback(
     (e: React.MouseEvent) => {
@@ -191,6 +253,12 @@ export default function SearchDialog({ open, onClose }: SearchDialogProps) {
     },
     [onClose]
   );
+
+  // Compute suggestions for zero-result state
+  const suggestions = useMemo(() => {
+    if (!debouncedQuery.trim()) return [];
+    return getPopularTags(entries, debouncedQuery);
+  }, [entries, debouncedQuery]);
 
   if (!open) return null;
 
@@ -272,10 +340,28 @@ export default function SearchDialog({ open, onClose }: SearchDialogProps) {
              <div className="flex items-center justify-center py-12 text-foreground-secondary text-sm">
                <LoadingSpinner label={t("loading")} />
              </div>
-           ) : totalResults === 0 ? (
-             <div className="py-12 text-center text-foreground-secondary text-sm">
-               {t("noResults")}
-             </div>
+            ) : totalResults === 0 ? (
+              <div className="py-8 text-center text-foreground-secondary text-sm">
+                <p className="mb-3">{t("noResults")}</p>
+                {suggestions.length > 0 && (
+                  <div>
+                    <p className="text-xs font-medium uppercase tracking-wider mb-2 text-foreground-secondary">
+                      Try searching for:
+                    </p>
+                    <div className="flex flex-wrap justify-center gap-2">
+                      {suggestions.map((tag) => (
+                        <button
+                          key={tag}
+                          onClick={() => setQuery(tag)}
+                          className="px-3 py-1 rounded-full border border-border text-xs text-foreground-secondary hover:text-foreground hover:bg-background-secondary transition-colors cursor-pointer"
+                        >
+                          {tag}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
            ) : (
              <div role="listbox" aria-label="Search results" id="search-results-listbox">
                {Array.from(displayResults.entries()).map(([section, items], groupIdx) => {
@@ -301,27 +387,29 @@ export default function SearchDialog({ open, onClose }: SearchDialogProps) {
                            onClick={() => navigateTo(entry)}
                            onMouseEnter={() => setActiveIndex(globalIdx)}
                          >
-                            {entry.image && (
-                              <Image
-                                src={entry.image}
-                                alt=""
-                                width={96}
-                                height={50}
-                                className={`w-12 h-auto rounded aspect-[1200/630] object-cover shrink-0 ${isActive ? "opacity-90" : ""}`}
-                              />
-                            )}
-                           <div className="flex-1 min-w-0">
-                             <div className="font-medium text-sm truncate">
-                               {entry.title}
-                             </div>
-                             {entry.description && (
-                               <div
-                                 className={`text-xs mt-0.5 line-clamp-1 ${isActive ? "text-white/70" : "text-foreground-secondary"}`}
-                               >
-                                 {entry.description}
-                               </div>
+                             {entry.image && (
+                               <Image
+                                 src={entry.image}
+                                 alt=""
+                                 width={96}
+                                 height={50}
+                                 placeholder="blur"
+                                 blurDataURL={BLUR_TEASER}
+                                 className={`w-12 h-auto rounded aspect-[1200/630] object-cover shrink-0 ${isActive ? "opacity-90" : ""}`}
+                               />
                              )}
-                           </div>
+                            <div className="flex-1 min-w-0">
+                              <div className="font-medium text-sm truncate">
+                                {debouncedQuery ? highlightMatch(entry.title, debouncedQuery) : entry.title}
+                              </div>
+                              {entry.description && (
+                                <div
+                                  className={`text-xs mt-0.5 line-clamp-1 ${isActive ? "text-white/70" : "text-foreground-secondary"}`}
+                                >
+                                  {debouncedQuery ? highlightMatch(entry.description, debouncedQuery) : entry.description}
+                                </div>
+                              )}
+                            </div>
                            {entry.categories && entry.categories.length > 0 && (
                              <span
                                className={`text-xs px-1.5 py-0.5 rounded shrink-0 ${isActive ? "bg-white/20 text-white/80" : "bg-background-secondary text-foreground-secondary"}`}
