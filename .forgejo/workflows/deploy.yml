@@ -28,5 +28,14 @@ jobs:
             docker compose up -d
             echo "Waiting for app..."
             sleep 10
-            curl -sf --retry 5 --retry-delay 5 http://localhost:3000/en > /dev/null && echo "Smoke test: PASS" || echo "Smoke test: FAIL"
+            if curl -sf --retry 5 --retry-delay 5 http://localhost:3000/en > /dev/null; then
+              echo "Smoke test: PASS"
+            else
+              echo "Smoke test: FAIL"
+              curl -sf -X POST "https://ntfy.sh/${{ secrets.NTFY_TOPIC }}" \
+                -H "Title: Deploy FAILED - opendesk-edu" \
+                -H "Priority: high" \
+                -H "Tags: warning" \
+                -d "Smoke test failed for commit ${COMMIT_SHA} (${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})" 2>/dev/null || true
+            fi
             echo "Deploy complete (tag: ${COMMIT_SHA})"
