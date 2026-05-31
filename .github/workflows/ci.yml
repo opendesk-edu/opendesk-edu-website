@@ -40,3 +40,39 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
+
+  # deploy — REPLACED by systemd timer on production server
+  #
+  # The server runs opendesk-edu-deploy.timer every 5 minutes:
+  #   git fetch origin main → compare HEAD → docker compose build/up -d
+  # This eliminates dependency on GitHub Actions for deployment.
+  #
+  # To re-enable via CI, uncomment below and ensure DEPLOY_HOST,
+  # DEPLOY_USER, DEPLOY_SSH_KEY secrets exist in the repo.
+  #
+  # deploy:
+  #   runs-on: ubuntu-latest
+  #   needs: [build]
+  #   if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+  #   steps:
+  #     - name: Deploy to server
+  #       uses: appleboy/ssh-action@v1
+  #       with:
+  #         host: ${{ secrets.DEPLOY_HOST }}
+  #         username: ${{ secrets.DEPLOY_USER }}
+  #         key: ${{ secrets.DEPLOY_SSH_KEY }}
+  #         script: |
+  #           cd /home/weiss/git/next-opendesk-edu-org && git pull && docker compose build --no-cache && docker compose up -d
+  #
+  #     - name: Verify deployment
+  #       continue-on-error: true
+  #       run: |
+  #         sleep 10
+  #         STATUS=$(curl -s -o /dev/null -w "%{http_code}" --connect-timeout 5 --max-time 10 https://opendesk-edu.org) || true
+  #         if [ "$STATUS" = "000" ]; then
+  #           echo "⚠️ Site unreachable from CI runner (expected for private/intranet deployments). Deployment itself succeeded."
+  #         elif [ "$STATUS" = "200" ]; then
+  #           echo "✅ Site is live (HTTP 200)"
+  #         else
+  #           echo "⚠️ Site returned HTTP $STATUS"
+  #         fi
