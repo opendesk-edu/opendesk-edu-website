@@ -2,6 +2,11 @@
 
 Thank you for considering contributing to the openDesk Edu website!
 
+For new contributors, reading the following is recommended first:
+
+- **[Architecture Guide](docs/architecture.md)** — Understand the project structure and data flow
+- **[Component Reference](docs/components.md)** — Browse available React components and their props
+
 ## Getting Started
 
 1. Fork the repository

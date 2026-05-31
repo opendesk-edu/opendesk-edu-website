@@ -129,6 +129,13 @@ GitHub Actions handles automated deployment on push to `main`:
 - **GitHub** (primary): [opendesk-edu/opendesk-edu-website](https://github.com/opendesk-edu/opendesk-edu-website)
 - **Codeberg** (mirror): [opendesk-edu/opendesk-edu-website](https://codeberg.org/opendesk-edu/opendesk-edu-website) — automatically mirrored via GitHub Actions on every push to `main`
 
+## Documentation
+
+- **[Architecture Guide](docs/architecture.md)** — App structure, routing, data flow, deployment
+- **[Component Reference](docs/components.md)** — Catalog of all React components, props, and usage patterns
+- **[Contributing Guide](CONTRIBUTING.md)** — How to contribute code and content
+- **[Changelog](CHANGELOG.md)** — Release history and notable changes
+
 ## License
 
 This project is licensed under the **Apache-2.0** License.
