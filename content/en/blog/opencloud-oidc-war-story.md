@@ -2,7 +2,7 @@
 title: "Three Bugs That Blocked OpenCloud OIDC Login — A Debugging War Story"
 date: "2026-06-01"
 description: "How three independent bugs — a missing LDAP equality rule, an invisible disabled filter, and a misconfigured role driver — stacked to block OpenCloud OIDC auto-provisioning, and how we fixed each one."
-image: "/static/blog/collab-services-teaser.png"
+image: "/static/blog/opencloud-oidc-war-story-teaser.png"
 categories: ["engineering"]
 tags: ["opencloud", "oidc", "keycloak", "ldap", "debugging", "kubernetes", "helm", "sso"]
 ---
