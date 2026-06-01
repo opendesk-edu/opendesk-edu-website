@@ -144,7 +144,7 @@ export default function Footer() {
               <span>{tSub("contact")}</span>
             </button>
             <a
-              href="https://matrix.to/#/#opendesk-edu:matrix.org"
+              href="https://matrix.to/#/#opendesk-ce-public:matrix.uni-marburg.de"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-1.5 text-sm text-foreground-secondary hover:text-foreground transition-colors"

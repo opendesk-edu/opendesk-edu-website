@@ -280,7 +280,7 @@ cd opendesk-edu
 helmfile -e prod apply --selector name=jupyterhub
 ```
 
-问题、错误报告和贡献欢迎通过 [Codeberg Issues](https://codeberg.org/opendesk-edu/opendesk-edu/issues) 或 [Matrix 频道](https://matrix.to/#/#opendesk-edu:matrix.org) 提交。
+问题、错误报告和贡献欢迎通过 [Codeberg Issues](https://codeberg.org/opendesk-edu/opendesk-edu/issues) 或 [Matrix 频道](https://matrix.to/#/#opendesk-ce-public:matrix.uni-marburg.de) 提交。
 
 ---
 

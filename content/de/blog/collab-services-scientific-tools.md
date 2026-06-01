@@ -275,7 +275,7 @@ cd opendesk-edu
 helmfile -e prod apply --selector name=jupyterhub
 ```
 
-Fragen, Fehlermeldungen und Beiträge sind willkommen über [Codeberg Issues](https://codeberg.org/opendesk-edu/opendesk-edu/issues) oder den [Matrix-Channel](https://matrix.to/#/#opendesk-edu:matrix.org).
+Fragen, Fehlermeldungen und Beiträge sind willkommen über [Codeberg Issues](https://codeberg.org/opendesk-edu/opendesk-edu/issues) oder den [Matrix-Channel](https://matrix.to/#/#opendesk-ce-public:matrix.uni-marburg.de).
 
 ---
 
