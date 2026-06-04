@@ -1,9 +1,10 @@
 ---
 title: "Fortschrittsbericht: openDesk Edu am HRZ Maui — Juni 2026"
-date: "2026-06-03"
-description: "Nach fünf Monaten Betrieb und zwei Härtungs-Sprints läuft openDesk Edu am Hochschulrechenzentrum der Universität Marburg in voller Betriebsstärke. Ein Überblick."
+date: "2026-06-04"
+description: "Nach fünf Monaten Betrieb und zwei Härtungs-Sprints läuft openDesk Edu am Hochschulrechenzentrum der Universität Marburg in voller Betriebsstärke. Ein Überblick — inklusive Upstream-Integration in den Haupt-cluster des openDesk HRZ."
 categories: ["Status-Update"]
 tags: ["deployment", "infrastruktur", "kubernetes", "sprint", "universität-marburg"]
+image: "/static/blog/progress-report-june-2026-teaser.png"
 ---
 
 # Fortschrittsbericht: openDesk Edu am HRZ Maui — Juni 2026
@@ -65,13 +66,27 @@ Alle Kerndienste antworten korrekt:
 | Planka | `planka.opendesk.hrz.uni-marburg.de` | ✅ 200 mit OIDC |
 | SSP | `ssp.opendesk.hrz.uni-marburg.de` | ✅ 403/200 (OIDC-Auth) |
 
+## Upstream-Integration in den openDesk-Cluster
+
+Am 1. Juni wurden alle 20+ opendesk-edu-Dienste in das Haupt-deployment des openDesk-HRZ-Clusters aufgenommen. Die edu-spezifischen Chart-Werte und Konfigurationen sind nun Teil der openDesk-helmfile-Pipeline — sie werden zusammen mit der Kerninfrastruktur deployed und teilen sich denselben Ingress-Controller, Monitoring-Stack und Backup-Plan.
+
+**Integrierte Dienste:**
+
+| Typ | Dienste |
+|:----|:--------|
+| Lokale Charts | Etherpad, BookStack, Planka, Zammad, LimeSurvey, Draw.io, Excalidraw, Self-Service-Password, SOGo, RStudio, ttyd, Slidev, Collab Dashboard, Portal Entries |
+| Externe Charts | JupyterHub, Open WebUI, Code-Server, Dask, Ollama |
+| Ausstehend (Auth) | Overleaf, KasmVNC, TYPO3, Grommunio |
+
+Diese Integration macht den separaten `opendesk-edu`-Namespace überflüssig. Die edu-Dienste werden nun einheitlich über das openDesk-Cluster-Management verwaltet — dieselben Grafana-Dashboards, dieselben k8up-Backup-Richtlinien, dieselben HAProxy-Ingress-Regeln. Das Repository `opendesk-edu` bleibt die Quelle der Wahrheit für edu-spezifische Chart-Werte und Dokumentation, aber das eigentliche Deployment läuft nun in der openDesk-Haupt-Pipeline.
+
 ## Ausblick
 
-Nach den Härtungs-Sprints liegt der Fokus nun auf:
+Nach den Härtungs-Sprints und der begonnenen Upstream-Integration liegt der Fokus nun auf:
 
-1. **Externem DNS** — Übergabe des generierten DNS-Record-Skripts an die HRZ-Netzadministration, um die `/etc/hosts`-Abhängigkeit zu beseitigen
-2. **Helmfile-Pipeline** — Hin zu einem sauberen `helmfile sync`, der korrekt den `opendesk-edu`-Namespace ansteuert
+1. **Externem DNS** — Übergabe des generierten DNS-Record-Skripts an die HRZ-Netzadministration, um die `/etc/hosts`-Abhängigkeit für 12 Dienste zu beseitigen
+2. **Helmfile-Pipeline** — Ziel ist ein `helmfile sync` gegen den Haupt-openDesk-Cluster (nicht mehr den separaten `opendesk-edu`-Namespace); der Upstream-Merge vom 1. Juni hat die Grundlage bereits gelegt
 3. **Vollständigen Login-Tests** — End-to-End-Validierung der OIDC/SAML-Flows für alle Dienste
-4. **v1.1 Foundation** — DFN-AAI-SAML-Föderationstests, Container-Image-Build-Pipeline, Backchannel-Logout-Verifikation
+4. **v1.1 Foundation** — DFN-AAI-SAML-Föderationstests, Container-Image-Build-Pipeline, Backchannel-Logout-Verifikation, Integration der ausstehenden Charts
 
 Sie möchten openDesk Edu an Ihrer Hochschule einsetzen? Zum [Getting Started Guide](/docs/deployment) und [Repository](https://codeberg.org/opendesk-edu/opendesk-edu).
