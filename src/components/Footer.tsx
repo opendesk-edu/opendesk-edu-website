@@ -184,7 +184,7 @@ export default function Footer() {
             </EmailLink>
             <span className="text-border">|</span>
             <ExternalLink
-              href="https://codeberg.org/opendesk-edu/opendesk-edu-website"
+              href="https://codeberg.org/opendesk-edu/opendesk-edu"
               className="inline-flex items-center gap-1.5 text-sm text-foreground-secondary hover:text-foreground transition-colors"
             >
               <CodebergIcon className="w-4 h-4" />
