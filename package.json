@@ -16,6 +16,7 @@
     "check:palette": "node scripts/check-palette.mjs",
     "create-post": "node scripts/create-post.mjs",
     "validate:content": "node scripts/validate-content.mjs",
+    "check:integration": "node scripts/check-integration.mjs",
     "check:env": "node scripts/check-env.mjs",
     "export:png": "node scripts/export-png.mjs"
   },
@@ -25,6 +26,7 @@
     "@next/mdx": "^16.2.1",
     "@swc/helpers": "^0.5.23",
     "@types/mdx": "^2.0.13",
+    "better-sqlite3": "^12.11.1",
     "clsx": "^2.1.1",
     "gray-matter": "^4.0.3",
     "next": "16.2.1",
@@ -49,6 +51,7 @@
     "@tailwindcss/postcss": "^4",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
+    "@types/better-sqlite3": "^7.6.13",
     "@types/node": "^20",
     "@types/nodemailer": "^8.0.0",
     "@types/react": "^19",

@@ -17,6 +17,7 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run lint
+      - run: node scripts/check-integration.mjs
 
   test:
     runs-on: ubuntu-latest

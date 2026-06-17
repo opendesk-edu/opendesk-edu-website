@@ -1,5 +1,12 @@
 # openDesk Edu Website
 
+[![Build](https://img.shields.io/github/actions/workflow/status/opendesk-edu/opendesk-edu-website/ci.yml?branch=main&label=build&logo=github)](https://github.com/opendesk-edu/opendesk-edu-website/actions)
+[![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
+[![Next.js](https://img.shields.io/badge/Next.js-16.2.1-black?logo=next.js)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6?logo=typescript)](https://www.typescriptlang.org/)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+[![Upstream Integration](https://img.shields.io/badge/integration-31%2F31%20services-571EFA?labelColor=341291)](https://opendesk-edu.org)
+
 The official website for [openDesk Edu](https://opendesk-edu.org) — an open-source digital workplace for higher education institutions. Built with Next.js and deployed via Docker with Traefik reverse proxy.
 
 ## Tech Stack

@@ -1,4 +1,30 @@
 import { NextResponse } from "next/server";
+import Database from "better-sqlite3";
+import path from "path";
+import fs from "fs";
+
+const DB_PATH = path.join(process.cwd(), "data", "newsletter.db");
+
+function getDb(): Database.Database {
+  const dir = path.dirname(DB_PATH);
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
+  }
+
+  const db = new Database(DB_PATH);
+  db.pragma("journal_mode = WAL");
+
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS subscribers (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      email TEXT NOT NULL UNIQUE,
+      created_at TEXT NOT NULL DEFAULT (datetime('now')),
+      confirmed INTEGER NOT NULL DEFAULT 0
+    )
+  `);
+
+  return db;
+}
 
 export async function POST(request: Request) {
   try {
@@ -12,54 +38,21 @@ export async function POST(request: Request) {
       );
     }
 
-    const listmonkUrl = process.env.LISTMONK_URL;
-    const listmonkApiKey = process.env.LISTMONK_API_KEY;
+    const db = getDb();
 
-    if (!listmonkUrl || !listmonkApiKey) {
-      // Listmonk not configured — log and return 501
-      console.log(
-        `[subscribe] Listmonk not configured. Would subscribe: ${email}`
-      );
-      return NextResponse.json(
-        {
-          error:
-            "Newsletter subscription is not yet configured. Follow our RSS feed for updates.",
-        },
-        { status: 501 }
-      );
+    const existing = db
+      .prepare("SELECT id, confirmed FROM subscribers WHERE email = ?")
+      .get(email) as { id: number; confirmed: number } | undefined;
+
+    if (existing) {
+      db.close();
+      return NextResponse.json({ success: true, alreadySubscribed: true });
     }
 
-    const listId = process.env.LISTMONK_LIST_ID
-      ? parseInt(process.env.LISTMONK_LIST_ID, 10)
-      : 1;
+    db.prepare("INSERT INTO subscribers (email) VALUES (?)").run(email);
+    db.close();
 
-    const response = await fetch(`${listmonkUrl}/api/subscribers`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Basic ${Buffer.from(`:${listmonkApiKey}`).toString("base64")}`,
-      },
-      body: JSON.stringify({
-        email,
-        lists: [listId],
-        preconfirm_subscriptions: true,
-      }),
-    });
-
-    if (!response.ok) {
-      const text = await response.text();
-      // 409 = already subscribed — that's fine
-      if (response.status === 409) {
-        return NextResponse.json({ success: true, alreadySubscribed: true });
-      }
-      console.error(
-        `[subscribe] Listmonk error (${response.status}): ${text}`
-      );
-      return NextResponse.json(
-        { error: "Failed to subscribe. Please try again later." },
-        { status: 502 }
-      );
-    }
+    console.log(`[subscribe] New subscriber: ${email}`);
 
     return NextResponse.json({ success: true });
   } catch (error) {

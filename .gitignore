@@ -48,3 +48,6 @@ next-env.d.ts
 # sisyphus
 .sisyphus/
 jest-report.json
+
+# local data
+/data/
