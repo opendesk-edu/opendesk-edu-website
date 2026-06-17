@@ -168,7 +168,7 @@ export default function ArticlePage({ post, backHref, backLabel, locale = 'en' }
             </div>
           </aside>
         </div>
-        <ShareButtons title={post.title} url={`${SITE_URL}/${locale}/${post.section}/${post.slug}`} />
+        <ShareButtons url={`${SITE_URL}/${locale}/${post.section}/${post.slug}`} />
       </article>
     </>
   );

@@ -3,7 +3,6 @@
 import { useCallback } from "react";
 
 interface ShareButtonsProps {
-  title: string;
   url: string;
 }
 
