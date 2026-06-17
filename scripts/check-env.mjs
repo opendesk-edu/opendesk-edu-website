@@ -18,8 +18,6 @@ const REQUIRED_IF_FEATURE = {
   CLARITY_ID: "Microsoft Clarity analytics",
 };
 
-const VITE_PREFIX = "NEXT_PUBLIC_";
-
 let exitCode = 0;
 
 console.log("\n🔍 Checking environment variables...\n");

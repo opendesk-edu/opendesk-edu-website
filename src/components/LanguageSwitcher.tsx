@@ -32,8 +32,7 @@ export default function LanguageSwitcher({ onLocaleChange }: LanguageSwitcherPro
     const pathWithoutLocale = rawPathname.startsWith(localePrefix)
       ? rawPathname.slice(localePrefix.length) || "/"
       : rawPathname;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    router.replace(pathWithoutLocale as any, { locale: newLocale });
+    router.replace(pathWithoutLocale as Parameters<typeof router.replace>[0], { locale: newLocale });
     setIsOpen(false);
     onLocaleChange?.();
   };

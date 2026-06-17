@@ -11,7 +11,9 @@ vi.mock("@/i18n/navigation", () => ({
 
 vi.mock("next/image", () => ({
   default: (props: { alt?: string; [key: string]: unknown }) => {
-    const { width, height, ...rest } = props;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { blurDataURL, width, height, ...rest } = props;
+    // eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text
     return <img {...rest} />;
   },
 }));
