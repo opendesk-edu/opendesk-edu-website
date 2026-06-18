@@ -56,7 +56,8 @@ export default function Footer() {
         if (!res.ok) throw new Error();
         setNewsletterState("success");
         setNewsletterEmail("");
-      } catch {
+      } catch (err) {
+        console.warn("Footer: newsletter subscribe failed: %s", err);
         setNewsletterState("error");
       }
     },

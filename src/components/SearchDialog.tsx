@@ -239,8 +239,8 @@ export default function SearchDialog({ open, onClose }: SearchDialogProps) {
     try {
       const w = window as typeof window & { plausible?: (event: string, opts?: { props?: Record<string, string> }) => void };
       w.plausible?.("Search", { props: { query: debouncedQuery } });
-    } catch {
-      // Plausible not loaded — silently ignore
+    } catch (err) {
+      console.warn("SearchDialog: Plausible tracking failed: %s", err);
     }
   }, [debouncedQuery]);
 

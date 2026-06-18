@@ -13,8 +13,8 @@ export default function ShareButtons({ url }: ShareButtonsProps) {
     try {
       await navigator.clipboard.writeText(url);
       // Could add toast notification but skip for now
-    } catch {
-      // Fallback
+    } catch (err) {
+      console.warn("ShareButtons: clipboard write failed: %s", err);
     }
   }, [url]);
 

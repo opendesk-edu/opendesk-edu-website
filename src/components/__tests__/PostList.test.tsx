@@ -49,7 +49,7 @@ describe("PostList", () => {
   });
 
   it("renders posts in a grid", () => {
-    const posts = [makePost({ title: "Post One" }), makePost({ title: "Post Two" })];
+    const posts = [makePost({ title: "Post One", slug: "post-one" }), makePost({ title: "Post Two", slug: "post-two" })];
     render(<PostList posts={posts} section="blog" locale="en" />);
 
     expect(screen.getByText("Post One")).toBeInTheDocument();

@@ -16,7 +16,13 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
+      - uses: actions/cache/save@v4
+        id: cache-nm
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
       - run: npm run lint
+      - run: npm run typecheck
       - run: node scripts/check-integration.mjs
 
   test:
@@ -27,7 +33,13 @@ jobs:
         with:
           node-version: 20
           cache: npm
-      - run: npm ci
+      - uses: actions/cache/restore@v4
+        id: cache-nm-restore
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+      - if: steps.cache-nm-restore.outputs.cache-hit != 'true'
+        run: npm ci
       - run: npm run test
 
   build:
@@ -39,7 +51,13 @@ jobs:
         with:
           node-version: 20
           cache: npm
-      - run: npm ci
+      - uses: actions/cache/restore@v4
+        id: cache-nm-restore
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+      - if: steps.cache-nm-restore.outputs.cache-hit != 'true'
+        run: npm ci
       - run: npm run build
 
   # deploy — REPLACED by systemd timer on production server

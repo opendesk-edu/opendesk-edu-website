@@ -122,8 +122,8 @@ export async function getPostBySlug(
          const htmlContent = await markdownToHtml(content);
          return buildPost(data, htmlContent, slug, section, content);
        }
-    } catch {
-      // Fall through to full scan
+    } catch (err) {
+      console.warn("Content: no direct match for slug '%s', falling back to full scan: %s", slug, err);
     }
   }
 

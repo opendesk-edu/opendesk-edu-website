@@ -13,8 +13,8 @@ function readConsent(): ConsentState {
   try {
     const stored = localStorage.getItem(CONSENT_KEY);
     if (stored === "accepted" || stored === "declined") return stored;
-  } catch {
-    // localStorage not available
+  } catch (err) {
+    console.warn("CookieConsent: localStorage read failed: %s", err);
   }
   return "undecided";
 }
@@ -62,8 +62,8 @@ export default function CookieConsent() {
   const accept = useCallback(() => {
     try {
       localStorage.setItem(CONSENT_KEY, "accepted");
-    } catch {
-      // localStorage not available
+    } catch (err) {
+      console.warn("CookieConsent: localStorage set (accept) failed: %s", err);
     }
     loadAnalyticsScripts();
     setConsent("accepted");
@@ -72,8 +72,8 @@ export default function CookieConsent() {
   const decline = useCallback(() => {
     try {
       localStorage.setItem(CONSENT_KEY, "declined");
-    } catch {
-      // localStorage not available
+    } catch (err) {
+      console.warn("CookieConsent: localStorage set (decline) failed: %s", err);
     }
     setConsent("declined");
   }, []);
