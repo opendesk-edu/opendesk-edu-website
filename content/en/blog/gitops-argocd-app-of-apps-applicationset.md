@@ -2,6 +2,7 @@
 title: "GitOps at Scale: App of Apps vs ApplicationSet for openDesk"
 date: "2026-06-19"
 description: "As openDesk Edu grows past 30 services, our single monolithic ArgoCD Application hits its limits. This post compares App of Apps and ApplicationSet patterns, weighing pros and cons for an education deployment targeting multiple clusters and environments."
+image: "/static/blog/gitops-argocd-app-of-apps-applicationset-teaser.svg"
 categories: ["technical", "architecture", "devops"]
 tags: ["gitops", "argocd", "kubernetes", "app-of-apps", "applicationset", "helmfile", "architecture"]
 ---
