@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import ContactForm from "../ContactForm";
 
@@ -168,7 +168,6 @@ describe("ContactForm", () => {
 
   it("prevents multiple submissions while already submitting", async () => {
     const user = userEvent.setup();
-    const fetchCalls = 0;
     global.fetch = vi.fn().mockImplementation(
       () =>
         new Promise((resolve) => {
@@ -286,7 +285,6 @@ describe("ContactForm", () => {
   });
 
   it("enforces minimum message length of 10 characters", async () => {
-    const user = userEvent.setup();
     render(<ContactForm onClose={mockOnClose} t={mockT} />);
 
     const messageField = screen.getByLabelText("Message");
@@ -294,7 +292,6 @@ describe("ContactForm", () => {
   });
 
   it("enforces maximum field lengths", async () => {
-    const user = userEvent.setup();
     render(<ContactForm onClose={mockOnClose} t={mockT} />);
 
     expect(screen.getByLabelText("Name")).toHaveAttribute("maxLength", "200");

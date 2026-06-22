@@ -31,6 +31,8 @@ function makePost(overrides: Partial<Post> = {}): Post {
     description: "A test component",
     categories: ["collaboration"],
     tags: ["test"],
+    htmlContent: "<p>Test</p>",
+    readingTime: 1,
     ...overrides,
   };
 }
