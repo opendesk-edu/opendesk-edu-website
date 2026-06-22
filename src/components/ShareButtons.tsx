@@ -8,6 +8,7 @@ interface ShareButtonsProps {
 
 export default function ShareButtons({ url }: ShareButtonsProps) {
   const encodedUrl = encodeURIComponent(url);
+  const encodedTitle = encodeURIComponent(document.title ?? "");
 
   const copyLink = useCallback(async () => {
     try {
