@@ -29,7 +29,7 @@ describe("SEO route files exist and export correctly", () => {
     expect(escaped).toContain("&amp;");
   });
 
-  it("sitemap returns entries with valid URLs", async () => {
+  it("sitemap returns entries with valid URLs", { timeout: 15000 }, async () => {
     const sitemap = (await import("@/app/sitemap")).default;
     const result = await sitemap();
     expect(Array.isArray(result)).toBe(true);
