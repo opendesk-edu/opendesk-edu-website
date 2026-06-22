@@ -21,6 +21,16 @@ const ALLOWED_COLORS = new Set([
   "#2563eb", "#93c5fd", "#dbeafe", "#1e40af", "#eff6ff",
   "#059669", "#d1fae5", "#ecfdf5",
   "#c2410c", "#ea580c", "#9a3412", "#fff7ed", "#fed7aa",
+  // Blog teaser / data viz colors
+  "#1a0a30", "#120824", "#0f001a", "#1a0030", "#0d0016",
+  "#1a1a2e", "#16213e",
+  "#22c55e", "#16a34a", "#47a138", "#358029", "#86efac", "#d1fae5",
+  "#3b82f6", "#2563eb", "#1e40af", "#75aadb", "#4e8cc3", "#007acc", "#005a9e", "#93c5fd", "#dbeafe",
+  "#f59e0b", "#d97706", "#eab308",
+  "#ef4444", "#dc2626",
+  "#f37726", "#e55b1a", "#c2410c", "#ea580c", "#9a3412",
+  "#a855f7",
+  "#333333", "#666666", "#e2e8f0", "#a58eb5",
   "transparent",
 ]);
 
