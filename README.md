@@ -1,6 +1,5 @@
 # openDesk Edu Website
 
-[![Build](https://img.shields.io/github/actions/workflow/status/opendesk-edu/opendesk-edu-website/ci.yml?branch=main&label=build&logo=github)](https://github.com/opendesk-edu/opendesk-edu-website/actions)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 [![Next.js](https://img.shields.io/badge/Next.js-16.2.1-black?logo=next.js)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6?logo=typescript)](https://www.typescriptlang.org/)
