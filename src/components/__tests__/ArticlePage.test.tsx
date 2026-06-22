@@ -22,7 +22,7 @@ vi.mock("@/components/TableOfContents", () => ({
 vi.mock("@/components/ShareButtons", () => ({
   default: () => (
     <div data-testid="share-buttons">
-      <h3 className="text-sm font-semibold text-foreground mb-3">Share this article</h3>
+      <p>Share this article</p>
       <button aria-label="Copy Link">Copy Link</button>
       <a aria-label="Share on X" href="#">X</a>
       <a aria-label="Share on LinkedIn" href="#">LinkedIn</a>
