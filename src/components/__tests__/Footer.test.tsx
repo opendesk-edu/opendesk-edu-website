@@ -1,5 +1,5 @@
-import { describe, it, expect, vi } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import Footer from "@/components/Footer";
 
 // Mock @/i18n/navigation Link
@@ -17,6 +17,21 @@ vi.mock("next/image", () => ({
   ),
 }));
 
+// Mock @/components/ContactForm
+vi.mock("@/components/ContactForm", () => ({
+  default: ({ onClose, t }: { onClose: () => void; t: (key: string) => string }) => (
+    <div data-testid="contact-form-modal">
+      <button onClick={onClose} aria-label="close">Close</button>
+      <h2>{t("send-message")}</h2>
+      <form>
+        <input placeholder="email" />
+        <textarea placeholder="message" />
+        <button type="submit">{t("send")}</button>
+      </form>
+    </div>
+  ),
+}));
+
 // Mock next-intl useTranslations and useLocale
 vi.mock("next-intl", () => ({
   useTranslations: () => (key: string, params?: Record<string, string | number>) => {
@@ -27,6 +42,14 @@ vi.mock("next-intl", () => ({
       sourceCode: "Source Code",
       rss: "RSS",
       copyright: "© {year} openDesk Edu. Licensed under Apache-2.0.",
+      heading: "Stay Updated",
+      description: "Follow our blog or get in touch for deployment inquiries.",
+      newsletterPlaceholder: "your@email.com",
+      newsletterButton: "Subscribe",
+      newsletterSuccess: "Thanks for subscribing!",
+      newsletterError: "Could not subscribe. Please try again.",
+      "send-message": "Send Message",
+      send: "Send",
     };
     let text = translations[key] ?? key;
     if (params) {
@@ -41,13 +64,22 @@ vi.mock("next-intl", () => ({
 
 describe("Footer", () => {
   beforeEach(() => {
-    vi.useFakeTimers();
-    vi.setSystemTime(new Date("2024-06-15"));
+    global.fetch = vi.fn();
   });
 
   afterEach(() => {
-    vi.useRealTimers();
+    vi.clearAllMocks();
   });
+
+  describe("static content", () => {
+    beforeEach(() => {
+      vi.useFakeTimers();
+      vi.setSystemTime(new Date("2024-06-15"));
+    });
+
+    afterEach(() => {
+      vi.useRealTimers();
+    });
 
   it("renders the Imprint link", () => {
     render(<Footer />);
@@ -95,6 +127,173 @@ describe("Footer", () => {
     expect(contactLinks.length).toBeGreaterThanOrEqual(1);
     contactLinks.forEach((link) => {
       expect(link).toHaveAttribute("href", "mailto:info@opendesk-edu.org");
+    });
+  });
+  });
+
+  describe("newsletter signup", () => {
+    it("renders newsletter signup form", () => {
+    render(<Footer />);
+    expect(screen.getByPlaceholderText("your@email.com")).toBeInTheDocument();
+    expect(screen.getByText("Subscribe")).toBeInTheDocument();
+  });
+
+  it("renders newsletter heading and description", () => {
+    render(<Footer />);
+    expect(screen.getByText("Stay Updated")).toBeInTheDocument();
+    expect(
+      screen.getByText("Follow our blog or get in touch for deployment inquiries.")
+    ).toBeInTheDocument();
+  });
+
+  it("disables submit button during submission", async () => {
+    global.fetch = vi.fn().mockResolvedValue({
+      ok: true,
+      json: () => Promise.resolve({ success: true }),
+    } as unknown as Response);
+
+    render(<Footer />);
+    const input = screen.getByPlaceholderText("your@email.com");
+    const button = screen.getByText("Subscribe");
+
+    fireEvent.change(input, { target: { value: "test@example.com" } });
+    fireEvent.click(button);
+
+    expect(button).toBeDisabled();
+    expect(button).toHaveTextContent("...");
+
+    await waitFor(() => {
+      expect(button).not.toBeDisabled();
+    });
+  });
+
+  it("shows success message after successful subscription", async () => {
+    global.fetch = vi.fn().mockResolvedValue({
+      ok: true,
+      json: () => Promise.resolve({ success: true }),
+    } as unknown as Response);
+
+    render(<Footer />);
+    const input = screen.getByPlaceholderText("your@email.com");
+    const button = screen.getByText("Subscribe");
+
+    fireEvent.change(input, { target: { value: "test@example.com" } });
+    fireEvent.click(button);
+
+    await waitFor(() => {
+      expect(screen.getByText("Thanks for subscribing!")).toBeInTheDocument();
+    });
+    expect(input).toHaveValue("");
+  });
+
+  it("shows error message when subscription fails", async () => {
+    global.fetch = vi.fn().mockResolvedValue({
+      ok: false,
+    } as unknown as Response);
+
+    render(<Footer />);
+    const input = screen.getByPlaceholderText("your@email.com");
+    const button = screen.getByText("Subscribe");
+
+    fireEvent.change(input, { target: { value: "test@example.com" } });
+    fireEvent.click(button);
+
+    await waitFor(() => {
+      expect(screen.getByText("Could not subscribe. Please try again.")).toBeInTheDocument();
+    });
+  });
+
+  it("does not submit form with empty email", async () => {
+    render(<Footer />);
+    const button = screen.getByText("Subscribe");
+
+    fireEvent.click(button);
+
+    await waitFor(() => {
+      expect(global.fetch).not.toHaveBeenCalled();
+    });
+  });
+
+  it("clears input field after successful subscription", async () => {
+    global.fetch = vi.fn().mockResolvedValue({
+      ok: true,
+      json: () => Promise.resolve({ success: true }),
+    } as unknown as Response);
+
+    render(<Footer />);
+    const input = screen.getByPlaceholderText("your@email.com");
+    const button = screen.getByText("Subscribe");
+
+    fireEvent.change(input, { target: { value: "test@example.com" } });
+    fireEvent.click(button);
+
+    await waitFor(() => {
+      expect(screen.getByText("Thanks for subscribing!")).toBeInTheDocument();
+    });
+    expect(input).toHaveValue("");
+  });
+
+  it("trims whitespace from email before submitting", async () => {
+    global.fetch = vi.fn().mockResolvedValue({
+      ok: true,
+      json: () => Promise.resolve({ success: true }),
+    } as unknown as Response);
+
+    render(<Footer />);
+    const input = screen.getByPlaceholderText("your@email.com");
+    const button = screen.getByText("Subscribe");
+
+    fireEvent.change(input, { target: { value: "  test@example.com  " } });
+    fireEvent.click(button);
+
+    await waitFor(() => {
+      expect(global.fetch).toHaveBeenCalled();
+    });
+
+    const call = (global.fetch as ReturnType<typeof vi.fn>).mock.calls[0];
+    const body = JSON.parse(call[1].body as string);
+    expect(body.email).toBe("test@example.com");
+  });
+  });
+
+  describe("contact form modal", () => {
+    beforeEach(() => {
+      vi.clearAllMocks();
+    });
+
+    it("renders contact button in footer links", () => {
+      render(<Footer />);
+      const contactButtons = screen.getAllByRole("button", { name: /contact/i });
+      expect(contactButtons.length).toBeGreaterThanOrEqual(1);
+    });
+
+    it("opens contact form modal when contact button is clicked", async () => {
+      render(<Footer />);
+      const contactButton = screen.getAllByRole("button", { name: /contact/i })[0];
+
+      fireEvent.click(contactButton);
+
+      await waitFor(() => {
+        expect(screen.getByText(/send message/i)).toBeInTheDocument();
+      });
+    });
+
+    it("closes contact form modal when onClose is triggered", async () => {
+      render(<Footer />);
+      const contactButton = screen.getAllByRole("button", { name: /contact/i })[0];
+
+      fireEvent.click(contactButton);
+
+      await waitFor(() => {
+        expect(screen.getByText(/send message/i)).toBeInTheDocument();
+      });
+
+      const closeButton = screen.getByRole("button", { name: /close/i });
+      fireEvent.click(closeButton);
+
+      await waitFor(() => {
+        expect(screen.queryByText(/send message/i)).not.toBeInTheDocument();
+      });
     });
   });
 });

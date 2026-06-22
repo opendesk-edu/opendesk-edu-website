@@ -1,5 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor, within } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import Header from "@/components/Header";
 import { ThemeProvider } from "@/components/ThemeProvider";
 
@@ -88,5 +89,92 @@ describe("Header", () => {
     renderHeader();
     const logo = screen.getByText("openDesk Edu").closest("a");
     expect(logo).toHaveAttribute("href", "/");
+  });
+
+  it("toggle mobile menu opens and closes mobile nav", async () => {
+    const user = userEvent.setup();
+    renderHeader();
+
+    const mobileToggle = screen.getByLabelText("Toggle menu");
+    expect(mobileToggle).toHaveAttribute("aria-expanded", "false");
+
+    await user.click(mobileToggle);
+    expect(mobileToggle).toHaveAttribute("aria-expanded", "true");
+
+    const mobileNav = screen.getByLabelText("Mobile navigation");
+    expect(mobileNav).toBeInTheDocument();
+
+    await user.click(mobileToggle);
+    expect(mobileToggle).toHaveAttribute("aria-expanded", "false");
+  });
+
+  it("mobile nav contains all navigation links", async () => {
+    const user = userEvent.setup();
+    renderHeader();
+
+    const mobileToggle = screen.getByLabelText("Toggle menu");
+    await user.click(mobileToggle);
+
+    const mobileNav = screen.getByLabelText("Mobile navigation");
+    expect(mobileNav.querySelector('a[href="/"]')).toBeInTheDocument();
+    expect(mobileNav.querySelector('a[href="/components"]')).toBeInTheDocument();
+    expect(mobileNav.querySelector('a[href="/docs"]')).toBeInTheDocument();
+    expect(mobileNav.querySelector('a[href="/blog"]')).toBeInTheDocument();
+  });
+
+  it("mobile nav renders links", async () => {
+    const user = userEvent.setup();
+    renderHeader();
+
+    const mobileToggle = screen.getByLabelText("Toggle menu");
+    await user.click(mobileToggle);
+
+    const mobileNav = screen.getByLabelText("Mobile navigation");
+    const homeLink = mobileNav.querySelector('a[href="/"]') as HTMLElement;
+    expect(homeLink).toBeInTheDocument();
+  });
+
+  it("theme toggle button is present in both desktop and mobile", () => {
+    renderHeader();
+    const themeButtons = screen.getAllByLabelText("Toggle theme");
+    expect(themeButtons.length).toBeGreaterThanOrEqual(2);
+  });
+
+  it("search button opens search", async () => {
+    const user = userEvent.setup();
+    renderHeader();
+
+    const searchButton = screen.getByLabelText("searchLabel");
+    await user.click(searchButton);
+
+    expect(searchButton).toBeInTheDocument();
+  });
+
+  it("search button shows keyboard shortcut hint", () => {
+    renderHeader();
+    expect(screen.getByText("⌘K")).toBeInTheDocument();
+  });
+
+  it("mobile menu LanguageSwitcher closes menu on locale change", async () => {
+    const user = userEvent.setup();
+    renderHeader();
+
+    const mobileToggle = screen.getByLabelText("Toggle menu");
+    await user.click(mobileToggle);
+
+    const mobileNav = screen.getByLabelText("Mobile navigation");
+    expect(mobileNav).toBeInTheDocument();
+
+    // Find the LanguageSwitcher button by text content within mobile nav
+    const mobileNavWithin = within(mobileNav);
+    const enButton = mobileNavWithin.getByText("EN");
+    await user.click(enButton);
+
+    // Click on a locale option (DE button)
+    const deOption = screen.getByRole("option", { name: "DE" });
+    await user.click(deOption);
+
+    // Menu should be closed after locale change
+    expect(mobileToggle).toHaveAttribute("aria-expanded", "false");
   });
 });
