@@ -9,10 +9,8 @@ import {
 import { SITE_URL, SITE_NAME } from "@/lib/config";
 import { getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
-import dynamic from "next/dynamic";
 import PostList from "@/components/PostList";
-
-const ServiceGraph = dynamic(() => import("@/components/ServiceGraph"), { ssr: false });
+import ServiceGraphWrapper from "@/components/ServiceGraphWrapper";
 
 export const revalidate = 3600;
 
@@ -93,7 +91,7 @@ export default async function SectionPage({ params }: SectionPageProps) {
           {t("noPosts")}
         </p>
       ) : section === "components" ? (
-        <ServiceGraph posts={posts} section={section} locale={locale} />
+        <ServiceGraphWrapper posts={posts} section={section} locale={locale} />
       ) : (
         <PostList posts={posts} section={section} locale={locale} />
       )}

@@ -29,6 +29,7 @@
     "@types/mdx": "^2.0.13",
     "better-sqlite3": "^12.11.1",
     "clsx": "^2.1.1",
+    "cytoscape": "^3.34.0",
     "gray-matter": "^4.0.3",
     "next": "16.2.1",
     "next-intl": "^4.9.1",
