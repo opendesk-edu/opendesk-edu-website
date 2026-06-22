@@ -31,6 +31,12 @@ vi.mock("@/components/ShareButtons", () => ({
   ),
 }));
 
+vi.mock("next/image", () => ({
+  default: (props: { src?: string; alt?: string; [key: string]: unknown }) => (
+    <img src={props.src} alt={props.alt} data-testid="article-image" />
+  ),
+}));
+
 const mockPost: Post = {
   title: "Getting Started with openDesk",
   date: "2024-03-15",
@@ -111,5 +117,44 @@ describe("ArticlePage", () => {
     expect(screen.getByLabelText("Share on X")).toBeInTheDocument();
     expect(screen.getByLabelText("Share on LinkedIn")).toBeInTheDocument();
     expect(screen.getByLabelText("Share on Matrix")).toBeInTheDocument();
+  });
+
+  it("renders post image when provided", () => {
+    const postWithImage: Post = { ...mockPost, image: "/static/test.jpg" };
+    render(<ArticlePage post={postWithImage} backHref="/blog" backLabel="Blog" />);
+    const img = screen.getByTestId("article-image");
+    expect(img).toBeInTheDocument();
+    expect(img).toHaveAttribute("src", "/static/test.jpg");
+  });
+
+  it("renders version badge when version is provided", () => {
+    const postWithVersion: Post = { ...mockPost, version: "1.0" };
+    render(<ArticlePage post={postWithVersion} backHref="/blog" backLabel="Blog" />);
+    expect(screen.getByText("v1.0")).toBeInTheDocument();
+  });
+
+  it("renders without category badges when no categories", () => {
+    const postNoCats: Post = { ...mockPost, categories: [] };
+    render(<ArticlePage post={postNoCats} backHref="/blog" backLabel="Blog" />);
+    expect(screen.queryByText("Tutorial")).not.toBeInTheDocument();
+  });
+
+  it("renders without tags when no tags provided", () => {
+    const postNoTags: Post = { ...mockPost, tags: [] };
+    render(<ArticlePage post={postNoTags} backHref="/blog" backLabel="Blog" />);
+    expect(screen.queryByText("setup")).not.toBeInTheDocument();
+  });
+
+  it("renders StatusBadge for component section posts", () => {
+    const componentPost: Post = { ...mockPost, section: "components" };
+    render(<ArticlePage post={componentPost} backHref="/components" backLabel="Components" />);
+    expect(screen.getByText("Stable")).toBeInTheDocument();
+  });
+
+  it("uses locale in JSON-LD URL", () => {
+    render(<ArticlePage post={mockPost} backHref="/blog" backLabel="Blog" locale="de" />);
+    const scripts = document.querySelectorAll('script[type="application/ld+json"]');
+    const blogPosting = JSON.parse(scripts[1].textContent!);
+    expect(blogPosting.url).toBe("https://opendesk-edu.org/de/blog/getting-started");
   });
 });

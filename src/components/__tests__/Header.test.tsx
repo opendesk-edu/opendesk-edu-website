@@ -15,8 +15,8 @@ vi.mock("next/image", () => ({
 // Mock next-intl/navigation
 const mockReplace = vi.fn();
 vi.mock("@/i18n/navigation", () => ({
-  Link: (props: { href?: string; children?: React.ReactNode; [key: string]: unknown }) => (
-    <a href={props.href}>{props.children}</a>
+  Link: ({ children, ...props }: { href?: string; children?: React.ReactNode; [key: string]: unknown }) => (
+    <a {...props}>{children}</a>
   ),
   useRouter: () => ({ replace: mockReplace }),
   usePathname: () => "/en",
@@ -153,6 +153,21 @@ describe("Header", () => {
   it("search button shows keyboard shortcut hint", () => {
     renderHeader();
     expect(screen.getByText("⌘K")).toBeInTheDocument();
+  });
+
+  it("clicking a mobile nav link closes the menu", async () => {
+    const user = userEvent.setup();
+    renderHeader();
+
+    const mobileToggle = screen.getByLabelText("Toggle menu");
+    await user.click(mobileToggle);
+    expect(mobileToggle).toHaveAttribute("aria-expanded", "true");
+
+    const mobileNav = screen.getByLabelText("Mobile navigation");
+    const homeLinks = mobileNav.querySelectorAll('a[href="/"]');
+    expect(homeLinks.length).toBeGreaterThanOrEqual(1);
+    await user.click(homeLinks[0]);
+    expect(mobileToggle).toHaveAttribute("aria-expanded", "false");
   });
 
   it("mobile menu LanguageSwitcher closes menu on locale change", async () => {

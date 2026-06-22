@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import ShareButtons from "@/components/ShareButtons";
 
 describe("ShareButtons", () => {
@@ -56,5 +56,13 @@ describe("ShareButtons", () => {
   it("has share section heading", () => {
     render(<ShareButtons url="https://opendesk-edu.org/test" />);
     expect(screen.getByText("Share this article")).toBeInTheDocument();
+  });
+
+  it("handles clipboard write failure gracefully", async () => {
+    vi.spyOn(navigator.clipboard, "writeText").mockRejectedValue(new Error("Clipboard denied"));
+    render(<ShareButtons url="https://opendesk-edu.org/test" />);
+    const copyButton = screen.getByText("Copy Link");
+    fireEvent.click(copyButton);
+    expect(navigator.clipboard.writeText).toHaveBeenCalledWith("https://opendesk-edu.org/test");
   });
 });
