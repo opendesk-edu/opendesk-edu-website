@@ -14,7 +14,7 @@
       "label": "Menü umschalten"
     },
     "searchLabel": "Suche",
-    "docs": "Architektur"
+    "docs": "Dokumentation"
   },
   "footer": {
     "imprint": "Impressum",
@@ -120,7 +120,7 @@
     "groupLabels": {
       "components": "Komponenten",
       "blog": "Blog",
-      "docs": "Architektur"
+      "docs": "Dokumentation"
     }
   },
   "privacy": {
