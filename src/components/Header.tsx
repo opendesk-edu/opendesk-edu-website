@@ -22,6 +22,11 @@ export default function Header() {
     ...SECTIONS.map((s) => ({ href: `/${s}` as string & Href, label: t(s) })),
   ];
 
+  const EXTERNAL_LINKS: { href: string; label: string; icon: string }[] = [
+    { href: 'https://landscape.opendesk-edu.org', label: t('landscape'), icon: '🌄' },
+    { href: 'https://openspec.opendesk-edu.org', label: t('openspec'), icon: '📋' },
+  ];
+
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
       <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
@@ -40,6 +45,33 @@ export default function Header() {
             >
               {item.label}
             </Link>
+          ))}
+          {EXTERNAL_LINKS.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-foreground-secondary hover:text-foreground transition-colors flex items-center gap-1"
+            >
+              <span aria-hidden="true">{link.icon}</span>
+              <span>{link.label}</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="w-3 h-3 opacity-60"
+                aria-hidden="true"
+              >
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                <polyline points="15 3 21 3 21 9" />
+                <line x1="10" y1="14" x2="21" y2="3" />
+              </svg>
+            </a>
           ))}
           <LanguageSwitcher />
           <button
@@ -139,6 +171,34 @@ export default function Header() {
               >
                 {item.label}
               </Link>
+            ))}
+            {EXTERNAL_LINKS.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 py-2 text-sm text-foreground-secondary hover:text-foreground transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <span aria-hidden="true">{link.icon}</span>
+                <span>{link.label}</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="w-3 h-3 opacity-60"
+                  aria-hidden="true"
+                >
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                  <polyline points="15 3 21 3 21 9" />
+                  <line x1="10" y1="14" x2="21" y2="3" />
+                </svg>
+              </a>
             ))}
             <div className="pt-2">
               <LanguageSwitcher onLocaleChange={() => setMobileMenuOpen(false)} />

@@ -4,6 +4,8 @@
     "components": "Komponenten",
     "blog": "Blog",
     "about": "Über uns",
+    "landscape": "Landscape",
+    "openspec": "OpenSpec",
     "languageSwitcher": {
       "label": "Sprache"
     },
