@@ -8,7 +8,7 @@ services:
       - "3000"
     labels:
       - traefik.enable=true
-      - traefik.docker.network=traefik-web
+      - traefik.docker.network=traefik-public
       # HTTP redirect to HTTPS (excludes ACME challenge path so Let's Encrypt works)
       - "traefik.http.routers.opendesk-edu.rule=Host(`opendesk-edu.org`,`www.opendesk-edu.org`) && !PathPrefix(`/.well-known/acme-challenge/`)"
       - traefik.http.routers.opendesk-edu.entrypoints=web
@@ -20,9 +20,9 @@ services:
       - traefik.http.routers.opendesk-edu-secure.middlewares=security-headers@file,compression@file
       - traefik.http.services.opendesk-edu.loadbalancer.server.port=3000
     networks:
-      - traefik-web
+      - traefik-public
 
 networks:
-  traefik-web:
+  traefik-public:
     external: true
-    name: traefik-web
+    name: traefik-public

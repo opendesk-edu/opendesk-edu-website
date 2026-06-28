@@ -1,7 +1,7 @@
 ---
 title: "Komponentenvergleich"
 date: "2025-04-18"
-description: "Alle 25 openDesk Edu-Dienste im Vergleich: Kategorien, Lizenzen und Kernfunktionen."
+description: "Alle openDesk Edu-Dienste im Vergleich: Kategorien, Lizenzen und Kernfunktionen."
 categories:
   - "Components"
 tags:
@@ -11,7 +11,7 @@ tags:
 
 # Komponentenvergleich
 
-openDesk Edu kombiniert die **10 Basisdienste** von openDesk Community Edition mit **15 bildungsspezifischen Beta-Diensten** zu einer umfassenden digitalen Arbeitsumgebung für Schulen, Hochschulen und Forschungseinrichtungen. Alle 25 Dienste sind über **Keycloak SSO** (SAML 2.0 / OIDC) integriert und über das einheitliche Nubus-Portal erreichbar.
+openDesk Edu kombiniert die **10 Basisdienste** von openDesk Community Edition mit **15 bildungsspezifischen Beta-Diensten** zu einer umfassenden digitalen Arbeitsumgebung für Schulen, Hochschulen und Forschungseinrichtungen. Alle Dienste sind über **Keycloak SSO** (SAML 2.0 / OIDC) integriert und über das einheitliche Nubus-Portal erreichbar.
 
 Dienste derselben Kategorie können als Alternativen zueinander dienen — so lässt sich beispielsweise zwischen Jitsi und BigBlueButton für Videokonferenzen oder zwischen OX App Suite, SOGo und Grommunio für Groupware wählen. **Beta**-Dienste sind voll funktionsfähig, befinden sich jedoch noch in aktiver Entwicklung und können sich in zukünftigen Versionen ändern.
 

@@ -8,7 +8,7 @@ tags: ["deployment", "infrastruktur", "kubernetes"]
 
 # openDesk Edu auf Ihrer Hochschulinfrastruktur deployen
 
-Dieser Leitfaden führt Sie durch das Deployment von openDesk Edu auf der Kubernetes-Infrastruktur Ihrer Hochschule. Am Ende verfügen Sie über einen voll funktionsfähigen digitalen Arbeitsplatz mit 25 integrierten Diensten — alle verbunden durch ein einheitliches Keycloak-SSO.
+Dieser Leitfaden führt Sie durch das Deployment von openDesk Edu auf der Kubernetes-Infrastruktur Ihrer Hochschule. Am Ende verfügen Sie über einen voll funktionsfähigen digitalen Arbeitsplatz mit integrierten Diensten — alle verbunden durch ein einheitliches Keycloak-SSO.
 
 ## Voraussetzungen
 

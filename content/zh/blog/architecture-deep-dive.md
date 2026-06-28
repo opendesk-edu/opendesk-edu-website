@@ -14,7 +14,7 @@ tags: ["架构", "kubernetes", "saml", "keycloak", "深度解析"]
 
 openDesk Edu 是 openDesk 社区版 v1.13.x 的超集。它继承了 openDesk CE 提供的核心工作空间服务：用于文件共享的 Nextcloud、用于视频通话的 Jitsi Meet、用于邮件和日历的 Open-Xchange/SOGo/Grommunio 三选一、用于文档编辑的 Collabora Online，以及用于身份管理的 Keycloak。这些服务在公共管理部门和企业的生产环境中已经经过了充分的实战检验。
 
-在此基础之上，openDesk Edu 新增了 15 个面向教育的专用服务：ILIAS、Moodle、BigBlueButton、OpenCloud、Etherpad、CryptPad、BookStack、Planka、Zammad、LimeSurvey、LTB SSP、Draw.io、Excalidraw 和 TYPO3。全部 25 个服务共享同一套身份验证、网络和存储基础设施。
+在此基础之上，openDesk Edu 新增了 15 个面向教育的专用服务：ILIAS、Moodle、BigBlueButton、OpenCloud、Etherpad、CryptPad、BookStack、Planka、Zammad、LimeSurvey、LTB SSP、Draw.io、Excalidraw 和 TYPO3。全部 服务共享同一套身份验证、网络和存储基础设施。
 
 ## Kubernetes 原生部署
 

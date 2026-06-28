@@ -34,7 +34,7 @@ tags: ["open-source", "universities", "digital-transformation"]
 
 openDesk Edu 不是另一个通用的开源工具包——它是一个经过精选、生产环境验证的技术栈，专为高等教育用例设计。
 
-**企业级服务，无需许可费用**。Moodle 和 ILIAS 用于学习管理，Nextcloud 和 Grommunio 用于群件，BigBlueButton 和 Jitsi 用于视频会议。25 个集成服务，全部开源，全部由活跃社区维护。
+**企业级服务，无需许可费用**。Moodle 和 ILIAS 用于学习管理，Nextcloud 和 Grommunio 用于群件，BigBlueButton 和 Jitsi 用于视频会议。集成服务，全部开源，全部由活跃社区维护。
 
 **支持联合的身份认证**。开箱即用的 DFN-AAI 和 eduGAIN 集成。学生和教职工通过您机构现有的 SAML 提供者进行认证——无需创建帐户，没有密码疲劳，没有浮动标识符。
 

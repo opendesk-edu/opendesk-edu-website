@@ -1,14 +1,14 @@
 ---
 title: "openDesk Edu 项目发布"
 date: "2026-04-15"
-description: "openDesk Edu 将 openDesk 数字工作空间带入高等教育领域 — 25 个开源服务、统一 SSO、一键部署。"
+description: "openDesk Edu 将 openDesk 数字工作空间带入高等教育领域 — 开源服务、统一 SSO、一键部署。"
 categories: ["公告", "社区"]
 tags: ["公告", "opendesk", "教育", "开源"]
 ---
 
 # openDesk Edu 项目发布
 
-我们很高兴地宣布 openDesk Edu 项目正式启动。这是一个将 openDesk 数字工作空间引入高等教育机构的新项目。openDesk Edu 将 25 个开源服务整合为一个统一的平台，提供统一的单点登录、SAML 联邦支持以及一键部署功能。所有代码均采用 Apache-2.0 许可证，可供大学、研究机构和教育网络采用和扩展。
+我们很高兴地宣布 openDesk Edu 项目正式启动。这是一个将 openDesk 数字工作空间引入高等教育机构的新项目。openDesk Edu 将 开源服务整合为一个统一的平台，提供统一的单点登录、SAML 联邦支持以及一键部署功能。所有代码均采用 Apache-2.0 许可证，可供大学、研究机构和教育网络采用和扩展。
 
 ## 什么是 openDesk Edu？
 
@@ -16,7 +16,7 @@ openDesk Edu 基于 openDesk 社区版 (CE) 构建，在现有工作空间技术
 
 ## 包含哪些服务？
 
-openDesk Edu 提供 25 个服务，涵盖以下几个类别：
+openDesk Edu 提供 服务，涵盖以下几个类别：
 
 - **学习管理系统**，包括 ILIAS 和 Moodle，这是欧洲高等教育领域使用最广泛的两个 LMS 平台。
 - **视频会议**，包括 Jitsi Meet 和 BigBlueButton，从轻量级会议到功能完备的虚拟教室，支持白板、分组讨论室和录制功能。
@@ -26,7 +26,7 @@ openDesk Edu 提供 25 个服务，涵盖以下几个类别：
 
 ## 核心特性
 
-**一键部署。** 整个技术栈通过一条 `helmfile apply` 命令即可部署到任何 Kubernetes 集群。无需逐个服务手动配置，无需脆弱的 Shell 脚本。Helmfile 编排 25 个模块化 Helm Chart，采用声明式配置。
+**一键部署。** 整个技术栈通过一条 `helmfile apply` 命令即可部署到任何 Kubernetes 集群。无需逐个服务手动配置，无需脆弱的 Shell 脚本。Helmfile 编排 模块化 Helm Chart，采用声明式配置。
 
 **统一 Keycloak SSO。** 所有服务通过中央 Keycloak 实例进行身份验证。用户只需登录一次即可访问所有应用，无需重复输入凭据。Keycloak 同时支持 SAML 2.0 和 OpenID Connect 协议。
 
@@ -34,7 +34,7 @@ openDesk Edu 提供 25 个服务，涵盖以下几个类别：
 
 **数据主权。** 所有服务运行在您自己控制的基础设施上。除非您主动配置，否则任何数据都不会离开您的集群。这对于受 GDPR 和国家数据保护法规约束的机构尤为重要。
 
-**模块化架构。** 并非每个机构都需要全部 25 个服务。配置系统允许您只启用用户需要的服务。可以只运行 ILIAS 和 Nextcloud，也可以部署完整技术栈，选择权在您手中。
+**模块化架构。** 并非每个机构都需要全部 服务。配置系统允许您只启用用户需要的服务。可以只运行 ILIAS 和 Nextcloud，也可以部署完整技术栈，选择权在您手中。
 
 ## 教育服务处于 Beta 阶段
 
