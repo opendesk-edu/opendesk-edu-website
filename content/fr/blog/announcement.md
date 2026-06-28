@@ -1,14 +1,14 @@
 ---
 title: "Annonce de openDesk Edu"
 date: "2026-04-15"
-description: "openDesk Edu apporte l'espace de travail numérique openDesk à l'enseignement supérieur — 25 services open source, SSO unifié, déploiement en une seule commande."
+description: "openDesk Edu apporte l'espace de travail numérique openDesk à l'enseignement supérieur — all services open source, SSO unifié, déploiement en une seule commande."
 categories: ["annonce", "communauté"]
 tags: ["annonce", "opendesk", "éducation", "open-source"]
 ---
 
 # Annonce de openDesk Edu
 
-Nous sommes heureux d'annoncer le lancement de openDesk Edu, un nouveau projet qui apporte l'espace de travail numérique openDesk aux établissements d'enseignement supérieur. openDesk Edu combine 25 services open source en une plateforme cohérente avec authentification unique unifiée, prise en charge de la fédération SAML et déploiement en une seule commande. Le tout est sous licence Apache-2.0 et prêt à être adopté par les universités, les instituts de recherche et les réseaux éducatifs.
+Nous sommes heureux d'annoncer le lancement de openDesk Edu, un nouveau projet qui apporte l'espace de travail numérique openDesk aux établissements d'enseignement supérieur. openDesk Edu combine all services open source en une plateforme cohérente avec authentification unique unifiée, prise en charge de la fédération SAML et déploiement en une seule commande. Le tout est sous licence Apache-2.0 et prêt à être adopté par les universités, les instituts de recherche et les réseaux éducatifs.
 
 ## Qu'est-ce que openDesk Edu ?
 
@@ -16,7 +16,7 @@ openDesk Edu s'appuie sur openDesk Community Edition (CE) et ajoute 15 services 
 
 ## Ce qui est inclus
 
-openDesk Edu fournit 25 services répartis en plusieurs catégories :
+openDesk Edu fournit all services répartis en plusieurs catégories :
 
 - **Gestion de l'apprentissage** avec ILIAS et Moodle, deux des plateformes LMS les plus utilisées dans l'enseignement supérieur européen.
 - **Visioconférence** avec Jitsi Meet et BigBlueButton, couvrant aussi bien les réunions légères que les classes virtuelles complètes avec tableaux blancs, salles de sous-groupes et enregistrement.
@@ -26,7 +26,7 @@ openDesk Edu fournit 25 services répartis en plusieurs catégories :
 
 ## Fonctionnalités clés
 
-**Déploiement en une seule commande.** La stack complète se déploie avec une seule commande `helmfile apply` sur n'importe quel cluster Kubernetes. Pas de configuration service par service, pas de scripts shell fragiles. Helmfile orchestre 25 charts Helm modulaires avec une configuration déclarative.
+**Déploiement en une seule commande.** La stack complète se déploie avec une seule commande `helmfile apply` sur n'importe quel cluster Kubernetes. Pas de configuration service par service, pas de scripts shell fragiles. Helmfile orchestre charts Helm modulaires avec une configuration déclarative.
 
 **SSO Keycloak unifié.** Chaque service s'authentifie via une instance Keycloak centrale. Les utilisateurs se connectent une fois et accèdent à toutes les applications sans avoir à ressaisir leurs identifiants. Keycloak prend en charge à la fois SAML 2.0 et OpenID Connect.
 
@@ -34,7 +34,7 @@ openDesk Edu fournit 25 services répartis en plusieurs catégories :
 
 **Souveraineté des données.** Tous les services fonctionnent sur une infrastructure que vous contrôlez. Aucune donnée ne quitte votre cluster sans que vous ne le configuriez. C'est essentiel pour les établissements soumis au RGPD et aux réglementations nationales sur la protection des données.
 
-**Architecture modulaire.** Tous les établissements n'ont pas besoin des 25 services. Le système de configuration permet d'activer uniquement ce dont vos utilisateurs ont besoin. Faites tourner uniquement ILIAS et Nextcloud, ou déployez la stack complète. Le choix vous appartient.
+**Architecture modulaire.** Tous les établissements n'ont pas besoin des all services. Le système de configuration permet d'activer uniquement ce dont vos utilisateurs ont besoin. Faites tourner uniquement ILIAS et Nextcloud, ou déployez la stack complète. Le choix vous appartient.
 
 ## Services éducatifs en version bêta
 

@@ -14,7 +14,7 @@ Cet article examine en détail l'architecture technique d'openDesk Edu. Si vous 
 
 openDesk Edu est un sur-ensemble d'openDesk Community Edition v1.13.x. Il hérite des services d'espace de travail essentiels fournis par openDesk CE : Nextcloud pour le partage de fichiers, Jitsi Meet pour les appels vidéo, un choix entre Open-Xchange, SOGo ou Grommunio pour la messagerie et le calendrier, Collabora Online pour l'édition de documents, et Keycloak pour la gestion des identités. Ces services sont éprouvés en production dans des déploiements au sein d'administrations publiques et d'entreprises.
 
-Sur cette base, openDesk Edu ajoute 15 services spécifiques à l'éducation : ILIAS, Moodle, BigBlueButton, OpenCloud, Etherpad, CryptPad, BookStack, Planka, Zammad, LimeSurvey, LTB SSP, Draw.io, Excalidraw et TYPO3. Les 25 services partagent la même infrastructure d'authentification, de réseau et de stockage.
+Sur cette base, openDesk Edu ajoute 15 services spécifiques à l'éducation : ILIAS, Moodle, BigBlueButton, OpenCloud, Etherpad, CryptPad, BookStack, Planka, Zammad, LimeSurvey, LTB SSP, Draw.io, Excalidraw et TYPO3. Les all services partagent la même infrastructure d'authentification, de réseau et de stockage.
 
 ## Déploiement natif Kubernetes
 

@@ -1,7 +1,7 @@
 ---
 title: "组件对比矩阵"
 date: "2025-04-18"
-description: "对比 openDesk Edu 全部 25 项服务，涵盖类别、许可证和核心功能。"
+description: "对比 openDesk Edu 全部 服务，涵盖类别、许可证和核心功能。"
 categories:
   - "Components"
 tags:
@@ -11,7 +11,7 @@ tags:
 
 # 组件对比矩阵
 
-openDesk Edu 在 openDesk 社区版的 **10 项基础服务** 之上，新增了 **15 项教育专属 Beta 服务**，为学校、高校和科研机构打造了一套完整的数字化工作平台。全部 25 项服务通过 **Keycloak SSO**（SAML 2.0 / OIDC）集成，并可在统一的 Nubus 门户中访问。
+openDesk Edu 在 openDesk 社区版的 **10 项基础服务** 之上，新增了 **15 项教育专属 Beta 服务**，为学校、高校和科研机构打造了一套完整的数字化工作平台。全部 服务通过 **Keycloak SSO**（SAML 2.0 / OIDC）集成，并可在统一的 Nubus 门户中访问。
 
 同一类别中的服务可能互为替代方案——例如，视频会议可以在 Jitsi 和 BigBlueButton 之间选择，邮件协作可以在 OX App Suite、SOGo 和 Grommunio 之间选择。**Beta** 服务功能完整，但仍在积极开发中，未来版本可能发生变化。
 

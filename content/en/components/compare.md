@@ -1,7 +1,7 @@
 ---
 title: "Component Comparison Matrix"
 date: "2025-04-18"
-description: "Compare all 25 openDesk Edu services across categories, licenses, and key features."
+description: "Compare all openDesk Edu services across categories, licenses, and key features."
 categories:
   - "Components"
 tags:

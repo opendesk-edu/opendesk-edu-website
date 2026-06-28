@@ -1,14 +1,14 @@
 ---
 title: "Vue d'ensemble de l'architecture système"
 date: "2026-04-15"
-description: "Vue d'ensemble de l'architecture système d'openDesk Edu, incluant l'orchestration Kubernetes, la fédération SAML avec DFN-AAI et eduGAIN, le SSO centralisé Keycloak et le catalogue complet de 25 composants."
+description: "Vue d'ensemble de l'architecture système d'openDesk Edu, incluant l'orchestration Kubernetes, la fédération SAML avec DFN-AAI et eduGAIN, le SSO centralisé Keycloak et le catalogue complet de composants."
 categories: ["architecture", "infrastructure"]
 tags: ["architecture", "kubernetes", "saml", "keycloak", "fédération"]
 ---
 
 # Vue d'ensemble de l'architecture système
 
-openDesk Edu étend l'environnement de collaboration openDesk (CE) avec une couche dédiée de services éducatifs, créant un espace de travail numérique unifié pour les écoles, les universités et les établissements de recherche. Basé sur openDesk CE v1.13.x, la plateforme regroupe 25 services dans un cluster Kubernetes unique avec authentification centralisée, sauvegardes automatisées et gestion des certificats par la Bundesdruckerei. Le tout est distribué sous licence Apache-2.0 et se déploie en une seule commande : `helmfile -e default apply`.
+openDesk Edu étend l'environnement de collaboration openDesk (CE) avec une couche dédiée de services éducatifs, créant un espace de travail numérique unifié pour les écoles, les universités et les établissements de recherche. Basé sur openDesk CE v1.13.x, la plateforme regroupe all services dans un cluster Kubernetes unique avec authentification centralisée, sauvegardes automatisées et gestion des certificats par la Bundesdruckerei. Le tout est distribué sous licence Apache-2.0 et se déploie en une seule commande : `helmfile -e default apply`.
 
 ## Principes fondamentaux
 
@@ -26,7 +26,7 @@ Toutes les données restent au sein de l'infrastructure de l'établissement. Auc
 
 **Architecture modulaire**
 
-Les 25 services sont regroupés par fonction et peuvent être activés ou désactivés indépendamment via les valeurs helmfile. Besoin uniquement de la couche LMS ? Déployez ILIAS et Moodle sans la messagerie ni la visioconférence. LimeSurvey n'est pas nécessaire ? Laissez-le de côté. Chaque composant dispose de son propre chart Helm, de son propre volume de stockage et de ses propres paramètres de montée en charge.
+Les all services sont regroupés par fonction et peuvent être activés ou désactivés indépendamment via les valeurs helmfile. Besoin uniquement de la couche LMS ? Déployez ILIAS et Moodle sans la messagerie ni la visioconférence. LimeSurvey n'est pas nécessaire ? Laissez-le de côté. Chaque composant dispose de son propre chart Helm, de son propre volume de stockage et de ses propres paramètres de montée en charge.
 
 ## Stack technologique
 
@@ -96,7 +96,7 @@ Restic prend en charge un large éventail de backends de stockage, permettant au
 
 ## Vue d'ensemble des composants
 
-Le tableau suivant liste les 25 services de la pile openDesk Edu, regroupés par fonction.
+Le tableau suivant liste les all services de la pile openDesk Edu, regroupés par fonction.
 
 | Fonction | Service | Version | Statut |
 |----------|---------|---------|--------|

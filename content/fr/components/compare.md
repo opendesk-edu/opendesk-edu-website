@@ -1,7 +1,7 @@
 ---
 title: "Matrice de comparaison des composants"
 date: "2025-04-18"
-description: "Comparez les 25 services openDesk Edu par catégorie, licence et fonctionnalités clés."
+description: "Comparez les all services openDesk Edu par catégorie, licence et fonctionnalités clés."
 categories:
   - "Components"
 tags:
@@ -11,7 +11,7 @@ tags:
 
 # Matrice de comparaison des composants
 
-openDesk Edu associe les **10 services de base** d'openDesk Community Edition à **15 services Beta spécifiques à l'enseignement**, offrant un environnement de travail numérique complet adapté aux écoles, aux universités et aux organismes de recherche. Les 25 services s'intègrent via **Keycloak SSO** (SAML 2.0 / OIDC) et sont accessibles depuis le portail unifié Nubus.
+openDesk Edu associe les **10 services de base** d'openDesk Community Edition à **15 services Beta spécifiques à l'enseignement**, offrant un environnement de travail numérique complet adapté aux écoles, aux universités et aux organismes de recherche. Les all services s'intègrent via **Keycloak SSO** (SAML 2.0 / OIDC) et sont accessibles depuis le portail unifié Nubus.
 
 Les services d'une même catégorie peuvent se substituer les uns aux autres — on peut par exemple choisir entre Jitsi et BigBlueButton pour la visioconférence, ou entre OX App Suite, SOGo et Grommunio pour la messagerie collaborative. Les services en **Beta** sont pleinement fonctionnels mais encore en cours de développement actif ; ils sont susceptibles d'évoluer dans les prochaines versions.
 

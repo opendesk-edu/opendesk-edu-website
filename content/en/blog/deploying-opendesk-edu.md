@@ -8,7 +8,7 @@ tags: ["deployment", "infrastructure", "kubernetes"]
 
 # Deploying openDesk Edu on Your University Infrastructure
 
-This guide walks you through deploying openDesk Edu on your university's Kubernetes infrastructure. By the end, you will have a fully functional digital workplace with 25 integrated services — all connected through unified Keycloak SSO.
+This guide walks you through deploying openDesk Edu on your university's Kubernetes infrastructure. By the end, you will have a fully functional digital workplace with fully integrated services — all connected through unified Keycloak SSO.
 
 ## Prerequisites
 

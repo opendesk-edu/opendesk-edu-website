@@ -1,14 +1,14 @@
 ---
 title: "Announcing openDesk Edu"
 date: "2026-04-15"
-description: "openDesk Edu brings the openDesk digital workplace to higher education — 25 open-source services, unified SSO, one-command deployment."
+description: "openDesk Edu brings the openDesk digital workplace to higher education — open-source services, unified SSO, one-command deployment."
 categories: ["announcement", "community"]
 tags: ["announcement", "opendesk", "education", "open-source"]
 ---
 
 # Announcing openDesk Edu
 
-We are excited to announce the launch of openDesk Edu, a new project that brings the openDesk digital workplace to higher education institutions. openDesk Edu combines 25 open-source services into a single, cohesive platform with unified single sign-on, SAML federation support, and one-command deployment. Everything is licensed under Apache-2.0 and ready for universities, research institutions, and education networks to adopt and extend.
+We are excited to announce the launch of openDesk Edu, a new project that brings the openDesk digital workplace to higher education institutions. openDesk Edu combines open-source services into a single, cohesive platform with unified single sign-on, SAML federation support, and one-command deployment. Everything is licensed under Apache-2.0 and ready for universities, research institutions, and education networks to adopt and extend.
 
 ## What is openDesk Edu?
 
@@ -16,7 +16,7 @@ openDesk Edu builds on top of openDesk Community Edition (CE) and adds 15 educat
 
 ## What's Included
 
-openDesk Edu ships 25 services across several categories:
+openDesk Edu ships all services across several categories:
 
 - **Learning Management** with ILIAS and Moodle, two of the most widely used LMS platforms in European higher education.
 - **Video Conferencing** with Jitsi Meet and BigBlueButton, covering both lightweight meetings and full-featured virtual classrooms with whiteboards, breakout rooms, and recording.
@@ -26,7 +26,7 @@ openDesk Edu ships 25 services across several categories:
 
 ## Key Features
 
-**One-command deployment.** The entire stack deploys via a single `helmfile apply` command onto any Kubernetes cluster. No manual service-by-service setup, no fragile shell scripts. Helmfile orchestrates 25 modular Helm charts with declarative configuration.
+**One-command deployment.** The entire stack deploys via a single `helmfile apply` command onto any Kubernetes cluster. No manual service-by-service setup, no fragile shell scripts. Helmfile orchestrates many modular Helm charts with declarative configuration.
 
 **Unified Keycloak SSO.** Every service authenticates through a central Keycloak instance. Users sign in once and access every application without re-entering credentials. Keycloak supports both SAML 2.0 and OpenID Connect, so it integrates cleanly with institutional identity providers.
 
@@ -34,7 +34,7 @@ openDesk Edu ships 25 services across several categories:
 
 **Data sovereignty.** All services run on infrastructure you control. No data leaves your cluster unless you configure it to. This matters for institutions subject to GDPR and national data protection regulations.
 
-**Modular architecture.** Not every institution needs all 25 services. The configuration system lets you enable only what your users need. Run just ILIAS and Nextcloud, or deploy the full stack. The choice is yours.
+**Modular architecture.** Not every institution needs all all services. The configuration system lets you enable only what your users need. Run just ILIAS and Nextcloud, or deploy the full stack. The choice is yours.
 
 ## Education Services in Beta
 

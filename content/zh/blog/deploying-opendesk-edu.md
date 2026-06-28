@@ -8,7 +8,7 @@ tags: ["部署", "基础设施", "kubernetes"]
 
 # 在高校基础设施上部署 openDesk Edu
 
-本指南将带你逐步完成在高校 Kubernetes 基础设施上部署 openDesk Edu 的全过程。部署完成后，你将拥有一个包含 25 个集成服务的完整数字化办公平台——所有服务通过统一的 Keycloak SSO 连接。
+本指南将带你逐步完成在高校 Kubernetes 基础设施上部署 openDesk Edu 的全过程。部署完成后，你将拥有一个包含 集成服务的完整数字化办公平台——所有服务通过统一的 Keycloak SSO 连接。
 
 ## 前置条件
 
