@@ -1,0 +1,46 @@
+image: node:20
+
+stages:
+  - lint
+  - test
+  - build
+
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - node_modules/
+
+install_deps:
+  stage: lint
+  script:
+    - npm ci
+  artifacts:
+    paths:
+      - node_modules/
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event" || $CI_COMMIT_BRANCH == "main"
+
+lint:
+  stage: lint
+  needs: [install_deps]
+  script:
+    - npm run lint
+    - npm run typecheck
+    - node scripts/check-integration.mjs
+
+test:
+  stage: test
+  needs: [install_deps]
+  script:
+    - npm run test
+
+build:
+  stage: build
+  needs: [lint, test]
+  script:
+    - npm run build
+  artifacts:
+    paths:
+      - out/
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
