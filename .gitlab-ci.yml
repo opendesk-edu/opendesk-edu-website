@@ -17,8 +17,6 @@ install_deps:
   artifacts:
     paths:
       - node_modules/
-  rules:
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event" || $CI_COMMIT_BRANCH == "main"
 
 lint:
   stage: lint
