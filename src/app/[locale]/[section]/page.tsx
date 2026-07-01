@@ -10,6 +10,7 @@ import { SITE_URL, SITE_NAME } from "@/lib/config";
 import { getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
 import PostList from "@/components/PostList";
+import ServiceGraphWrapper from "@/components/ServiceGraphWrapper";
 
 export const revalidate = 3600;
 
@@ -89,6 +90,8 @@ export default async function SectionPage({ params }: SectionPageProps) {
         <p className="text-foreground-secondary">
           {t("noPosts")}
         </p>
+      ) : section === "components" ? (
+        <ServiceGraphWrapper posts={posts} section={section} locale={locale} />
       ) : (
         <PostList posts={posts} section={section} locale={locale} />
       )}
