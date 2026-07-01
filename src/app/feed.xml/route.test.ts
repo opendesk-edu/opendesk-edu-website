@@ -87,7 +87,7 @@ describe("RSS Feed API route", () => {
       {
         title: "Test Post",
         slug: "test-post",
-        section: "docs",
+        section: "blog",
         description: "Test description",
         date: "2024-01-01",
         categories: ["Category1"],
@@ -103,8 +103,8 @@ describe("RSS Feed API route", () => {
 
     expect(xml).toContain("<item>");
     expect(xml).toContain("<title>Test Post</title>");
-    expect(xml).toContain("<link>https://opendesk-edu.org/en/docs/test-post</link>");
-    expect(xml).toContain("<guid>https://opendesk-edu.org/en/docs/test-post</guid>");
+    expect(xml).toContain("<link>https://opendesk-edu.org/en/blog/test-post</link>");
+    expect(xml).toContain("<guid>https://opendesk-edu.org/en/blog/test-post</guid>");
     expect(xml).toContain("<description>Test description</description>");
     expect(xml).toContain("<pubDate>Mon, 01 Jan 2024 00:00:00 GMT</pubDate>");
   });
@@ -114,7 +114,7 @@ describe("RSS Feed API route", () => {
       {
         title: "Test Post",
         slug: "test-post",
-        section: "docs",
+        section: "blog",
         description: "Test",
         date: "2024-01-01",
         categories: ["Education", "Technology"],
@@ -137,7 +137,7 @@ describe("RSS Feed API route", () => {
       {
         title: "Test Post",
         slug: "test-post",
-        section: "docs",
+        section: "blog",
         description: "Test",
         date: "2024-01-01",
         categories: [],
@@ -160,7 +160,7 @@ describe("RSS Feed API route", () => {
       {
         title: "Test Post",
         slug: "test-post",
-        section: "docs",
+        section: "blog",
         description: "Test",
         date: "2024-01-01",
         categories: undefined,
@@ -183,7 +183,7 @@ describe("RSS Feed API route", () => {
       {
         title: "Test <Post> & \"Quotes\"",
         slug: "test-post",
-        section: "docs",
+        section: "blog",
         description: "Description with <special> chars",
         date: "2024-01-01",
         categories: [],

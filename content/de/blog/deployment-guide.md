@@ -1,11 +1,11 @@
 ---
+slug: deployment-guide
 title: "Bereitstellungsleitfaden"
 date: "2026-04-15"
 description: "Schritt-für-Schritt-Anleitung für die Bereitstellung von openDesk Edu auf der Kubernetes-Infrastruktur Ihrer Hochschule."
-categories: ["bereitstellung", "leitfaden"]
+categories: ["bereitstellung"]
 tags: ["bereitstellung", "kubernetes", "helm", "helmfile", "keycloak"]
 ---
-
 # Bereitstellungsleitfaden
 
 openDesk Edu ist ein modularer digitaler Arbeitsplatz, der speziell für Bildungseinrichtungen entwickelt wurde. Die Plattform bündelt Kollaborationstools, Learning-Management-Systeme und Office-Anwendungen in einer Umgebung, die auf Kubernetes läuft. Alle Dienste werden als Helm-Charts ausgeliefert und über helmfile orchestriert, sodass sich der gesamte Stack mit einem einzigen Befehl bereitstellen lässt.
