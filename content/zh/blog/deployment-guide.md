@@ -1,11 +1,11 @@
 ---
+slug: deployment-guide
 title: "部署指南"
 date: "2026-04-15"
 description: "在您的大学 Kubernetes 基础设施上部署 openDesk Edu 的分步指南。"
-categories: ["部署", "指南"]
+categories: ["部署"]
 tags: ["部署", "kubernetes", "helm", "helmfile", "keycloak"]
 ---
-
 # 部署指南
 
 openDesk Edu 是专为教育机构设计的模块化数字工作空间。它将协作工具、学习管理系统和办公应用整合到一个运行在 Kubernetes 上的平台中。所有服务以 Helm Chart 形式分发，通过 helmfile 编排，只需一条命令即可部署整个技术栈。

@@ -93,7 +93,6 @@ describe("content.ts", () => {
   describe("isValidSection", () => {
     it("returns true for valid sections", () => {
       expect(isValidSection("components")).toBe(true);
-      expect(isValidSection("docs")).toBe(true);
       expect(isValidSection("blog")).toBe(true);
     });
 

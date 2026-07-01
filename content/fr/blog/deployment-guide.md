@@ -1,11 +1,11 @@
 ---
+slug: deployment-guide
 title: "Guide de deploiement"
 date: "2026-04-15"
 description: "Guide pas a pas pour deployer openDesk Edu sur l'infrastructure Kubernetes de votre universite."
-categories: ["deploiement", "guide"]
+categories: ["deploiement"]
 tags: ["deploiement", "kubernetes", "helm", "helmfile", "keycloak"]
 ---
-
 # Guide de deploiement
 
 openDesk Edu est un espace de travail numerique modulaire concu pour les etablissements d'enseignement. Il regroupe des outils de collaboration, des plateformes d'apprentissage et des applications bureautiques dans un environnement qui fonctionne sur Kubernetes. Tous les services sont distribues sous forme de charts Helm et orchestres via helmfile, ce qui permet de deployer l'ensemble de la pile avec une seule commande.

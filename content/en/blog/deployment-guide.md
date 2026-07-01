@@ -1,11 +1,11 @@
 ---
+slug: deployment-guide
 title: "Deployment Guide"
 date: "2026-04-15"
 description: "Step-by-step guide for deploying openDesk Edu on your university's Kubernetes infrastructure."
-categories: ["deployment", "guide"]
+categories: ["deployment"]
 tags: ["deployment", "kubernetes", "helm", "helmfile", "keycloak"]
 ---
-
 # Deployment Guide
 
 openDesk Edu is a modular digital workspace designed for educational institutions. It packages collaboration tools, learning management systems, and office applications into a single platform that runs on Kubernetes. All services are distributed as Helm charts and orchestrated through helmfile, so the entire stack deploys with a single command.

@@ -65,12 +65,11 @@ describe("Header", () => {
     expect(screen.getByText("openDesk Edu")).toBeInTheDocument();
   });
 
-  it("renders all 4 nav items (Home + 3 sections)", () => {
+  it("renders all nav items (Home + Blog + Components)", () => {
     renderHeader();
     expect(screen.getByText("Home")).toBeInTheDocument();
-    expect(screen.getByText("Components")).toBeInTheDocument();
-    expect(screen.getByText("Docs")).toBeInTheDocument();
     expect(screen.getByText("Blog")).toBeInTheDocument();
+    expect(screen.getByText("Components")).toBeInTheDocument();
   });
 
   it("renders a theme toggle button", () => {
@@ -117,9 +116,8 @@ describe("Header", () => {
 
     const mobileNav = screen.getByLabelText("Mobile navigation");
     expect(mobileNav.querySelector('a[href="/"]')).toBeInTheDocument();
-    expect(mobileNav.querySelector('a[href="/components"]')).toBeInTheDocument();
-    expect(mobileNav.querySelector('a[href="/docs"]')).toBeInTheDocument();
     expect(mobileNav.querySelector('a[href="/blog"]')).toBeInTheDocument();
+    expect(mobileNav.querySelector('a[href="/components"]')).toBeInTheDocument();
   });
 
   it("mobile nav renders links", async () => {
