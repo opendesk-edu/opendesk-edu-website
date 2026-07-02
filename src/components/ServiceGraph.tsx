@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import cytoscape from "cytoscape";
 import type { Post } from "@/lib/content";
 import { useRouter } from "@/i18n/navigation";
@@ -84,7 +84,7 @@ export default function ServiceGraph({ posts, section, locale }: ServiceGraphPro
   const router = useRouter();
   const [selectedNode, setSelectedNode] = useState<string | null>(null);
 
-  const filteredPosts = posts.filter((p) => p.slug !== "compare");
+  const filteredPosts = useMemo(() => posts.filter((p) => p.slug !== "compare"), [posts]);
 
   useEffect(() => {
     if (!containerRef.current) return;
