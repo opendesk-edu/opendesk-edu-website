@@ -67,17 +67,17 @@ jobs:
     steps:
       - name: Write SSH key
         run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.DEPLOY_SSH_KEY }}" > ~/.ssh/deploy_key
-          chmod 600 ~/.ssh/deploy_key
-          ssh-keygen -l -f ~/.ssh/deploy_key || { echo "SSH key is invalid"; exit 1; }
+          mkdir -p "${HOME}/.ssh"
+          echo "${{ secrets.DEPLOY_SSH_KEY }}" > "${HOME}/.ssh/deploy_key"
+          chmod 600 "${HOME}/.ssh/deploy_key"
+          ssh-keygen -l -f "${HOME}/.ssh/deploy_key" || { echo "SSH key is invalid"; exit 1; }
 
       - name: Deploy to server
         uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.DEPLOY_HOST }}
           username: ${{ secrets.DEPLOY_USER }}
-          key_path: ~/.ssh/deploy_key
+          key_path: /home/runner/.ssh/deploy_key
           script: |
             cd ${{ secrets.DEPLOY_PATH }}
             git pull
