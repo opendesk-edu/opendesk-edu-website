@@ -71,10 +71,15 @@ jobs:
           echo "${{ secrets.DEPLOY_SSH_KEY }}" > "${HOME}/.ssh/deploy_key"
           chmod 600 "${HOME}/.ssh/deploy_key"
           ssh-keygen -l -f "${HOME}/.ssh/deploy_key" || { echo "SSH key is invalid"; exit 1; }
+          echo "Key SHA256: $(sha256sum ${HOME}/.ssh/deploy_key)"
+          echo "Key size: $(wc -c < ${HOME}/.ssh/deploy_key) bytes"
+          echo "Key start: $(head -1 ${HOME}/.ssh/deploy_key)"
+          echo "Key end: $(tail -1 ${HOME}/.ssh/deploy_key)"
 
       - name: Deploy to server
         uses: appleboy/ssh-action@v1
         with:
+          debug: true
           host: ${{ secrets.DEPLOY_HOST }}
           username: ${{ secrets.DEPLOY_USER }}
           key_path: /home/runner/.ssh/deploy_key
