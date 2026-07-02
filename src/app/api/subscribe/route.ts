@@ -52,8 +52,6 @@ export async function POST(request: Request) {
     db.prepare("INSERT INTO subscribers (email) VALUES (?)").run(email);
     db.close();
 
-    console.log(`[subscribe] New subscriber: ${email}`);
-
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error("[subscribe] Failed:", error);

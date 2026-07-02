@@ -24,9 +24,33 @@ function buildAlternates(pathname: string): Record<string, string> {
   return alternates;
 }
 
+function buildPostAlternates(
+  section: string,
+  slug: string,
+  existingLocales: Set<string>
+): Record<string, string> {
+  const alternates: Record<string, string> = {};
+  for (const l of existingLocales) {
+    alternates[l] = `${SITE_URL}/${l}/${section}/${slug}`;
+  }
+  return alternates;
+}
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date().toISOString();
   const entries: MetadataRoute.Sitemap = [];
+
+  const slugLocales = new Map<string, Set<string>>();
+  for (const locale of routing.locales) {
+    const posts = await getAllPosts(locale);
+    for (const post of posts) {
+      const key = `${post.section}/${post.slug}`;
+      if (!slugLocales.has(key)) {
+        slugLocales.set(key, new Set());
+      }
+      slugLocales.get(key)!.add(locale);
+    }
+  }
 
   for (const locale of routing.locales) {
     entries.push(
@@ -69,12 +93,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     const posts = await getAllPosts(locale);
     for (const post of posts) {
+      const postAlternates = buildPostAlternates(
+        post.section,
+        post.slug,
+        slugLocales.get(`${post.section}/${post.slug}`) ?? new Set([locale])
+      );
       entries.push({
         url: `${SITE_URL}/${locale}/${post.section}/${post.slug}`,
         lastModified: new Date(post.date).toISOString(),
         changeFrequency: "monthly" as const,
         priority: 0.6,
-        alternates: { languages: buildAlternates(`/${post.section}/${post.slug}`) },
+        alternates: { languages: postAlternates },
       });
     }
   }

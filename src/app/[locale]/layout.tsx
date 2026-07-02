@@ -15,7 +15,6 @@ import CookieConsent from '@/components/CookieConsent';
 import SearchDialogWrapper from '@/components/SearchDialogWrapper';
 import {SearchProvider} from '@/components/SearchContext';
 import {SITE_URL, SITE_NAME, SITE_DESCRIPTION} from '@/lib/config';
-import Script from 'next/script';
 
 const inter = Inter({
   variable: "--font-inter",
@@ -125,6 +124,7 @@ export default async function LocaleLayout({
         <ThemeScript />
         <JsonLdOrganization locale={locale} />
         <link rel="alternate" type="application/rss+xml" title={`openDesk Edu - ${locale.toUpperCase()}`} href={`/${locale}/rss`} />
+        <link rel="icon" type="image/svg+xml" href="/static/brand/favicon.svg" />
       </head>
       <body>
         <ThemeProvider>
@@ -146,11 +146,6 @@ export default async function LocaleLayout({
             <ScrollToTop />
             <CookieConsent />
             <SearchDialogWrapper />
-            <Script
-              src="https://analytics.opendesk-edu.org/script.js"
-              data-website-id="5c28fb2f-2d58-4be3-b800-dbbe64fd9272"
-              strategy="afterInteractive"
-            />
             </SearchProvider>
           </NextIntlClientProvider>
         </ThemeProvider>

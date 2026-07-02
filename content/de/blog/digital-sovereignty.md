@@ -5,11 +5,7 @@ description: "Wie openDesk Edu Universitäten hilft, sich von Anbieter-Lock-in z
 categories: ["Digitale Souveränität", "Open Source", "Bildung"]
 tags: ["digitale-souveränität", "dsgvo", "open-source", "bildung", "kubernetes", "anbieterbindung", "deutsche-hochschulen"]
 author: "Tobias Weiß und openDesk Edu Mitwirkende"
-image: "/images/articles/digital-sovereignty-header.png"
-imageOptimized: "/images/articles/digital-sovereignty-header-optimized.png"
-relatedPapers:
-  - "/papers/2026-06-27-educational-institutions-digital-sovereignty.md"
-  - "/papers/2026-06-27-openspec-self-improvement-paper.md"
+image: "/static/diagrams/architecture.svg"
 ---
 
 # Gewinnen Sie Ihre Digitale Souveränität zurück: Das openDesk Edu Open-Source-Ökosystem

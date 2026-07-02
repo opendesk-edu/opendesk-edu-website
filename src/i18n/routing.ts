@@ -25,7 +25,6 @@ export const routing = defineRouting({
       zh: '/privacy'
     },
     '/components': '/components',
-    '/docs': '/docs',
     '/blog': '/blog',
     '/blog/tag/[tag]': '/blog/tag/[tag]',
     '/[...slug]': '/[...slug]',

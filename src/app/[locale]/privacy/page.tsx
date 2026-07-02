@@ -22,8 +22,6 @@ export default async function PrivacyPage({params}: PageProps) {
       <article className="prose">
         <h1>{t('title')}</h1>
 
-        {/* TODO: Legal review required */}
-
         <h2>{t('generalInfoHeading')}</h2>
         <p>{t('generalInfoP1')}</p>
         <p>{t('generalInfoP2')}</p>

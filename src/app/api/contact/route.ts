@@ -49,10 +49,6 @@ export async function POST(request: Request) {
     const transporter = getTransporter();
 
     if (!transporter) {
-      // SMTP not configured — log the attempt and return 501
-      console.log(
-        `[contact] SMTP not configured. Would send: from=${email}, name=${name || "—"}, subject=${subject || "(no subject)"}, message length=${message.length}`
-      );
       return NextResponse.json(
         {
           error:

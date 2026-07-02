@@ -22,12 +22,12 @@ function readConsent(): ConsentState {
 function loadAnalyticsScripts(): void {
   if (typeof document === "undefined") return;
 
-  // Plausible Analytics
+  // Plausible Analytics (self-hosted)
   if (PLAUSIBLE_DOMAIN) {
     const plausible = document.createElement("script");
     plausible.defer = true;
     plausible.dataset.domain = PLAUSIBLE_DOMAIN;
-    plausible.src = "https://plausible.io/js/script.js";
+    plausible.src = "https://analytics.opendesk-edu.org/script.js";
     document.head.appendChild(plausible);
   }
 
