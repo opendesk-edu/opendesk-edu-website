@@ -3,7 +3,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import cytoscape from "cytoscape";
 import type { Post } from "@/lib/content";
-import { useRouter } from "@/i18n/navigation";
 
 const CATEGORY_GROUP: Record<string, string> = {
   "scientific-computing": "Scientific Computing & Research",
@@ -81,7 +80,6 @@ interface ServiceGraphProps {
 export default function ServiceGraph({ posts, section, locale }: ServiceGraphProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const cyRef = useRef<cytoscape.Core | null>(null);
-  const router = useRouter();
   const [selectedNode, setSelectedNode] = useState<string | null>(null);
 
   const filteredPosts = useMemo(() => posts.filter((p) => p.slug !== "compare"), [posts]);
@@ -248,7 +246,7 @@ export default function ServiceGraph({ posts, section, locale }: ServiceGraphPro
     cy.on("tap", "node", (evt) => {
       const node = evt.target;
       const href = node.data("href");
-      if (href) router.push(href);
+      if (href) window.open(href, "_blank", "noopener");
     });
 
     cy.on("mouseover", "node", (evt) => {
@@ -266,7 +264,7 @@ export default function ServiceGraph({ posts, section, locale }: ServiceGraphPro
       cy.destroy();
       cyRef.current = null;
     };
-  }, [filteredPosts, locale, section, router]);
+  }, [filteredPosts, locale, section]);
 
   const selectedPost = selectedNode
     ? filteredPosts.find((p) => p.slug === selectedNode)
