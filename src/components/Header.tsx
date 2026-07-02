@@ -24,7 +24,7 @@ export default function Header() {
 
   const EXTERNAL_LINKS: { href: string; label: string; icon: string }[] = [
     { href: 'https://landscape.opendesk-edu.org', label: t('landscape'), icon: '🌄' },
-    { href: 'https://openspec.opendesk-edu.org', label: t('openspec'), icon: '📋' },
+    { href: 'https://github.com/opendesk-edu/opendesk-edu-spec', label: t('openspec'), icon: '📋' },
   ];
 
   return (
