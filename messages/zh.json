@@ -4,6 +4,8 @@
     "components": "组件",
     "blog": "博客",
     "about": "关于",
+    "landscape": "Landscape",
+    "openspec": "Spec",
     "languageSwitcher": {
       "label": "语言"
     },
