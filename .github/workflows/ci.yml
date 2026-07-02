@@ -65,12 +65,19 @@ jobs:
     needs: [build]
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     steps:
+      - name: Write SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.DEPLOY_SSH_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keygen -l -f ~/.ssh/deploy_key || { echo "SSH key is invalid"; exit 1; }
+
       - name: Deploy to server
         uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.DEPLOY_HOST }}
           username: ${{ secrets.DEPLOY_USER }}
-          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          key_path: ~/.ssh/deploy_key
           script: |
             cd ${{ secrets.DEPLOY_PATH }}
             git pull
