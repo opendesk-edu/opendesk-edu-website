@@ -35,3 +35,6 @@ jobs:
         with:
           commit_message: "chore: optimize SVGs and regenerate PNGs"
           file_pattern: "public/static/"
+          commit_if_no_changes: "false"
+          skip_fetch: true
+          skip_check_run: true
