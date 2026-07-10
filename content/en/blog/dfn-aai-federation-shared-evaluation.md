@@ -25,7 +25,7 @@ Without DFN-AAI support, openDesk Edu would be a standalone island. With it, it 
 
 ## What We Built
 
-Over Sprint 5 of our v1.1 roadmap, we implemented comprehensive DFN-AAI federation support for openDesk Edu. Here's what was delivered:
+Over Sprint 5 of our v1.1 release roadmap (July 2026), we implemented comprehensive DFN-AAI federation support for openDesk Edu. Here's what was delivered:
 
 ### 1. Keycloak as SAML Service Provider Proxy
 
@@ -88,10 +88,10 @@ xmllint --valid --noout sp-metadata.xml
 
 We documented the complete testing workflow — from test IdP accounts to attribute verification to single logout propagation — in a bilingual (EN/DE) testing guide, covering the DFN-AAI test federation environment:
 
-| Environment | Metadata URL | Registration Time |
-|-------------|-------------|-------------------|
-| **Test Federation** | `https://www.aai.dfn.de/fileadmin/metadata/DFN-AAI-Test-metadata.xml` | 1-2 business days |
-| **Production Federation** | Via institutional registration | 3-5 business days |
+| Environment | Metadata Source | Registration Time |
+|-------------|-----------------|-------------------|
+| **Test Federation** | DFN-AAI test federation: `https://www.aai.dfn.de/fileadmin/metadata/DFN-AAI-Test-metadata.xml` | 1-2 business days |
+| **Production Federation** | Your institution's DFN-AAI administrator | 3-5 business days |
 
 ### 5. Complete Documentation Suite
 
