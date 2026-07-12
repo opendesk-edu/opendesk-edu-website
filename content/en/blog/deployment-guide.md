@@ -5,6 +5,7 @@ date: "2026-04-15"
 description: "Step-by-step guide for deploying openDesk Edu on your university's Kubernetes infrastructure."
 categories: ["deployment"]
 tags: ["deployment", "kubernetes", "helm", "helmfile", "keycloak"]
+image: "/static/blog/deployment-guide-teaser.svg"
 ---
 # Deployment Guide
 

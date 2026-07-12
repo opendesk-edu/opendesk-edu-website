@@ -4,6 +4,7 @@ date: "2026-06-29"
 description: "Entdecken Sie die interaktive openDesk Edu Service Landscape: eine visuelle Karte aller integrierten Open-Source-Dienste in den verschiedenen Domänen — von der Kernplattform über Bildung und Forschung bis zu Sicherheit und Compliance."
 categories: ["Plattform", "Open Source", "Werkzeuge"]
 tags: ["landscape", "dienste", "übersicht", "opendesk", "ökosystem"]
+image: "/static/blog/service-landscape-teaser.svg"
 ---
 
 # openDesk Edu Service Landscape — Das gesamte Ökosystem auf einen Blick

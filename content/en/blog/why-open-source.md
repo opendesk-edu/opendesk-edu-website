@@ -4,6 +4,7 @@ date: "2026-04-19"
 description: "Commercial platforms lock you into their ecosystem with opaque data practices. Open-source alternatives give universities control, transparency, and the freedom to integrate with existing systems."
 categories: ["Opinion"]
 tags: ["open-source", "universities", "digital-transformation"]
+image: "/static/blog/why-open-source-teaser.svg"
 ---
 
 # Why Choose Open-Source Digital Tools for Universities?

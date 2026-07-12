@@ -2,8 +2,9 @@
 title: "Sicherheit und Compliance: Was Hochschulen wissen müssen"
 date: "2026-04-19"
 description: "DSGVO, BSI-IT-Grundschutz, ISO 27001 — für openDesk Edu sind das keine Marketing-Checkliste, sondern architektonische Anforderungen, die direkt im Code verankert sind."
-categories: ["Technical"]
-tags: ["security", "compliance", "GDPR", "backup"]
+categories: ["sicherheit", "compliance"]
+tags: ["sicherheit", "compliance", "dsgvo", "backup"]
+image: "/static/blog/security-compliance-teaser.svg"
 ---
 
 # Sicherheit und Compliance: Was Hochschulen wissen müssen

@@ -5,6 +5,7 @@ description: "LinkedIn-Artikelversion der Collab Services-Ankündigung."
 categories: ["linkedin"]
 tags: ["opendesk", "wissenschaftliches-rechnen", "kubernetes", "opensource"]
 draft: false
+image: "/static/blog/linkedin-collab-services-teaser.svg"
 ---
 
 # Collab Services: Wissenschaftliche Rechenwerkzeuge ergänzen openDesk Edu

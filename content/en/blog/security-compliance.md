@@ -4,6 +4,7 @@ date: "2026-04-19"
 description: "GDPR, BSI-IT-Grundschutz, ISO 27001 — these aren't marketing checklist items for openDesk Edu, they're architectural requirements embedded in the code."
 categories: ["Technical"]
 tags: ["security", "compliance", "GDPR", "backup"]
+image: "/static/blog/security-compliance-teaser.svg"
 ---
 
 # Security and Compliance: What Universities Need to Know

@@ -2,8 +2,9 @@
 title: "Warum Open-Source-Digitalwerkzeuge für Hochschulen?"
 date: "2026-04-19"
 description: "Kommerzielle Plattformen schließen Sie in ihr Ökosystem ein undurchsichtigen Datenpraktiken ein. Open-Source-Alternativen geben Hochschulen Kontrolle, Transparenz und die Freiheit zur Integration mit bestehenden Systemen."
-categories: ["Opinion"]
-tags: ["open-source", "universities", "digital-transformation"]
+categories: ["meinung"]
+tags: ["open-source", "universitäten", "digitale-transformation"]
+image: "/static/blog/why-open-source-teaser.svg"
 ---
 
 # Warum Open-Source-Digitalwerkzeuge für Hochschulen?

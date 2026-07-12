@@ -4,6 +4,7 @@ date: "2026-04-15"
 description: "openDesk Edu brings the openDesk digital workplace to higher education — open-source services, unified SSO, one-command deployment."
 categories: ["announcement", "community"]
 tags: ["announcement", "opendesk", "education", "open-source"]
+image: "/static/blog/announcement-teaser.svg"
 ---
 
 # Announcing openDesk Edu

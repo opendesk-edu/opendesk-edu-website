@@ -2,8 +2,9 @@
 title: "openDesk Edu auf Ihrer Hochschulinfrastruktur deployen"
 date: "2026-04-18"
 description: "Eine Schritt-für-Schritt-Anleitung zum Deployment von openDesk Edu — vom Aufsetzen des Kubernetes-Clusters bis zur Konfiguration der SAML-Föderation mit DFN-AAI und eduGAIN."
-categories: ["Tutorial"]
-tags: ["deployment", "infrastruktur", "kubernetes"]
+categories: ["tutorial"]
+tags: ["bereitstellung", "infrastruktur", "kubernetes"]
+image: "/static/blog/deploying-opendesk-edu-teaser.svg"
 ---
 
 # openDesk Edu auf Ihrer Hochschulinfrastruktur deployen

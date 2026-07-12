@@ -5,6 +5,7 @@ description: "How we extended the openDesk intercom-service to support OpenCloud
 categories: ["Engineering", "Community", "Open Source"]
 tags: ["intercom-service", "zendis", "opendesk", "extension", "community", "governance"]
 author: "Tobias Weiß and openDesk Edu Contributors"
+image: "/static/blog/extending-intercom-service-community-consensus-teaser.svg"
 ---
 
 # Extending the Intercom-Service: A Call for Community-ZenDiS Consensus on Common Development Patterns

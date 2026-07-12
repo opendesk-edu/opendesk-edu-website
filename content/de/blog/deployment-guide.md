@@ -5,6 +5,7 @@ date: "2026-04-15"
 description: "Schritt-für-Schritt-Anleitung für die Bereitstellung von openDesk Edu auf der Kubernetes-Infrastruktur Ihrer Hochschule."
 categories: ["bereitstellung"]
 tags: ["bereitstellung", "kubernetes", "helm", "helmfile", "keycloak"]
+image: "/static/blog/deployment-guide-teaser.svg"
 ---
 # Bereitstellungsleitfaden
 

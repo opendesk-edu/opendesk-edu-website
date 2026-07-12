@@ -2,8 +2,8 @@
 title: "Fortschrittsbericht: openDesk Edu am HRZ Maui — Juni 2026"
 date: "2026-06-04"
 description: "Nach fünf Monaten Betrieb und zwei Härtungs-Sprints läuft openDesk Edu am Hochschulrechenzentrum der Universität Marburg in voller Betriebsstärke. Ein Überblick — inklusive Upstream-Integration in den Haupt-cluster des openDesk HRZ."
-categories: ["Status-Update"]
-tags: ["deployment", "infrastruktur", "kubernetes", "sprint", "universität-marburg"]
+categories: ["status-bericht"]
+tags: ["bereitstellung", "infrastruktur", "kubernetes", "sprint", "universität-marburg"]
 image: "/static/blog/progress-report-june-2026-teaser.png"
 ---
 

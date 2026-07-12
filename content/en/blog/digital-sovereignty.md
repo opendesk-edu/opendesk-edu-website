@@ -5,7 +5,7 @@ description: "How openDesk Edu helps universities break free from vendor lock-in
 categories: ["Digital Sovereignty", "Open Source", "Education"]
 tags: ["digital-sovereignty", "gdpr", "open-source", "education", "kubernetes", "vendor-lockin", "german-higher-education"]
 author: "Tobias Weiß and openDesk Edu Contributors"
-image: "/static/diagrams/architecture.svg"
+image: "/static/blog/digital-sovereignty-teaser.svg"
 ---
 
 # Reclaim Your Digital Sovereignty: The openDesk Edu Open-Source Ecosystem

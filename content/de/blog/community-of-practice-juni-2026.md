@@ -4,7 +4,7 @@ date: "2026-06-22"
 description: "Vielen Dank an alle Teilnehmer der gestrigen openDesk Community of Practice. Hier die Zusammenfassung der Session mit allen wichtigen Themen, Links zur Dokumentation und der Umfrage zum nächsten Termin."
 categories: ["gemeinschaft"]
 tags: ["community-of-practice", "opendesk", "austausch", "gemeinschaft", "campus"]
-image: "/static/diagrams/architecture.svg"
+image: "/static/blog/community-of-practice-juni-2026-teaser.svg"
 ---
 
 # Rückblick: openDesk Community of Practice — Juni 2026

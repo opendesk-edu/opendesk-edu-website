@@ -4,6 +4,7 @@ date: "2026-04-17"
 description: "Ein technischer Deep-Dive in die openDesk Edu-Architektur — Kubernetes-Orchestrierung, SAML-Föderation, Keycloak-SSO und modulares Service-Design."
 categories: ["technik", "architektur"]
 tags: ["architektur", "kubernetes", "saml", "keycloak", "deep-dive"]
+image: "/static/blog/architecture-deep-dive-teaser.svg"
 ---
 
 # Architektur-Deep-Dive: So funktioniert openDesk Edu
