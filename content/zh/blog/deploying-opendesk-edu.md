@@ -4,6 +4,7 @@ date: "2026-04-18"
 description: "从搭建 Kubernetes 集群到配置 DFN-AAI 和 eduGAIN 的 SAML 联邦认证，手把手教你在高校环境中部署 openDesk Edu。"
 categories: ["教程"]
 tags: ["部署", "基础设施", "kubernetes"]
+image: "/static/blog/deploying-opendesk-edu-teaser.svg"
 ---
 
 # 在高校基础设施上部署 openDesk Edu

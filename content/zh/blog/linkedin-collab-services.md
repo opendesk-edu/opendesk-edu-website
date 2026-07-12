@@ -5,6 +5,7 @@ description: "Collab Services 公告的 LinkedIn 文章版本。"
 categories: ["linkedin"]
 tags: ["opendesk", "科学计算", "kubernetes", "opensource"]
 draft: false
+image: "/static/blog/linkedin-collab-services-teaser.svg"
 ---
 
 # Collab Services：科学计算工具加入 openDesk Edu

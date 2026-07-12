@@ -4,6 +4,7 @@ date: "2026-04-18"
 description: "Un guide pas à pas pour déployer openDesk Edu — de la configuration de votre cluster Kubernetes à la mise en place de la fédération SAML avec DFN-AAI et eduGAIN."
 categories: ["Tutoriel"]
 tags: ["déploiement", "infrastructure", "kubernetes"]
+image: "/static/blog/deploying-opendesk-edu-teaser.svg"
 ---
 
 # Déployer openDesk Edu sur l'infrastructure de votre université

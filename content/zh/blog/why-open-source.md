@@ -4,6 +4,7 @@ date: "2026-04-19"
 description: "商业平台通过不透明的数据实践将您锁定在其生态系统中。开源替代方案为高校提供了控制权、透明度以及与现有系统集成的自由。"
 categories: ["Opinion"]
 tags: ["open-source", "universities", "digital-transformation"]
+image: "/static/blog/why-open-source-teaser.svg"
 ---
 
 # 为什么选择开源数字工具用于高校？

@@ -4,6 +4,7 @@ date: "2026-06-29"
 description: "Découvrez le paysage interactif des services openDesk Edu : une carte visuelle de tous les services open source intégrés dans tous les domaines — de la plateforme centrale à l'éducation, la sécurité et la conformité."
 categories: ["Plateforme", "Open Source", "Outils"]
 tags: ["landscape", "services", "aperçu", "opendesk", "écosystème"]
+image: "/static/blog/service-landscape-teaser.svg"
 ---
 
 # Service Landscape openDesk Edu — L'Écosystème Complet en un Coup d'Œil

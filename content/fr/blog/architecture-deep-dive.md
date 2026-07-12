@@ -4,6 +4,7 @@ date: "2026-04-17"
 description: "Une analyse technique approfondie de l'architecture openDesk Edu — orchestration Kubernetes, fédération SAML, SSO Keycloak et conception modulaire des services."
 categories: ["technique", "architecture"]
 tags: ["architecture", "kubernetes", "saml", "keycloak", "deep-dive"]
+image: "/static/blog/architecture-deep-dive-teaser.svg"
 ---
 
 # Plongée dans l'architecture : comment fonctionne openDesk Edu

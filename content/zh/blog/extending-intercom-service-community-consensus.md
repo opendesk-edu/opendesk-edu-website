@@ -5,7 +5,8 @@ description: "我们如何扩展 openDesk 的 intercom 服务以支持 OpenCloud
 categories: ["工程", "社区", "开源"]
 tags: ["intercom-service", "zendis", "opendesk", "扩展", "社区", "治理"]
 author: "Tobias Weiß 和 openDesk Edu 贡献者"
----
+image: "/static/blog/extending-intercom-service-community-consensus-teaser.svg"
+
 
 # 扩展 Intercom 服务：呼吁 ZenDiS 与社区就共同开发模式达成共识
 

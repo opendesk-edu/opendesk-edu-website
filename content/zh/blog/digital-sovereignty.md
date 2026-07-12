@@ -5,7 +5,7 @@ description: "openDesk Edu 如何帮助高校摆脱供应商锁定，降低 80-9
 categories: ["数字主权", "开源", "教育"]
 tags: ["数字主权", "gdpr", "开源", "教育", "kubernetes", "供应商锁定", "德国高等教育"]
 author: "Tobias Weiß 与 openDesk Edu 贡献者"
-image: "/static/diagrams/architecture.svg"
+image: "/static/blog/digital-sovereignty-teaser.svg"
 ---
 
 # 重掌数字主权：openDesk Edu 开源生态系统

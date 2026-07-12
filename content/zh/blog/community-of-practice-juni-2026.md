@@ -4,7 +4,7 @@ date: "2026-06-22"
 description: "感谢所有参加昨天 openDesk 社区实践活动的参与者。以下是本次会议的摘要，涵盖重要主题、文档链接以及下次会议的调查问卷。"
 categories: ["社区"]
 tags: ["community-of-practice", "opendesk", "交流", "社区", "校园"]
-image: "/static/diagrams/architecture.svg"
+image: "/static/blog/community-of-practice-juni-2026-teaser.svg"
 ---
 
 # 回顾：openDesk 社区实践 — 2026年6月

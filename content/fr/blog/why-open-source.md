@@ -4,6 +4,7 @@ date: "2026-04-19"
 description: "Les plateformes commerciales vous enferment dans leur écosystème avec des pratiques opaques en matière de données. Les alternatives open-source donnent aux universités le contrôle, la transparence et la liberté d'intégration avec les systèmes existants."
 categories: ["Opinion"]
 tags: ["open-source", "universities", "digital-transformation"]
+image: "/static/blog/why-open-source-teaser.svg"
 ---
 
 # Pourquoi Choisir des Outils Numériques Open-Source pour les Universités ?

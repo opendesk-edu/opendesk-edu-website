@@ -4,6 +4,7 @@ date: "2026-06-29"
 description: "探索交互式 openDesk Edu 服务全景图：一张可视化地图，涵盖所有领域的所有集成开源服务——从核心平台、教育到安全与合规。"
 categories: ["平台", "开源", "工具"]
 tags: ["服务全景图", "服务", "概览", "opendesk", "生态系统"]
+image: "/static/blog/service-landscape-teaser.svg"
 ---
 
 # openDesk Edu 服务全景图 — 一站式纵览完整生态系统

@@ -5,6 +5,7 @@ date: "2026-04-15"
 description: "在您的大学 Kubernetes 基础设施上部署 openDesk Edu 的分步指南。"
 categories: ["部署"]
 tags: ["部署", "kubernetes", "helm", "helmfile", "keycloak"]
+image: "/static/blog/deployment-guide-teaser.svg"
 ---
 # 部署指南
 

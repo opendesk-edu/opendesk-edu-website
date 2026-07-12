@@ -5,7 +5,7 @@ description: "Comment openDesk Edu aide les universités à s'affranchir de la d
 categories: ["Souveraineté numérique", "Open Source", "Éducation"]
 tags: ["souveraineté-numérique", "rgpd", "open-source", "éducation", "kubernetes", "dépendance-fournisseur", "enseignement-supérieur-allemand"]
 author: "Tobias Weiß et les contributeurs openDesk Edu"
-image: "/static/diagrams/architecture.svg"
+image: "/static/blog/digital-sovereignty-teaser.svg"
 ---
 
 # Reprenez votre souveraineté numérique : l'écosystème open-source openDesk Edu

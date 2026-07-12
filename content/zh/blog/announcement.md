@@ -4,6 +4,7 @@ date: "2026-04-15"
 description: "openDesk Edu 将 openDesk 数字工作空间带入高等教育领域 — 开源服务、统一 SSO、一键部署。"
 categories: ["公告", "社区"]
 tags: ["公告", "opendesk", "教育", "开源"]
+image: "/static/blog/announcement-teaser.svg"
 ---
 
 # openDesk Edu 项目发布

@@ -4,6 +4,7 @@ date: "2026-04-17"
 description: "深入解析 openDesk Edu 的技术架构 — Kubernetes 编排、SAML 联邦、Keycloak SSO 以及模块化服务设计。"
 categories: ["技术", "架构"]
 tags: ["架构", "kubernetes", "saml", "keycloak", "深度解析"]
+image: "/static/blog/architecture-deep-dive-teaser.svg"
 ---
 
 # 架构深度解析：openDesk Edu 的工作原理
