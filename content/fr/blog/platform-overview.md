@@ -5,8 +5,7 @@ description: "Découvrez comment openDesk Edu transforme les établissements d'e
 categories: ["Plateforme", "Open Source", "Éducation"]
 tags: ["plateforme", "edtech", "open-source", "éducation", "conformité-allemande"]
 author: "Tobias Weiß et les contributeurs openDesk Edu"
-image: "/images/articles/platform-overview-header.png"
-imageOptimized: "/images/articles/platform-overview-header-optimized.png"
+image: "/static/blog/platform-overview-teaser.svg"
 ---
 
 # La Plateforme openDesk Edu : Apprentissage Numérique Open Source Complet

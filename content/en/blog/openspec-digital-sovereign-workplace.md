@@ -5,8 +5,7 @@ description: "How the openDesk Edu OpenSpec methodology enables organizations to
 categories: ["Architecture", "Digital Sovereignty", "OpenSpec"]
 tags: ["digital-sovereignty", "gdpr", "open-source", "openspec", "kubernetes", "vendor-lockin", "specifications"]
 author: "Tobias Weiß and openDesk Edu Contributors"
-image: "/images/articles/openspec-digital-sovereign-workplace-header.png"
-imageOptimized: "/images/articles/openspec-digital-sovereign-workplace-header-optimized.png"
+image: "/static/blog/openspec-digital-sovereign-workplace-teaser.svg"
 relatedPapers:
   - "/papers/2026-06-27-educational-institutions-digital-sovereignty.md"
   - "/papers/2026-06-27-openspec-self-improvement-paper.md"

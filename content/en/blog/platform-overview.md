@@ -5,8 +5,7 @@ description: "Discover how openDesk Edu transforms educational institutions with
 categories: ["Platform", "Open Source", "Education"]
 tags: ["platform", "edtech", "open-source", "education", "german-compliance"]
 author: "Tobias Weiß and openDesk Edu Contributors"
-image: "/images/articles/platform-overview-header.png"
-imageOptimized: "/images/articles/platform-overview-header-optimized.png"
+image: "/static/blog/platform-overview-teaser.svg"
 ---
 
 # The openDesk Edu Platform: Comprehensive Open-Source Learning Management

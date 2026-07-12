@@ -5,8 +5,7 @@ description: "了解 openDesk Edu 如何通过 25 个集成的开源服务、无
 categories: ["平台", "开源", "教育"]
 tags: ["平台", "教育技术", "开源", "教育", "德国合规性"]
 author: "Tobias Weiß 和 openDesk Edu 贡献者"
-image: "/images/articles/platform-overview-header.png"
-imageOptimized: "/images/articles/platform-overview-header-optimized.png"
+image: "/static/blog/platform-overview-teaser.svg"
 ---
 
 # openDesk Edu 平台：全面的开源学习管理

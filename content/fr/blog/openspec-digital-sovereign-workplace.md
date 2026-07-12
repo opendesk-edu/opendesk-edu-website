@@ -5,8 +5,7 @@ description: "Comment la méthodologie OpenSpec d'openDesk Edu permet aux organi
 categories: ["Architecture", "Souveraineté Numérique", "Open Source"]
 tags: ["souveraineté-numérique", "rgpd", "open-source", "opendesk", "kubernetes", "fournisseurs"]
 author: "Tobias Weiß et les contributeurs openDesk Edu"
-image: "/images/articles/openspec-digital-sovereign-workplace-header.png"
-imageOptimized: "/images/articles/openspec-digital-sovereign-workplace-header-optimized.png"
+image: "/static/blog/openspec-digital-sovereign-workplace-teaser.svg"
 ---
 
 # OpenSpec pour le Poste de Travail Numérique Souverain
