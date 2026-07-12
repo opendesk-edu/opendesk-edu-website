@@ -4,6 +4,7 @@ date: "2026-07-12"
 description: "A quick guide to signing the CLA and starting your first contribution to openDesk."
 categories: ["Community"]
 tags: ["contributing", "CLA", "open-source"]
+image: "/static/blog/contributor-agreement-tldr-teaser.svg"
 ---
 
 # TL;DR: openDesk Contributor Agreement

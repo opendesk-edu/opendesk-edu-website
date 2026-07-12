@@ -2,7 +2,7 @@
 title: "Sprint 1 完成：Maui 集群基础设施修复"
 date: "2026-06-17"
 description: "Maui 集群修复计划的 Sprint 1 已完成 — slidev PVC 卡住问题已解决，SOGo 已迁移到正确命名空间，存储类已审计，所有核心服务的冒烟测试均通过。"
-image: "/static/blog/maui-cluster-sprint-update-teaser.png"
+image: "/static/blog/maui-cluster-sprint-update-teaser.svg"
 categories: ["状态更新"]
 tags: ["maui", "kubernetes", "sprint", "基础设施", "集群", "k3s"]
 ---

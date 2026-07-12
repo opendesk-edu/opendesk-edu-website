@@ -4,7 +4,7 @@ date: "2026-06-04"
 description: "Après cinq mois de déploiement et deux sprints de durcissement, openDesk Edu fonctionne à pleine capacité opérationnelle à l'Université de Marbourg. Voici ce que nous avons accompli et la suite — y compris l'intégration amont dans le cluster principal openDesk HRZ."
 categories: ["Statut"]
 tags: ["deployment", "infrastructure", "kubernetes", "sprint", "university-of-marburg"]
-image: "/static/blog/progress-report-june-2026-teaser.png"
+image: "/static/blog/progress-report-june-2026-teaser.svg"
 ---
 
 # Rapport d'Avancement : openDesk Edu au HRZ Maui — Juin 2026

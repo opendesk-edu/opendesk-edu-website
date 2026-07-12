@@ -2,7 +2,7 @@
 title: "Sprint 1 Complete: Infrastructure Fixes on the Maui Cluster"
 date: "2026-06-17"
 description: "Sprint 1 of the Maui cluster remediation plan is complete — the stuck slidev PVC is resolved, SOGo migrated to the correct namespace, storage classes audited, and smoke tests pass for all core services."
-image: "/static/blog/maui-cluster-sprint-update-teaser.png"
+image: "/static/blog/maui-cluster-sprint-update-teaser.svg"
 categories: ["Status Update"]
 tags: ["maui", "kubernetes", "sprint", "infrastructure", "cluster", "k3s"]
 ---

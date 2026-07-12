@@ -4,7 +4,7 @@ date: "2026-06-04"
 description: "经过五个月的部署和两个强化 Sprint，openDesk Edu 已在马尔堡大学全面投入运营。以下是我们取得的成就及后续计划——包括向上游集成到主 openDesk HRZ 集群。"
 categories: ["状态更新"]
 tags: ["部署", "基础设施", "kubernetes", "sprint", "马尔堡大学"]
-image: "/static/blog/progress-report-june-2026-teaser.png"
+image: "/static/blog/progress-report-june-2026-teaser.svg"
 ---
 
 # 进度报告：openDesk Edu 在 HRZ Maui 的部署 — 2026 年 6 月
