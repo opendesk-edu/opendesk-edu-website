@@ -5,8 +5,7 @@ description: "Wie die openDesk Edu OpenSpec-Methodik es Organisationen ermöglic
 categories: ["Architektur", "Digitale Souveränität", "OpenSpec"]
 tags: ["digitale-souveränität", "dsgvo", "open-source", "openspec", "kubernetes", "anbieterbindung", "spezifikationen"]
 author: "Tobias Weiß und openDesk Edu Mitwirkende"
-image: "/images/articles/openspec-digital-sovereign-workplace-header.png"
-imageOptimized: "/images/articles/openspec-digital-sovereign-workplace-header-optimized.png"
+image: "/static/blog/openspec-digital-sovereign-workplace-teaser.svg"
 relatedPapers:
   - "/papers/2026-06-27-educational-institutions-digital-sovereignty.md"
   - "/papers/2026-06-27-openspec-self-improvement-paper.md"

@@ -5,8 +5,7 @@ description: "Entdecken Sie, wie openDesk Edu Bildungseinrichtungen mit 25 integ
 categories: ["Plattform", "Open Source", "Bildung"]
 tags: ["plattform", "edtech", "open-source", "bildung", "deutsche-compliance"]
 author: "Tobias Weiß und openDesk Edu Mitwirkende"
-image: "/images/articles/platform-overview-header.png"
-imageOptimized: "/images/articles/platform-overview-header-optimized.png"
+image: "/static/blog/platform-overview-teaser.svg"
 ---
 
 # Die openDesk Edu Plattform: Umfassendes Open-Source-Lernmanagement
