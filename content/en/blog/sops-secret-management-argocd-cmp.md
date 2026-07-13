@@ -2,7 +2,7 @@
 title: "GitOps-Native Secret Management with SOPS and ArgoCD CMP Sidecar"
 date: "2026-07-10"
 description: "How openDesk Edu encrypts 126 secrets in Git using SOPS with age encryption and decrypts them at deploy time via an ArgoCD Config Management Plugin sidecar — no Vault, no External Secrets Operator, no proprietary infrastructure required."
-image: "/static/blog/sops-secret-management-teaser.svg"
+image: "/static/blog/sops-secret-management-argocd-cmp-teaser.svg"
 categories: ["technical", "security", "devops"]
 tags: ["sops", "secret-management", "argocd", "gitops", "kubernetes", "security", "age-encryption", "helmfile"]
 ---

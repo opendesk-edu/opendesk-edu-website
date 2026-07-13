@@ -2,7 +2,7 @@
 title: "Federated Identity for Education: openDesk Edu and the DFN-AAI Federation"
 date: "2026-07-10"
 description: "How openDesk Edu integrates with the German national research federation DFN-AAI as a SAML Service Provider proxy via Keycloak — and a call to action for the community to build a shared evaluation instance that lowers the barrier for every institution."
-image: "/static/blog/dfn-aai-federation-teaser.svg"
+image: "/static/blog/dfn-aai-federation-shared-evaluation-teaser.svg"
 categories: ["technical", "community", "identity"]
 tags: ["dfn-aai", "federation", "saml", "keycloak", "edugain", "identity-management", "shibboleth", "community", "evaluation"]
 ---

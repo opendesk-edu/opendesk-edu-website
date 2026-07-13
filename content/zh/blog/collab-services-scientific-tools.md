@@ -2,7 +2,7 @@
 title: "Collab Services：11 个科学计算工具加入 openDesk Edu"
 date: "2026-05-29"
 description: "openDesk Edu 新增 11 个开源科学计算工具——JupyterHub、Overleaf、RStudio、code-server、Open WebUI、Ollama 等——通过 Helmfile 部署在 Kubernetes 上，统一使用 Keycloak SSO。"
-image: "/static/blog/collab-services-teaser.svg"
+image: "/static/blog/collab-services-scientific-tools-teaser.svg"
 categories: ["announcement"]
 tags: ["collab-services", "scientific-computing", "jupyter", "rstudio", "overleaf", "kubernetes", "opensource"]
 ---
