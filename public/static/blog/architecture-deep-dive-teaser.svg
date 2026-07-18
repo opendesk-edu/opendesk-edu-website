@@ -48,8 +48,8 @@
   <!-- Architecture diagram background decoration -->
   <g transform="translate(30, 70)" opacity="0.10">
     <!-- Kubernetes node -->
-    <rect x="30" y="30" width="80" height="50" rx="6" fill="none" stroke="#326CE5" stroke-width="2"/>
-    <text x="70" y="60" text-anchor="middle" font-family="Arial" font-size="10" fill="#326CE5">k8s</text>
+    <rect x="30" y="30" width="80" height="50" rx="6" fill="none" stroke="#3b82f6" stroke-width="2"/>
+    <text x="70" y="60" text-anchor="middle" font-family="Arial" font-size="10" fill="#3b82f6">k8s</text>
     <!-- Pods -->
     <rect x="20" y="100" width="25" height="18" rx="3" fill="#571EFA"/>
     <rect x="50" y="100" width="25" height="18" rx="3" fill="#571EFA"/>
@@ -61,7 +61,7 @@
     <line x1="70" y1="80" x2="92" y2="100" stroke="#927AFA" stroke-width="1"/>
     <line x1="70" y1="80" x2="122" y2="100" stroke="#927AFA" stroke-width="1"/>
     <!-- Ingress -->
-    <path d="M 10,140 L 60,125 L 140,125 L 150,140 L 10,140 Z" fill="none" stroke="#326CE5" stroke-width="1.5"/>
+    <path d="M 10,140 L 60,125 L 140,125 L 150,140 L 10,140 Z" fill="none" stroke="#3b82f6" stroke-width="1.5"/>
   </g>
 
   <!-- D Icon -->
@@ -110,7 +110,7 @@
   <g opacity="0.06">
     <circle cx="190" cy="546" r="6" fill="#571EFA"/>
     <line x1="200" y1="546" x2="240" y2="546" stroke="#927AFA" stroke-width="1"/>
-    <circle cx="250" cy="546" r="6" fill="#326CE5"/>
+    <circle cx="250" cy="546" r="6" fill="#3b82f6"/>
     <line x1="260" y1="546" x2="300" y2="546" stroke="#927AFA" stroke-width="1"/>
     <circle cx="310" cy="546" r="6" fill="#22c55e"/>
   </g>

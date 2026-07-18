@@ -113,7 +113,7 @@
   <g opacity="0.06">
     <rect x="180" y="540" width="20" height="14" rx="3" fill="#571EFA"/>
     <path d="M 204,547 L 224,547" stroke="#927AFA" stroke-width="1"/>
-    <rect x="230" y="540" width="20" height="14" rx="3" fill="#326CE5"/>
+    <rect x="230" y="540" width="20" height="14" rx="3" fill="#3b82f6"/>
     <path d="M 254,547 L 274,547" stroke="#927AFA" stroke-width="1"/>
     <rect x="280" y="540" width="20" height="14" rx="3" fill="#22c55e"/>
   </g>
