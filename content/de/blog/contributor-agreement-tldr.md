@@ -2,8 +2,8 @@
 title: "TL;DR: openDesk Contributor Agreement"
 date: "2026-07-12"
 description: "Eine Kurzanleitung zum Unterschreiben der CLA und zum Starten Ihres ersten Beitrags zu openDesk."
-categories: ["community"]
-tags: ["contributing", "CLA", "open-source"]
+categories: ["Gemeinschaft"]
+tags: ["beitragen", "cla", "open-source"]
 image: "/static/blog/contributor-agreement-tldr-teaser.svg"
 ---
 

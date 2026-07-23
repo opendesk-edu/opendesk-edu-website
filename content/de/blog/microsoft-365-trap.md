@@ -3,7 +3,7 @@ title: "Die Microsoft 365-Falle: Warum kurzfristige Einsparungen zu langfristige
 date: "2026-07-15"
 description: "Microsoft 365 erscheint attraktiv mit Rabatten und schneller Bereitstellung, doch europäische Hochschulen stehen vor versteckten Risiken: DSGVO-Verstöße, CLOUD-Act-Datenzugriff, eskalierende Kosten und vollständige Anbieterabhängigkeit."
 categories: ["Meinung", "Digitale Souveränität", "Bildung"]
-tags: ["microsoft-365", "anbieterbindung", "dsgvo", "digitale-souveränität", "cloud-act", "hochschulen", "deutsche-hochschulbildung", "europäische-hochschulen"]
+tags: ["microsoft-365", "anbieterbindung", "dsgvo", "digitale-souveränität", "hochschulen"]
 author: "Tobias Weiß und openDesk Edu Mitwirkende"
 image: "/static/blog/microsoft-365-trap-teaser.svg"
 ---
