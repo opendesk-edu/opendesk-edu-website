@@ -1,32 +1,32 @@
 ---
 slug: deployment-guide
-title: "Guide de deploiement"
+title: "Guide de déploiement"
 date: "2026-04-15"
-description: "Guide pas a pas pour deployer openDesk Edu sur l'infrastructure Kubernetes de votre universite."
-categories: ["deploiement"]
-tags: ["deploiement", "kubernetes", "helm", "helmfile", "keycloak"]
+description: "Guide pas à pas pour déployer openDesk Edu sur l'infrastructure Kubernetes de votre université."
+categories: ["Déploiement"]
+tags: ["déploiement", "kubernetes", "helm", "helmfile", "keycloak"]
 image: "/static/blog/deployment-guide-teaser.svg"
 ---
-# Guide de deploiement
+# Guide de déploiement
 
-openDesk Edu est un espace de travail numerique modulaire concu pour les etablissements d'enseignement. Il regroupe des outils de collaboration, des plateformes d'apprentissage et des applications bureautiques dans un environnement qui fonctionne sur Kubernetes. Tous les services sont distribues sous forme de charts Helm et orchestres via helmfile, ce qui permet de deployer l'ensemble de la pile avec une seule commande.
+openDesk Edu est un espace de travail numérique modulaire conçu pour les établissements d'enseignement. Il regroupe des outils de collaboration, des plateformes d'apprentissage et des applications bureautiques dans un environnement qui fonctionne sur Kubernetes. Tous les services sont distribués sous forme de charts Helm et orchestrés via helmfile, ce qui permet de déployer l'ensemble de la pile avec une seule commande.
 
-Ce guide couvre le processus complet de deploiement, d'un cluster vierge a une plateforme fonctionnelle avec authentification, sauvegardes et certificats TLS.
+Ce guide couvre le processus complet de déploiement, d'un cluster vierge à une plateforme fonctionnelle avec authentification, sauvegardes et certificats TLS.
 
 ## Prerequis
 
-Avant de commencer, verifiez que les elements suivants sont en place :
+Avant de commencer, vérifiez que les éléments suivants sont en place :
 
-- **Kubernetes 1.28 ou superieur**. openDesk Edu utilise des CRDs et Pod Security Admission qui necessitent un cluster recent. Les offres managees comme Hetzner Cloud Kubernetes, OVH Managed Kubernetes ou les clusters on-premise avec kubeadm fonctionnent tous.
-- **Helm 3** installe et configure avec acces au cluster.
-- **helmfile** installe. C'est la couche d'orchestration qui lit votre configuration et applique tous les releases Helm dans le bon ordre.
-- **Un nom de domaine avec acces DNS**. Vous avez besoin d'un domaine de base (par exemple, `desk.uni-exemple.fr`) et de la possibilite de creer des enregistrements de sous-domaine pour chaque service.
-- **Acces a un fournisseur d'identite SAML (IdP)**. openDesk Edu authentifie les utilisateurs via Keycloak, qui se connecte au fournisseur d'identite de votre universite. En Allemagne, cela signifie generalement un membre de la federation DFN-AAI ou eduGAIN.
-- **Minimum 16 Go de RAM et 4 coeurs CPU**. C'est le minimum pour les services principaux d'openDesk. Les services educatifs (ILIAS, Moodle, BigBlueButton, OpenCloud) ajoutent des besoins significatifs en ressources. Pour un deploiement en production avec tous les services actives, prevoyez 32 Go de RAM et 8 coeurs CPU ou plus.
+- **Kubernetes 1.28 ou supérieur**. openDesk Edu utilise des CRDs et Pod Security Admission qui necessitent un cluster recent. Les offres managees comme Hetzner Cloud Kubernetes, OVH Managed Kubernetes ou les clusters on-premise avec kubeadm fonctionnent tous.
+- **Helm 3** installé et configure avec accès au cluster.
+- **helmfile** installé. C'est la couche d'orchestration qui lit votre configuration et applique tous les releases Helm dans le bon ordre.
+- **Un nom de domaine avec accès DNS**. Vous avez besoin d'un domaine de base (par exemple, `desk.uni-exemple.fr`) et de la possibilité de creer des enregistrements de sous-domaine pour chaque service.
+- **Acces a un fournisseur d'identité SAML (IdP)**. openDesk Edu authentifie les utilisateurs via Keycloak, qui se connecte au fournisseur d'identité de votre université. En Allemagne, cela signifie généralement un membre de la federation DFN-AAI ou eduGAIN.
+- **Minimum 16 Go de RAM et 4 coeurs CPU**. C'est le minimum pour les services principaux d'openDesk. Les services educatifs (ILIAS, Moodle, BigBlueButton, OpenCloud) ajoutent des besoins significatifs en ressources. Pour un déploiement en production avec tous les services actives, prevoyez 32 Go de RAM et 8 coeurs CPU ou plus.
 
 ## Demarrage rapide
 
-Le chemin le plus rapide vers une installation openDesk Edu fonctionnelle comprend quatre etapes.
+Le chemin le plus rapide vers une installation openDesk Edu fonctionnelle comprend quatre étapes.
 
 ### 1. Cloner le depot
 
@@ -39,7 +39,7 @@ Ce depot contient la configuration helmfile, les definitions d'environnement et 
 
 ### 2. Modifier la configuration globale
 
-Ouvrez `helmfile/environments/default/global.yaml.gotmpl` dans votre editeur. Au minimum, vous devez definir votre domaine et choisir les services a activer :
+Ouvrez `helmfile/environments/default/global.yaml.gotmpl` dans votre éditeur. Au minimum, vous devez définir votre domaine et choisir les services a activer :
 
 ```yaml
 domain: desk.uni-exemple.fr
@@ -79,11 +79,11 @@ Chaque service peut etre active ou desactive independamment. Le fichier de confi
 helmfile -e default apply
 ```
 
-helmfile lit la configuration de l'environnement, resout toutes les dependances entre les services et applique chaque chart Helm dans l'ordre. Keycloak est deploye en premier car les autres services en dependent pour l'authentification. Comptez 10 a 20 minutes sur un cluster vierge selon les services actives et la vitesse de votre reseau.
+helmfile lit la configuration de l'environnement, résout toutes les dépendances entre les services et applique chaque chart Helm dans l'ordre. Keycloak est déployé en premier car les autres services en dependent pour l'authentification. Comptez 10 a 20 minutes sur un cluster vierge selon les services actives et la vitesse de votre réseau.
 
 ### 4. Acceder aux services
 
-Une fois le deploiement termine, chaque service est accessible sur son sous-domaine :
+Une fois le déploiement termine, chaque service est accèssible sur son sous-domaine :
 
 | Service | URL |
 |---------|-----|
@@ -94,7 +94,7 @@ Une fois le deploiement termine, chaque service est accessible sur son sous-doma
 | ILIAS | `https://ilias.desk.uni-exemple.fr` |
 | OpenCloud | `https://opencloud.desk.uni-exemple.fr` |
 
-Les identifiants administrateur Keycloak sont generes lors du premier deploiement et stockes dans un secret Kubernetes. Recuperez-les avec :
+Les identifiants administrateur Keycloak sont générés lors du premier déploiement et stockés dans un secret Kubernetes. récupérez-les avec :
 
 ```bash
 kubectl get secret -n opendesk keycloak-admin -o jsonpath='{.data.password}' | base64 -d
@@ -102,15 +102,15 @@ kubectl get secret -n opendesk keycloak-admin -o jsonpath='{.data.password}' | b
 
 ## Configuration
 
-Le fichier `helmfile/environments/default/global.yaml.gotmpl` est la configuration centrale de toute votre installation openDesk Edu. Chaque service lit ses valeurs depuis ce fichier, et vous pouvez surcharger toute valeur par defaut des charts Helm ici.
+Le fichier `helmfile/environments/default/global.yaml.gotmpl` est la configuration centrale de toute votre installation openDesk Edu. Chaque service lit ses valeurs depuis ce fichier, et vous pouvez surcharger toute valeur par défaut des charts Helm ici.
 
 ### Domaine et ingress
 
-Le champ `domain` definit l'URL de base pour tous les services. Chaque chart construit sa propre regle d'ingress en ajoutant son nom de service (par exemple, `nextcloud`) au domaine de base. Si vous utilisez un reverse proxy ou un equilibreur de charge externe, vous pouvez aussi definir `ingress.className` pour pointer vers votre controleur Ingress.
+Le champ `domain` definit l'URL de base pour tous les services. Chaque chart construit sa propre regle d'ingress en ajoutant son nom de service (par exemple, `nextcloud`) au domaine de base. Si vous utilisez un reverse proxy ou un equilibreur de charge externe, vous pouvez aussi définir `ingress.className` pour pointer vers votre controleur Ingress.
 
 ### Parametres Keycloak
 
-Keycloak agit comme courtier d'identite central. Dans la configuration globale, vous pouvez definir le nom d'utilisateur admin, le nom du realm et le theme par defaut. Les flux d'authentification et les enregistrements de clients pour chaque service sont geres automatiquement par les charts Helm.
+Keycloak agit comme courtier d'identité central. Dans la configuration globale, vous pouvez définir le nom d'utilisateur admin, le nom du realm et le theme par défaut. Les flux d'authentification et les enregistrements de clients pour chaque service sont gérés automatiquement par les charts Helm.
 
 ### Composants alternatifs
 
@@ -125,19 +125,19 @@ Definissez `enabled: true` sur le composant souhaite et `enabled: false` sur les
 
 ## Configuration de l'authentification
 
-Keycloak sert de fournisseur d'identite central pour tous les services openDesk Edu. Il prend en charge SAML 2.0 et OpenID Connect (OIDC), ce qui lui permet de s'integrer a l'infrastructure existante de votre universite et de fournir un authentification unique sur toutes les applications.
+Keycloak sert de fournisseur d'identité central pour tous les services openDesk Edu. Il prend en charge SAML 2.0 et OpenID Connect (OIDC), ce qui lui permet de s'integrer a l'infrastructure existante de votre université et de fournir un authentification unique sur toutes les applications.
 
-### Connexion au fournisseur d'identite de votre universite
+### Connexion au fournisseur d'identité de votre université
 
-La plupart des universites allemandes participent a la federation DFN-AAI, qui fait partie du reseau mondial eduGAIN. Keycloak se connecte a ces federations via une liaison SAML 2.0 avec un fournisseur d'identite (IdP).
+La plupart des universités allemandes participent a la federation DFN-AAI, qui fait partie du réseau mondial eduGAIN. Keycloak se connecte a ces federations via une liaison SAML 2.0 avec un fournisseur d'identité (IdP).
 
 Pour configurer la connexion :
 
 1. Connectez-vous a la console d'administration Keycloak sur `https://keycloak.desk.uni-exemple.fr`.
-2. Naviguez vers votre realm et creez un nouveau fournisseur d'identite de type SAML 2.0.
-3. Saisissez l'URL des metadonnees de l'IdP de votre universite (fournie par votre operateur de federation DFN-AAI).
+2. Naviguez vers votre realm et creez un nouveau fournisseur d'identité de type SAML 2.0.
+3. Saisissez l'URL des metadonnees de l'IdP de votre université (fournie par votre operateur de federation DFN-AAI).
 4. Configurez l'identifiant SAML entity ID pour qu'il corresponde a la valeur enregistree aupres de votre federation.
-5. Activez le fournisseur d'identite et testez le flux de connexion.
+5. Activez le fournisseur d'identité et testez le flux de connexion.
 
 ### Support des protocoles
 
@@ -152,19 +152,19 @@ ILIAS et Moodle utilisent Shibboleth comme fournisseur de services pour consomme
 
 ## Selection des composants
 
-openDesk Edu est modulaire. Vous activez uniquement les services dont votre etablissement a besoin, ce qui limite la consommation de ressources et simplifie la maintenance. Tous les services sont controles depuis `global.yaml.gotmpl`.
+openDesk Edu est modulaire. Vous activez uniquement les services dont votre établissement a besoin, ce qui limite la consommation de ressources et simplifie la maintenance. Tous les services sont contrôlés depuis `global.yaml.gotmpl`.
 
 ### Services principaux
 
 - **Keycloak** : obligatoire. C'est la colonne vertebrale de l'authentification et il ne peut pas etre desactive.
-- **Element Web (Matrix)** : le hub de messagerie et de collaboration. Active par defaut.
+- **Element Web (Matrix)** : le hub de messagerie et de collaboration. Active par défaut.
 
 ### Alternatives de messagerie
 
 Choisissez-en une :
 
-- **Open-Xchange (OX)** : groupware complet avec calendrier, contacts et messagerie. Adapte aux etablissements qui necessitent une integration etroite avec d'autres composants OX.
-- **SOGo** : groupware leger avec bon support ActiveSync. Convient aux deploiements de plus petite taille.
+- **Open-Xchange (OX)** : groupware complet avec calendrier, contacts et messagerie. Adapte aux établissements qui necessitent une integration etroite avec d'autres composants OX.
+- **SOGo** : groupware leger avec bon support ActiveSync. Convient aux déploiements de plus petite taille.
 - **Grommunio** : remplacement complet de Microsoft Exchange avec compatibilite native Outlook. Stocke les donnees de messagerie dans MariaDB.
 
 ### Visioconference
@@ -172,7 +172,7 @@ Choisissez-en une :
 Choisissez-en une :
 
 - **Jitsi Meet** : visioconference legere, pair-a-pair. Besoins en ressources reduits. Approprie pour des reunions jusqu'a environ 25 participants.
-- **BigBlueButton (BBB)** : concu specifiquement pour l'enseignement en ligne. Supporte l'enregistrement, les sous-groupes, les tableaux blancs et le telechargement de presentations. Necessite plus de ressources mais constitue la norme pour les classes virtuelles.
+- **BigBlueButton (BBB)** : conçu specifiquement pour l'enseignement en ligne. Supporte l'enregistrement, les sous-groupes, les tableaux blancs et le téléchargement de presentations. Necessite plus de ressources mais constitue la norme pour les classes virtuelles.
 
 ### Stockage de fichiers
 
@@ -190,7 +190,7 @@ Choisissez-en un :
 
 ### Services educatifs
 
-- **ILIAS** : plateforme d'apprentissage largement utilisee dans l'enseignement superieur allemand. Supporte SCORM, LTI et des outils d'edition integres.
+- **ILIAS** : plateforme d'apprentissage largement utilisée dans l'enseignement supérieur allemand. Supporte SCORM, LTI et des outils d'edition integres.
 - **Moodle** : la plateforme LMS la plus populaire au monde. Vaste ecosysteme de plugins et grande communaute.
 
 ## Configuration des sauvegardes
@@ -220,10 +220,10 @@ openDesk Edu utilise openDesk Certificates de Bundesdruckerei pour TLS. Ce servi
 
 L'operateur de certificats fonctionne comme un controleur Kubernetes. Il demande des certificats pour chaque ressource Ingress et gere le renouvellement avant expiration. Vous n'avez pas besoin de gerer manuellement les certificats ou de configurer des clients ACME externes.
 
-Si votre etablissement necessite des certificats d'une autre autorite de certification, vous pouvez configurer l'operateur pour utiliser votre fournisseur prefere. Les ressources Ingress referencent les certificats via des secrets TLS Kubernetes, les services en aval n'ont donc besoin d'aucune configuration liee aux certificats.
+Si votre établissement necessite des certificats d'une autre autorite de certification, vous pouvez configurer l'operateur pour utiliser votre fournisseur prefere. Les ressources Ingress referencent les certificats via des secrets TLS Kubernetes, les services en aval n'ont donc besoin d'aucune configuration liée aux certificats.
 
-## Prochaines etapes
+## Prochaines étapes
 
 - Lisez la **vue d'ensemble de l'architecture** pour comprendre comment les services interagissent et comment les donnees circulent entre eux.
 - Consultez les **pages des composants** pour les options de configuration specifiques a chaque service, le reglage des ressources et les guides d'integration.
-- Consultez la section **depannage** si vous rencontrez des problemes lors du deploiement.
+- Consultez la section **depannage** si vous rencontrez des problemes lors du déploiement.
