@@ -4,7 +4,7 @@ date: "2026-06-27"
 description: "了解 openDesk Edu 如何通过 25 个集成的开源服务、无缝的 SSO 和完整的德国数据保护合规性，改变教育机构。"
 categories: ["平台", "开源", "教育"]
 tags: ["平台", "教育技术", "开源", "教育", "德国合规性"]
-author: "Tobias Weiß 和 openDesk Edu 贡献者"
+author: "Tobias Weiß 与 openDesk Edu 贡献者"
 image: "/static/blog/platform-overview-teaser.svg"
 ---
 

@@ -4,7 +4,7 @@ date: "2026-06-27"
 description: "openDesk Edu 的 OpenSpec 方法论如何使组织能够使用集成的开源生态系统构建完全主权的数字工作场所——摆脱供应商锁定，同时保持或提高服务质量。"
 categories: ["架构", "数字主权", "开源"]
 tags: ["数字主权", "GDPR", "开源", "opendesk", "kubernetes", "供应商"]
-author: "Tobias Weiß 和 openDesk Edu 贡献者"
+author: "Tobias Weiß 与 openDesk Edu 贡献者"
 image: "/static/blog/openspec-digital-sovereign-workplace-teaser.svg"
 ---
 

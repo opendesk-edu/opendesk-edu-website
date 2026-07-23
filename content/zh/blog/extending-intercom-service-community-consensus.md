@@ -4,7 +4,7 @@ date: "2026-06-27"
 description: "我们如何扩展 openDesk 的 intercom 服务以支持 OpenCloud、SOGo 和 ILIAS，以及为什么我们强烈敦促 ZenDiS 和社区就共同开发模式建立正式共识。"
 categories: ["工程", "社区", "开源"]
 tags: ["intercom-service", "zendis", "opendesk", "扩展", "社区", "治理"]
-author: "Tobias Weiß 和 openDesk Edu 贡献者"
+author: "Tobias Weiß 与 openDesk Edu 贡献者"
 image: "/static/blog/extending-intercom-service-community-consensus-teaser.svg"
 ---
 
