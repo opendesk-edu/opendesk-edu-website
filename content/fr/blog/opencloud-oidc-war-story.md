@@ -3,8 +3,8 @@ title: "Trois bugs qui bloquaient la connexion OIDC d'OpenCloud — Une histoire
 date: "2026-06-01"
 description: "Comment trois bugs indépendants — une règle d'égalité LDAP manquante, un filtre désactivé invisible et un pilote de rôles mal configuré — se sont empilés pour bloquer l'auto-provisionnement OIDC d'OpenCloud, et comment nous avons corrigé chacun d'eux."
 image: "/static/blog/opencloud-oidc-war-story-teaser.svg"
-categories: ["engineering"]
-tags: ["opencloud", "oidc", "keycloak", "ldap", "debugging", "kubernetes", "helm", "sso"]
+categories: ["Ingénierie"]
+tags: ["opencloud", "oidc", "keycloak", "ldap", "débogage", "kubernetes", "helm", "sso"]
 ---
 
 # Trois bugs qui bloquaient la connexion OIDC d'OpenCloud — Une histoire de débogage

@@ -2,8 +2,8 @@
 title: "Sécurité et Conformité : Ce que les Universités Doivent Savoir"
 date: "2026-04-19"
 description: "RGPD, BSI-IT-Grundschutz, ISO 27001 — pour openDesk Edu, ce ne sont pas des éléments de checklist marketing, mais des exigences architecturales intégrées dans le code."
-categories: ["Technical"]
-tags: ["security", "compliance", "GDPR", "backup"]
+categories: ["Technique"]
+tags: ["sécurité", "conformité", "rgpd", "sauvegarde"]
 image: "/static/blog/security-compliance-teaser.svg"
 ---
 

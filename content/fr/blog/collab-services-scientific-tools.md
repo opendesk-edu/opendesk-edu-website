@@ -3,8 +3,8 @@ title: "Collab Services : 11 Outils de Calcul Scientifique Rejoignent openDesk E
 date: "2026-05-29"
 description: "openDesk Edu ajoute 11 outils open-source de calcul scientifique — JupyterHub, Overleaf, RStudio, code-server, Open WebUI, Ollama, et plus — déployés via Helmfile sur Kubernetes avec SSO Keycloak unifié."
 image: "/static/blog/collab-services-scientific-tools-teaser.svg"
-categories: ["announcement"]
-tags: ["collab-services", "scientific-computing", "jupyter", "rstudio", "overleaf", "kubernetes", "opensource"]
+categories: ["Annonce"]
+tags: ["services-collaboratifs", "calcul-scientifique", "jupyter", "rstudio", "overleaf", "kubernetes", "open-source"]
 ---
 
 # Collab Services : 11 Outils de Calcul Scientifique Rejoignent openDesk Edu
