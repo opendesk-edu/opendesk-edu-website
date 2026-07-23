@@ -3,8 +3,8 @@ title: "阻止 OpenCloud OIDC 登录的三个 Bug — 调试实战故事"
 date: "2026-06-01"
 description: "三个独立的 bug — 缺少的 LDAP equality 规则、不可见的禁用过滤器和配置错误的角色驱动程序 — 如何叠加起来阻止了 OpenCloud OIDC 自动配置，以及我们如何逐一修复它们。"
 image: "/static/blog/opencloud-oidc-war-story-teaser.svg"
-categories: ["engineering"]
-tags: ["opencloud", "oidc", "keycloak", "ldap", "debugging", "kubernetes", "helm", "sso"]
+categories: ["工程"]
+tags: ["opencloud", "oidc", "keycloak", "ldap", "调试", "kubernetes", "helm", "sso"]
 ---
 
 # 阻止 OpenCloud OIDC 登录的三个 Bug — 调试实战故事

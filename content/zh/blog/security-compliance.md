@@ -2,8 +2,8 @@
 title: "安全与合规：高校需要了解的内容"
 date: "2026-04-19"
 description: "GDPR、BSI-IT-Grundschutz、ISO 27001——对 openDesk Edu 而言，这些不是营销清单项目，而是嵌入代码的架构要求。"
-categories: ["Technical"]
-tags: ["security", "compliance", "GDPR", "backup"]
+categories: ["技术"]
+tags: ["安全", "合规", "gdpr", "备份"]
 image: "/static/blog/security-compliance-teaser.svg"
 ---
 
