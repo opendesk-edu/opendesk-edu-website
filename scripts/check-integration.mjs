@@ -13,7 +13,6 @@ const BLOG_DIR = join(root, "content", "en", "blog");
 const FILES = [
   "maui-cluster-sprint-update.md",
   "progress-report-june-2026.md",
-  "hrz-maui-cluster-progress.md",
   "collab-services-scientific-tools.md",
 ];
 

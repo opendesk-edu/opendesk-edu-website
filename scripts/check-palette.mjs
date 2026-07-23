@@ -105,8 +105,8 @@ function isAllowed(color) {
     return ALLOWED_COLORS.has(lower);
   }
 
-  // Check rgb/rgba values — skip for now (rare in SVGs)
-  if (/^rgb/i.test(lower)) return true;
+  // Reject rgb/rgba values — require hex codes in palette
+  if (/^rgb/i.test(lower)) return false;
 
   return false;
 }
