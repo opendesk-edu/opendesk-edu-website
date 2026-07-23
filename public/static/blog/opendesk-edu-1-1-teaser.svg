@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <title>openDesk Edu - 1.1 Milestone</title>
+  <desc>Branded teaser image for the openDesk Edu 1.1 milestone announcement featuring a dark gradient background, version badge, growth metrics, and article title.</desc>
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0014"/>
+      <stop offset="50%" stop-color="#0d0020"/>
+      <stop offset="100%" stop-color="#0a0014"/>
+    </linearGradient>
+    <linearGradient id="accentLeft" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="accentRight" x1="100%" y1="0%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#571EFA" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#571EFA" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="iconGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#571EFA"/>
+    </linearGradient>
+    <linearGradient id="badgeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#22c55e"/>
+      <stop offset="100%" stop-color="#16a34a"/>
+    </linearGradient>
+    <filter id="glowWide" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="40"/>
+    </filter>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#3b82f6" stroke-width="0.5" opacity="0.06"/>
+    </pattern>
+    <pattern id="dotGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="20" cy="20" r="1" fill="#927AFA" opacity="0.1"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGrad)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect width="1200" height="630" fill="url(#dotGrid)"/>
+
+  <!-- Edge accents -->
+  <rect x="0" y="0" width="200" height="630" fill="url(#accentLeft)"/>
+  <rect x="1000" y="0" width="200" height="630" fill="url(#accentRight)"/>
+  <rect x="0" y="0" width="1200" height="2" fill="#3b82f6" opacity="0.4"/>
+  <rect x="0" y="628" width="1200" height="2" fill="#571EFA" opacity="0.3"/>
+
+  <!-- Ambient glow -->
+  <ellipse cx="200" cy="315" rx="250" ry="250" fill="#3b82f6" opacity="0.06" filter="url(#glowWide)"/>
+  <ellipse cx="1000" cy="315" rx="200" ry="200" fill="#571EFA" opacity="0.04" filter="url(#glowWide)"/>
+
+  <!-- D Icon -->
+  <g transform="translate(60, 100)">
+    <rect x="0" y="0" width="110" height="110" rx="22" fill="url(#iconGrad)" opacity="0.9"/>
+    <text x="55" y="82" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="76" font-weight="bold" fill="white" opacity="0.95">D</text>
+  </g>
+
+  <!-- Brand wordmark -->
+  <text x="200" y="164" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="bold" fill="white" letter-spacing="2">openDesk</text>
+  <text x="200" y="192" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="300" fill="#DDD6FE" letter-spacing="10">EDUCATION</text>
+  <line x1="200" y1="206" x2="380" y2="206" stroke="#3b82f6" stroke-width="1" opacity="0.4"/>
+
+  <!-- Version badge -->
+  <g transform="translate(200, 228)">
+    <rect x="0" y="0" width="100" height="32" rx="16" fill="url(#badgeGrad)" opacity="0.25"/>
+    <text x="50" y="21" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="#22c55e" letter-spacing="2">v1.1</text>
+  </g>
+
+  <!-- Article category badge -->
+  <rect x="315" y="228" width="130" height="32" rx="16" fill="#3b82f6" opacity="0.2"/>
+  <text x="380" y="249" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#60a5fa" letter-spacing="1">MILESTONE</text>
+
+  <!-- Decorative line -->
+  <line x1="200" y1="282" x2="950" y2="282" stroke="#3b82f6" stroke-width="1.5" opacity="0.2"/>
+
+  <!-- Article title -->
+  <text x="200" y="315" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" fill="white">
+    <tspan x="200" dy="0">openDesk Edu 1.1</tspan>
+    <tspan x="200" dy="40" fill="#DDD6FE" font-weight="400" font-size="22">From Launch to Production</tspan>
+  </text>
+
+  <!-- Growth metrics -->
+  <g transform="translate(200, 400)">
+    <rect x="0" y="0" width="95" height="60" rx="8" fill="#3b82f6" opacity="0.08" stroke="#3b82f6" stroke-width="0.5" stroke-opacity="0.2"/>
+    <text x="47" y="26" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#60a5fa">57</text>
+    <text x="47" y="50" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#927AFA" opacity="0.8">KUBERNETES PODS</text>
+
+    <rect x="108" y="0" width="95" height="60" rx="8" fill="#571EFA" opacity="0.08" stroke="#571EFA" stroke-width="0.5" stroke-opacity="0.2"/>
+    <text x="155" y="26" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#927AFA">33</text>
+    <text x="155" y="50" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#927AFA" opacity="0.8">MANAGED SERVICES</text>
+
+    <rect x="216" y="0" width="95" height="60" rx="8" fill="#3b82f6" opacity="0.08" stroke="#3b82f6" stroke-width="0.5" stroke-opacity="0.2"/>
+    <text x="263" y="26" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#60a5fa">88</text>
+    <text x="263" y="50" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#927AFA" opacity="0.8">ARTICLE VARIANTS</text>
+
+    <rect x="324" y="0" width="95" height="60" rx="8" fill="#22c55e" opacity="0.08" stroke="#22c55e" stroke-width="0.5" stroke-opacity="0.2"/>
+    <text x="371" y="26" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#4ade80">4</text>
+    <text x="371" y="50" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#927AFA" opacity="0.8">UPSTREAM RELEASES</text>
+  </g>
+
+  <!-- Tech tags -->
+  <g transform="translate(200, 490)">
+    <rect x="0" y="0" width="105" height="24" rx="12" fill="#3b82f6" opacity="0.2"/>
+    <text x="52" y="16" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#60a5fa" font-weight="500">openDesk 1.17</text>
+    <rect x="115" y="0" width="90" height="24" rx="12" fill="#571EFA" opacity="0.15"/>
+    <text x="160" y="16" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#927AFA" font-weight="500">GitOps</text>
+    <rect x="215" y="0" width="100" height="24" rx="12" fill="#3b82f6" opacity="0.15"/>
+    <text x="265" y="16" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#60a5fa" font-weight="500">Production</text>
+    <rect x="325" y="0" width="100" height="24" rx="12" fill="#22c55e" opacity="0.15"/>
+    <text x="375" y="16" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#4ade80" font-weight="500">Community</text>
+    <rect x="435" y="0" width="115" height="24" rx="12" fill="#571EFA" opacity="0.15"/>
+    <text x="492" y="16" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#927AFA" font-weight="500">4 Languages</text>
+  </g>
+
+  <!-- Bottom decoration -->
+  <g opacity="0.06">
+    <rect x="180" y="550" width="12" height="12" rx="2" fill="#3b82f6"/>
+    <path d="M 196,556 L 210,556" stroke="#60a5fa" stroke-width="1"/>
+    <rect x="216" y="550" width="12" height="12" rx="2" fill="#22c55e"/>
+    <path d="M 232,556 L 246,556" stroke="#60a5fa" stroke-width="1"/>
+    <rect x="252" y="550" width="12" height="12" rx="2" fill="#571EFA"/>
+  </g>
+
+  <!-- Decorative vertical lines -->
+  <line x1="1000" y1="100" x2="1000" y2="540" stroke="#3b82f6" stroke-width="0.5" opacity="0.06"/>
+  <line x1="1050" y1="150" x2="1050" y2="500" stroke="#571EFA" stroke-width="0.5" opacity="0.05"/>
+  <line x1="1100" y1="120" x2="1100" y2="480" stroke="#3b82f6" stroke-width="0.5" opacity="0.04"/>
+
+  <!-- Corner marks -->
+  <path d="M 20,20 L 50,20 M 20,20 L 20,50" stroke="#3b82f6" stroke-width="1.5" opacity="0.25" fill="none"/>
+  <path d="M 1180,20 L 1150,20 M 1180,20 L 1180,50" stroke="#927AFA" stroke-width="1.5" opacity="0.2" fill="none"/>
+  <path d="M 20,610 L 50,610 M 20,610 L 20,580" stroke="#3b82f6" stroke-width="1.5" opacity="0.25" fill="none"/>
+  <path d="M 1180,610 L 1150,610 M 1180,610 L 1180,580" stroke="#927AFA" stroke-width="1.5" opacity="0.2" fill="none"/>
+</svg>
