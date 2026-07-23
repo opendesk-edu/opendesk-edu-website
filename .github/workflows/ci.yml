@@ -82,7 +82,7 @@ jobs:
             git pull
             export COMMIT_SHA=$(git rev-parse --short HEAD)
             export IMAGE_TAG="opendesk-edu:${COMMIT_SHA}"
-            docker compose build --no-cache
+            docker compose build
             docker tag opendesk-edu:latest ${IMAGE_TAG} 2>/dev/null || true
             docker compose up -d
 
