@@ -68,7 +68,7 @@
 
   <!-- Article category badge -->
   <rect x="315" y="228" width="130" height="32" rx="16" fill="#3b82f6" opacity="0.2"/>
-  <text x="380" y="249" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#60a5fa" letter-spacing="1">MILESTONE</text>
+  <text x="380" y="249" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#93c5fd" letter-spacing="1">MILESTONE</text>
 
   <!-- Decorative line -->
   <line x1="200" y1="282" x2="950" y2="282" stroke="#3b82f6" stroke-width="1.5" opacity="0.2"/>
@@ -82,7 +82,7 @@
   <!-- Growth metrics -->
   <g transform="translate(200, 400)">
     <rect x="0" y="0" width="95" height="60" rx="8" fill="#3b82f6" opacity="0.08" stroke="#3b82f6" stroke-width="0.5" stroke-opacity="0.2"/>
-    <text x="47" y="26" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#60a5fa">57</text>
+    <text x="47" y="26" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#93c5fd">57</text>
     <text x="47" y="50" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#927AFA" opacity="0.8">KUBERNETES PODS</text>
 
     <rect x="108" y="0" width="95" height="60" rx="8" fill="#571EFA" opacity="0.08" stroke="#571EFA" stroke-width="0.5" stroke-opacity="0.2"/>
@@ -90,24 +90,24 @@
     <text x="155" y="50" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#927AFA" opacity="0.8">MANAGED SERVICES</text>
 
     <rect x="216" y="0" width="95" height="60" rx="8" fill="#3b82f6" opacity="0.08" stroke="#3b82f6" stroke-width="0.5" stroke-opacity="0.2"/>
-    <text x="263" y="26" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#60a5fa">88</text>
+    <text x="263" y="26" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#93c5fd">88</text>
     <text x="263" y="50" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#927AFA" opacity="0.8">ARTICLE VARIANTS</text>
 
     <rect x="324" y="0" width="95" height="60" rx="8" fill="#22c55e" opacity="0.08" stroke="#22c55e" stroke-width="0.5" stroke-opacity="0.2"/>
-    <text x="371" y="26" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#4ade80">4</text>
+    <text x="371" y="26" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#22c55e">4</text>
     <text x="371" y="50" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#927AFA" opacity="0.8">UPSTREAM RELEASES</text>
   </g>
 
   <!-- Tech tags -->
   <g transform="translate(200, 490)">
     <rect x="0" y="0" width="105" height="24" rx="12" fill="#3b82f6" opacity="0.2"/>
-    <text x="52" y="16" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#60a5fa" font-weight="500">openDesk 1.17</text>
+    <text x="52" y="16" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#93c5fd" font-weight="500">openDesk 1.17</text>
     <rect x="115" y="0" width="90" height="24" rx="12" fill="#571EFA" opacity="0.15"/>
     <text x="160" y="16" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#927AFA" font-weight="500">GitOps</text>
     <rect x="215" y="0" width="100" height="24" rx="12" fill="#3b82f6" opacity="0.15"/>
-    <text x="265" y="16" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#60a5fa" font-weight="500">Production</text>
+    <text x="265" y="16" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#93c5fd" font-weight="500">Production</text>
     <rect x="325" y="0" width="100" height="24" rx="12" fill="#22c55e" opacity="0.15"/>
-    <text x="375" y="16" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#4ade80" font-weight="500">Community</text>
+    <text x="375" y="16" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#22c55e" font-weight="500">Community</text>
     <rect x="435" y="0" width="115" height="24" rx="12" fill="#571EFA" opacity="0.15"/>
     <text x="492" y="16" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#927AFA" font-weight="500">4 Languages</text>
   </g>
@@ -115,9 +115,9 @@
   <!-- Bottom decoration -->
   <g opacity="0.06">
     <rect x="180" y="550" width="12" height="12" rx="2" fill="#3b82f6"/>
-    <path d="M 196,556 L 210,556" stroke="#60a5fa" stroke-width="1"/>
+    <path d="M 196,556 L 210,556" stroke="#93c5fd" stroke-width="1"/>
     <rect x="216" y="550" width="12" height="12" rx="2" fill="#22c55e"/>
-    <path d="M 232,556 L 246,556" stroke="#60a5fa" stroke-width="1"/>
+    <path d="M 232,556 L 246,556" stroke="#93c5fd" stroke-width="1"/>
     <rect x="252" y="550" width="12" height="12" rx="2" fill="#571EFA"/>
   </g>
 

@@ -14,6 +14,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Architecture guide (`docs/architecture.md`)
 - Component reference (`docs/components.md`)
 
+### Fixed
+- Palette validation in `opendesk-edu-1-1-teaser.svg` (replaced disallowed colors `#60a5fa` and `#4ade80` with branded palette colors)
+
 ## [Sprint 7] — 2026-05-27
 
 ### Added
