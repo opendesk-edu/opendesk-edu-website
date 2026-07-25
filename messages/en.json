@@ -1,7 +1,6 @@
 {
   "header": {
     "home": "Home",
-    "components": "Components",
     "blog": "Blog",
     "about": "About",
     "landscape": "Landscape",
@@ -114,15 +113,13 @@
     "getInTouchDescription": "Interested in deploying openDesk Edu at your university? We'd love to hear from you."
   },
   "search": {
-    "placeholder": "Search components, guides, blog posts...",
+    "placeholder": "Search blog posts...",
     "title": "Search",
     "noResults": "No results found",
     "loading": "Loading...",
     "shortcutHint": "Press ⌘K to search",
     "groupLabels": {
-      "components": "Components",
-      "blog": "Blog",
-      "docs": "Architecture"
+      "blog": "Blog"
     }
   },
   "privacy": {

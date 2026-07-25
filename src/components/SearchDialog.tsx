@@ -16,7 +16,7 @@ interface SearchDialogProps {
   onClose: () => void;
 }
 
-const SECTION_ORDER = ["components", "docs", "blog"] as const;
+const SECTION_ORDER = ["blog"] as const;
 
 function groupBySection(entries: SearchEntry[]): Map<string, SearchEntry[]> {
   const groups = new Map<string, SearchEntry[]>();

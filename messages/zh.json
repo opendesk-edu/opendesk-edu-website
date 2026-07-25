@@ -1,7 +1,6 @@
 {
   "header": {
     "home": "首页",
-    "components": "组件",
     "blog": "博客",
     "about": "关于",
     "landscape": "Landscape",
@@ -114,15 +113,13 @@
     "getInTouchDescription": "您是否希望在大学部署 openDesk Edu？我们期待您的来信。"
   },
   "search": {
-    "placeholder": "搜索组件、指南、博客文章...",
+    "placeholder": "搜索博客文章...",
     "title": "搜索",
     "noResults": "未找到结果",
     "loading": "加载中...",
     "shortcutHint": "按 ⌘K 搜索",
     "groupLabels": {
-      "components": "组件",
-      "blog": "博客",
-      "docs": "架构"
+      "blog": "博客"
     }
   },
   "privacy": {

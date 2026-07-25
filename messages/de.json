@@ -1,7 +1,6 @@
 {
   "header": {
     "home": "Startseite",
-    "components": "Komponenten",
     "blog": "Blog",
     "about": "Über uns",
     "landscape": "Landscape",
@@ -114,15 +113,13 @@
     "getInTouchDescription": "Sie möchten openDesk Edu an Ihrer Hochschule einsetzen? Wir freuen uns auf Ihre Nachricht."
   },
   "search": {
-    "placeholder": "Komponenten, Anleitungen, Blogbeiträge suchen...",
+    "placeholder": "Blog-Beiträge suchen...",
     "title": "Suche",
     "noResults": "Keine Ergebnisse gefunden",
     "loading": "Laden...",
     "shortcutHint": "Drücken Sie ⌘K zum Suchen",
     "groupLabels": {
-      "components": "Komponenten",
-      "blog": "Blog",
-      "docs": "Dokumentation"
+      "blog": "Blog"
     }
   },
   "privacy": {
