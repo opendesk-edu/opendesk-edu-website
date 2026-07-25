@@ -12,6 +12,8 @@ export default defineConfig({
     environment: "jsdom",
     passWithNoTests: true,
     setupFiles: ["./src/test/setup.ts"],
+    // Exclude E2E tests (Playwright) and node_modules from Vitest
+    exclude: ["e2e/**", "**/node_modules/**"],
     coverage: {
       provider: "v8",
       enabled: true,

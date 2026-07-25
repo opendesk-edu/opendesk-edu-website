@@ -19,9 +19,10 @@ test.describe("Homepage", () => {
   test("should have navigation links", async ({ page }) => {
     await page.goto("/");
     
-    // Check for main navigation sections
+    // Check for main navigation sections - should have at least 4 links
     const navLinks = page.getByRole("link");
-    await expect(navLinks).toHaveCountGreaterThan(3);
+    const count = await navLinks.count();
+    expect(count).toBeGreaterThan(3);
   });
 
   test("should have footer", async ({ page }) => {
