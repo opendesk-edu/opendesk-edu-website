@@ -6,9 +6,32 @@ on:
   pull_request:
     branches: [main]
 
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  lint:
-    runs-on: [self-hosted, linux]
+  # Security Checks
+  security:
+    runs-on: [self-hosted, linux, ubuntu-latest]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci
+      - run: npm audit --audit-level=moderate
+      - name: Gitleaks Scan
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITLEAKS_LICENSE: ${{ secrets.GITLEAKS_LICENSE }}
+
+  # Content Validation
+  validate:
+    runs-on: [self-hosted, linux, ubuntu-latest]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -16,34 +39,47 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
-      - uses: actions/cache/save@v4
-        id: cache-nm
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
-      - run: npm run lint
-      - run: npm run typecheck
-      - run: node scripts/check-integration.mjs
+      - run: npm run validate:content
+      - run: npm run check:integration
+      - run: npm run check:env
 
-  test:
-    runs-on: [self-hosted, linux]
+  # Code Quality
+  lint:
+    runs-on: [self-hosted, linux, ubuntu-latest]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
-      - uses: actions/cache/restore@v4
-        id: cache-nm-restore
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
-      - if: steps.cache-nm-restore.outputs.cache-hit != 'true'
-        run: npm ci
-      - run: npm run test
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run typecheck
 
-  build:
-    runs-on: [self-hosted, linux]
+  # Unit Tests
+  test:
+    runs-on: [self-hosted, linux, ubuntu-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm run test
+      - name: Upload test results
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unit-test-results
+          path: |
+            test-results/
+            coverage/
+          retention-days: 7
+
+  # E2E Tests
+  e2e:
+    runs-on: [self-hosted, linux, ubuntu-latest]
     needs: [lint, test]
     steps:
       - uses: actions/checkout@v4
@@ -51,17 +87,40 @@ jobs:
         with:
           node-version: 20
           cache: npm
-      - uses: actions/cache/restore@v4
-        id: cache-nm-restore
+      - run: npm ci
+      - run: npm run test:e2e
+      - name: Upload E2E results
+        if: failure()
+        uses: actions/upload-artifact@v4
         with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
-      - if: steps.cache-nm-restore.outputs.cache-hit != 'true'
-        run: npm ci
-      - run: npm run build
+          name: e2e-test-results
+          path: |
+            test-results/
+            playwright-report/
+          retention-days: 7
 
+  # Build
+  build:
+    runs-on: [self-hosted, linux, ubuntu-latest]
+    needs: [lint, test, e2e, validate, security]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: next-build
+          path: .next/
+          retention-days: 7
+
+  # Production Deployment (main)
   deploy:
-    runs-on: [self-hosted, linux]
+    runs-on: [self-hosted, linux, ubuntu-latest]
     needs: [build]
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     steps:
@@ -70,6 +129,7 @@ jobs:
           mkdir -p "${HOME}/.ssh"
           echo "${{ secrets.DEPLOY_SSH_KEY }}" > "${HOME}/.ssh/deploy_key"
           chmod 600 "${HOME}/.ssh/deploy_key"
+          ssh-keyscan ${{ secrets.DEPLOY_HOST }} >> "${HOME}/.ssh/known_hosts" 2>/dev/null
 
       - name: Deploy to server
         uses: appleboy/ssh-action@v1
@@ -82,20 +142,30 @@ jobs:
             git pull
             export COMMIT_SHA=$(git rev-parse --short HEAD)
             export IMAGE_TAG="opendesk-edu:${COMMIT_SHA}"
-            # Use BuildKit if available, fall back to standard build
-            DOCKER_BUILDKIT=1 docker compose build
+            # Check BuildKit availability and fallback
+            if command -v docker buildx >/dev/null 2>&1; then
+              DOCKER_BUILDKIT=1 docker compose build
+            elif docker version | grep -q "BuildKit"; then
+              DOCKER_BUILDKIT=1 docker compose build
+            else
+              docker compose build
+            fi
             docker tag opendesk-edu:latest ${IMAGE_TAG} 2>/dev/null || true
             docker compose up -d
 
       - name: Verify deployment
-        continue-on-error: true
         run: |
-          sleep 10
-          STATUS=$(curl -s -o /dev/null -w "%{http_code}" --connect-timeout 5 --max-time 10 https://opendesk-edu.org) || true
-          if [ "$STATUS" = "000" ]; then
-            echo "⚠️ Site unreachable from CI runner (expected for private/intranet deployments). Deployment itself succeeded."
-          elif [ "$STATUS" = "200" ]; then
-            echo "✅ Site is live (HTTP 200)"
-          else
-            echo "⚠️ Site returned HTTP $STATUS"
-          fi
+          echo "🔍 Verifying deployment..."
+          for i in {1..6}; do
+            STATUS=$(curl -s -o /dev/null -w "%{http_code}" --connect-timeout 5 --max-time 30 https://opendesk-edu.org) || true
+            if [ "$STATUS" = "200" ]; then
+              echo "✅ Site is live (HTTP 200)"
+              exit 0
+            elif [ "$i" -lt 6 ]; then
+              echo "⚠️  Attempt $i/6: Site returned HTTP $STATUS, retrying in 5s..."
+              sleep 5
+            else
+              echo "❌ Site verification failed after 6 attempts (HTTP $STATUS)"
+              exit 1
+            fi
+          done

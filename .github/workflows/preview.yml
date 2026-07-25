@@ -1,0 +1,73 @@
+name: Preview Deployment
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened, closed]
+
+concurrency:
+  group: preview-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy-preview:
+    runs-on: [self-hosted, linux, ubuntu-latest]
+    if: github.event.action != 'closed'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Restore node_modules cache
+        uses: actions/cache/restore@v4
+        id: cache-nm-restore
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+
+      - name: Install dependencies
+        if: steps.cache-nm-restore.outputs.cache-hit != 'true'
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: TypeCheck
+        run: npm run typecheck
+
+      - name: Build
+        run: npm run build
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: preview-build-${{ github.event.pull_request.number }}
+          path: .next/
+          retention-days: 7
+
+      - name: Notify PR status
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_COLOR: good
+          SLACK_TITLE: "🟢 Preview Ready"
+          SLACK_MESSAGE: "Preview build for PR #${{ github.event.pull_request.number }} is ready for review"
+          SLACK_FOOTER: "${{ github.event.pull_request.title }} | ${github.event.pull_request.html_url}"
+
+  cleanup:
+    runs-on: [self-hosted, linux, ubuntu-latest]
+    if: github.event.action == 'closed'
+    steps:
+      - name: Notify PR closed
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_COLOR: "#439FE0"
+          SLACK_TITLE: "🔵 PR Closed"
+          SLACK_MESSAGE: "PR #${{ github.event.pull_request.number }} has been closed"
+          SLACK_FOOTER: "${{ github.event.pull_request.title }}"

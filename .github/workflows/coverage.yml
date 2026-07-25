@@ -1,0 +1,83 @@
+name: Test Coverage
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: coverage-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  coverage:
+    runs-on: [self-hosted, linux, ubuntu-latest]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests with coverage
+        run: npm run test -- --coverage
+
+      - name: Upload coverage to Codecov
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./coverage/lcov.info
+          flags: unittests
+          name: unit-tests
+          fail_ci_if_error: false
+
+      - name: Check coverage threshold
+        run: |
+          echo "📊 Coverage Report:"
+          npm run test -- --coverage --reporter=text --reporter=json > coverage-summary.json || true
+          
+          # Extract coverage percentages
+          STATEMENTS=$(node -e "const fs=require('fs'); const data=JSON.parse(fs.readFileSync('coverage-summary.json','utf8')); console.log(data.total.statements.pct)")
+          BRANCHES=$(node -e "const fs=require('fs'); const data=JSON.parse(fs.readFileSync('coverage-summary.json','utf8')); console.log(data.total.branches.pct)")
+          FUNCTIONS=$(node -e "const fs=require('fs'); const data=JSON.parse(fs.readFileSync('coverage-summary.json','utf8')); console.log(data.total.functions.pct)")
+          LINES=$(node -e "const fs=require('fs'); const data=JSON.parse(fs.readFileSync('coverage-summary.json','utf8')); console.log(data.total.lines.pct)")
+          
+          echo "   Statements: ${STATEMENTS}%"
+          echo "   Branches: ${BRANCHES}%"
+          echo "   Functions: ${FUNCTIONS}%"
+          echo "   Lines: ${LINES}%"
+          
+          # Check if coverage meets minimum threshold
+          MIN_COVERAGE=75
+          if (( $(echo "$LINES < $MIN_COVERAGE" | bc -l) )); then
+            echo "⚠️  Coverage below threshold (${LINES}% < ${MIN_COVERAGE}%)" >&2
+            exit 1
+          else
+            echo "✅ Coverage meets threshold (${LINES}% >= ${MIN_COVERAGE}%)"
+          fi
+        id: coverage-check
+
+      - name: Upload coverage artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-coverage
+          path: |
+            coverage/
+            coverage-summary.json
+          retention-days: 7
+
+      - name: Notify low coverage
+        if: failure() && steps.coverage-check.outcome == 'failure'
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_COLOR: warning
+          SLACK_TITLE: "⚠️ Low Test Coverage"
+          SLACK_MESSAGE: "Test coverage dropped below ${MIN_COVERAGE}% in ${{ github.repository }}"
+          SLACK_FOOTER: "Current: ${LINES}% | Branch: ${{ github.ref }}"

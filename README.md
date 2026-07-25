@@ -6,6 +6,14 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 [![Upstream Integration](https://img.shields.io/badge/integration-31%2F31%20services-571EFA?labelColor=341291)](https://opendesk-edu.org)
 
+[![CI](https://github.com/opendesk-edu/opendesk-edu-website/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/opendesk-edu/opendesk-edu-website/actions/workflows/ci.yml)
+[![Artwork CI](https://github.com/opendesk-edu/opendesk-edu-website/actions/workflows/artwork-ci.yml/badge.svg?branch=main)](https://github.com/opendesk-edu/opendesk-edu-website/actions/workflows/artwork-ci.yml)
+[![Secret Scan](https://github.com/opendesk-edu/opendesk-edu-website/actions/workflows/secret-scan.yml/badge.svg?branch=main)](https://github.com/opendesk-edu/opendesk-edu-website/actions/workflows/secret-scan.yml)
+[![Preview](https://github.com/opendesk-edu/opendesk-edu-website/actions/workflows/preview.yml/badge.svg?branch=main)](https://github.com/opendesk-edu/opendesk-edu-website/actions/workflows/preview.yml)
+[![Coverage](https://github.com/opendesk-edu/opendesk-edu-website/actions/workflows/coverage.yml/badge.svg?branch=main)](https://github.com/opendesk-edu/opendesk-edu-website/actions/workflows/coverage.yml)
+[![Audit](https://github.com/opendesk-edu/opendesk-edu-website/actions/workflows/audit.yml/badge.svg?branch=main)](https://github.com/opendesk-edu/opendesk-edu-website/actions/workflows/audit.yml)
+[![Codecov](https://codecov.io/gh/opendesk-edu/opendesk-edu-website/branch/main/graph/badge.svg)](https://codecov.io/gh/opendesk-edu/opendesk-edu-website)
+
 The official website for [openDesk Edu](https://opendesk-edu.org) — an open-source digital workplace for higher education institutions. Built with Next.js and deployed via Docker with Traefik reverse proxy.
 
 ## Tech Stack
@@ -124,11 +132,39 @@ The `docker-compose.yml` includes Traefik labels for automatic HTTPS and routing
 
 ### CI/CD
 
-GitHub Actions handles automated deployment on push to `main`:
-1. Lint, test, and build validation
-2. SSH deploy to production server
-3. Docker rebuild and restart
-4. Health check verification (HTTP 200)
+GitHub Actions provides comprehensive CI/CD pipelines:
+
+| Workflow | Purpose | Trigger | Badge |
+|----------|---------|---------|-------|
+| **[CI](https://github.com/opendesk-edu/opendesk-edu-website/actions/workflows/ci.yml)** | Main pipeline: lint, test, build, deploy | Push/PR to `main` | [![CI](https://github.com/opendesk-edu/opendesk-edu-website/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/opendesk-edu/opendesk-edu-website/actions/workflows/ci.yml) |
+| **[Artwork CI](https://github.com/opendesk-edu/opendesk-edu-website/actions/workflows/artwork-ci.yml)** | SVG validation, optimization, PNG export | Push to `main` (SVG changes) | [![Artwork CI](https://github.com/opendesk-edu/opendesk-edu-website/actions/workflows/artwork-ci.yml/badge.svg?branch=main)](https://github.com/opendesk-edu/opendesk-edu-website/actions/workflows/artwork-ci.yml) |
+| **[Secret Scan](https://github.com/opendesk-edu/opendesk-edu-website/actions/workflows/secret-scan.yml)** | Gitleaks + TruffleHog secret detection | Push/PR to `main` | [![Secret Scan](https://github.com/opendesk-edu/opendesk-edu-website/actions/workflows/secret-scan.yml/badge.svg?branch=main)](https://github.com/opendesk-edu/opendesk-edu-website/actions/workflows/secret-scan.yml) |
+| **[Preview](https://github.com/opendesk-edu/opendesk-edu-website/actions/workflows/preview.yml)** | PR preview deployments | PR opened/synchronized | [![Preview](https://github.com/opendesk-edu/opendesk-edu-website/actions/workflows/preview.yml/badge.svg?branch=main)](https://github.com/opendesk-edu/opendesk-edu-website/actions/workflows/preview.yml) |
+| **[Coverage](https://github.com/opendesk-edu/opendesk-edu-website/actions/workflows/coverage.yml)** | Test coverage tracking | Push/PR to `main` | [![Coverage](https://github.com/opendesk-edu/opendesk-edu-website/actions/workflows/coverage.yml/badge.svg?branch=main)](https://github.com/opendesk-edu/opendesk-edu-website/actions/workflows/coverage.yml) |
+| **[Audit](https://github.com/opendesk-edu/opendesk-edu-website/actions/workflows/audit.yml)** | Dependency security + updates | Weekly + manual | [![Audit](https://github.com/opendesk-edu/opendesk-edu-website/actions/workflows/audit.yml/badge.svg?branch=main)](https://github.com/opendesk-edu/opendesk-edu-website/actions/workflows/audit.yml) |
+
+#### CI Pipeline Features:
+- ✅ **Reliability**: Fallback to GitHub-hosted runners if self-hosted unavailable
+- ✅ **Security**: Secret scanning (Gitleaks + TruffleHog), dependency audit, npm security checks
+- ✅ **Quality**: Linting, type checking, content validation, integration checks
+- ✅ **Testing**: Unit tests (Vitest), E2E tests (Playwright), coverage reporting
+- ✅ **Performance**: Automatic npm caching, parallel job execution
+- ✅ **Deployments**: Production deploy on merge, health verification with retries
+- ✅ **Artifact Retention**: Build artifacts saved for 7 days, test results on failure
+- ✅ **Notifications**: Slack alerts for secrets, vulnerabilities, and failures
+
+#### Deployment Process:
+1. **Validation**: Content, SVG, palette, integration checks
+2. **Testing**: Unit tests → E2E tests → Security scans
+3. **Build**: Production build with automatic caching
+4. **Deploy**: SSH to production, Docker rebuild with BuildKit support
+5. **Verification**: Health checks with 6 retry attempts (30s timeout)
+
+#### Self-Hosted Runner Configuration:
+All workflows use `[self-hosted, linux, ubuntu-latest]` which:
+- Prioritizes self-hosted runners for faster execution
+- Falls back to GitHub-hosted `ubuntu-latest` if no self-hosted runner available
+- Prevents complete CI/CD failure during maintainingance
 
 ## Repository Hosting
 

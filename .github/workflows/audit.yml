@@ -1,0 +1,107 @@
+name: Dependency Audit
+
+on:
+  schedule:
+    - cron: "0 2 * * 1"  # Every Monday at 2 AM UTC
+  workflow_dispatch:
+
+concurrency:
+  group: audit-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  audit:
+    runs-on: [self-hosted, linux, ubuntu-latest]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run npm audit
+        run: |
+          echo "🔍 Running npm audit..."
+          npm audit --audit-level=moderate --json > audit-results.json || true
+          
+          # Count vulnerabilities
+          VULNS=$(node -e "const fs=require('fs'); const data=JSON.parse(fs.readFileSync('audit-results.json','utf8')); console.log(data?.vulnerabilities ? Object.keys(data.vulnerabilities).length : 0)")
+          echo "️  Found $VULNS vulnerabilities"
+          
+          if [ "$VULNS" -gt 0 ]; then
+            echo "⚠️  Vulnerabilities found!" >&2
+            cat audit-results.json | jq .
+            exit 1
+          else
+            echo "✅ No vulnerabilities found"
+          fi
+        id: audit
+
+      - name: Upload audit results
+        if: failure() && steps.audit.outcome == 'failure'
+        uses: actions/upload-artifact@v4
+        with:
+          name: npm-audit-results
+          path: audit-results.json
+          retention-days: 30
+
+      - name: Notify on vulnerabilities
+        if: failure() && steps.audit.outcome == 'failure'
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_COLOR: danger
+          SLACK_TITLE: "⚠️ NPM Vulnerabilities Found"
+          SLACK_MESSAGE: "npm audit detected $VULNS vulnerabilities in ${{ github.repository }}"
+          SLACK_FOOTER: "Run 'npm audit fix' to address"
+
+  outdated:
+    runs-on: [self-hosted, linux, ubuntu-latest]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Check for outdated dependencies
+        run: |
+          echo "🔍 Checking for outdated dependencies..."
+          npx npm-check-updates --jsonAll > outdated.json || true
+          
+          # Count outdated packages
+          OUTDATED=$(node -e "const fs=require('fs'); const data=JSON.parse(fs.readFileSync('outdated.json','utf8')); console.log(Object.keys(data).length)")
+          echo "️  Found $OUTDATED outdated packages"
+          
+          if [ "$OUTDATED" -gt 0 ]; then
+            echo "ℹ️  Outdated packages detected:"
+            cat outdated.json | jq -r 'to_entries[] | "- \(.key): \(.value.current) → \(.value.wanted)"'
+            
+            # Only fail if critical packages are outdated
+            if cat outdated.json | jq -e '. | to_entries[] | select(.key | test("next|react|typescript"))' > /dev/null; then
+              echo "⚠️  Critical packages are outdated!" >&2
+              exit 1
+            fi
+          else
+            echo "✅ All dependencies are up-to-date"
+          fi
+
+      - name: Upload outdated results
+        uses: actions/upload-artifact@v4
+        with:
+          name: outdated-dependencies
+          path: outdated.json
+          retention-days: 30
+
+      - name: Notify on outdated critical packages
+        if: failure()
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_COLOR: warning
+          SLACK_TITLE: "⚠️ Outdated Critical Dependencies"
+          SLACK_MESSAGE: "Critical dependencies need updating in ${{ github.repository }}"
+          SLACK_FOOTER: "Run 'npm outdated' for details"

@@ -6,18 +6,42 @@ on:
     paths:
       - "public/static/**/*.svg"
 
+concurrency:
+  group: artwork-ci-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   artwork:
-    runs-on: [self-hosted, linux]
+    runs-on: [self-hosted, linux, ubuntu-latest]
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
           cache: npm
 
-      - run: npm ci
+      - name: Restore node_modules cache
+        uses: actions/cache/restore@v4
+        id: cache-nm-restore
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install dependencies
+        if: steps.cache-nm-restore.outputs.cache-hit != 'true'
+        run: npm ci
+
+      - name: Save node_modules cache
+        if: steps.cache-nm-restore.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
 
       - name: Validate SVGs
         run: npm run validate:svg
@@ -31,7 +55,13 @@ jobs:
       - name: Export PNGs
         run: npm run export:png
 
+      - name: Check for changes
+        id: check-changes
+        run: |
+          git diff --quiet public/static/ || echo "changes=true" >> $GITHUB_OUTPUT
+
       - name: Auto-commit changes
+        if: steps.check-changes.outputs.changes == 'true'
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: optimize SVGs and regenerate PNGs"
@@ -39,3 +69,4 @@ jobs:
           commit_if_no_changes: "false"
           skip_fetch: true
           skip_check_run: true
+          skip_dirty_check: true

@@ -1,0 +1,241 @@
+# Gitleaks Configuration for openDesk Edu Website
+# SPDX-License-Identifier: Apache-2.0
+# Source: https://github.com/gitleaks/gitleaks
+
+[extend]
+useDefault = true
+
+[allowlist]
+# Allowlist paths that may contain false positives
+paths = [
+  "node_modules/",
+  "dist/",
+  "build/",
+  "\.next/",
+  "coverage/",
+  "test-results/",
+  "playwright-report/",
+  "\.git/"
+]
+
+# Allowlist regex patterns that are known to be safe
+regexTarget = "match"
+regexes = [
+  # Example patterns that match secret formats but are safe
+  "PKGLOCK2024[0-9]{24}",  # Fake npm lock patterns
+  "ghp_[a-zA-Z0-9]{36}",   # GitHub token format (if used in examples)
+  "sk-[a-zA-Z0-9]{48}",    # Stripe test keys
+  "xox[baprs]-[0-9a-zA-Z]{24}", # Slack token format (if in docs)
+  # Known test/sandbox API keys
+  "test_",
+  "sandbox_",
+  "example_",
+  "placeholder_",
+  "REPLACE_ME",
+  "YOUR_"
+]
+
+# Configuration for extended rules
+[rules]
+title = "Gitleaks Custom Rules"
+
+# AWS Access Keys
+[[rules]]
+id = "aws-access-key"
+description = "AWS Access Key"
+regex = "AKIA[0-9A-Z]{16}"
+tags = ["aws", "key"]
+
+[[rules]]
+id = "aws-secret-key"
+description = "AWS Secret Key"
+regex = "aws_secret_access_key\\s*=\\s*['\"]?([0-9a-zA-Z/+=@\\-]{40})['\"]?"
+tags = ["aws", "secret"]
+
+# GitHub Tokens
+[[rules]]
+id = "github-token"
+description = "GitHub Token"
+regex = "(ghp|gho|ghu|ghs|ghr)_[a-zA-Z0-9]{36,}"
+tags = ["github", "token"]
+
+# GitHub OAuth
+[[rules]]
+id = "github-oauth"
+description = "GitHub OAuth Token"
+regex = "gho_[a-zA-Z0-9]{36}"
+tags = ["github", "oauth"]
+
+# GitHub User Token
+[[rules]]
+id = "github-user-token"
+description = "GitHub User Token"
+regex = "ghu_[a-zA-Z0-9]{36}"
+tags = ["github", "user"]
+
+# GitHub Server Token
+[[rules]]
+id = "github-server-token"
+description = "GitHub Server Token"
+regex = "ghs_[a-zA-Z0-9]{36}"
+tags = ["github", "server"]
+
+# GitHub Refresh Token
+[[rules]]
+id = "github-refresh-token"
+description = "GitHub Refresh Token"
+regex = "ghr_[a-zA-Z0-9]{36}"
+tags = ["github", "refresh"]
+
+# GitLab Tokens
+[[rules]]
+id = "gitlab-token"
+description = "GitLab Token"
+regex = "glpat-[a-zA-Z0-9_-]{20,}"
+tags = ["gitlab", "token"]
+
+# NPM Tokens
+[[rules]]
+id = "npm-token"
+description = "NPM Access Token"
+regex = "npm_[a-zA-Z0-9]{36}"
+tags = ["npm", "token"]
+
+# Slack Tokens
+[[rules]]
+id = "slack-token"
+description = "Slack Token"
+regex = "xox[baprs]-[0-9a-zA-Z]{24,}"
+tags = ["slack", "token"]
+
+# Slack Webhooks
+[[rules]]
+id = "slack-webhook"
+description = "Slack Webhook URL"
+regex = "https://hooks\.slack\.com/services/T[A-Z0-9]+/B[A-Z0-9]+/[a-zA-Z0-9]+"
+tags = ["slack", "webhook"]
+
+# Docker Hub Tokens
+[[rules]]
+id = "docker-token"
+description = "Docker Hub Token"
+regex = "docker_[a-zA-Z0-9]{40}"
+tags = ["docker", "token"]
+
+# Generic API Keys
+[[rules]]
+id = "generic-api-key"
+description = "Generic API Key"
+regex = "(api[_-]?key|apikey|api\\s*key)[\\s*=:]\\s*['\"]?([a-zA-Z0-9_-]{16,})['\"]?"
+tags = ["api", "key"]
+
+# Generic Secrets
+[[rules]]
+id = "generic-secret"
+description = "Generic Secret"
+regex = "(secret|password|passwd|pwd|token|auth|private[_-]?key|access[_-]?key)[\\s*=:]\\s*['\"]?([a-zA-Z0-9_@#$%^&*()\\-+=]{8,})['\"]?"
+tags = ["secret", "password"]
+
+# Generic Credentials
+[[rules]]
+id = "generic-credentials"
+description = "Generic Credentials"
+regex = "(username|user|login|credential|creds)[\\s*=:]\\s*['\"]?([a-zA-Z0-9_@.\\-]{4,})['\"]?"
+tags = ["credentials", "username"]
+
+# SSH Private Keys
+[[rules]]
+id = "ssh-private-key"
+description = "SSH Private Key"
+regex = "-----BEGIN (RSA |EC |DSA |OPENSSH )?PRIVATE KEY-----"
+tags = ["ssh", "private", "key"]
+
+# PGP Private Keys
+[[rules]]
+id = "pgp-private-key"
+description = "PGP Private Key"
+regex = "-----BEGIN PGP PRIVATE KEY BLOCK-----"
+tags = ["pgp", "private", "key"]
+
+# Heroku API Key
+[[rules]]
+id = "heroku-api-key"
+description = "Heroku API Key"
+regex = "heroku_[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+tags = ["heroku", "key"]
+
+# Twilio Credentials
+[[rules]]
+id = "twilio-credentials"
+description = "Twilio Account SID"
+regex = "AC[a-f0-9]{32}"
+tags = ["twilio", "credentials"]
+
+# Stripe API Keys
+[[rules]]
+id = "stripe-api-key"
+description = "Stripe API Key"
+regex = "(sk|pk)_(live|test)_[0-9a-zA-Z]{24,}"
+tags = ["stripe", "key"]
+
+# SendGrid API Keys
+[[rules]]
+id = "sendgrid-api-key"
+description = "SendGrid API Key"
+regex = "SG\\.[a-zA-Z0-9_-]{22,}\\.[-a-zA-Z0-9_-]{1,}"
+tags = ["sendgrid", "key"]
+
+# Mailchimp API Keys
+[[rules]]
+id = "mailchimp-api-key"
+description = "Mailchimp API Key"
+regex = "[a-f0-9]{32}-us[0-9]{1,2}"
+tags = ["mailchimp", "key"]
+
+# Database Connection Strings
+[[rules]]
+id = "database-connection-string"
+description = "Database Connection String"
+regex = "(mongodb|mysql|postgres|postgresql|redis|amqp)://[a-zA-Z0-9_@.\\-]+:[a-zA-Z0-9_@#$%^&*()\\-]+@[a-zA-Z0-9_@.\\-]+"
+tags = ["database", "connection"]
+
+# JWT Tokens
+[[rules]]
+id = "jwt-token"
+description = "JWT Token"
+regex = "eyJ[A-Za-z0-9-_=]+\\.eyJ[A-Za-z0-9-_=]+\\.([A-Za-z0-9-_.+/=]+|[A-Za-z0-9-_=])"
+tags = ["jwt", "token"]
+
+# Bearer Tokens
+[[rules]]
+id = "bearer-token"
+description = "Bearer Token"
+regex = "Bearer\\s+([a-zA-Z0-9_-]{20,})"
+tags = ["bearer", "token"]
+
+# Basic Auth Credentials
+[[rules]]
+id = "basic-auth-credentials"
+description = "Basic Auth Credentials"
+regex = "Basic\\s+([a-zA-Z0-9+/=]{20,})"
+tags = ["basic", "auth"]
+
+# AWS Account IDs
+[[rules]]
+id = "aws-account-id"
+description = "AWS Account ID"
+regex = "[0-9]{12}"
+tags = ["aws", "account"]
+
+# Custom rules for openDesk Edu specific patterns
+[[rules]]
+id = "opendesk-secret-pattern"
+description = "openDesk Edu Generic Secret Pattern"
+regex = "(OPENDESK|opendesk|OPEN_DESK)[_-]?(SECRET|TOKEN|KEY|PASSWORD|CREDENTIAL)[\\s*=:]\\s*['\"]?[a-zA-Z0-9_@#$%^&*()\\-+=]{8,}['\"]?"
+tags = ["opendesk", "secret"]
+
+[[rules]]
+id = "docker-compose-secret"
+description = "Docker Compose Environment Variables"
+regex = "(DEPLOY_SSH_KEY|DEPLOY_HOST|DEPLOY_USER|DEPLOY_PATH|GITLEAKS_LICENSE|SLACK_WEBHOOK|CODECOV_TOKEN)\"\\s*:\\s*\"[^\"]+\""  
+tags = ["docker", "secret"]
