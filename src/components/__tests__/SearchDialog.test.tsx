@@ -27,9 +27,9 @@ vi.mock("next-intl", () => ({
 }));
 
 const mockEntries = [
-  { title: "Jitsi", slug: "jitsi", section: "components", description: "Video conferencing", categories: ["communication"], tags: ["video"] },
-  { title: "Deploy Guide", slug: "deploy", section: "docs", description: "How to deploy", categories: ["guide"], tags: ["deployment"] },
+  { title: "Jitsi", slug: "jitsi", section: "blog", description: "Video conferencing", categories: ["communication"], tags: ["video"] },
   { title: "Architecture Deep Dive", slug: "arch", section: "blog", description: "Architecture", categories: ["tech"], tags: ["architecture"] },
+  { title: "Platform Overview", slug: "platform-overview", section: "blog", description: "Platform overview", categories: ["platform"], tags: ["overview"] },
 ];
 
 let loadingState = false;
@@ -76,7 +76,7 @@ describe("SearchDialog", () => {
     const input = screen.getByPlaceholderText("Search components, guides, blog posts...");
     await userEvent.type(input, "a");
     await waitFor(() => {
-      expect(screen.getByText("Components")).toBeInTheDocument();
+      expect(screen.getByText("Blog")).toBeInTheDocument();
     });
   });
 

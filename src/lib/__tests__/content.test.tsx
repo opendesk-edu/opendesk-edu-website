@@ -92,23 +92,23 @@ tags: [security, compliance]
 describe("content.ts", () => {
   describe("isValidSection", () => {
     it("returns true for valid sections", () => {
-      expect(isValidSection("components")).toBe(true);
+      expect(isValidSection("blog")).toBe(true);
       expect(isValidSection("blog")).toBe(true);
     });
 
     it("returns false for invalid sections", () => {
       expect(isValidSection("invalid")).toBe(false);
       expect(isValidSection("")).toBe(false);
-      expect(isValidSection("components-extra")).toBe(false);
+      expect(isValidSection("blog-extra")).toBe(false);
     });
   });
 
   describe("getSectionBySlug", () => {
     it("returns section info for valid slug", () => {
-      const section = getSectionBySlug("components");
+      const section = getSectionBySlug("blog");
       expect(section).toBeDefined();
-      expect(section?.slug).toBe("components");
-      expect(section?.title).toBe("Components");
+      expect(section?.slug).toBe("blog");
+      expect(section?.title).toBe("Blog");
     });
 
     it("returns undefined for invalid slug", () => {
@@ -118,11 +118,11 @@ describe("content.ts", () => {
 
   describe("getPostBySlug", () => {
     it("returns a post when found via direct match", async () => {
-      const post = await getPostBySlug("components", "test-post");
+      const post = await getPostBySlug("blog", "test-post");
       expect(post).not.toBeNull();
       expect(post?.title).toBe("Test Post");
       expect(post?.slug).toBe("test-post");
-      expect(post?.section).toBe("components");
+      expect(post?.section).toBe("blog");
       expect(post?.htmlContent).toBe("<p>processed</p>");
     });
 
@@ -139,7 +139,7 @@ describe("content.ts", () => {
         return true;
       });
       mockReaddirSync.mockReturnValue(["other-post.md"] as never);
-      const post = await getPostBySlug("components", "test-post");
+      const post = await getPostBySlug("blog", "test-post");
       expect(post).toBeNull();
     });
 
@@ -149,7 +149,7 @@ describe("content.ts", () => {
         return true;
       });
       mockReaddirSync.mockReturnValue(["test-post.md"] as never);
-      const post = await getPostBySlug("components", "test-post");
+      const post = await getPostBySlug("blog", "test-post");
       expect(post).not.toBeNull();
       expect(post?.title).toBe("Test Post");
     });
@@ -165,7 +165,7 @@ describe("content.ts", () => {
         return true;
       });
       mockReaddirSync.mockReturnValue(["test-post.md"] as never);
-      const post = await getPostBySlug("components", "custom-slug");
+      const post = await getPostBySlug("blog", "custom-slug");
       expect(post).not.toBeNull();
       expect(post?.slug).toBe("custom-slug");
     });
@@ -181,16 +181,17 @@ describe("content.ts", () => {
         return true;
       });
       mockReaddirSync.mockReturnValue(["finds-me.md"] as never);
-      const post = await getPostBySlug("components", "test-post");
+      const post = await getPostBySlug("blog", "test-post");
       expect(post).toBeNull();
     });
   });
 
   describe("getPostsBySection", () => {
     it("returns posts sorted by date descending", async () => {
-      const post = await getPostsBySection("components");
-      expect(post).toHaveLength(1);
-      expect(post[0].title).toBe("Test Post");
+      const post = await getPostsBySection("blog");
+      expect(post).toHaveLength(2);
+      expect(post[0].title).toBe("Tagged Post");
+      expect(post[1].title).toBe("Test Post");
     });
 
     it("returns empty array when section directory does not exist", async () => {
@@ -205,13 +206,13 @@ describe("content.ts", () => {
         content: "# Draft\n",
         excerpt: "",
       } as never);
-      const posts = await getPostsBySection("components");
+      const posts = await getPostsBySection("blog");
       expect(posts).toHaveLength(0);
     });
 
     it("handles invalid content files gracefully", async () => {
       mockReaddirSync.mockReturnValue(["_index.md", "test-post.md", "backup.bak"] as never);
-      const posts = await getPostsBySection("components");
+      const posts = await getPostsBySection("blog");
       expect(posts).toHaveLength(1);
     });
   });
@@ -229,7 +230,7 @@ describe("content.ts", () => {
         return true;
       });
       mockReaddirSync.mockReturnValue(["date-post.md"] as never);
-      const post = await getPostBySlug("components", "date-post");
+      const post = await getPostBySlug("blog", "date-post");
       expect(post).not.toBeNull();
       expect(post?.date).toBe("2024-06-15");
     });
@@ -245,7 +246,7 @@ describe("content.ts", () => {
         return true;
       });
       mockReaddirSync.mockReturnValue(["bad-date.md"] as never);
-      await expect(getPostBySlug("components", "bad-date")).rejects.toThrow("Invalid frontmatter");
+      await expect(getPostBySlug("blog", "bad-date")).rejects.toThrow("Invalid frontmatter");
     });
 
     it("returns null on non-object frontmatter", async () => {
@@ -259,7 +260,7 @@ describe("content.ts", () => {
         return true;
       });
       mockReaddirSync.mockReturnValue(["bad-frontmatter.md"] as never);
-      await expect(getPostBySlug("components", "bad-frontmatter")).rejects.toThrow("Invalid frontmatter");
+      await expect(getPostBySlug("blog", "bad-frontmatter")).rejects.toThrow("Invalid frontmatter");
     });
 
     it("throws on invalid frontmatter (missing title)", async () => {
@@ -274,7 +275,7 @@ describe("content.ts", () => {
         return true;
       });
       mockReaddirSync.mockReturnValue(["no-title.md"] as never);
-      await expect(getPostBySlug("components", "no-title")).rejects.toThrow("Invalid frontmatter");
+      await expect(getPostBySlug("blog", "no-title")).rejects.toThrow("Invalid frontmatter");
     });
   });
 
@@ -286,14 +287,14 @@ describe("content.ts", () => {
       // After catch, falls back to full scan — second readFile succeeds
       mockReadFile.mockResolvedValueOnce(sampleFrontmatter);
       mockReaddirSync.mockReturnValue(["test-post.md"] as never);
-      const post = await getPostBySlug("components", "test-post");
+      const post = await getPostBySlug("blog", "test-post");
       expect(post).not.toBeNull();
       expect(post?.title).toBe("Test Post");
     });
 
     it("handles file processing error in getPostsBySection", async () => {
       mockReadFile.mockRejectedValue(new Error("Processing error"));
-      const posts = await getPostsBySection("components");
+      const posts = await getPostsBySection("blog");
       expect(posts).toEqual([]);
     });
   });
@@ -301,8 +302,8 @@ describe("content.ts", () => {
   describe("getAllPosts", () => {
     it("returns posts from all sections", async () => {
       const posts = await getAllPosts();
-      // 3 sections, each with 1 post = 3 posts
-      expect(posts.length).toBeGreaterThanOrEqual(3);
+      // 1 section (blog) with 2 posts
+      expect(posts.length).toBeGreaterThanOrEqual(2);
     });
 
     it("accepts custom locale", async () => {
@@ -313,8 +314,8 @@ describe("content.ts", () => {
 
   describe("getStaticPathsForSection", () => {
     it("returns slug array for a section", async () => {
-      const paths = await getStaticPathsForSection("components");
-      expect(paths).toEqual(["test-post"]);
+      const paths = await getStaticPathsForSection("blog");
+      expect(paths).toContain("test-post");
     });
   });
 
