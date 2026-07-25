@@ -17,6 +17,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Fixed
 - Palette validation in `opendesk-edu-1-1-teaser.svg` (replaced disallowed colors `#60a5fa` and `#4ade80` with branded palette colors)
 
+### Changed
+- Search API now caches results for 5 minutes to improve performance and reduce filesystem I/O
+
 ## [Sprint 7] — 2026-05-27
 
 ### Added
