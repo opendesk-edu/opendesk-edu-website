@@ -1,5 +1,5 @@
-import { describe, it, expect, vi } from "vitest";
-import { GET } from "./route";
+import { describe, it, expect, vi, beforeEach } from "vitest";
+import { GET, searchCache } from "./route";
 
 vi.mock("@/lib/content", () => ({
   getAllPosts: vi.fn(),
@@ -15,6 +15,12 @@ vi.mock("@/i18n/routing", () => ({
 import { getAllPosts } from "@/lib/content";
 
 const mockGetAllPosts = getAllPosts as ReturnType<typeof vi.fn>;
+
+// Clear cache before each test
+beforeEach(() => {
+  searchCache.clear();
+  vi.clearAllMocks();
+});
 
 function mockRequest(url: string) {
   const parsed = new URL(url);
@@ -52,9 +58,11 @@ describe("Search API", () => {
         categories: ["communication"],
         tags: ["video"],
         date: "2026-01-01",
+        image: undefined,
+        htmlContent: "<p>Content</p>",
       },
     ];
-    mockGetAllPosts.mockResolvedValue(posts);
+    mockGetAllPosts.mockResolvedValue(posts as never);
     const request = mockRequest("http://localhost/api/search?locale=en");
     const response = await GET(request as never);
     const body = await response.json();
