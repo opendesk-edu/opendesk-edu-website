@@ -17,8 +17,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Fixed
 - Palette validation in `opendesk-edu-1-1-teaser.svg` (replaced disallowed colors `#60a5fa` and `#4ade80` with branded palette colors)
 
+### Added
+- ESLint ignore patterns for test files to prevent false positives on mock `<img>` elements
+- Basic E2E test suite with Playwright (`e2e/homepage.spec.ts`)
+- Docker build script (`scripts/build-docker.sh`) for consistent builds with commit SHA tagging
+
 ### Changed
 - Search API now caches results for 5 minutes to improve performance and reduce filesystem I/O
+- Dockerfile uses `addgroup/adduser` flags compatible with both BuildKit and non-BuildKit
+- CI workflow now explicitly enables BuildKit (`DOCKER_BUILDKIT=1`)
+- Updated `.env.example` with clearer documentation for all environment variables
+
+### Fixed
+- ESLint warnings in test files by ignoring `__tests__` and `*.test.*` patterns
 
 ## [Sprint 7] — 2026-05-27
 

@@ -1,6 +1,8 @@
 services:
   opendesk-edu:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     image: opendesk-edu:latest
     container_name: opendesk-edu
     restart: unless-stopped

@@ -15,7 +15,9 @@ RUN npm run build
 FROM base AS runner
 WORKDIR /app
 ENV NODE_ENV=production
-RUN addgroup --system --gid 1001 nodejs && adduser --system --uid 1001 nextjs
+# Create user and group (compatible with both BuildKit and non-BuildKit)
+RUN addgroup -g 1001 -S nodejs && \
+    adduser -u 1001 -S -G nodejs nextjs
 COPY --from=builder /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./app/.next/static
