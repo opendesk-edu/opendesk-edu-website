@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { SERVICES, CATEGORIES, getServicesByCategory, sortServices } from '@/lib/landscape-config';
 
 // Status colors for badges
 const STATUS_COLORS: Record<string, string> = {

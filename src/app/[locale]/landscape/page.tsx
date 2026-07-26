@@ -1,6 +1,8 @@
 // app/[locale]/landscape/page.tsx
 import { Metadata } from 'next';
+import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
+import { motion } from 'framer-motion';
 import LandscapeVisualization from '@/components/Landscape/LandscapeVisualization';
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
@@ -83,12 +85,12 @@ export default function LandscapePage() {
               <span>🚀 Explore Services</span>
               <span className="text-sm opacity-70">interactive map</span>
             </a>
-            <a
+            <Link
               href="/docs"
               className="inline-flex items-center gap-2 px-8 py-4 bg-transparent border-2 border-purple-600/30 text-purple-400 rounded-xl font-semibold text-lg hover:bg-purple-600/10 transition-all"
             >
               <span>📖 Documentation</span>
-            </a>
+            </Link>
           </div>
         </div>
 
@@ -121,7 +123,7 @@ export default function LandscapePage() {
                 comprehensive overview of how all components fit together.
               </p>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                Whether you're evaluating the platform for your institution, onboarding a new 
+                Whether you&apos;re evaluating the platform for your institution, onboarding a new 
                 team member, or planning integrations, the landscape gives you a clear picture 
                 of our complete digital infrastructure.
               </p>
@@ -313,7 +315,7 @@ export default function LandscapePage() {
             Why Use the Landscape?
           </h2>
           <p className="text-lg text-muted-foreground text-center mb-12 max-w-2xl mx-auto">
-            More than just a visual map — it's a powerful tool for understanding and working with the platform
+            More than just a visual map &mdash; it&apos;s a powerful tool for understanding and working with the platform
           </p>
           
           <div className="grid md:grid-cols-3 gap-8">
@@ -324,7 +326,7 @@ export default function LandscapePage() {
               <h3 className="text-xl font-bold text-foreground mb-4">Complete Visibility</h3>
               <p className="text-muted-foreground">
                 See every service, its status, and how it integrates with the rest of the platform. 
-                No more guessing about what's available or what's coming soon.
+                No more guessing about what&apos;s available or what&apos;s coming soon.
               </p>
             </div>
             
@@ -334,8 +336,8 @@ export default function LandscapePage() {
               </div>
               <h3 className="text-xl font-bold text-foreground mb-4">Informed Decisions</h3>
               <p className="text-muted-foreground">
-                Evaluate the platform's capabilities at a glance. Understand which services fit your 
-                institution's needs and plan your deployment strategy accordingly.
+                Evaluate the platform&apos;s capabilities at a glance. Understand which services fit your 
+                institution&apos;s needs and plan your deployment strategy accordingly.
               </p>
             </div>
             
@@ -346,7 +348,7 @@ export default function LandscapePage() {
               <h3 className="text-xl font-bold text-foreground mb-4">Efficient Operations</h3>
               <p className="text-muted-foreground">
                 Onboard team members faster, plan integrations more effectively, and communicate the 
-                platform's scope to stakeholders with a shared visual language.
+                platform&apos;s scope to stakeholders with a shared visual language.
               </p>
             </div>
           </div>
@@ -409,18 +411,18 @@ export default function LandscapePage() {
               fully integrated, and ready for production deployment.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <a
+              <Link
                 href="/docs/getting-started"
                 className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-xl font-semibold hover:shadow-lg hover:shadow-purple-500/30 transition-all"
               >
                 <span>📚 Get Started</span>
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/docs/deployment"
                 className="inline-flex items-center gap-2 px-8 py-4 bg-transparent border-2 border-purple-600/30 text-purple-400 rounded-xl font-semibold hover:bg-purple-600/10 transition-all"
               >
                 <span>⚙️ Deploy Now</span>
-              </a>
+              </Link>
               <a
                 href="https://github.com/tobias-weiss-ai-xr/opendesk-edu"
                 className="inline-flex items-center gap-2 px-8 py-4 bg-transparent border-2 border-purple-600/30 text-purple-400 rounded-xl font-semibold hover:bg-purple-600/10 transition-all"
