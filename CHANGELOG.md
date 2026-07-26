@@ -7,6 +7,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [Unreleased]
 
 ### Added
+- **Comprehensive CI/CD Improvements**:
+  - Added GitHub-hosted runner fallback to all workflows for reliability
+  - New workflows: Preview deployments, Test coverage tracking, Dependency audit
+  - Enhanced secret scanning with TruffleHog + Gitleaks
+  - E2E test integration in deployment pipeline
+  - Content validation before production deployment
+  - BuildKit fallback handling in deploy script
+  - Concurrency control to prevent redundant workflow runs
+- CI/CD Documentation (`docs/cicd.md`) - Complete guide to workflows, features, and troubleshooting
+- `.gitleaks.toml` configuration with comprehensive secret detection patterns
+- CI badges and expanded CI/CD section in README.md
 - Contact form modal with SMTP-backed API route (`/api/contact`)
 - Newsletter subscription input with listmonk proxy (`/api/subscribe`)
 - Matrix community link in footer (`matrix.to/#opendesk-edu:matrix.org`)
