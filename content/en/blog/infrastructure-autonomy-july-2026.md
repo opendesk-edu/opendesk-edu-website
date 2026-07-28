@@ -4,7 +4,7 @@ date: "2026-07-28"
 description: "Stalwart v0.16 replaces Postfix, all services connected via Keycloak SSO, ArgoCD GitOps expanded, and custom infrastructure repos created to decouple from external registries."
 categories: ["Infrastructure"]
 tags: ["stalwart", "oidc", "keycloak", "argocd", "gitops", "monitoring"]
-# image: /static/blog/infrastructure-autonomy-july-2026-teaser.svg
+image: "/static/blog/infrastructure-autonomy-july-2026-teaser.svg"
 ---
 
 # Infrastructure Autonomy — July 2026 Progress Report

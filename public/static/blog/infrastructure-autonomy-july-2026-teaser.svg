@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <title>openDesk Edu - Infrastructure Autonomy July 2026</title>
+  <desc>Teaser image for infrastructure autonomy progress report featuring Stalwart, SSO, ArgoCD, and custom repos.</desc>
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0014"/>
+      <stop offset="50%" stop-color="#0d0020"/>
+      <stop offset="100%" stop-color="#0a0014"/>
+    </linearGradient>
+    <linearGradient id="accentLeft" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#571EFA" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#571EFA" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="iconGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#571EFA"/>
+      <stop offset="100%" stop-color="#927AFA"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bgGrad)"/>
+  <rect x="0" y="0" width="400" height="630" fill="url(#accentLeft)"/>
+  <g stroke="#1a0040" stroke-width="0.5" opacity="0.3">
+    <line x1="0" y1="100" x2="1200" y2="100"/>
+    <line x1="0" y1="200" x2="1200" y2="200"/>
+    <line x1="0" y1="300" x2="1200" y2="300"/>
+    <line x1="0" y1="400" x2="1200" y2="400"/>
+    <line x1="0" y1="500" x2="1200" y2="500"/>
+  </g>
+  <g transform="translate(80,60)">
+    <rect x="0" y="0" width="1040" height="20" rx="4" fill="#571EFA" opacity="0.8"/>
+    <rect x="0" y="28" width="800" height="12" rx="3" fill="#927AFA" opacity="0.4"/>
+    <rect x="0" y="48" width="600" height="12" rx="3" fill="#927AFA" opacity="0.3"/>
+  </g>
+  <g transform="translate(80,140)">
+    <rect x="0" y="0" width="260" height="36" rx="18" fill="#571EFA" opacity="0.2"/>
+    <text x="130" y="24" text-anchor="middle" fill="#927AFA" font-family="monospace" font-size="14">JULY 2026</text>
+  </g>
+  <g transform="translate(80,220)">
+    <text fill="#ffffff" font-family="sans-serif" font-size="42" font-weight="bold">
+      Infrastructure<tspan fill="#927AFA" font-weight="bold"> Autonomy</tspan>
+    </text>
+    <text y="50" fill="#b0a0d0" font-family="sans-serif" font-size="22">
+      Progress Report — July 2026
+    </text>
+  </g>
+  <g transform="translate(80,350)">
+    <circle cx="10" cy="10" r="6" fill="#571EFA"/>
+    <text x="25" y="15" fill="#c0b0e0" font-family="sans-serif" font-size="16">Stalwart v0.16 replacing Postfix MTA</text>
+    <circle cx="10" cy="40" r="6" fill="#571EFA"/>
+    <text x="25" y="45" fill="#c0b0e0" font-family="sans-serif" font-size="16">Unified Keycloak SSO all services</text>
+    <circle cx="10" cy="70" r="6" fill="#571EFA"/>
+    <text x="25" y="75" fill="#c0b0e0" font-family="sans-serif" font-size="16">ArgoCD GitOps expansion 2 to 27 apps</text>
+    <circle cx="10" cy="100" r="6" fill="#571EFA"/>
+    <text x="25" y="105" fill="#c0b0e0" font-family="sans-serif" font-size="16">4 custom infrastructure repos created</text>
+  </g>
+  <circle cx="1100" cy="480" r="120" fill="none" stroke="#571EFA" stroke-width="0.5" opacity="0.15"/>
+  <circle cx="1100" cy="480" r="80" fill="none" stroke="#571EFA" stroke-width="0.5" opacity="0.15"/>
+  <circle cx="1100" cy="480" r="40" fill="none" stroke="#571EFA" stroke-width="0.5" opacity="0.15"/>
+</svg>
