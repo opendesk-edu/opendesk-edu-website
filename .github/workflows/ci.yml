@@ -13,7 +13,7 @@ concurrency:
 jobs:
   # Security Checks
   security:
-    runs-on: [self-hosted, linux, ubuntu-latest]
+    runs-on: [self-hosted, linux]
     steps:
       - uses: actions/checkout@v4
         with:
@@ -31,7 +31,7 @@ jobs:
 
   # Content Validation
   validate:
-    runs-on: [self-hosted, linux, ubuntu-latest]
+    runs-on: [self-hosted, linux]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -45,7 +45,7 @@ jobs:
 
   # Code Quality
   lint:
-    runs-on: [self-hosted, linux, ubuntu-latest]
+    runs-on: [self-hosted, linux]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -58,7 +58,7 @@ jobs:
 
   # Unit Tests
   test:
-    runs-on: [self-hosted, linux, ubuntu-latest]
+    runs-on: [self-hosted, linux]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -79,7 +79,7 @@ jobs:
 
   # E2E Tests
   e2e:
-    runs-on: [self-hosted, linux, ubuntu-latest]
+    runs-on: [self-hosted, linux]
     needs: [lint, test]
     steps:
       - uses: actions/checkout@v4
@@ -101,7 +101,7 @@ jobs:
 
   # Build
   build:
-    runs-on: [self-hosted, linux, ubuntu-latest]
+    runs-on: [self-hosted, linux]
     needs: [lint, test, e2e, validate, security]
     steps:
       - uses: actions/checkout@v4
@@ -120,7 +120,7 @@ jobs:
 
   # Production Deployment (main)
   deploy:
-    runs-on: [self-hosted, linux, ubuntu-latest]
+    runs-on: [self-hosted, linux]
     needs: [build]
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     steps:

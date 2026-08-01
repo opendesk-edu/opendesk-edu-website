@@ -11,7 +11,7 @@ concurrency:
 
 jobs:
   audit:
-    runs-on: [self-hosted, linux, ubuntu-latest]
+    runs-on: [self-hosted, linux]
     steps:
       - uses: actions/checkout@v4
 
@@ -59,7 +59,7 @@ jobs:
           SLACK_FOOTER: "Run 'npm audit fix' to address"
 
   outdated:
-    runs-on: [self-hosted, linux, ubuntu-latest]
+    runs-on: [self-hosted, linux]
     steps:
       - uses: actions/checkout@v4
 

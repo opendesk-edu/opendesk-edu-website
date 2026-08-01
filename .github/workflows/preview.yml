@@ -11,7 +11,7 @@ concurrency:
 
 jobs:
   deploy-preview:
-    runs-on: [self-hosted, linux, ubuntu-latest]
+    runs-on: [self-hosted, linux]
     if: github.event.action != 'closed'
     steps:
       - uses: actions/checkout@v4
@@ -60,7 +60,7 @@ jobs:
           SLACK_FOOTER: "${{ github.event.pull_request.title }} | ${github.event.pull_request.html_url}"
 
   cleanup:
-    runs-on: [self-hosted, linux, ubuntu-latest]
+    runs-on: [self-hosted, linux]
     if: github.event.action == 'closed'
     steps:
       - name: Notify PR closed
