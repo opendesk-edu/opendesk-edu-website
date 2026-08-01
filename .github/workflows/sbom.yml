@@ -6,24 +6,12 @@ on:
       format:
         description: 'SBOM Format'
         required: true
-        default: 'cyclonedx'
+        default: 'both'
         type: choice
         options:
           - cyclonedx
           - spdx
           - both
-      components:
-        description: 'Select Components'
-        required: true
-        default: 'all'
-        type: choice
-        options:
-          - all
-          - website
-          - operator
-          - python-tools
-          - helm-charts
-          - k8up
       output-dir:
         description: 'Output Directory'
         required: false
@@ -33,7 +21,7 @@ jobs:
   generate-sbom:
     name: Generate SBOM
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 30
 
     steps:
       - name: Checkout repository
@@ -47,305 +35,108 @@ jobs:
           node-version: '20'
           cache: 'npm'
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-
-      - name: Setup Go
-        uses: actions/setup-go@v5
-        with:
-          go-version: '1.23'
-
-      - name: Install SBOM tools
-        run: |
-          # Install CycloneDX CLI
-          curl -sL https://github.com/CycloneDX/cyclonedx-cli/releases/latest/download/cyclonedx-cli-linux-x64 -o cyclonedx
-          chmod +x cyclonedx
-          sudo mv cyclonedx /usr/local/bin/
-          
-          # Install Syft for container/image SBOM
-          curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin
-          
-          # Install cyclonedx-gomod
-          go install github.com/CycloneDX/cyclonedx-gomod/cmd/cyclonedx-gomod@latest
-          
-          # Install cyclonedx-python
-          pip install cyclonedx-bom
-          
-          # Install SPDX tools
-          npm install -g @spdx/tools
-
       - name: Create output directory
         run: mkdir -p ${{ inputs.output-dir }}
 
-      - name: Generate SBOM for Website (Node.js)
-        if: inputs.components == 'all' || inputs.components == 'website'
+      - name: Generate SBOM for Website (Node.js/Next.js)
         run: |
-          cd opendesk-edu-website
+          echo "🚀 Generating SBOM for openDesk Edu Website..."
           
           # CycloneDX
           if [ "${{ inputs.format }}" = "cyclonedx" ] || [ "${{ inputs.format }}" = "both" ]; then
-            npx @cyclonedx/cyclonedx-npm@latest -o ../${{ inputs.output-dir }}/sbom-website-cyclonedx.json
+            echo "📋 Generating CycloneDX SBOM..."
+            npx @cyclonedx/cyclonedx-npm@latest -o ${{ inputs.output-dir }}/sbom-website-cyclonedx.json
+            echo "✅ CycloneDX SBOM generated"
           fi
           
           # SPDX
           if [ "${{ inputs.format }}" = "spdx" ] || [ "${{ inputs.format }}" = "both" ]; then
-            npx spdx-npm -o ../${{ inputs.output-dir }}/sbom-website-spdx.json
+            echo "📋 Generating SPDX SBOM..."
+            npm install -g spdx-npm
+            spdx-npm -o ${{ inputs.output-dir }}/sbom-website-spdx.json
+            echo "✅ SPDX SBOM generated"
+          fi
+
+      - name: Validate SBOMs
+        run: |
+          echo "🔍 Validating generated SBOMs..."
+          
+          # Install validation tools
+          npm install -g @cyclonedx/cyclonedx-validator
+          
+          if [ -f "${{ inputs.output-dir }}/sbom-website-cyclonedx.json" ]; then
+            echo "Validating CycloneDX SBOM..."
+            cyclonedx-validator ${{ inputs.output-dir }}/sbom-website-cyclonedx.json || true
           fi
           
-          cd ..
+          echo "✅ Validation complete"
 
-      - name: Generate SBOM for Operator (Go)
-        if: inputs.components == 'all' || inputs.components == 'operator'
+      - name: Generate Summary
         run: |
-          cd opendesk-dev-agent-operator
+          echo "📊 SBOM Generation Summary" > ${{ inputs.output-dir }}/SBOM_SUMMARY.md
+          echo "========================" >> ${{ inputs.output-dir }}/SBOM_SUMMARY.md
+          echo "" >> ${{ inputs.output-dir }}/SBOM_SUMMARY.md
+          echo "Generated on: $(date -u +"%Y-%m-%dT%H:%M:%SZ")" >> ${{ inputs.output-dir }}/SBOM_SUMMARY.md
+          echo "Component: openDesk Edu Website (Next.js)" >> ${{ inputs.output-dir }}/SBOM_SUMMARY.md
+          echo "" >> ${{ inputs.output-dir }}/SBOM_SUMMARY.md
+          echo "Format(s): ${{ inputs.format }}" >> ${{ inputs.output-dir }}/SBOM_SUMMARY.md
+          echo "" >> ${{ inputs.output-dir }}/SBOM_SUMMARY.md
           
           if [ "${{ inputs.format }}" = "cyclonedx" ] || [ "${{ inputs.format }}" = "both" ]; then
-            cyclonedx-gomod mod -output ../${{ inputs.output-dir }}/sbom-operator-cyclonedx.json
+            SIZE=$(stat -f%z ${{ inputs.output-dir }}/sbom-website-cyclonedx.json 2>/dev/null || stat -c%s ${{ inputs.output-dir }}/sbom-website-cyclonedx.json 2>/dev/null || echo "unknown")
+            echo "- CycloneDX: sbom-website-cyclonedx.json (${SIZE} bytes)" >> ${{ inputs.output-dir }}/SBOM_SUMMARY.md
           fi
           
           if [ "${{ inputs.format }}" = "spdx" ] || [ "${{ inputs.format }}" = "both" ]; then
-            cyclonedx-gomod mod -output ../${{ inputs.output-dir }}/sbom-operator-spdx.json
-            # Convert to SPDX format
-            cyclonedx convert -f spdx-json -o ../${{ inputs.output-dir }}/sbom-operator-spdx.json ../${{ inputs.output-dir }}/sbom-operator-spdx.json || true
+            SIZE=$(stat -f%z ${{ inputs.output-dir }}/sbom-website-spdx.json 2>/dev/null || stat -c%s ${{ inputs.output-dir }}/sbom-website-spdx.json 2>/dev/null || echo "unknown")
+            echo "- SPDX: sbom-website-spdx.json (${SIZE} bytes)" >> ${{ inputs.output-dir }}/SBOM_SUMMARY.md
           fi
           
-          cd ..
-
-      - name: Generate SBOM for Python Tools (user_import)
-        if: inputs.components == 'all' || inputs.components == 'python-tools'
-        run: |
-          cd user_import
-          
-          if [ "${{ inputs.format }}" = "cyclonedx" ] || [ "${{ inputs.format }}" = "both" ]; then
-            cyclonedx-py -r requirements.txt -o ../${{ inputs.output-dir }}/sbom-python-cyclonedx.json
-          fi
-          
-          if [ "${{ inputs.format }}" = "spdx" ] || [ "${{ inputs.format }}" = "both" ]; then
-            cyclonedx-py -r requirements.txt --spdx -o ../${{ inputs.output-dir }}/sbom-python-spdx.json
-          fi
-          
-          cd ..
-
-      - name: Generate SBOM for k8up (Go)
-        if: inputs.components == 'all' || inputs.components == 'k8up'
-        run: |
-          cd k8up
-          
-          if [ "${{ inputs.format }}" = "cyclonedx" ] || [ "${{ inputs.format }}" = "both" ]; then
-            cyclonedx-gomod mod -output ../${{ inputs.output-dir }}/sbom-k8up-cyclonedx.json
-          fi
-          
-          cd ..
-
-      - name: Generate SBOM for Helm Charts
-        if: inputs.components == 'all' || inputs.components == 'helm-charts'
-        run: |
-          # Create combined Helm SBOM
-          echo "Generating Helm Charts SBOM..."
-          
-          # Find all Chart.yaml files
-          CHART_FILES=$(find . -name "Chart.yaml" -type f | grep -v node_modules | grep -v ".git")
-          
-          if [ "${{ inputs.format }}" = "cyclonedx" ] || [ "${{ inputs.format }}" = "both" ]; then
-            # Create CycloneDX BOM for Helm charts
-            echo '{"bomFormat":"CycloneDX","specVersion":"1.5","version":1,"metadata":{"timestamp":"'$(date +%Y-%m-%dT%H:%M:%SZ)'","tools":[{"name":"helm-sbom-generator","version":"1.0.0"}]},"components":[' > ${{ inputs.output-dir }}/sbom-helm-cyclonedx.json
-            
-            FIRST=true
-            for chart in $CHART_FILES; do
-              CHART_DIR=$(dirname "$chart")
-              CHART_NAME=$(grep "^name:" "$chart" | awk '{print $2}')
-              CHART_VERSION=$(grep "^version:" "$chart" | awk '{print $2}')
-              CHART_DESC=$(grep "^description:" "$chart" | awk '{print $2}') || CHART_DESC=""
-              
-              if [ -z "$CHART_NAME" ]; then
-                CHART_NAME=$(basename "$CHART_DIR")
-              fi
-              if [ -z "$CHART_VERSION" ]; then
-                CHART_VERSION="unknown"
-              fi
-              
-              if [ "$FIRST" = true ]; then
-                FIRST=false
-              else
-                echo "," >> ${{ inputs.output-dir }}/sbom-helm-cyclonedx.json
-              fi
-              
-              cat << EOF >> ${{ inputs.output-dir }}/sbom-helm-cyclonedx.json
-  {
-    "type": "library",
-    "bom-ref": "helm-$CHART_NAME-$CHART_VERSION",
-    "name": "$CHART_NAME",
-    "version": "$CHART_VERSION",
-    "description": "$CHART_DESC",
-    "purl": "pkg:helm/$CHART_NAME@$CHART_VERSION",
-    "externalReferences": [
-      {
-        "type": "website",
-        "url": "https://artifacthub.io/packages/helm/$CHART_NAME/$CHART_NAME"
-      }
-    ]
-  }EOF
-            done
-            
-            echo '
-  ],"dependencies":[]}' >> ${{ inputs.output-dir }}/sbom-helm-cyclonedx.json
-          fi
-          
-          if [ "${{ inputs.format }}" = "spdx" ] || [ "${{ inputs.format }}" = "both" ]; then
-            # Create SPDX document for Helm charts
-            echo '{
-  "spdxVersion": "SPDX-2.3",
-  "dataLicense": "CC0-1.0",
-  "SPDXID": "SPDXRef-DOCUMENT",
-  "name": "opendesk-edu-helm-charts",
-  "documentNamespace": "https://opendesk-edu.org/sbom/helm/'$(date +%Y%m%d%H%M%S)'",
-  "creationInfo": {
-    "created": "'$(date +%Y-%m-%dT%H:%M:%SZ)'",
-    "creators": ["Tool: opendesk-sbom-generator-1.0"]
-  },
-  "packages": [' > ${{ inputs.output-dir }}/sbom-helm-spdx.json
-            
-            FIRST=true
-            for chart in $CHART_FILES; do
-              CHART_DIR=$(dirname "$chart")
-              CHART_NAME=$(grep "^name:" "$chart" | awk '{print $2}')
-              CHART_VERSION=$(grep "^version:" "$chart" | awk '{print $2}')
-              CHART_DESC=$(grep "^description:" "$chart" | awk '{print $2}') || CHART_DESC=""
-              CHART_HOMEPAGE=$(grep "^home:" "$chart" | awk '{print $2}') || CHART_HOMEPAGE=""
-              CHART_LICENSE=$(grep "^license:" "$chart" | awk '{print $2}') || CHART_LICENSE="Unknown"
-              
-              if [ -z "$CHART_NAME" ]; then
-                CHART_NAME=$(basename "$CHART_DIR")
-              fi
-              if [ -z "$CHART_VERSION" ]; then
-                CHART_VERSION="unknown"
-              fi
-              
-              if [ "$FIRST" = true ]; then
-                FIRST=false
-              else
-                echo "," >> ${{ inputs.output-dir }}/sbom-helm-spdx.json
-              fi
-              
-              cat << EOF >> ${{ inputs.output-dir }}/sbom-helm-spdx.json
-    {
-      "SPDXID": "SPDXRef-Package-helm-$CHART_NAME-$CHART_VERSION",
-      "name": "$CHART_NAME",
-      "versionInfo": "$CHART_VERSION",
-      "downloadLocation": "NOASSERTION",
-      "filesAnalyzed": false,
-      "licenseConcluded": "$CHART_LICENSE",
-      "licenseDeclared": "$CHART_LICENSE",
-      "copyrightText": "NOASSERTION",
-      "description": "$CHART_DESC",
-      "homepage": "$CHART_HOMEPAGE",
-      "externalRefs": [
-        {
-          "referenceCategory": "PACKAGE-MANAGER",
-          "referenceType": "purl",
-          "referenceLocator": "pkg:helm/$CHART_NAME@$CHART_VERSION"
-        }
-      ]
-    }EOF
-            done
-            
-            echo '
-  ],
-  "relationships": []
-}' >> ${{ inputs.output-dir }}/sbom-helm-spdx.json
-          fi
-
-      - name: Generate SBOM for Nix (if present)
-        if: inputs.components == 'all'
-        run: |
-          # Check for Nix files
-          NIX_FILES=$(find . -name "*.nix" -o -name "flake.nix" -o -name "shell.nix" | grep -v node_modules | grep -v ".git" | head -10)
-          
-          if [ -n "$NIX_FILES" ]; then
-            echo "Generating Nix SBOM..."
-            
-            # Use Syft to scan nix files
-            if [ "${{ inputs.format }}" = "cyclonedx" ] || [ "${{ inputs.format }}" = "both" ]; then
-              syft dir:. -o cyclonedx-json="${{ inputs.output-dir }}/sbom-nix-cyclonedx.json" \
-                --file "*.nix" --file "flake.nix" --file "shell.nix" 2>/dev/null || true
-            fi
-            
-            if [ "${{ inputs.format }}" = "spdx" ] || [ "${{ inputs.format }}" = "both" ]; then
-              syft dir:. -o spdx-json="${{ inputs.output-dir }}/sbom-nix-spdx.json" \
-                --file "*.nix" --file "flake.nix" --file "shell.nix" 2>/dev/null || true
-            fi
-          else
-            echo "No Nix files found."
-          fi
-
-      - name: Generate Combined SBOM
-        if: inputs.components == 'all'
-        run: |
-          echo "Generating combined SBOM..."
-          
-          if [ "${{ inputs.format }}" = "cyclonedx" ] || [ "${{ inputs.format }}" = "both" ]; then
-            # Combine all CycloneDX files
-            CycloneDX_FILES=(${{ inputs.output-dir }}/sbom-*.cyclonedx.json 2>/dev/null)
-            if [ ${#CycloneDX_FILES[@]} -gt 0 ]; then
-              # Use jq to merge SBOMs if available
-              if command -v jq &>/dev/null; then
-                # Simple concatenation of components for now
-                echo '{"bomFormat":"CycloneDX","specVersion":"1.5","version":1,"metadata":{"timestamp":"'$(date +%Y-%m-%dT%H:%M:%SZ)'","tools":[{"name":"combined-sbom","version":"1.0.0"}]},"components":[' > ${{ inputs.output-dir }}/sbom-combined-cyclonedx.json
-                
-                FIRST=true
-                for file in "${CycloneDX_FILES[@]}"; do
-                  if [ -f "$file" ]; then
-                    if [ "$FIRST" = true ]; then
-                      FIRST=false
-                    else
-                      echo "," >> ${{ inputs.output-dir }}/sbom-combined-cyclonedx.json
-                    fi
-                    jq -r '.components[]' "$file" 2>/dev/null >> ${{ inputs.output-dir }}/sbom-combined-cyclonedx.json || echo "{" >> ${{ inputs.output-dir }}/sbom-combined-cyclonedx.json
-                  fi
-                done
-                
-                echo '
-  ],"dependencies":[]}' >> ${{ inputs.output-dir }}/sbom-combined-cyclonedx.json
-              else
-                # Simple copy first file
-                cp ${CycloneDX_FILES[0]} ${{ inputs.output-dir }}/sbom-combined-cyclonedx.json
-              fi
-            fi
-          fi
-
-      - name: Create summary report
-        run: |
-          echo "# SBOM Generation Summary" > ${{ inputs.output-dir }}/SBOM_SUMMARY.md
           echo "" >> ${{ inputs.output-dir }}/SBOM_SUMMARY.md
-          echo "**Generated:** $(date -u +"%Y-%m-%dT%H:%M:%SZ")" >> ${{ inputs.output-dir }}/SBOM_SUMMARY.md
-          echo "**Format:** ${{ inputs.format }}" >> ${{ inputs.output-dir }}/SBOM_SUMMARY.md
-          echo "**Components:** ${{ inputs.components }}" >> ${{ inputs.output-dir }}/SBOM_SUMMARY.md
-          echo "" >> ${{ inputs.output-dir }}/SBOM_SUMMARY.md
-          echo "## Generated Files:" >> ${{ inputs.output-dir }}/SBOM_SUMMARY.md
-          ls -la ${{ inputs.output-dir }}/sbom-*.json 2>/dev/null | awk '{print "- " $9 " (" $5 " bytes)"}' >> ${{ inputs.output-dir }}/SBOM_SUMMARY.md || true
-          echo "" >> ${{ inputs.output-dir }}/SBOM_SUMMARY.md
-          echo "## Tools Used:" >> ${{ inputs.output-dir }}/SBOM_SUMMARY.md
-          echo "- CycloneDX CLI" >> ${{ inputs.output-dir }}/SBOM_SUMMARY.md
-          echo "- cyclonedx-npm" >> ${{ inputs.output-dir }}/SBOM_SUMMARY.md
-          echo "- cyclonedx-gomod" >> ${{ inputs.output-dir }}/SBOM_SUMMARY.md
-          echo "- cyclonedx-python" >> ${{ inputs.output-dir }}/SBOM_SUMMARY.md
-          echo "- Syft" >> ${{ inputs.output-dir }}/SBOM_SUMMARY.md
-          echo "- @spdx/tools" >> ${{ inputs.output-dir }}/SBOM_SUMMARY.md
+          echo "Tools used:" >> ${{ inputs.output-dir }}/SBOM_SUMMARY.md
+          echo "- @cyclonedx/cyclonedx-npm" >> ${{ inputs.output-dir }}/SBOM_SUMMARY.md
+          echo "- spdx-npm" >> ${{ inputs.output-dir }}/SBOM_SUMMARY.md
+          echo "- @cyclonedx/cyclonedx-validator" >> ${{ inputs.output-dir }}/SBOM_SUMMARY.md
+          
+          cat ${{ inputs.output-dir }}/SBOM_SUMMARY.md
 
-      - name: Upload SBOM artifacts
+      - name: Upload SBOM Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: sbom-${{ inputs.format }}-${{ github.run_id }}
+          name: sbom-website-${{ inputs.format }}-${{ github.sha }}
           path: ${{ inputs.output-dir }}/
           retention-days: 90
 
-      - name: Commit SBOM files (optional)
-        if: false  # Disabled by default, enable if you want to commit SBOMs
+  sign-sbom:
+    name: Sign SBOMs (Optional)
+    needs: generate-sbom
+    runs-on: ubuntu-latest
+    if: success() && false # Disabled by default; enable when cosign is configured
+    
+    steps:
+      - name: Download SBOM Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: sbom-website-${{ inputs.format }}-${{ github.sha }}
+          path: sbom-output
+
+      - name: Install cosign
+        uses: sigstore/cosign-installer@v3
+
+      - name: Sign SBOMs
         run: |
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "actions/github.com"
-          git add ${{ inputs.output-dir }}/
-          git commit -m "chore: Update SBOM files [skip ci]" || true
-          git push || true
+          for file in sbom-output/sbom-*.json; do
+            if [ -f "$file" ]; then
+              echo "Signing $file..."
+              cosign sign-blob --yes "$file" \
+                --output-signature "$file.sig" \
+                --output-certificate "$file.cert" || true
+            fi
+          done
+
+      - name: Upload Signed SBOMs
+        uses: actions/upload-artifact@v4
+        with:
+          name: sbom-website-signed-${{ github.sha }}
+          path: sbom-output/
+          retention-days: 90
