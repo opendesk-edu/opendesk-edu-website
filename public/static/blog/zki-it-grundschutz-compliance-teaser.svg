@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <title>openDesk Edu - ZKI IT-Grundschutz Compliance</title>
+  <desc>Branded teaser image for the openDesk Edu ZKI IT-Grundschutz compliance article featuring a dark purple gradient background, compliance shield/checklist icon, grid pattern, and article title.</desc>
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0014"/>
+      <stop offset="50%" stop-color="#0d0020"/>
+      <stop offset="100%" stop-color="#0a0014"/>
+    </linearGradient>
+    <linearGradient id="accentLeft" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#571EFA" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#571EFA" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="accentRight" x1="100%" y1="0%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#927AFA" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#927AFA" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="iconGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#571EFA"/>
+      <stop offset="100%" stop-color="#927AFA"/>
+    </linearGradient>
+    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#927AFA"/>
+      <stop offset="100%" stop-color="#571EFA"/>
+    </linearGradient>
+    <filter id="glowWide" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="40"/>
+    </filter>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#571EFA" stroke-width="0.5" opacity="0.06"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGrad)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect x="0" y="0" width="400" height="630" fill="url(#accentLeft)"/>
+  <rect x="800" y="0" width="400" height="630" fill="url(#accentRight)"/>
+
+  <!-- Glow -->
+  <circle cx="600" cy="315" r="320" fill="#571EFA" opacity="0.12" filter="url(#glowWide)"/>
+
+  <!-- Header -->
+  <text x="55" y="82" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="76" font-weight="bold" fill="white" opacity="0.95">Z</text>
+  <text x="200" y="194" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="bold" fill="white" letter-spacing="2">openDesk</text>
+  <text x="200" y="222" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="300" fill="#DDD6FE" letter-spacing="10">EDUCATION</text>
+  <line x1="200" y1="248" x2="555" y2="248" stroke="#927AFA" stroke-width="1" opacity="0.4"/>
+
+  <!-- Shield / checklist icon -->
+  <g transform="translate(820, 120)">
+    <path d="M 80,0 L 160,30 L 160,110 Q 160,170 80,200 Q 0,170 0,110 L 0,30 Z" fill="url(#shieldGrad)" opacity="0.18"/>
+    <path d="M 80,0 L 160,30 L 160,110 Q 160,170 80,200 Q 0,170 0,110 L 0,30 Z" fill="none" stroke="#927AFA" stroke-width="2.5" opacity="0.8"/>
+    <path d="M 38,100 L 68,130 L 122,72" fill="none" stroke="#22c55e" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Article title -->
+  <text x="200" y="310" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="bold" fill="white">ZKI IT-Grundschutz</text>
+  <text x="200" y="360" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="bold" fill="#DDD6FE">Compliance</text>
+
+  <!-- Subtitle -->
+  <text x="200" y="415" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#DDD6FE" opacity="0.9">Policy as Code for the Higher Education Security Baseline</text>
+
+  <!-- Tech tags -->
+  <g transform="translate(200, 480)">
+    <rect x="0" y="0" width="55" height="24" rx="12" fill="#571EFA" opacity="0.2"/>
+    <text x="27" y="16" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#927AFA" font-weight="500">ZKI</text>
+    <rect x="65" y="0" width="55" height="24" rx="12" fill="#571EFA" opacity="0.15"/>
+    <text x="92" y="16" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#927AFA" font-weight="500">BSI</text>
+    <rect x="130" y="0" width="95" height="24" rx="12" fill="#571EFA" opacity="0.15"/>
+    <text x="177" y="16" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#927AFA" font-weight="500">Kyverno</text>
+    <rect x="235" y="0" width="85" height="24" rx="12" fill="#571EFA" opacity="0.15"/>
+    <text x="277" y="16" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#927AFA" font-weight="500">GitOps</text>
+    <rect x="330" y="0" width="70" height="24" rx="12" fill="#571EFA" opacity="0.15"/>
+    <text x="365" y="16" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#927AFA" font-weight="500">ISMS</text>
+  </g>
+
+  <!-- Bottom decoration -->
+  <g opacity="0.06">
+    <rect x="180" y="540" width="16" height="16" rx="3" fill="#571EFA"/>
+    <path d="M 185,544 L 185,542 Q 185,539 188,539 Q 191,539 191,542 L 191,544" fill="none" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
+    <circle cx="188" cy="548" r="1.2" fill="white"/>
+    <rect x="246" y="540" width="16" height="16" rx="3" fill="#22c55e"/>
+    <path d="M 251,548 L 253.5,551 L 258,545" fill="none" stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M 266,548 L 306,548" stroke="#927AFA" stroke-width="1"/>
+    <rect x="312" y="540" width="16" height="16" rx="3" fill="#3b82f6"/>
+  </g>
+
+  <!-- Decorative vertical lines -->
+  <line x1="1000" y1="100" x2="1000" y2="530" stroke="#571EFA" stroke-width="0.5" opacity="0.06"/>
+  <line x1="1050" y1="150" x2="1050" y2="500" stroke="#927AFA" stroke-width="0.5" opacity="0.05"/>
+  <line x1="1100" y1="120" x2="1100" y2="480" stroke="#571EFA" stroke-width="0.5" opacity="0.04"/>
+
+  <!-- Corner marks -->
+  <path d="M 20,20 L 50,20 M 20,20 L 20,50" stroke="#571EFA" stroke-width="1.5" opacity="0.25" fill="none"/>
+  <path d="M 1180,20 L 1150,20 M 1180,20 L 1180,50" stroke="#927AFA" stroke-width="1.5" opacity="0.2" fill="none"/>
+  <path d="M 20,610 L 50,610 M 20,610 L 20,580" stroke="#571EFA" stroke-width="1.5" opacity="0.25" fill="none"/>
+  <path d="M 1180,610 L 1150,610 M 1180,610 L 1180,580" stroke="#927AFA" stroke-width="1.5" opacity="0.2" fill="none"/>
+</svg>

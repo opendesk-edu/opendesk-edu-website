@@ -1,0 +1,201 @@
+---
+title: "ZKI-IT-Grundschutz-Compliance: openDesk Edu auf dem Weg zur Hochschul-Sicherheitsbaseline"
+date: "2026-08-01"
+description: "openDesk Edu richtet sich systematisch am ZKI-IT-Grundschutz-Profil aus — der hochschulspezifischen Adaption der BSI-Baseline — mit durchsetzbaren Kyverno-Policies, gehärteter GitOps-Pipeline und transparenter Gap-Analyse. Hier steht der Stand."
+categories: ["Sicherheit", "Compliance"]
+tags: ["zki", "it-grundschutz", "bsi", "compliance", "kyverno", "sicherheit", "hochschule", "isms"]
+image: "/static/blog/zki-it-grundschutz-compliance-teaser.svg"
+---
+
+# ZKI-IT-Grundschutz-Compliance: openDesk Edu auf dem Weg zur Hochschul-Sicherheitsbaseline
+
+> **Die Baseline:** Jedes deutsche Hochschulrechenzentrum arbeitet nach dem ZKI-IT-Grundschutz-Profil — der hochschulspezifischen Adaption der BSI-IT-Grundschutz-Methodik.
+>
+> **Die Realität:** Für eine Plattform aus über 25 Open-Source-Diensten ist Compliance kein Kästchen, das man einmal abhakt. Sie ist eine architektonische Eigenschaft, die kontinuierlich durchgesetzt werden muss — durch Policies, Pipelines und transparente Dokumentation.
+>
+> **Unser Ansatz:** Statt eines Compliance-Bekenntnisses haben wir ein Compliance-System gebaut: über 20 durchsetzbare Kyverno-Policies, eine gehärtete GitOps-Pipeline und eine öffentliche Gap-Analyse, die genau zeigt, wo wir stehen — einschließlich der Lücken.
+
+## Was ist das ZKI-IT-Grundschutz-Profil?
+
+Das **ZKI-IT-Grundschutz-Profil** ist das Referenz-Sicherheitsframework für deutsche Hochschulen. Es adaptiert die **BSI-IT-Grundschutz**-Methodik — die bundesdeutsche Basisabsicherung für Informationssicherheit — auf die spezifischen Realitäten von Hochschulen:
+
+- **Forschungsdaten** mit besonderen Schutzanforderungen
+- **Studierendendaten** und Prüfungssysteme mit besonderen Handhabungsregeln
+- **Offene Zusammenarbeit**, die trotz Sicherheitskontrollen möglich bleiben muss
+- **Dezentrale Administration** über Fakultäten und Institute
+
+Wo der BSI-IT-Grundschutz generische Bausteine für alle Organisationen bereitstellt, passt das ZKI-Profil sie an den Hochschulbetrieb an — ausgerichtet auf DSGVO, HDSG und ISIS12, den Informationssicherheitsstandards für die Hochschulen.
+
+Für openDesk Edu ist das keine theoretische Übung. Deutsche Hochschulen können keine Digital-Workplace-Plattform einführen, die nicht der Sicherheitsbaseline entspricht, an der die eigenen Rechenzentren gemessen werden.
+
+## Wo openDesk Edu bereits steht
+
+Bevor wir eine einzige neue Policy geschrieben haben, haben wir geprüft, was die Plattform bereits durchsetzt. Das Ergebnis war ermutigend — viele ZKI-Maßnahmen sind von Design her implementiert:
+
+### Identitäts- und Zugriffsmanagement ✅
+- **Keycloak** als zentraler Identity Provider mit OIDC und SAML
+- **Föderierte Identitäten** über Shibboleth und DFN-AAI
+- **Multi-Faktor-Authentifizierung**, Passwort-Policies und Account-Lockout
+- **Rollbasierte Zugriffskontrolle** mit granularen Berechtigungen
+- **Session-Management** mit konfigurierbaren Timeouts
+
+### Netzwerksicherheit ✅
+- **HAProxy** als Ingress mit TLS-Terminierung
+- **Traefik** als zusätzliche Ingress-Ebene
+- **Network Policies** zur Beschränkung des Service-zu-Service-Verkehrs
+- **Pod Security Admission (PSA)** clusterweit durchgesetzt
+- Netzwerksegmentierung über Namespaces
+
+### System-Härtung ✅
+- **Non-Root-Container** (`runAsNonRoot: true`)
+- **Capability-Dropping** (`drop: ["ALL"]`)
+- **Read-only Root-Dateisysteme** wo anwendbar
+- **Seccomp-Profile** (`RuntimeDefault`)
+- **Resource-Limits** für jede Workload
+
+### Datenschutz ✅
+- **Ceph-Speicher** mit Verschlüsselung im Ruhezustand
+- **k8up-Backup-Operator** mit restic — verschlüsselt, geplant, getestet
+- **Aufbewahrungsrichtlinien** und PVC-Backup-Annotationen
+- **SOPS-verschlüsselte Secrets** im Git
+
+### Observability ✅
+- **Prometheus** für Metriken
+- **Grafana** für Dashboards
+- **Loki** für zentrale Log-Aggregation
+- **Alertmanager** für Alert-Routing
+
+## Die Lücke: Von guten Praktiken zu erzwungener Compliance
+
+Eine starke Standard-Posture ist notwendig — aber nicht ausreichend. ZKI-Compliance verlangt, dass Sicherheitseigenschaften *durchgesetzt*, *überprüfbar* und *kontinuierlich validiert* werden. Genau hier haben wir die Lücken identifiziert.
+
+### Die 111-Punkte-Checkliste
+
+Wir haben die relevanten ZKI/BSI-Bausteine in **111 konkrete Checkpunkte** in zehn Kategorien übersetzt, jeweils zugeordnet zu einem BSI-Baustein und einer Prioritätsstufe:
+
+| Priorität | Kategorie | Status |
+|-----------|-----------|--------|
+| **P0** | IAM & Authentifizierung | ⚠️ Teilweise |
+| **P0** | Netzwerksicherheit | ✅ Gut |
+| **P0** | Datenschutz | ⚠️ Teilweise |
+| **P1** | Audit & Logging | ⚠️ Teilweise |
+| **P1** | Incident Response | ❌ Fehlend |
+| **P1** | Change Management | ⚠️ Teilweise |
+| **P2** | Anwendungssicherheit | ⚠️ Teilweise |
+| **P2** | Physische Sicherheit | ✅ Gut |
+| **P2** | Awareness & Training | ❌ Fehlend |
+
+Unser gemessener Startpunkt: **~37 % Gesamt-Compliance**, bei einer BSI-Baustein-Abdeckung von **~81 %** dort, wo die Plattform bereits operiert.
+
+## Was wir gebaut haben: Policy als Code
+
+Das Herzstück der Umsetzung sind **20+ Kyverno-ClusterPolicies**, die Compliance-Anforderungen in durchsetzbare Admission-Kontrollen verwandeln. Jede Workload, die im Cluster deployt wird, wird gegen diese Policies validiert — bevor sie die Laufzeit erreicht.
+
+### Pod-Sicherheit (8 Policies)
+
+| Policy | Was sie durchsetzt | BSI-Baustein |
+|--------|--------------------|--------------|
+| `zki-require-non-root` | Keine Root-Container | INF.1 |
+| `zki-require-readonly-rootfs` | Unveränderliche Root-Dateisysteme | INF.1 |
+| `zki-drop-all-capabilities` | Drop ALL Linux-Capabilities | INF.1 |
+| `zki-require-seccomp` | Seccomp-Profile erforderlich | INF.1 |
+| `zki-prevent-privilege-escalation` | Keine Privilegieneskalation | INF.1 |
+| `zki-restrict-capabilities` | Keine Capability-Wiederaufnahme | INF.1 |
+| `zki-require-pod-security-context` | Pod-Security-Context obligatorisch | INF.1 |
+| `zki-require-sidecar-logging` | Logging-Sidecars durchgesetzt | INF.1 |
+
+### Netzwerksicherheit (4 Policies)
+
+| Policy | Was sie durchsetzt | BSI-Baustein |
+|--------|--------------------|--------------|
+| `zki-require-network-policy` | NetworkPolicy für jeden Namespace | INF.5 |
+| `zki-default-deny-all` | Default-Deny für allen Verkehr | INF.5 |
+| `zki-restrict-ingress-to-haproxy` | Ingress nur über HAProxy | INF.5 |
+| `zki-require-tls-for-ingress` | TLS auf allen Ingresses | INF.5 |
+
+### Zugriffskontrolle (3 Policies)
+
+| Policy | Was sie durchsetzt | BSI-Baustein |
+|--------|--------------------|--------------|
+| `zki-restrict-host-path` | Keine hostPath-Volumes | INF.1 |
+| `zki-restrict-host-network` | Kein hostNetwork | INF.1 |
+| `zki-require-loki-labels` | Pflicht-Logging-Labels | INF.1 |
+
+### Datenschutz (3 Policies)
+
+| Policy | Was sie durchsetzt | BSI-Baustein |
+|--------|--------------------|--------------|
+| `zki-require-storage-encryption` | Nur verschlüsselter Speicher | DS |
+| `zki-require-data-classification` | Datenklassifizierungs-Labels | DS |
+| `zki-k8up-backup-annotation` | Backup-Annotationen erforderlich | DS |
+
+### Anwendungssicherheit (2 Policies)
+
+| Policy | Was sie durchsetzt | BSI-Baustein |
+|--------|--------------------|--------------|
+| `zki-require-security-headers` | Security-Header (CSP, HSTS, X-Frame-Options) | INF.14 |
+| `zki-require-probe-timeouts` | Korrekte Probe-Konfiguration | INF.14 |
+
+Alle Policies laufen zunächst im **Audit-Modus**, werden in CI gegen reale Workloads validiert und erst dann auf Durchsetzung geschaltet. Policy-Verstöße werden über PolicyReports gemeldet und im Monitoring-Stack angezeigt.
+
+## Governance: Die Dokumente, die Compliance real machen
+
+Policies ohne Governance sind Dekoration. Wir haben die Governance-Ebene passend dazu geschrieben:
+
+### IT-Sicherheitsleitlinie (14 Kapitel)
+
+Die Sicherheitsleitlinie deckt Zweck und Geltungsbereich, Sicherheitsprinzipien, Organisation, Zugriffskontrolle, Netzwerksicherheit, Systemsicherheit, Datenschutz, Anwendungssicherheit, Incident-Management, Business Continuity, Compliance, Awareness, Ausnahmen und Pflege ab — ausgerichtet auf BSI-IT-Grundschutz-Bausteine und ISO/IEC 27001:2022.
+
+### Incident-Response-Plan (BSI-Standard 200-3)
+
+Eine vierschichtige Incident-Klassifikationsmatrix (Stufe 0–3), ein sechsphasiger Reaktionsprozess, DSGVO-Meldepflichten und zehn Kommunikationsvorlagen. Ausgerichtet auf BSI 200-3, NIST SP 800-61 und ISO/IEC 27035.
+
+### GitOps als Change Management
+
+Das Change-Management von openDesk Edu *ist* seine GitOps-Pipeline:
+
+- **ArgoCD** für deklarative, auditierbare Deployments
+- **PR-Disziplin** — Code-Änderungen und Chart-Änderungen werden nie vermischt
+- **Version-Pinning** — Images per Digest gepinnt
+- **SOPS** für Secrets im Git mit age/OpenPGP-Verschlüsselung
+- **REUSE-Compliance** mit SPDX-Headern auf jeder Datei
+
+Jede Änderung ist ein Commit; jeder Commit ist ein Audit-Trail.
+
+## Die verbleibenden P0-Arbeiten: Was vor Produktion passieren muss
+
+Wir sind transparent, was noch offen ist. Fünf kritische (P0-)Punkte stehen zwischen dem aktuellen Stand und der vollständigen Produktions-Durchsetzung:
+
+1. **Rechtliche und behördliche Genehmigungen** — DPO, Justiziariat und Hochschulleitung müssen die Sicherheitsleitlinie freigeben (der einzige echte Blocker).
+2. **Kyverno-Webhook-Authentifizierung** — TLS und Client-Zertifikate für den Admission-Webhook, damit Policies nicht umgangen werden können.
+3. **Kyverno-Policy-Backup** — automatisierte, wiederherstellbare Sicherung aller Policies (Compliance-Nachweis erfordert sie).
+4. **Policy-Change-Management-Prozess** — dokumentierter Request-, Review- und Freigabe-Workflow für Policy-Änderungen.
+5. **Notfall-Abschaltverfahren für Policies** — kontrollierte, protokollierte und reversible Notfallverfahren.
+
+## Roadmap zu 90 %+
+
+Unsere Roadmap ist konkret — vier Phasen über etwa sechzehn Wochen:
+
+| Phase | Fokus | Ziel |
+|-------|-------|------|
+| **Vorbereitung** | Alle P0-Aktionen abschließen | Produktionsreife |
+| **Phase 1** | Fundament: ISMS, Risikomanagement | 60 % Compliance |
+| **Phase 2** | Betrieb: Logging, Incident Response, Patch-Management | 75 % Compliance |
+| **Phase 3** | Fortgeschritten: mTLS, SIEM, Schwachstellen-Management | 85 % Compliance |
+| **Phase 4** | Reife: IDS/IPS, WAF, Awareness-Programm | **90 %+ Compliance** |
+
+## Warum das für Hochschulen wichtig ist
+
+Für eine Hochschule, die openDesk Edu evaluiert, zählt die Compliance-Geschichte in drei konkreten Punkten:
+
+1. **Sie ist überprüfbar.** Die Gap-Analyse, die Policies und die Roadmap sind öffentlich. Sie müssen keiner Marketing-Behauptung vertrauen — Sie können den Policy-Code inspizieren.
+2. **Es ist Ihre Baseline, nicht die eines Anbieters.** ZKI-IT-Grundschutz ist das Framework, unter dem *Ihr* Rechenzentrum arbeitet. Die Ausrichtung bedeutet, dass openDesk Edu dieselbe Sicherheitssprache spricht wie Ihre Einrichtung.
+3. **Sie ist kontinuierlich.** Compliance wird in der Pipeline durchgesetzt, nicht in einem Dokument behauptet. Wenn sich die Plattform ändert, setzen die Policies die Baseline automatisch durch.
+
+## Mitwirken
+
+Die ZKI-Compliance-Arbeit ist Open Source wie alles bei openDesk Edu. Wenn Ihre Einrichtung Erfahrung mit BSI-IT-Grundschutz, ZKI-Arbeitskreisen oder ISIS12 hat — oder wenn Sie helfen wollen, die verbleibenden P0-Lücken zu schließen — freuen wir uns über Ihren Review.
+
+**Entdecken Sie das Repository, prüfen Sie die Policies und helfen Sie uns, 90 %+ zu erreichen.**
+
+[Besuchen Sie opendesk-edu.org für Architekturdokumentation und Deployment-Anleitungen](https://opendesk-edu.org)
