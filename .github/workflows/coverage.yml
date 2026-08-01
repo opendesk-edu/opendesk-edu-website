@@ -71,13 +71,3 @@ jobs:
             coverage/
             coverage-summary.json
           retention-days: 7
-
-      - name: Notify low coverage
-        if: failure() && steps.coverage-check.outcome == 'failure'
-        uses: rtCamp/action-slack-notify@v2
-        env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_COLOR: warning
-          SLACK_TITLE: "⚠️ Low Test Coverage"
-          SLACK_MESSAGE: "Test coverage dropped below ${MIN_COVERAGE}% in ${{ github.repository }}"
-          SLACK_FOOTER: "Current: ${LINES}% | Branch: ${{ github.ref }}"
