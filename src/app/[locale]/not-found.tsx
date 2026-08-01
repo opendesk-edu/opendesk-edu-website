@@ -4,11 +4,13 @@ import PostCard from "@/components/PostCard";
 import { getTranslations } from 'next-intl/server';
 
 interface PageProps {
-  params: Promise<{locale: string}>;
+  params: Promise<{locale: string}> | {locale: string};
 }
 
 export default async function NotFound({params}: PageProps) {
-  const {locale} = await params;
+  // Next.js may pass params as a Promise or a resolved object
+  const resolvedParams = await params;
+  const locale = resolvedParams?.locale ?? "en";
   const t = await getTranslations('notFound');
   const allPosts = await getAllPosts(locale);
   const latestPosts = allPosts.slice(0, 4);
