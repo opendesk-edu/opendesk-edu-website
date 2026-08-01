@@ -30,82 +30,15 @@ function ExternalLink({
 
 export default function Footer() {
   const t = useTranslations("footer");
-  const tSub = useTranslations("subscribe");
   const tCf = useTranslations("contactForm");
   const locale = useLocale();
 
   const [showContactForm, setShowContactForm] = useState(false);
-  const [newsletterEmail, setNewsletterEmail] = useState("");
-  const [newsletterState, setNewsletterState] = useState<
-    "idle" | "submitting" | "success" | "error"
-  >("idle");
-
-  const handleNewsletterSubmit = useCallback(
-    async (e: React.FormEvent) => {
-      e.preventDefault();
-      if (newsletterState === "submitting" || !newsletterEmail.trim()) return;
-
-      setNewsletterState("submitting");
-      try {
-        const res = await fetch("/api/subscribe", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email: newsletterEmail.trim() }),
-        });
-
-        if (!res.ok) throw new Error();
-        setNewsletterState("success");
-        setNewsletterEmail("");
-      } catch (err) {
-        console.warn("Footer: newsletter subscribe failed: %s", err);
-        setNewsletterState("error");
-      }
-    },
-    [newsletterEmail, newsletterState]
-  );
 
   return (
     <footer className="border-t border-border bg-background-secondary">
       <div className="max-w-6xl mx-auto px-4 py-8">
         <div className="flex flex-col items-center gap-3 pb-6 mb-6 border-b border-border">
-          <p className="text-sm font-medium text-foreground">
-            {tSub("heading")}
-          </p>
-          <p className="text-xs text-foreground-secondary text-center max-w-md">
-            {tSub("description")}
-          </p>
-
-          <form
-            onSubmit={handleNewsletterSubmit}
-            className="flex items-center gap-2 mt-1 w-full max-w-xs"
-          >
-            <input
-              type="email"
-              value={newsletterEmail}
-              onChange={(e) => setNewsletterEmail(e.target.value)}
-              placeholder={tSub("newsletterPlaceholder")}
-              required
-              disabled={newsletterState === "submitting"}
-              className="flex-1 px-3 py-1.5 rounded-lg border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-foreground/20 disabled:opacity-50"
-              aria-label={tSub("newsletterPlaceholder")}
-            />
-            <button
-              type="submit"
-              disabled={newsletterState === "submitting"}
-              className="px-3 py-1.5 bg-foreground text-background rounded-lg text-sm hover:opacity-90 transition-opacity disabled:opacity-50 whitespace-nowrap"
-            >
-              {newsletterState === "submitting"
-                ? "..."
-                : tSub("newsletterButton")}
-            </button>
-          </form>
-          {newsletterState === "success" && (
-            <p className="text-xs text-green-600">{tSub("newsletterSuccess")}</p>
-          )}
-          {newsletterState === "error" && (
-            <p className="text-xs text-red-500">{tSub("newsletterError")}</p>
-          )}
-
           <div className="flex items-center gap-6 mt-1">
             <a
               href={`/${locale}/rss`}
