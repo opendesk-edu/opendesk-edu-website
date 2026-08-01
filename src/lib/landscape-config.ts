@@ -949,13 +949,3 @@ export function sortServices(services: Service[]): Service[] {
     return a.name.localeCompare(b.name);
   });
 }
-
-// ============================================================================
-// EXPORT ALL
-// ============================================================================
-
-export {
-  CATEGORIES,
-  STATUS_CONFIGS,
-  SERVICES,
-};
