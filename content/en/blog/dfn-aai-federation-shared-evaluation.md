@@ -95,7 +95,7 @@ We documented the complete testing workflow — from test IdP accounts to attrib
 
 ### 5. Complete Documentation Suite
 
-The DFN-AAI work produced five documentation files totaling ~500 lines, covering federation architecture, Keycloak integration, registration, testing (bilingual), and production enrollment.
+The DFN-AAI work produced six documentation files totaling ~4,000 lines, covering federation architecture, Keycloak integration, registration, testing (bilingual), troubleshooting, and production enrollment.
 
 ## The Challenge: Every Institution Reinvents the Wheel
 
@@ -187,10 +187,56 @@ The foundation is in place:
 - 10 eduGAIN attribute mappers (5 required + 5 recommended) documented with exact SAML attribute name formats
 - SP metadata generation script with certificate support
 - Bilingual (EN/DE) testing guide for DFN-AAI test federation
-- 5 documentation files covering federation, enrollment, integration, testing, and production deployment
+- 6 documentation files (~4,000 lines) covering federation, enrollment, integration, testing, troubleshooting, and production deployment
 - Backchannel logout configured for all 25+ openDesk Edu services — logout propagation works end-to-end
 
 What's missing is the shared infrastructure. And that's where we need you.
+
+## The Next Opportunity: Unified Login via DFN-AAI
+
+A shared evaluation instance lowers the barrier to *trying* federation. But the bigger prize is **unified login**: one federated identity through [DFN-AAI](https://www.aai.dfn.de/) that opens every openDesk Edu service — and, via eduGAIN, services at partner institutions — without a second password. Today each service sits behind a Keycloak client; the same Keycloak instance already brokers DFN-AAI as a SAML Service Provider. The remaining gap is a **protocol proxy** that translates and routes identities at the federation boundary.
+
+That proxy is [SATOSA](https://github.com/IdentityPython/SATOSA) — the reference implementation of the [refeds](https://refeds.org/) proxy concept, maintained by IdentityPython. SATOSA sits in front of (or alongside) Keycloak and provides:
+
+- **Protocol translation** — SAML 2.0 from any DFN-AAI/eduGAIN IdP → OIDC claims for Keycloak and openDesk services
+- **Multi-IdP routing (discovery)** — route each user to their home institution's IdP, not a single hardcoded endpoint
+- **Attribute harmonization** — normalize the wildly varying `eduPerson*` releases from 200+ institutions into one canonical set
+- **Logout propagation** — carry Single Logout through an additional proxy hop without breaking backchannel logout
+
+### Why It's Worth It
+
+| Today (Keycloak as SAML SP) | With SATOSA Proxy |
+|:-----------------------------|:------------------|
+| One hardcoded DFN-AAI IdP | Any federated IdP via discovery |
+| eduGAIN attributes mapped per-client | Attributes harmonized once, centrally |
+| SAML only at the edge | SAML *and* OIDC IdPs interoperable |
+| Good for a single institution | Good for shared/cross-institution deployment |
+
+### What It Costs
+
+Unified login via SATOSA is **not a small add-on** — it's a real implementation project with rigorous testing:
+
+1. **A Helm chart for SATOSA** — the proxy currently runs as a bare Python (gunicorn/uwsgi) service; we need a production-ready chart in our helmfile structure
+2. **SAML↔OIDC translation** — correct assertion consumption, claim issuance, and audience/ACS handling under real DFN-AAI metadata
+3. **Discovery service** — where-are-you-from routing that works with institutional cookie/IdP preferences
+4. **Attribute harmonization** — test against the actual, heterogeneous attribute releases of real institutions, not just the documented 5+5
+5. **End-to-end logout** — verify SLO survives the extra proxy hop for all services
+6. **Security review** — a proxy in the identity path is high-value attack surface; it needs signing, encryption, and metadata hygiene review
+
+None of this can be shortcut by good intentions — federation bugs surface only against real IdPs, which is exactly why the shared evaluation instance and the DFN-AAI test federation are the right place to build and harden it.
+
+### What We've Already Built That De-risks It
+
+The foundation from Sprint 5 is exactly what SATOSA needs to plug into:
+
+- Keycloak as SAML SP proxy — the broker pattern SATOSA would front, already documented and reviewed
+- 10 eduGAIN attribute mappers (5 required + 5 recommended) with exact SAML attribute name formats
+- Shibboleth IdP integration pattern (for universities that already run their own IdP)
+- SP metadata generation scripts (`scripts/dfn-aai-setup/`, `scripts/saml-metadata-generator/`)
+- Bilingual test-federation guide + a 1,000-line troubleshooting runbook
+- Integration tests for metadata generation with SAML assertion fixtures
+
+What's missing is the SATOSA proxy itself, its Helm chart, and the testing regimen above. The roadmap currently places this under **v5.0 (Federation & Multi-Tenancy)** — and with the shared evaluation instance as a proving ground, we can pull it forward.
 
 ## Federation Is a Team Sport
 

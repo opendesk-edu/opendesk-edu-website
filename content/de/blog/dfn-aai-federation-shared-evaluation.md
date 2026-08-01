@@ -95,7 +95,7 @@ Wir haben den vollständigen Test-Workflow dokumentiert — von Test-IdP-Konten 
 
 ### 5. Vollständige Dokumentationssuite
 
-Die DFN-AAI-Arbeit hat fünf Dokumentationsdateien mit insgesamt ~500 Zeilen hervorgebracht, die Föderationsarchitektur, Keycloak-Integration, Registrierung, Tests (zweisprachig) und Produktionsaufnahme abdecken.
+Die DFN-AAI-Arbeit hat sechs Dokumentationsdateien mit insgesamt ~4.000 Zeilen hervorgebracht, die Föderationsarchitektur, Keycloak-Integration, Registrierung, Tests (zweisprachig), Fehlerbehebung und Produktionsaufnahme abdecken.
 
 ## Die Herausforderung: Jede Institution erfindet das Rad neu
 
@@ -187,10 +187,56 @@ Das Fundament ist gelegt:
 - 10 eduGAIN-Attribut-Mapper (5 erforderliche + 5 empfohlene) mit genauen SAML-Attributnamenformaten dokumentiert
 - SP-Metadatengenerierungsskript mit Zertifikatsunterstützung
 - Zweisprachiger (EN/DE) Testleitfaden für die DFN-AAI-Testföderation
-- 5 Dokumentationsdateien zu Föderation, Aufnahme, Integration, Tests und Produktionsbereitstellung
+- 6 Dokumentationsdateien (~4.000 Zeilen) zu Föderation, Aufnahme, Integration, Tests, Fehlerbehebung und Produktionsbereitstellung
 - Backchannel-Logout für alle 25+ openDesk-Edu-Dienste konfiguriert — Logout-Propagierung funktioniert Ende-zu-Ende
 
 Was fehlt, ist die gemeinsame Infrastruktur. Und da brauchen wir Sie.
+
+## Die nächste Chance: Einheitliches Login über DFN-AAI
+
+Eine gemeinsame Evaluierungsinstanz senkt die Hürde, Föderation *auszuprobieren*. Doch der größere Preis ist das **einheitliche Login**: eine föderierte Identität über [DFN-AAI](https://www.aai.dfn.de/), die jeden openDesk-Edu-Dienst — und über eduGAIN auch Dienste von Partnerinstitutionen — ohne zweites Passwort öffnet. Heute sitzt jeder Dienst hinter einem Keycloak-Client; dieselbe Keycloak-Instanz ist bereits als SAML-Service-Provider an DFN-AAI angebunden. Was fehlt, ist ein **Protokoll-Proxy**, der Identitäten an der Föderationsgrenze übersetzt und weiterleitet.
+
+Dieser Proxy ist [SATOSA](https://github.com/IdentityPython/SATOSA) — die Referenzimplementierung des Proxy-Konzepts der [refeds](https://refeds.org/), gepflegt von IdentityPython. SATOSA sitzt vor (oder neben) Keycloak und bietet:
+
+- **Protokollübersetzung** — SAML 2.0 von jedem DFN-AAI/eduGAIN-IdP → OIDC-Claims für Keycloak und die openDesk-Dienste
+- **Multi-IdP-Routing (Discovery)** — leitet jeden Nutzer an den IdP seiner Heimatinstitution, statt an einen fest verdrahteten Endpunkt
+- **Attribut-Harmonisierung** — normalisiert die sehr unterschiedlichen `eduPerson*`-Freigaben von über 200 Institutionen zu einem kanonischen Satz
+- **Logout-Propagierung** — führt Single Logout durch eine zusätzliche Proxy-Stufe, ohne das Backchannel-Logout zu brechen
+
+### Warum es sich lohnt
+
+| Heute (Keycloak als SAML-SP) | Mit SATOSA-Proxy |
+|:------------------------------|:------------------|
+| Ein fest verdrahteter DFN-AAI-IdP | Jeder föderierte IdP per Discovery |
+| eduGAIN-Attribute pro Client gemappt | Attribute einmal zentral harmonisiert |
+| SAML nur an der Kante | SAML- *und* OIDC-IdPs interoperabel |
+| Gut für eine einzelne Institution | Gut für gemeinsame/standortübergreifende Bereitstellung |
+
+### Was es kostet
+
+Einheitliches Login über SATOSA ist **kein kleines Add-on** — es ist ein echtes Implementierungsprojekt mit rigorosen Tests:
+
+1. **Ein Helm-Chart für SATOSA** — der Proxy läuft derzeit als nackter Python-Dienst (gunicorn/uwsgi); wir brauchen ein produktionsreifes Chart in unserer Helmfile-Struktur
+2. **SAML↔OIDC-Übersetzung** — korrekte Assertion-Verarbeitung, Claim-Ausstellung und Audience/ACS-Handling unter realen DFN-AAI-Metadaten
+3. **Discovery-Dienst** — Where-are-you-from-Routing, das mit institutionellen Cookie-/IdP-Präferenzen funktioniert
+4. **Attribut-Harmonisierung** — testen gegen die tatsächlichen, heterogenen Attributfreigaben realer Institutionen, nicht nur die dokumentierten 5+5
+5. **Ende-zu-Ende-Logout** — verifizieren, dass SLO die zusätzliche Proxy-Stufe für alle Dienste übersteht
+6. **Sicherheitsüberprüfung** — ein Proxy im Identitätspfad ist eine hochwertige Angriffsfläche; Signierung, Verschlüsselung und Metadaten-Hygiene müssen geprüft werden
+
+Nichts davon lässt sich durch gute Absichten abkürzen — Föderationsfehler treten nur gegen echte IdPs auf. Genau deshalb sind die gemeinsame Evaluierungsinstanz und die DFN-AAI-Testföderation der richtige Ort, um das zu bauen und zu härten.
+
+### Was wir bereits gebaut haben, das das Risiko senkt
+
+Das Fundament aus Sprint 5 ist genau das, woran SATOSA andocken kann:
+
+- Keycloak als SAML-SP-Proxy — das Broker-Muster, das SATOSA vorgelagert wird, bereits dokumentiert und geprüft
+- 10 eduGAIN-Attribut-Mapper (5 Pflicht + 5 empfohlen) mit exakten SAML-Attributnamensformaten
+- Shibboleth-IdP-Integrationsmuster (für Universitäten, die bereits einen eigenen IdP betreiben)
+- SP-Metadatengenerierungsskripte (`scripts/dfn-aai-setup/`, `scripts/saml-metadata-generator/`)
+- Zweisprachiger Testföderations-Leitfaden + ein über 1.000 Zeilen langes Troubleshooting-Runbook
+- Integrationstests für die Metadatengenerierung mit SAML-Assertion-Fixtures
+
+Was fehlt, ist der SATOSA-Proxy selbst, sein Helm-Chart und das oben genannte Testregime. Die Roadmap ordnet das derzeit **v5.0 (Föderation & Multi-Tenancy)** zu — und mit der gemeinsamen Evaluierungsinstanz als Testgelände können wir es nach vorne ziehen.
 
 ## Föderation ist eine Mannschaftssportart
 
