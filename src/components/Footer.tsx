@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState } from "react";
 import { Link } from "@/i18n/navigation";
 import EmailLink from "@/components/EmailLink";
 import ContactForm from "@/components/ContactForm";
@@ -43,7 +43,7 @@ export default function Footer() {
             <a
               href={`/${locale}/rss`}
               className="flex items-center gap-1.5 text-sm text-foreground-secondary hover:text-foreground transition-colors"
-              aria-label={tSub("rss")}
+              aria-label={t("rss")}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -54,12 +54,12 @@ export default function Footer() {
               >
                 <path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20C5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93v-2.83Z" />
               </svg>
-              <span>{tSub("rss")}</span>
+              <span>{t("rss")}</span>
             </a>
             <button
               onClick={() => setShowContactForm(true)}
               className="flex items-center gap-1.5 text-sm text-foreground-secondary hover:text-foreground transition-colors cursor-pointer"
-              aria-label={tSub("contact")}
+              aria-label={t("contact")}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -75,7 +75,7 @@ export default function Footer() {
                 <rect x="2" y="4" width="20" height="16" rx="2" />
                 <path d="M22 4l-10 8L2 4" />
               </svg>
-              <span>{tSub("contact")}</span>
+              <span>{t("contact")}</span>
             </button>
             <a
               href="https://matrix.to/#/#opendesk-ce-public:matrix.uni-marburg.de"
