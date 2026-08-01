@@ -184,6 +184,38 @@ Our roadmap is concrete — four phases over roughly sixteen weeks:
 | **Phase 3** | Advanced: mTLS, SIEM, vulnerability management | 85% compliance |
 | **Phase 4** | Maturity: IDS/IPS, WAF, awareness program | **90%+ compliance** |
 
+## How Far Could You Get With Microsoft 365?
+
+A question we hear constantly from universities evaluating openDesk Edu: *"Couldn't we reach the same compliance level with Microsoft 365?"* The honest answer deserves its own section — because it is largely *yes*, and the gap is illuminating.
+
+### What M365 covers well
+
+Microsoft 365, combined with the full compliance stack (Entra ID P2, Purview, Defender, Compliance Manager), can plausibly satisfy **60–70% of the 111 checklist points directly**:
+
+- **IAM & access** — arguably stronger out of the box than a DIY Keycloak setup: MFA, Conditional Access, Privileged Identity Management, fine-grained RBAC.
+- **Data protection** — Purview sensitivity labels, DLP across Exchange/SharePoint/Teams/endpoints, retention and legal hold, customer-managed keys, Customer Lockbox.
+- **Device hardening** — Intune compliance policies, BitLocker, patch rings cover the client side.
+- **Physical security** — covered by Microsoft's data centers and their BSI C5 Type 2 and ISO 27001 attestations.
+
+### What M365 cannot cover
+
+Another **~15–20%** is only reachable via *provider attestation* rather than self-enforcement — the accepted bridge under the IT-Grundschutz cloud module OPS.3.1. And a **structural ~10–15%** remains that no tenant configuration can close:
+
+| Area | Why M365 alone can't reach it |
+|------|-------------------------------|
+| Network security (INF.5) | You have no network to segment — tenant-level controls (Conditional Access, external sharing) are not a substitute for your own segmentation and firewalls. |
+| System hardening (INF.1) | No pods, no seccomp, no capability drops — the workload-hardening checklist items are simply void. |
+| Full auditability | The Unified Audit Log is bounded (90 days default), has logging gaps, and lives in Microsoft's cloud rather than your own Loki/SIEM. |
+| Sovereignty | The EU Data Boundary fixes *residency*, not *jurisdiction* — US authorities can still compel access (CLOUD Act). The BSI itself published a critical assessment of M365 for public administration. |
+| Self-hosted services | ILIAS, Moodle, JupyterHub, Nextcloud, Matrix have no M365 counterpart — they run on your own infrastructure and need exactly the Kyverno/GitOps/k8up treatment described here. |
+| Backup | Native retention is not backup — you need a third-party tool (Veeam, AvePoint, …). |
+
+### The honest framing
+
+A **hybrid path** is what German universities actually run: M365 A3/A5 for collaboration, sovereign open-source services for sensitive workloads, third-party backup, Sentinel as SIEM, and your own governance documentation. That reaches the 85–90% band — but it is no longer a pure M365 story, and the last 10% is policy, not technology.
+
+So the answer to "how far with M365?" is: *70% of the controls via the Microsoft compliance stack, 20% via BSI C5 attestation, 10% structural residual that requires sovereignty decisions — and that residual is precisely why openDesk exists.*
+
 ## Why This Matters for Universities
 
 For a university evaluating openDesk Edu, the compliance story matters in three concrete ways:

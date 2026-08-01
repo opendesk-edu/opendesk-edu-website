@@ -184,6 +184,38 @@ Unsere Roadmap ist konkret — vier Phasen über etwa sechzehn Wochen:
 | **Phase 3** | Fortgeschritten: mTLS, SIEM, Schwachstellen-Management | 85 % Compliance |
 | **Phase 4** | Reife: IDS/IPS, WAF, Awareness-Programm | **90 %+ Compliance** |
 
+## Und Microsoft 365? Wie weit käme man damit?
+
+Eine Frage, die wir bei Evaluierungen von Universitäten ständig hören: *„Könnten wir mit Microsoft 365 nicht dasselbe Compliance-Niveau erreichen?“* Die ehrliche Antwort verdient einen eigenen Abschnitt — denn sie ist weitgehend *ja*, und die Lücke ist aufschlussreich.
+
+### Was M365 gut abdeckt
+
+Microsoft 365 kann zusammen mit dem vollständigen Compliance-Stack (Entra ID P2, Purview, Defender, Compliance Manager) realistisch **60–70 % der 111 Checkpunkte direkt erfüllen**:
+
+- **IAM & Zugriff** — aus der Box heraus argumentativ stärker als ein DIY-Keycloak-Setup: MFA, Conditional Access, Privileged Identity Management, granulare RBAC.
+- **Datenschutz** — Purview-Vertraulichkeitslabels, DLP über Exchange/SharePoint/Teams/Endpoints, Aufbewahrung und Legal Hold, kundenseitig verwaltete Schlüssel, Customer Lockbox.
+- **Geräte-Härtung** — Intune-Compliance-Richtlinien, BitLocker, Patch-Ringe decken die Client-Seite ab.
+- **Physische Sicherheit** — abgedeckt durch die Microsoft-Rechenzentren und deren BSI-C5-Typ-2- und ISO-27001-Bescheinigungen.
+
+### Was M365 nicht abdecken kann
+
+Weitere **~15–20 %** sind nur über *Provider-Bescheinigungen* statt eigener Durchsetzung erreichbar — die anerkannte Brücke unter dem IT-Grundschutz-Cloud-Baustein OPS.3.1. Und ein **strukturelles Rest von ~10–15 %** bleibt, den keine Tenant-Konfiguration schließen kann:
+
+| Bereich | Warum M365 allein es nicht erreicht |
+|---------|-------------------------------------|
+| Netzwerksicherheit (INF.5) | Es gibt kein eigenes Netz zu segmentieren — Tenant-Kontrollen (Conditional Access, externe Freigaben) ersetzen keine eigene Segmentierung und Firewalls. |
+| System-Härtung (INF.1) | Keine Pods, kein Seccomp, keine Capability-Drops — die Workload-Härtungs-Punkte sind schlicht gegenstandslos. |
+| Vollständige Auditierbarkeit | Das Unified Audit Log ist begrenzt (Standard 90 Tage), hat Lücken und lebt in der Microsoft-Cloud statt im eigenen Loki/SIEM. |
+| Souveränität | Die EU Data Boundary regelt den *Speicherort*, nicht die *Zuständigkeit* — US-Behörden können weiterhin Zugriff erzwingen (CLOUD Act). Das BSI selbst hat eine kritische Bewertung von M365 für die öffentliche Verwaltung veröffentlicht. |
+| Selbst gehostete Dienste | ILIAS, Moodle, JupyterHub, Nextcloud, Matrix haben keine M365-Entsprechung — sie laufen auf eigener Infrastruktur und brauchen genau die hier beschriebene Kyverno-/GitOps-/k8up-Behandlung. |
+| Backup | Native Aufbewahrung ist kein Backup — Sie brauchen ein Drittanbieter-Tool (Veeam, AvePoint, …). |
+
+### Die ehrliche Einordnung
+
+Einen **Hybridweg** fahren deutsche Hochschulen tatsächlich: M365 A3/A5 für die Zusammenarbeit, souveräne Open-Source-Dienste für sensible Workloads, Drittanbieter-Backup, Sentinel als SIEM und die eigene Governance-Dokumentation. Damit erreicht man den 85–90-%-Bereich — aber es ist keine reine M365-Geschichte mehr, und die letzten 10 % sind Politik, nicht Technik.
+
+Die Antwort auf „Wie weit mit M365?“ lautet also: *70 % der Kontrollen über den Microsoft-Compliance-Stack, 20 % über BSI-C5-Bescheinigungen, 10 % struktureller Rest, der Souveränitätsentscheidungen verlangt — und genau dieser Rest ist der Grund, warum openDesk existiert.*
+
 ## Warum das für Hochschulen wichtig ist
 
 Für eine Hochschule, die openDesk Edu evaluiert, zählt die Compliance-Geschichte in drei konkreten Punkten:

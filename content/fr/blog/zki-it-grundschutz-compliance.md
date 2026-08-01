@@ -184,6 +184,38 @@ Notre feuille de route est concrète — quatre phases sur environ seize semaine
 | **Phase 3** | Avancé : mTLS, SIEM, gestion des vulnérabilités | 85 % de conformité |
 | **Phase 4** | Maturité : IDS/IPS, WAF, programme de sensibilisation | **90 %+ de conformité** |
 
+## Et avec Microsoft 365 ? Jusqu'où pourrait-on aller ?
+
+Une question que nous entendons constamment lors des évaluations par les universités : *« Ne pourrions-nous pas atteindre le même niveau de conformité avec Microsoft 365 ? »* La réponse honnête mérite sa propre section — car elle est en grande partie *oui*, et l'écart est instructif.
+
+### Ce que M365 couvre bien
+
+Microsoft 365, combiné à la pile de conformité complète (Entra ID P2, Purview, Defender, Compliance Manager), peut raisonnablement satisfaire **60–70 % des 111 points de contrôle directement** :
+
+- **IAM & accès** — potentiellement plus solide qu'une configuration Keycloak maison : MFA, accès conditionnel, gestion des identités privilégiées, RBAC fine.
+- **Protection des données** — étiquettes de confidentialité Purview, DLP sur Exchange/SharePoint/Teams/endpoints, conservation et blocage légal, clés gérées par le client, Customer Lockbox.
+- **Durcissement des appareils** — politiques de conformité Intune, BitLocker, anneaux de correctifs couvrent le côté client.
+- **Sécurité physique** — couverte par les centres de données Microsoft et leurs attestations BSI C5 Type 2 et ISO 27001.
+
+### Ce que M365 ne peut pas couvrir
+
+Encore **~15–20 %** ne sont atteignables que par *attestation du fournisseur* plutôt que par une application directe — le pont accepté sous le module cloud IT-Grundschutz OPS.3.1. Et un **résidu structurel de ~10–15 %** subsiste qu'aucune configuration de locataire ne peut combler :
+
+| Domaine | Pourquoi M365 seul ne suffit pas |
+|---------|----------------------------------|
+| Sécurité réseau (INF.5) | Vous n'avez pas de réseau à segmenter — les contrôles au niveau du locataire (accès conditionnel, partage externe) ne remplacent pas votre propre segmentation et vos pare-feux. |
+| Durcissement système (INF.1) | Pas de pods, pas de seccomp, pas de suppression de capabilities — les points de durcissement des workloads sont simplement sans objet. |
+| Auditabilité complète | Le journal d'audit unifié est limité (90 jours par défaut), comporte des lacunes et vit dans le cloud Microsoft plutôt que dans votre propre Loki/SIEM. |
+| Souveraineté | La limite de données européenne (EU Data Boundary) fixe la *résidence*, pas la *juridiction* — les autorités américaines peuvent toujours contraindre l'accès (CLOUD Act). Le BSI lui-même a publié une évaluation critique de M365 pour l'administration publique. |
+| Services auto-hébergés | ILIAS, Moodle, JupyterHub, Nextcloud, Matrix n'ont pas d'équivalent M365 — ils tournent sur votre propre infrastructure et nécessitent exactement le traitement Kyverno/GitOps/k8up décrit ici. |
+| Sauvegarde | La conservation native n'est pas une sauvegarde — vous avez besoin d'un outil tiers (Veeam, AvePoint, …). |
+
+### Le cadre honnête
+
+Une **voie hybride** est ce que les universités allemandes font réellement : M365 A3/A5 pour la collaboration, des services open-source souverains pour les workloads sensibles, une sauvegarde tierce, Sentinel comme SIEM et votre propre documentation de gouvernance. Cela atteint la bande des 85–90 % — mais ce n'est plus une histoire purement M365, et les derniers 10 % sont de la politique, pas de la technologie.
+
+La réponse à « Jusqu'où avec M365 ? » est donc : *70 % des contrôles via la pile de conformité Microsoft, 20 % via l'attestation BSI C5, 10 % de résidu structurel qui exige des décisions de souveraineté — et c'est précisément ce résidu qui explique l'existence d'openDesk.*
+
 ## Pourquoi c'est important pour les universités
 
 Pour une université évaluant openDesk Edu, l'histoire de la conformité compte de trois manières concrètes :
