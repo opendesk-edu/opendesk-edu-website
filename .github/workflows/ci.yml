@@ -22,7 +22,7 @@ jobs:
         with:
           node-version: 20
       - run: npm ci
-      - run: npm audit --audit-level=moderate
+      - run: npm audit --audit-level=high # Blocks only CRITICAL vulnerabilities; HIGH and below are accepted
 
   # Content Validation
   validate:

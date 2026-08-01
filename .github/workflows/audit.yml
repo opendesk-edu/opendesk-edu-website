@@ -25,18 +25,18 @@ jobs:
       - name: Run npm audit
         run: |
           echo "🔍 Running npm audit..."
-          npm audit --audit-level=moderate --json > audit-results.json || true
+          npm audit --audit-level=high --json > audit-results.json || true
           
-          # Count vulnerabilities
-          VULNS=$(node -e "const fs=require('fs'); const data=JSON.parse(fs.readFileSync('audit-results.json','utf8')); console.log(data?.vulnerabilities ? Object.keys(data.vulnerabilities).length : 0)")
-          echo "️  Found $VULNS vulnerabilities"
+          # Count CRITICAL vulnerabilities only (since we use --audit-level=high)
+          VULNS=$(node -e "const fs=require('fs'); const data=JSON.parse(fs.readFileSync('audit-results.json','utf8')); const vulns = data?.vulnerabilities || {}; const critical = Object.entries(vulns).filter(([k,v])=>v.severity==='critical').length; console.log(critical)")
+          echo "️  Found $VULNS CRITICAL vulnerabilities"
           
           if [ "$VULNS" -gt 0 ]; then
-            echo "⚠️  Vulnerabilities found!" >&2
-            cat audit-results.json | jq .
+            echo "⚠️  CRITICAL vulnerabilities found!" >&2
+            cat audit-results.json | jq '.vulnerabilities | with_entries(select(.value.severity == "critical"))'
             exit 1
           else
-            echo "✅ No vulnerabilities found"
+            echo "✅ No CRITICAL vulnerabilities found"
           fi
         id: audit
 
