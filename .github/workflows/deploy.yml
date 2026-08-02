@@ -62,6 +62,8 @@ jobs:
               - 'package.json'
               - 'package-lock.json'
               - 'tsconfig.json'
+              - 'Dockerfile'
+              - 'docker-compose.yml'
 
       - name: Set deploy flag
         id: validation
@@ -116,49 +118,7 @@ jobs:
       name: production
       url: https://opendesk-edu.org
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build for Production
-        run: npm run build
-        env:
-          NODE_ENV: production
-
-      - name: Verify build
-        run: |
-          if [ ! -d "out" ]; then
-            echo "Build output directory not found!"
-            exit 1
-          fi
-          ls -la out/
-
-      # Analyze which files changed for cache invalidation
-      - name: Detect content changes
-        id: content-changes
-        run: |
-          # Get changed files in content and public directories
-          CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD 2>/dev/null || git diff --name-only ${{ github.event.before }} ${{ github.sha }} 2>/dev/null || echo "")
-          
-          if echo "$CHANGED_FILES" | grep -qE "^content/|^public/"; then
-            echo "content_changed=true" >> $GITHUB_OUTPUT
-          else
-            echo "content_changed=false" >> $GITHUB_OUTPUT
-          fi
-          
-          echo "Changed files:"
-          echo "$CHANGED_FILES"
-
-      # SSH to production server and deploy
-      - name: Deploy to opendesk-edu.org (178.254.2.90)
+      - name: Deploy to opendesk-edu.org via Docker Compose
         uses: appleboy/ssh-action@v1
         with:
           host: 178.254.2.90
@@ -168,146 +128,62 @@ jobs:
           script_stop: true
           script: |
             set -e
-            
+
             echo "🚀 Starting deployment to opendesk-edu.org"
-            
-            # Deployment directory
-            DEPLOY_DIR="/home/weiss/opendesk-edu-website"
-            BACKUP_DIR="/home/weiss/opendesk-edu-backups"
-            TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
-            
-            # Create backup
-            echo "📦 Creating backup..."
-            mkdir -p "$BACKUP_DIR"
-            if [ -d "$DEPLOY_DIR" ]; then
-              tar -czf "$BACKUP_DIR/opendesk-edu_$TIMESTAMP.tar.gz" -C "$DEPLOY_DIR" . 
-              echo "✅ Backup created: $BACKUP_DIR/opendesk-edu_$TIMESTAMP.tar.gz"
-            fi
-            
-            # Keep only last 5 backups
-            cd "$BACKUP_DIR" && ls -t opendesk-edu_*.tar.gz | tail -n +6 | xargs rm -f 2>/dev/null || true
-            
-            # Remove old deployment (except .env and .htpasswd)
-            echo "🧹 Cleaning old deployment..."
-            if [ -d "$DEPLOY_DIR" ]; then
-              cd "$DEPLOY_DIR"
-              # Save important files
-              mkdir -p /tmp/opendesk-save
-              [ -f .env ] && cp .env /tmp/opendesk-save/
-              [ -f .htpasswd ] && cp .htpasswd /tmp/opendesk-save/
-              [ -f package.json ] && cp package.json /tmp/opendesk-save/
-              [ -d node_modules ] && mv node_modules /tmp/opendesk-save/
-              
-              # Remove everything else
-              rm -rf * .* 2>/dev/null || true
-              
-              # Restore saved files
-              [ -f /tmp/opendesk-save/.env ] && cp /tmp/opendesk-save/.env .
-              [ -f /tmp/opendesk-save/.htpasswd ] && cp /tmp/opendesk-save/.htpasswd .
-              [ -d /tmp/opendesk-save/node_modules ] && mv /tmp/opendesk-save/node_modules .
-              rm -rf /tmp/opendesk-save
-            else
-              mkdir -p "$DEPLOY_DIR"
-            fi
-            
-            echo "✅ Old deployment cleaned"
 
-      # Upload built files
-      - name: Upload built files to server
-        uses: appleboy/scp-action@v0.1.4
-        with:
-          host: 178.254.2.90
-          username: weiss
-          key: ${{ secrets.SSH_PRIVATE_KEY_OPENCODE_DE }}
-          port: 22
-          source: "out/,package.json,next.config.ts,public/"
-          target: /home/weiss/opendesk-edu-website
-
-      # Finalize deployment on server
-      - name: Finalize deployment
-        uses: appleboy/ssh-action@v1
-        with:
-          host: 178.254.2.90
-          username: weiss
-          key: ${{ secrets.SSH_PRIVATE_KEY_OPENCODE_DE }}
-          port: 22
-          script: |
-            set -e
-            
             DEPLOY_DIR="/home/weiss/opendesk-edu-website"
+
             cd "$DEPLOY_DIR"
-            
-            echo "📦 Finalizing deployment..."
-            
-            # Ensure package.json exists
-            if [ ! -f package.json ]; then
-              echo "❌ package.json not found!"
-              exit 1
-            fi
-            
-            # Install dependencies if node_modules missing
-            if [ ! -d node_modules ]; then
-              echo "📦 Installing dependencies..."
-              npm install --production --prefer-offline --no-audit
-            fi
-            
-            # Restart PM2 service
-            echo "🔄 Restarting Next.js service..."
-            if command -v pm2 >/dev/null 2>&1; then
-              # Check if service exists
-              if pm2 list | grep -q "opendesk-edu-website"; then
-                pm2 restart opendesk-edu-website
-              else
-                pm2 start npm --name "opendesk-edu-website" -- start
-              fi
-              pm2 save
-              pm2 list
-            else
-              # Use systemd if available
-              if [ -f /etc/systemd/system/opendesk-edu-website.service ]; then
-                sudo systemctl restart opendesk-edu-website
-                sudo systemctl status opendesk-edu-website --no-pager
-              else
-                # Fallback: start with nohup
-                nohup npm run start > /var/log/opendesk-edu-website.log 2>&1 &
-                echo "Started with nohup, PID: $!"
-                echo "Logs: /var/log/opendesk-edu-website.log"
-              fi
-            fi
-            
-            echo "✅ Deployment finalized"
-            
-            # Verify deployment
-            sleep 5
-            echo "🧪 Verifying deployment..."
-            curl -sSf http://localhost:3000 > /dev/null && echo "✅ Local health check passed" || echo "⚠️  Local health check failed"
-            curl -sSf https://opendesk-edu.org > /dev/null && echo "✅ Production URL accessible" || echo "⚠️  Production URL not accessible"
 
-      - name: Check ZKI article
-        uses: appleboy/ssh-action@v1
-        with:
-          host: 178.254.2.90
-          username: weiss
-          key: ${{ secrets.SSH_PRIVATE_KEY_OPENCODE_DE }}
-          port: 22
-          script: |
-            echo "🔍 Checking if ZKI article is live..."
-            curl -sSf https://opendesk-edu.org/de/blog/zki-it-grundschutz-compliance | grep -q "ZKI IT-Grundschutz" && \
-              echo "✅ ZKI article is LIVE!" || \
-              echo "❌ ZKI article not found - manual check required"
-            
-            # Also check all locales
+            # Pull latest code
+            echo "📥 Pulling latest code..."
+            git fetch origin main
+            git reset --hard origin/main
+
+            # Build and deploy with Docker Compose
+            echo "🔨 Building Docker image..."
+            if command -v docker buildx >/dev/null 2>&1; then
+              DOCKER_BUILDKIT=1 docker compose build
+            elif docker version | grep -q "BuildKit"; then
+              DOCKER_BUILDKIT=1 docker compose build
+            else
+              docker compose build
+            fi
+
+            echo "🔄 Restarting container..."
+            docker compose up -d
+
+            # Wait for container to be healthy
+            echo "⏳ Waiting for container to start..."
+            sleep 10
+
+            # Verify deployment
+            echo "🧪 Verifying deployment..."
+            if curl -sSf http://localhost:3000 > /dev/null 2>&1; then
+              echo "✅ Local health check passed"
+            else
+              echo "⚠️  Local health check failed (container may still be starting)"
+            fi
+
+            if curl -sSf https://opendesk-edu.org > /dev/null 2>&1; then
+              echo "✅ Production URL accessible"
+            else
+              echo "⚠️  Production URL not accessible"
+            fi
+
+            # Check article availability
             for locale in en de fr zh; do
-              URL="https://opendesk-edu.org/$locale/blog/zki-it-grundschutz-compliance"
-              STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$URL")
+              URL="https://opendesk-edu.org/$locale/blog/la-suite-vs-opendesk-edu"
+              STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$URL" || echo "000")
               if [ "$STATUS" = "200" ]; then
-                echo "✅ $locale article: OK (200)"
+                echo "✅ $locale article (La Suite vs. openDesk Edu): OK (200)"
               else
-                echo "⚠️  $locale article: $STATUS"
+                echo "⚠️  $locale article (La Suite vs. openDesk Edu): $STATUS"
               fi
             done
 
-      # Notify Slack (optional - will fail gracefully if not configured)
+            echo "✅ Deployment finalized"
+
       - name: Notify Slack
         if: success()
         uses: rtCamp/action-slack-notify@v2

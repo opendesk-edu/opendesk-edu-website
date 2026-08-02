@@ -113,54 +113,5 @@ jobs:
           path: .next/
           retention-days: 7
 
-  # Production Deployment (main)
-  deploy:
-    runs-on: [self-hosted, linux]
-    needs: [build]
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    steps:
-      - name: Write SSH key
-        run: |
-          mkdir -p "${HOME}/.ssh"
-          echo "${{ secrets.DEPLOY_SSH_KEY }}" > "${HOME}/.ssh/deploy_key"
-          chmod 600 "${HOME}/.ssh/deploy_key"
-          ssh-keyscan ${{ secrets.DEPLOY_HOST }} >> "${HOME}/.ssh/known_hosts" 2>/dev/null
-
-      - name: Deploy to server
-        uses: appleboy/ssh-action@v1
-        with:
-          host: ${{ secrets.DEPLOY_HOST }}
-          username: ${{ secrets.DEPLOY_USER }}
-          key: ${{ secrets.DEPLOY_SSH_KEY }}
-          script: |
-            cd ${{ secrets.DEPLOY_PATH }}
-            git pull
-            export COMMIT_SHA=$(git rev-parse --short HEAD)
-            export IMAGE_TAG="opendesk-edu:${COMMIT_SHA}"
-            # Check BuildKit availability and fallback
-            if command -v docker buildx >/dev/null 2>&1; then
-              DOCKER_BUILDKIT=1 docker compose build
-            elif docker version | grep -q "BuildKit"; then
-              DOCKER_BUILDKIT=1 docker compose build
-            else
-              docker compose build
-            fi
-            docker tag opendesk-edu:latest ${IMAGE_TAG} 2>/dev/null || true
-            docker compose up -d
-
-      - name: Verify deployment
-        run: |
-          echo "🔍 Verifying deployment..."
-          for i in {1..6}; do
-            STATUS=$(curl -s -o /dev/null -w "%{http_code}" --connect-timeout 5 --max-time 30 https://opendesk-edu.org) || true
-            if [ "$STATUS" = "200" ]; then
-              echo "✅ Site is live (HTTP 200)"
-              exit 0
-            elif [ "$i" -lt 6 ]; then
-              echo "⚠️  Attempt $i/6: Site returned HTTP $STATUS, retrying in 5s..."
-              sleep 5
-            else
-              echo "❌ Site verification failed after 6 attempts (HTTP $STATUS)"
-              exit 1
-            fi
-          done
+  # Production deployment is handled by the Deploy workflow (.github/workflows/deploy.yml)
+  # which uses Docker Compose on the production server.
