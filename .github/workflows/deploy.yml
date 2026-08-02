@@ -102,7 +102,6 @@ jobs:
           username: weiss
           key: ${{ secrets.SSH_PRIVATE_KEY_OPENCODE_DE }}
           port: 22
-          script_stop: true
           script: |
             set -e
 
@@ -172,12 +171,13 @@ jobs:
             echo "✅ Deployment finalized"
 
       - name: Notify Slack (optional)
-        if: success() && env.SLACK_WEBHOOK != ''
+        if: success()
+        continue-on-error: true
         run: |
           if [ -n "${{ secrets.SLACK_WEBHOOK }}" ]; then
             curl -s -X POST -H 'Content-type: application/json' \
               --data '{"text":"opendesk-edu.org deployed successfully :rocket"}' \
-              "${{ secrets.SLACK_WEBHOOK }}" || true
+              "${{ secrets.SLACK_WEBHOOK }}" || echo "Slack notification failed (non-blocking)"
           else
             echo "SLACK_WEBHOOK not configured, skipping notification"
           fi
