@@ -171,13 +171,13 @@ jobs:
 
             echo "✅ Deployment finalized"
 
-      - name: Notify Slack
-        if: success()
-        uses: rtCamp/action-slack-notify@v2
-        continue-on-error: true
-        env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_COLOR: good
-          SLACK_TITLE: "opendesk-edu.org deployed"
-          SLACK_MESSAGE: "Production deployment completed successfully :rocket:"
-          SLACK_FOOTER: "Commit: ${{ github.sha }}"
+      - name: Notify Slack (optional)
+        if: success() && env.SLACK_WEBHOOK != ''
+        run: |
+          if [ -n "${{ secrets.SLACK_WEBHOOK }}" ]; then
+            curl -s -X POST -H 'Content-type: application/json' \
+              --data '{"text":"opendesk-edu.org deployed successfully :rocket"}' \
+              "${{ secrets.SLACK_WEBHOOK }}" || true
+          else
+            echo "SLACK_WEBHOOK not configured, skipping notification"
+          fi
