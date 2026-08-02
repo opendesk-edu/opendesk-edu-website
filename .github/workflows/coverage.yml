@@ -40,14 +40,16 @@ jobs:
       - name: Check coverage threshold
         run: |
           echo "📊 Coverage Report:"
-          npm run test -- --coverage --reporter=text --reporter=json > coverage-summary.json || true
+          # Run tests with coverage and capture output
+          npm run test -- --coverage 2>&1 | tee coverage-output.txt
           
-          # Extract coverage percentages
-          STATEMENTS=$(node -e "const fs=require('fs'); const data=JSON.parse(fs.readFileSync('coverage-summary.json','utf8')); console.log(data.total.statements.pct)")
-          BRANCHES=$(node -e "const fs=require('fs'); const data=JSON.parse(fs.readFileSync('coverage-summary.json','utf8')); console.log(data.total.branches.pct)")
-          FUNCTIONS=$(node -e "const fs=require('fs'); const data=JSON.parse(fs.readFileSync('coverage-summary.json','utf8')); console.log(data.total.functions.pct)")
-          LINES=$(node -e "const fs=require('fs'); const data=JSON.parse(fs.readFileSync('coverage-summary.json','utf8')); console.log(data.total.lines.pct)")
+          # Extract coverage percentages from console output
+          STATEMENTS=$(grep -oP 'Statements\s+:\s+\K[0-9.]+' coverage-output.txt)
+          BRANCHES=$(grep -oP 'Branches\s+:\s+\K[0-9.]+' coverage-output.txt)
+          FUNCTIONS=$(grep -oP 'Functions\s+:\s+\K[0-9.]+' coverage-output.txt)
+          LINES=$(grep -oP 'Lines\s+:\s+\K[0-9.]+' coverage-output.txt)
           
+          echo ""
           echo "   Statements: ${STATEMENTS}%"
           echo "   Branches: ${BRANCHES}%"
           echo "   Functions: ${FUNCTIONS}%"
