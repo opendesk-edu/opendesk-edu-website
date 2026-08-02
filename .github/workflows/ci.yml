@@ -121,12 +121,10 @@ jobs:
           path: |
             ~/.npm
             node_modules
-            ~/.cache/ms-playwright
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}-playwright
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
       - run: npm ci
-      - run: npx playwright install chromium --with-deps
       - run: npm run test:e2e
       - name: Upload E2E results
         if: failure()
