@@ -34,7 +34,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      # Verify this is the main branch
       - name: Check branch
         id: branch-check
         run: |
@@ -45,35 +44,13 @@ jobs:
           fi
           echo "should_deploy=true" >> $GITHUB_OUTPUT
 
-      # Check if there are actual changes that affect production
-      - name: Detect changes
-        id: changes
-        uses: dorny/paths-filter@v3
-        with:
-          base: HEAD~1
-          filters: |
-            production:
-              - 'src/**'
-              - 'components/**'
-              - 'content/**'
-              - 'public/**'
-              - 'messages/**'
-              - 'next.config.ts'
-              - 'package.json'
-              - 'package-lock.json'
-              - 'tsconfig.json'
-              - 'Dockerfile'
-              - 'docker-compose.yml'
-
       - name: Set deploy flag
         id: validation
         run: |
-          if [ "${{ steps.branch-check.outputs.should_deploy }}" = "true" ] && \
-             ([ "${{ steps.changes.outputs.production }}" = "true" ] || \
-              [ "${{ github.event_name }}" = "workflow_dispatch" ]); then
+          if [ "${{ steps.branch-check.outputs.should_deploy }}" = "true" ] || \
+             [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             echo "should_deploy=true" >> $GITHUB_OUTPUT
           else
-            echo "Skipping deployment - no production changes or not triggered manually"
             echo "should_deploy=false" >> $GITHUB_OUTPUT
           fi
 
@@ -179,6 +156,16 @@ jobs:
                 echo "✅ $locale article (La Suite vs. openDesk Edu): OK (200)"
               else
                 echo "⚠️  $locale article (La Suite vs. openDesk Edu): $STATUS"
+              fi
+            done
+
+            for locale in en de fr zh; do
+              URL="https://opendesk-edu.org/$locale/blog/zki-it-grundschutz-compliance"
+              STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$URL" || echo "000")
+              if [ "$STATUS" = "200" ]; then
+                echo "✅ $locale article (ZKI compliance): OK (200)"
+              else
+                echo "⚠️  $locale article (ZKI compliance): $STATUS"
               fi
             done
 
