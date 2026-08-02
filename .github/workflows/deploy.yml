@@ -95,15 +95,24 @@ jobs:
       name: production
       url: https://opendesk-edu.org
     steps:
-      - name: Deploy to opendesk-edu.org via Docker Compose
+      - name: Deploy to opendesk-edu.org via SSH
+        env:
+          DEPLOY_HOST: 178.254.2.90
+          DEPLOY_USER: weiss
+          DEPLOY_DIR: /opt/git/opendesk-edu-website
         run: |
           set -e
 
           echo "🚀 Starting deployment to opendesk-edu.org"
+          echo "Runner: $(hostname)"
+          echo "SSH keys available: $(ls -la ~/.ssh/*.pub 2>/dev/null || echo 'none')"
+
+          ssh -o StrictHostKeyChecking=no -o ConnectTimeout=15 "${DEPLOY_USER}@${DEPLOY_HOST}" "bash -s" << 'REMOTE_SCRIPT'
+          set -e
 
           DEPLOY_DIR="/opt/git/opendesk-edu-website"
-
-          cd "$DEPLOY_DIR"
+          echo "📦 Deploy directory: ${DEPLOY_DIR}"
+          cd "${DEPLOY_DIR}"
 
           # Pull latest code
           echo "📥 Pulling latest code..."
@@ -157,6 +166,7 @@ jobs:
           done
 
           echo "✅ Deployment finalized"
+          REMOTE_SCRIPT
 
       - name: Notify Slack (optional)
         if: success()
