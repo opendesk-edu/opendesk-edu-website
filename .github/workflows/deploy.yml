@@ -96,79 +96,67 @@ jobs:
       url: https://opendesk-edu.org
     steps:
       - name: Deploy to opendesk-edu.org via Docker Compose
-        uses: appleboy/ssh-action@v1
-        with:
-          host: 178.254.2.90
-          username: weiss
-          key: ${{ secrets.SSH_PRIVATE_KEY_OPENCODE_DE }}
-          port: 22
-          script: |
-            set -e
+        run: |
+          set -e
 
-            echo "🚀 Starting deployment to opendesk-edu.org"
+          echo "🚀 Starting deployment to opendesk-edu.org"
 
-            DEPLOY_DIR="/home/weiss/opendesk-edu-website"
+          DEPLOY_DIR="/opt/git/opendesk-edu-website"
 
-            cd "$DEPLOY_DIR"
+          cd "$DEPLOY_DIR"
 
-            # Pull latest code
-            echo "📥 Pulling latest code..."
-            git fetch origin main
-            git reset --hard origin/main
+          # Pull latest code
+          echo "📥 Pulling latest code..."
+          git fetch origin main
+          git reset --hard origin/main
 
-            # Build and deploy with Docker Compose
-            echo "🔨 Building Docker image..."
-            if command -v docker buildx >/dev/null 2>&1; then
-              DOCKER_BUILDKIT=1 docker compose build
-            elif docker version | grep -q "BuildKit"; then
-              DOCKER_BUILDKIT=1 docker compose build
+          # Build and deploy with Docker Compose
+          echo "🔨 Building Docker image..."
+          DOCKER_BUILDKIT=1 docker compose build
+
+          echo "🔄 Restarting container..."
+          docker compose up -d
+
+          # Wait for container to be healthy
+          echo "⏳ Waiting for container to start..."
+          sleep 15
+
+          # Verify deployment
+          echo "🧪 Verifying deployment..."
+          if curl -sSf http://localhost:3000 > /dev/null 2>&1; then
+            echo "✅ Local health check passed"
+          else
+            echo "⚠️  Local health check failed (container may still be starting)"
+          fi
+
+          if curl -sSf https://opendesk-edu.org > /dev/null 2>&1; then
+            echo "✅ Production URL accessible"
+          else
+            echo "⚠️  Production URL not accessible"
+          fi
+
+          # Check article availability
+          for locale in en de fr zh; do
+            URL="https://opendesk-edu.org/$locale/blog/la-suite-vs-opendesk-edu"
+            STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$URL" || echo "000")
+            if [ "$STATUS" = "200" ]; then
+              echo "✅ $locale article (La Suite vs. openDesk Edu): OK (200)"
             else
-              docker compose build
+              echo "⚠️  $locale article (La Suite vs. openDesk Edu): $STATUS"
             fi
+          done
 
-            echo "🔄 Restarting container..."
-            docker compose up -d
-
-            # Wait for container to be healthy
-            echo "⏳ Waiting for container to start..."
-            sleep 10
-
-            # Verify deployment
-            echo "🧪 Verifying deployment..."
-            if curl -sSf http://localhost:3000 > /dev/null 2>&1; then
-              echo "✅ Local health check passed"
+          for locale in en de fr zh; do
+            URL="https://opendesk-edu.org/$locale/blog/zki-it-grundschutz-compliance"
+            STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$URL" || echo "000")
+            if [ "$STATUS" = "200" ]; then
+              echo "✅ $locale article (ZKI compliance): OK (200)"
             else
-              echo "⚠️  Local health check failed (container may still be starting)"
+              echo "⚠️  $locale article (ZKI compliance): $STATUS"
             fi
+          done
 
-            if curl -sSf https://opendesk-edu.org > /dev/null 2>&1; then
-              echo "✅ Production URL accessible"
-            else
-              echo "⚠️  Production URL not accessible"
-            fi
-
-            # Check article availability
-            for locale in en de fr zh; do
-              URL="https://opendesk-edu.org/$locale/blog/la-suite-vs-opendesk-edu"
-              STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$URL" || echo "000")
-              if [ "$STATUS" = "200" ]; then
-                echo "✅ $locale article (La Suite vs. openDesk Edu): OK (200)"
-              else
-                echo "⚠️  $locale article (La Suite vs. openDesk Edu): $STATUS"
-              fi
-            done
-
-            for locale in en de fr zh; do
-              URL="https://opendesk-edu.org/$locale/blog/zki-it-grundschutz-compliance"
-              STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$URL" || echo "000")
-              if [ "$STATUS" = "200" ]; then
-                echo "✅ $locale article (ZKI compliance): OK (200)"
-              else
-                echo "⚠️  $locale article (ZKI compliance): $STATUS"
-              fi
-            done
-
-            echo "✅ Deployment finalized"
+          echo "✅ Deployment finalized"
 
       - name: Notify Slack (optional)
         if: success()
