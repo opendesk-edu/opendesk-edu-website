@@ -1,4 +1,4 @@
-name: Deploy to Production
+name: Deploy
 
 on:
   push:
@@ -12,6 +12,14 @@ on:
       - 'README.md'
   workflow_dispatch:
     inputs:
+      target:
+        description: 'Deployment target (staging or live)'
+        required: false
+        default: 'staging'
+        type: choice
+        options:
+          - staging
+          - live
       force:
         description: 'Force deployment even if CI fails'
         required: false
@@ -19,7 +27,7 @@ on:
         type: boolean
 
 concurrency:
-  group: deploy-production
+  group: deploy
   cancel-in-progress: false
 
 jobs:
@@ -84,18 +92,18 @@ jobs:
       - name: Build
         run: npm run build
 
-  deploy:
-    name: Deploy
+  deploy-staging:
+    name: Deploy to Staging
     needs: [validate, test]
     if: |
-      needs.validate.outputs.should_deploy == 'true' && 
+      needs.validate.outputs.should_deploy == 'true' &&
       (needs.test.result == 'success' || github.event.inputs.force == 'true')
     runs-on: [self-hosted, linux]
     environment:
-      name: production
-      url: https://opendesk-edu.org
+      name: staging
+      url: https://staging.opendesk-edu.org
     steps:
-      - name: Deploy to opendesk-edu.org via SSH
+      - name: Deploy to staging.opendesk-edu.org via SSH
         env:
           DEPLOY_HOST: 178.254.2.90
           DEPLOY_USER: weiss
@@ -103,9 +111,8 @@ jobs:
         run: |
           set -e
 
-          echo "🚀 Starting deployment to opendesk-edu.org"
+          echo "🚀 Starting deployment to staging.opendesk-edu.org"
           echo "Runner: $(hostname)"
-          echo "SSH keys available: $(ls -la ~/.ssh/*.pub 2>/dev/null || echo 'none')"
 
           ssh -o StrictHostKeyChecking=no -o ConnectTimeout=15 "${DEPLOY_USER}@${DEPLOY_HOST}" "bash -s" << 'REMOTE_SCRIPT'
           set -e
@@ -119,19 +126,94 @@ jobs:
           git fetch origin main
           git reset --hard origin/main
 
-          # Build and deploy with Docker Compose
-          echo "🔨 Building Docker image..."
-          DOCKER_BUILDKIT=1 docker compose build
+          # Build and deploy staging with Docker Compose
+          echo "🔨 Building staging Docker image..."
+          DOCKER_BUILDKIT=1 docker compose -f docker-compose.staging.yml build
 
-          echo "🔄 Restarting container..."
-          docker compose up -d
+          echo "🔄 Starting staging container..."
+          docker compose -f docker-compose.staging.yml up -d
 
           # Wait for container to be healthy
-          echo "⏳ Waiting for container to start..."
+          echo "⏳ Waiting for staging container to start..."
           sleep 15
 
-          # Verify deployment
-          echo "🧪 Verifying deployment..."
+          # Verify staging deployment
+          echo "🧪 Verifying staging deployment..."
+          if curl -sSf http://localhost:3000 > /dev/null 2>&1; then
+            echo "✅ Local health check passed"
+          else
+            echo "⚠️  Local health check failed (container may still be starting)"
+          fi
+
+          if curl -sSf https://staging.opendesk-edu.org > /dev/null 2>&1; then
+            echo "✅ Staging URL accessible"
+          else
+            echo "⚠️  Staging URL not accessible (TLS cert may still be provisioning)"
+          fi
+
+          echo "✅ Staging deployment finalized"
+          REMOTE_SCRIPT
+
+      - name: Notify Slack (optional)
+        if: success()
+        continue-on-error: true
+        run: |
+          if [ -n "${{ secrets.SLACK_WEBHOOK }}" ]; then
+            curl -s -X POST -H 'Content-type: application/json' \
+              --data '{"text":"staging.opendesk-edu.org deployed :rocket"}' \
+              "${{ secrets.SLACK_WEBHOOK }}" || echo "Slack notification failed (non-blocking)"
+          else
+            echo "SLACK_WEBHOOK not configured, skipping notification"
+          fi
+
+  deploy-live:
+    name: Promote to Live
+    needs: [validate, test, deploy-staging]
+    if: |
+      needs.validate.outputs.should_deploy == 'true' &&
+      needs.deploy-staging.result == 'success' &&
+      github.event.inputs.target == 'live'
+    runs-on: [self-hosted, linux]
+    environment:
+      name: production
+      url: https://opendesk-edu.org
+    steps:
+      - name: Deploy to opendesk-edu.org via SSH
+        env:
+          DEPLOY_HOST: 178.254.2.90
+          DEPLOY_USER: weiss
+          DEPLOY_DIR: /opt/git/opendesk-edu-website
+        run: |
+          set -e
+
+          echo "🚀 Promoting to opendesk-edu.org (live)"
+          echo "Runner: $(hostname)"
+
+          ssh -o StrictHostKeyChecking=no -o ConnectTimeout=15 "${DEPLOY_USER}@${DEPLOY_HOST}" "bash -s" << 'REMOTE_SCRIPT'
+          set -e
+
+          DEPLOY_DIR="/opt/git/opendesk-edu-website"
+          echo "📦 Deploy directory: ${DEPLOY_DIR}"
+          cd "${DEPLOY_DIR}"
+
+          # Pull latest code (already pulled by staging, but ensure consistency)
+          echo "📥 Pulling latest code..."
+          git fetch origin main
+          git reset --hard origin/main
+
+          # Build and deploy live with Docker Compose
+          echo "🔨 Building live Docker image..."
+          DOCKER_BUILDKIT=1 docker compose -f docker-compose.yml build
+
+          echo "🔄 Restarting live container..."
+          docker compose -f docker-compose.yml up -d
+
+          # Wait for container to be healthy
+          echo "⏳ Waiting for live container to start..."
+          sleep 15
+
+          # Verify live deployment
+          echo "🧪 Verifying live deployment..."
           if curl -sSf http://localhost:3000 > /dev/null 2>&1; then
             echo "✅ Local health check passed"
           else
@@ -155,17 +237,7 @@ jobs:
             fi
           done
 
-          for locale in en de fr zh; do
-            URL="https://opendesk-edu.org/$locale/blog/zki-it-grundschutz-compliance"
-            STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$URL" || echo "000")
-            if [ "$STATUS" = "200" ]; then
-              echo "✅ $locale article (ZKI compliance): OK (200)"
-            else
-              echo "⚠️  $locale article (ZKI compliance): $STATUS"
-            fi
-          done
-
-          echo "✅ Deployment finalized"
+          echo "✅ Live deployment finalized"
           REMOTE_SCRIPT
 
       - name: Notify Slack (optional)
@@ -174,7 +246,7 @@ jobs:
         run: |
           if [ -n "${{ secrets.SLACK_WEBHOOK }}" ]; then
             curl -s -X POST -H 'Content-type: application/json' \
-              --data '{"text":"opendesk-edu.org deployed successfully :rocket"}' \
+              --data '{"text":"opendesk-edu.org promoted to live :rocket"}' \
               "${{ secrets.SLACK_WEBHOOK }}" || echo "Slack notification failed (non-blocking)"
           else
             echo "SLACK_WEBHOOK not configured, skipping notification"
