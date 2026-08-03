@@ -85,7 +85,7 @@ We translated the relevant ZKI/BSI modules into **111 concrete checkpoints** acr
 | **P2** | Physical Security | ✅ Good |
 | **P2** | Awareness & Training | ❌ Missing |
 
-Our measured starting point: **~37% overall compliance**, with BSI module coverage at **~81%** where the platform already operates.
+Our internal starting point (self-assessment, not a certified audit): **~37% overall compliance**, with BSI module coverage at **~81%** where the platform already operates. These figures are internal estimates, not an official audit finding.
 
 ## What We Built: Policy as Code
 
@@ -190,7 +190,7 @@ A question we hear constantly from universities evaluating openDesk Edu: *"Could
 
 ### What M365 covers well
 
-Microsoft 365, combined with the full compliance stack (Entra ID P2, Purview, Defender, Compliance Manager), can plausibly satisfy **60–70% of the 111 checklist points directly**:
+Microsoft 365, combined with the full compliance stack (Entra ID P2, Purview, Defender, Compliance Manager), can in our estimation satisfy **~60–70% of the 111 checklist points directly** (internal estimate, not an official audit):
 
 - **IAM & access** — arguably stronger out of the box than a DIY Keycloak setup: MFA, Conditional Access, Privileged Identity Management, fine-grained RBAC.
 - **Data protection** — Purview sensitivity labels, DLP across Exchange/SharePoint/Teams/endpoints, retention and legal hold, customer-managed keys, Customer Lockbox.
@@ -206,15 +206,15 @@ Another **~15–20%** is only reachable via *provider attestation* rather than s
 | Network security (INF.5) | You have no network to segment — tenant-level controls (Conditional Access, external sharing) are not a substitute for your own segmentation and firewalls. |
 | System hardening (INF.1) | No pods, no seccomp, no capability drops — the workload-hardening checklist items are simply void. |
 | Full auditability | The Unified Audit Log is bounded (90 days default), has logging gaps, and lives in Microsoft's cloud rather than your own Loki/SIEM. |
-| Sovereignty | The EU Data Boundary fixes *residency*, not *jurisdiction* — US authorities can still compel access (CLOUD Act). The BSI itself published a critical assessment of M365 for public administration. |
+| Sovereignty | The EU Data Boundary fixes *residency*, not *jurisdiction* — US authorities can still compel access (CLOUD Act). The BSI published a [notice on the use of Microsoft 365 in public administration](https://www.bsi.bund.de/SharedDocs/CyberSicherheitswarnungen/TechnischeWarnungen/2023/Hinweis_Microsoft_365_public_cloud.html) in 2023 highlighting these risks. |
 | Self-hosted services | ILIAS, Moodle, JupyterHub, Nextcloud, Matrix have no M365 counterpart — they run on your own infrastructure and need exactly the Kyverno/GitOps/k8up treatment described here. |
 | Backup | Native retention is not backup — you need a third-party tool (Veeam, AvePoint, …). |
 
 ### The honest framing
 
-A **hybrid path** is what German universities actually run: M365 A3/A5 for collaboration, sovereign open-source services for sensitive workloads, third-party backup, Sentinel as SIEM, and your own governance documentation. That reaches the 85–90% band — but it is no longer a pure M365 story, and the last 10% is policy, not technology.
+A **hybrid path** is what German universities actually run: M365 A3/A5 for collaboration, sovereign open-source services for sensitive workloads, third-party backup, Sentinel as SIEM, and your own governance documentation. That reaches the ~85–90% band in our estimation — but it is no longer a pure M365 story, and the last ~10% is policy, not technology.
 
-So the answer to "how far with M365?" is: *70% of the controls via the Microsoft compliance stack, 20% via BSI C5 attestation, 10% structural residual that requires sovereignty decisions — and that residual is precisely why openDesk exists.*
+So the answer to "how far with M365?" is: *~70% of the controls via the Microsoft compliance stack, ~20% via BSI C5 attestation, ~10% structural residual that requires sovereignty decisions — and that residual is precisely why openDesk exists.* (All percentage figures are internal estimates, not certified audit values.)
 
 ## Why This Matters for Universities
 
@@ -231,3 +231,13 @@ The ZKI compliance work is open source like everything else at openDesk Edu. If 
 **Explore the repository, review the policies, and help us reach 90%+.**
 
 [Visit opendesk-edu.org for architecture documentation and deployment guides](https://opendesk-edu.org)
+
+---
+
+## Notes and Sources
+
+- **Not an official audit:** The percentage figures mentioned in this article (37%, 81%, 60–70%, 85–90%) are internal self-assessments by the openDesk Edu team, not certified audit findings and not an official BSI or ZKI assessment.
+- **No ZKI or BSI endorsement:** The use of "ZKI" in policy names (e.g., `zki-require-non-root`) is a reference to the ZKI IT-Grundschutz-Profil, not an official certification or recommendation by ZKI or BSI. openDesk Edu is not certified by ZKI or BSI.
+- **Trademark notice:** All product and service names mentioned in this article (Microsoft 365, Entra ID, Purview, Defender, Compliance Manager, Sentinel, Veeam, AvePoint, Keycloak, ArgoCD, Shibboleth, DFN-AAI, Loki, Prometheus, Grafana, BitLocker, Intune, ILIAS, Moodle, JupyterHub, Nextcloud, Matrix) are trademarks or registered trademarks of their respective owners. They are mentioned for informational and technical description purposes only.
+- **Sources:** [BSI notice on Microsoft 365 (2023)](https://www.bsi.bund.de/SharedDocs/CyberSicherheitswarnungen/TechnischeWarnungen/2023/Hinweis_Microsoft_365_public_cloud.html) · [BSI IT-Grundschutz](https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/IT-Grundschutz/IT-Grundschutz_node.html) · [BSI C5 attestation](https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/Cloud-Computing/C5/c5_node.html) · [CLOUD Act](https://www.congress.gov/bill/115th-congress/house-bill/4943)
+- **Comparative disclaimer:** The comparison with Microsoft 365 is provided for informational purposes only and is not intended to disparage Microsoft or its products. The properties attributed to Microsoft 365 are based on its public documentation.

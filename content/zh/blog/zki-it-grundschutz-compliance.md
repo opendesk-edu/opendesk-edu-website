@@ -85,7 +85,7 @@ BSI IT-Grundschutz 为所有组织提供通用模块，而 ZKI 配置文件则�
 | **P2** | 物理安全 | ✅ 良好 |
 | **P2** | 意识与培训 | ❌ 缺失 |
 
-我们的测量起点：**约 37% 的总体合规率**，在平台已运行的领域，BSI 模块覆盖率约 **81%**。
+我们的内部起点（自我评估，非认证审计）：**约 37% 的总体合规率**，在平台已运行的领域，BSI 模块覆盖率约 **81%**。这些数字是内部估算，不是官方审计结论。
 
 ## 我们构建的内容：策略即代码
 
@@ -190,7 +190,7 @@ openDesk Edu 的变更管理*就是*其 GitOps 流水线：
 
 ### M365 覆盖良好的部分
 
-Microsoft 365 结合完整的合规技术栈（Entra ID P2、Purview、Defender、Compliance Manager），可以合理地直接满足 **111 个检查点中的 60–70%**：
+Microsoft 365 结合完整的合规技术栈（Entra ID P2、Purview、Defender、Compliance Manager），根据我们的估算可以合理地直接满足 **~60–70% 的 111 个检查点**（内部估算，非官方审计）：
 
 - **身份与访问管理**——开箱即用甚至比自建 Keycloak 方案更强大：MFA、条件访问、特权身份管理、细粒度 RBAC。
 - **数据保护**——Purview 敏感度标签、跨 Exchange/SharePoint/Teams/端点的 DLP、保留和法律保留、客户托管密钥、Customer Lockbox。
@@ -206,15 +206,15 @@ Microsoft 365 结合完整的合规技术栈（Entra ID P2、Purview、Defender�
 | 网络安全（INF.5） | 你没有自己的网络可以分段——租户级控制（条件访问、外部共享）无法替代自己的分段和防火墙。 |
 | 系统加固（INF.1） | 没有 Pod、没有 seccomp、没有能力丢弃——工作负载加固检查项直接失效。 |
 | 完整可审计性 | 统一审计日志有边界（默认 90 天）、存在记录缺口，且保存在微软云中而非你自己的 Loki/SIEM 中。 |
-| 主权 | 欧盟数据边界（EU Data Boundary）解决的是*存储位置*，不是*管辖权*——美国当局仍可强制访问（CLOUD Act）。BSI 本身也发布了针对公共行政部门使用 M365 的批评性评估。 |
+| 主权 | 欧盟数据边界（EU Data Boundary）解决的是*存储位置*，不是*管辖权*——美国当局仍可强制访问（CLOUD Act）。BSI 在 2023 年发布了一份关于[在公共行政中使用 Microsoft 365 的通知](https://www.bsi.bund.de/SharedDocs/CyberSicherheitswarnungen/TechnischeWarnungen/2023/Hinweis_Microsoft_365_public_cloud.html)，强调了这些风险。 |
 | 自托管服务 | ILIAS、Moodle、JupyterHub、Nextcloud、Matrix 没有 M365 对应物——它们运行在你自己的基础设施上，需要本文描述的 Kyverno/GitOps/k8up 处理。 |
 | 备份 | 原生保留不等于备份——你需要第三方工具（Veeam、AvePoint 等）。 |
 
 ### 诚实的定位
 
-**混合路径**是德国高校实际运行的方案：M365 A3/A5 用于协作、主权开源服务用于敏感工作负载、第三方备份、Sentinel 作为 SIEM，以及你自己的治理文档。这可以达到 85–90% 的范围——但这不再是纯粹的 M365 故事，最后 10% 是政策问题，而非技术问题。
+**混合路径**是德国高校实际运行的方案：M365 A3/A5 用于协作、主权开源服务用于敏感工作负载、第三方备份、Sentinel 作为 SIEM，以及你自己的治理文档。根据我们的估算，这可以达到 ~85–90% 的范围——但这不再是纯粹的 M365 故事，最后 ~10% 是政策问题，而非技术问题。
 
-所以“使用 M365 能走多远？”的答案是：*70% 的控制通过微软合规栈实现，20% 通过 BSI C5 认证实现，10% 的结构性残留需要主权决策——而这个残留恰恰就是 openDesk 存在的原因。*
+所以"使用 M365 能走多远？"的答案是：*~70% 的控制通过微软合规栈实现，~20% 通过 BSI C5 认证实现，~10% 的结构性残留需要主权决策——而这个残留恰恰就是 openDesk 存在的原因。*（所有百分比均为内部估算，非认证审计值。）
 
 ## 为什么这对大学很重要
 
@@ -231,3 +231,13 @@ ZKI 合规工作与 openDesk Edu 的其他一切一样都是开源的。如果�
 **探索代码仓库，审查策略，帮助我们达到 90%+。**
 
 [访问 opendesk-edu.org 获取架构文档和部署指南](https://opendesk-edu.org)
+
+---
+
+## 说明和来源
+
+- **非官方审计：** 本文中提到的百分比数据（37%、81%、60–70%、85–90%）是 openDesk Edu 团队的内部自我评估，不是认证审计结论，也不是 BSI 或 ZKI 的官方评估。
+- **无 ZKI 或 BSI 背书：** 在策略名称中使用"ZKI"（例如 `zki-require-non-root`）是对 ZKI IT-Grundschutz 配置文件的引用，不是 ZKI 或 BSI 的官方认证或推荐。openDesk Edu 未通过 ZKI 或 BSI 的认证。
+- **商标声明：** 本文中提到的所有产品和服务名称（Microsoft 365、Entra ID、Purview、Defender、Compliance Manager、Sentinel、Veeam、AvePoint、Keycloak、ArgoCD、Shibboleth、DFN-AAI、Loki、Prometheus、Grafana、BitLocker、Intune、ILIAS、Moodle、JupyterHub、Nextcloud、Matrix）均为其各自所有者的商标或注册商标。提及它们仅供信息和技术描述之用。
+- **来源：** [BSI 关于 Microsoft 365 的通知（2023）](https://www.bsi.bund.de/SharedDocs/CyberSicherheitswarnungen/TechnischeWarnungen/2023/Hinweis_Microsoft_365_public_cloud.html) · [BSI IT-Grundschutz](https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/IT-Grundschutz/IT-Grundschutz_node.html) · [BSI C5 认证](https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/Cloud-Computing/C5/c5_node.html) · [CLOUD Act](https://www.congress.gov/bill/115th-congress/house-bill/4943)
+- **比较性声明：** 与 Microsoft 365 的比较仅供信息参考，并非旨在贬低 Microsoft 或其产品。所提及的 Microsoft 365 属性基于其公开文档。

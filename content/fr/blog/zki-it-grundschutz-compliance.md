@@ -85,7 +85,7 @@ Nous avons traduit les modules ZKI/BSI pertinents en **111 points de contrôle c
 | **P2** | Sécurité physique | ✅ Bon |
 | **P2** | Sensibilisation & Formation | ❌ Manquant |
 
-Notre point de départ mesuré : **~37 % de conformité globale**, avec une couverture des modules BSI d'environ **~81 %** là où la plateforme opère déjà.
+Notre point de départ interne (auto-évaluation, pas un audit certifié) : **~37 % de conformité globale**, avec une couverture des modules BSI d'environ **~81 %** là où la plateforme opère déjà. Ces chiffres sont des estimations internes, pas un constat d'audit officiel.
 
 ## Ce que nous avons construit : la politique comme code
 
@@ -190,7 +190,7 @@ Une question que nous entendons constamment lors des évaluations par les univer
 
 ### Ce que M365 couvre bien
 
-Microsoft 365, combiné à la pile de conformité complète (Entra ID P2, Purview, Defender, Compliance Manager), peut raisonnablement satisfaire **60–70 % des 111 points de contrôle directement** :
+Microsoft 365, combiné à la pile de conformité complète (Entra ID P2, Purview, Defender, Compliance Manager), peut selon notre estimation satisfaire **~60–70 % des 111 points de contrôle directement** (estimation interne, pas un audit officiel) :
 
 - **IAM & accès** — potentiellement plus solide qu'une configuration Keycloak maison : MFA, accès conditionnel, gestion des identités privilégiées, RBAC fine.
 - **Protection des données** — étiquettes de confidentialité Purview, DLP sur Exchange/SharePoint/Teams/endpoints, conservation et blocage légal, clés gérées par le client, Customer Lockbox.
@@ -206,15 +206,15 @@ Encore **~15–20 %** ne sont atteignables que par *attestation du fournisseur* 
 | Sécurité réseau (INF.5) | Vous n'avez pas de réseau à segmenter — les contrôles au niveau du locataire (accès conditionnel, partage externe) ne remplacent pas votre propre segmentation et vos pare-feux. |
 | Durcissement système (INF.1) | Pas de pods, pas de seccomp, pas de suppression de capabilities — les points de durcissement des workloads sont simplement sans objet. |
 | Auditabilité complète | Le journal d'audit unifié est limité (90 jours par défaut), comporte des lacunes et vit dans le cloud Microsoft plutôt que dans votre propre Loki/SIEM. |
-| Souveraineté | La limite de données européenne (EU Data Boundary) fixe la *résidence*, pas la *juridiction* — les autorités américaines peuvent toujours contraindre l'accès (CLOUD Act). Le BSI lui-même a publié une évaluation critique de M365 pour l'administration publique. |
+| Souveraineté | La limite de données européenne (EU Data Boundary) fixe la *résidence*, pas la *juridiction* — les autorités américaines peuvent toujours contraindre l'accès (CLOUD Act). Le BSI a publié en 2023 un [avis sur l'utilisation de Microsoft 365 dans l'administration publique](https://www.bsi.bund.de/SharedDocs/CyberSicherheitswarnungen/TechnischeWarnungen/2023/Hinweis_Microsoft_365_public_cloud.html) soulignant ces risques. |
 | Services auto-hébergés | ILIAS, Moodle, JupyterHub, Nextcloud, Matrix n'ont pas d'équivalent M365 — ils tournent sur votre propre infrastructure et nécessitent exactement le traitement Kyverno/GitOps/k8up décrit ici. |
 | Sauvegarde | La conservation native n'est pas une sauvegarde — vous avez besoin d'un outil tiers (Veeam, AvePoint, …). |
 
 ### Le cadre honnête
 
-Une **voie hybride** est ce que les universités allemandes font réellement : M365 A3/A5 pour la collaboration, des services open-source souverains pour les workloads sensibles, une sauvegarde tierce, Sentinel comme SIEM et votre propre documentation de gouvernance. Cela atteint la bande des 85–90 % — mais ce n'est plus une histoire purement M365, et les derniers 10 % sont de la politique, pas de la technologie.
+Une **voie hybride** est ce que les universités allemandes font réellement : M365 A3/A5 pour la collaboration, des services open-source souverains pour les workloads sensibles, une sauvegarde tierce, Sentinel comme SIEM et votre propre documentation de gouvernance. Cela atteint selon notre estimation la bande des ~85–90 % — mais ce n'est plus une histoire purement M365, et les derniers ~10 % sont de la politique, pas de la technologie.
 
-La réponse à « Jusqu'où avec M365 ? » est donc : *70 % des contrôles via la pile de conformité Microsoft, 20 % via l'attestation BSI C5, 10 % de résidu structurel qui exige des décisions de souveraineté — et c'est précisément ce résidu qui explique l'existence d'openDesk.*
+La réponse à « Jusqu'où avec M365 ? » est donc : *~70 % des contrôles via la pile de conformité Microsoft, ~20 % via l'attestation BSI C5, ~10 % de résidu structurel qui exige des décisions de souveraineté — et c'est précisément ce résidu qui explique l'existence d'openDesk.* (Tous les pourcentages sont des estimations internes, pas des valeurs d'audit certifiées.)
 
 ## Pourquoi c'est important pour les universités
 
@@ -231,3 +231,13 @@ Le travail de conformité ZKI est open-source comme tout chez openDesk Edu. Si v
 **Explorez le dépôt, examinez les politiques et aidez-nous à atteindre 90 %+.**
 
 [Visitez opendesk-edu.org pour la documentation d'architecture et les guides de déploiement](https://opendesk-edu.org)
+
+---
+
+## Notes et sources
+
+- **Pas un audit officiel :** Les pourcentages mentionnés dans cet article (37 %, 81 %, 60–70 %, 85–90 %) sont des auto-évaluations internes de l'équipe openDesk Edu, pas des constats d'audit certifiés et pas une évaluation officielle du BSI ou du ZKI.
+- **Aucune recommandation du ZKI ou du BSI :** L'utilisation de « ZKI » dans les noms de politiques (par ex. `zki-require-non-root`) est une référence au profil ZKI IT-Grundschutz, pas une certification ou une recommandation officielle du ZKI ou du BSI. openDesk Edu n'est pas certifié par le ZKI ou le BSI.
+- **Avis sur les marques :** Toutes les marques et désignations de produits et services mentionnées dans cet article (Microsoft 365, Entra ID, Purview, Defender, Compliance Manager, Sentinel, Veeam, AvePoint, Keycloak, ArgoCD, Shibboleth, DFN-AAI, Loki, Prometheus, Grafana, BitLocker, Intune, ILIAS, Moodle, JupyterHub, Nextcloud, Matrix) sont des marques ou des marques déposées de leurs propriétaires respectifs. Elles sont mentionnées à titre informatif et de description technique uniquement.
+- **Sources :** [Avis du BSI sur Microsoft 365 (2023)](https://www.bsi.bund.de/SharedDocs/CyberSicherheitswarnungen/TechnischeWarnungen/2023/Hinweis_Microsoft_365_public_cloud.html) · [BSI IT-Grundschutz](https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/IT-Grundschutz/IT-Grundschutz_node.html) · [Attestation BSI C5](https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/Cloud-Computing/C5/c5_node.html) · [CLOUD Act](https://www.congress.gov/bill/115th-congress/house-bill/4943)
+- **Avertissement comparatif :** La comparaison avec Microsoft 365 est fournie à titre informatif uniquement et n'a pas pour but de dénigrer Microsoft ou ses produits. Les propriétés attribuées à Microsoft 365 sont basées sur sa documentation publique.
