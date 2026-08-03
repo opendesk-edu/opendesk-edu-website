@@ -20,7 +20,7 @@ image: "/static/blog/la-suite-vs-opendesk-edu-teaser.svg"
 
 En 2023, le gouvernement français a lancé **La Suite numérique** — un espace de travail numérique souverain pour l'administration publique, piloté par la DINUM (Direction interministérielle du numérique). La promesse : remplacer Google Workspace et Microsoft 365 par un ensemble d'outils open source curatés, hébergés sur une infrastructure souveraine française.
 
-En Allemagne, **openDesk Edu** est né dans un autre contexte — celui de l'enseignement supérieur. Hébergé par le HRZ Marburg et construit sur la plateforme openDesk CE, il intègre plus de 25 services open source pour les universités : non seulement des outils de collaboration, mais aussi des systèmes de gestion de l'apprentissage, du calcul scientifique et de l'infrastructure de recherche.
+En Allemagne, **openDesk Edu** est né dans un autre contexte — celui de l'enseignement supérieur. Construit sur la plateforme openDesk CE, il intègre plus de 25 services open source pour les universités : non seulement des outils de collaboration, mais aussi des systèmes de gestion de l'apprentissage, du calcul scientifique et de l'infrastructure de recherche.
 
 Les deux projets naissent de la même conviction : **les institutions publiques européennes ne devraient pas dépendre des fournisseurs de cloud américains pour leur infrastructure numérique de base.** Les deux rejettent l'exposition au CLOUD Act, l'enfermement propriétaire et l'escalade des coûts de licence du stack GAFAM. Les deux misent sur l'open source comme voie vers la souveraineté.
 
@@ -59,7 +59,7 @@ Le BSI (Allemagne) et l'ANSSI (France) ont tous deux publié des recommandations
 Aucun des deux projets n'est une initiative citoyenne. Les deux ont un poids institutionnel :
 
 - **La Suite** est opérée par la DINUM, l'unité de transformation numérique du gouvernement français, avec un financement du budget de l'État français et un mandat couvrant tous les fonctionnaires français (~5,7 millions d'utilisateurs potentiels)
-- **openDesk Edu** est opéré par le HRZ Marburg (centre informatique de l'Université de Marbourg), avec le soutien du ministère de la Science et de l'Art de Hesse, et est conçu pour les universités allemandes (~3 millions d'étudiants et personnels)
+- **openDesk Edu** est opéré par une équipe universitaire allemande, avec le soutien du ministère de la Science et de l'Art de Hesse, et est conçu pour les universités allemandes (~3 millions d'étudiants et personnels)
 
 ### 4. L'ennemi commun
 
@@ -78,7 +78,7 @@ C'est la différence la plus importante.
 
 **La Suite** est une **plateforme SaaS centralisée.** La DINUM héberge les services sur une infrastructure souveraine française (actuellement sur Bleu, la co-entreprise de cloud souverain entre Thales et OVHcloud, ou sur Outscale). Les fonctionnaires français se connectent à une instance unique gérée par la DINUM. Il n'y a pas de déploiement local — vous utilisez l'instance du gouvernement ou vous n'utilisez pas La Suite.
 
-**openDesk Edu** est une **plateforme d'auto-hébergement fédérée.** Chaque université déploie sa propre instance sur son propre cluster Kubernetes. Le HRZ Marbourg exploite le déploiement de référence, mais chaque institution peut — et est encouragée à — exploiter le sien. Le pipeline GitOps (ArgoCD + Helmfile) rend cela reproductible, mais le déploiement vous appartient.
+**openDesk Edu** est une **plateforme d'auto-hébergement fédérée.** Chaque université déploie sa propre instance sur son propre cluster Kubernetes. Le déploiement de référence est exploité par l'équipe du projet, mais chaque institution peut — et est encouragée à — exploiter le sien. Le pipeline GitOps (ArgoCD + Helmfile) rend cela reproductible, mais le déploiement vous appartient.
 
 | Aspect | La Suite | openDesk Edu |
 |--------|----------|--------------|
@@ -91,7 +91,7 @@ C'est la différence la plus importante.
 Ce n'est pas un détail architectural mineur. Il reflète des philosophies fondamentalement différentes :
 
 - **La France** fait confiance à l'État pour exploiter un service central pour tous les fonctionnaires. L'État a les ressources, le mandat et la volonté politique d'opérer à l'échelle nationale.
-- **L'Allemagne** fait confiance à chaque institution d'exploiter la sienne. La structure fédérale de l'enseignement supérieur allemand — chaque université est autonome — rend un modèle centralisé politiquement impossible. Le HRZ Marburg peut construire une référence, mais ne peut pas imposer l'adoption.
+- **L'Allemagne** fait confiance à chaque institution d'exploiter la sienne. La structure fédérale de l'enseignement supérieur allemand — chaque université est autonome — rend un modèle centralisé politiquement impossible. L'équipe du projet peut construire une référence, mais ne peut pas imposer l'adoption.
 
 ### 2. Public cible : fonctionnaires vs. milieu académique
 
@@ -127,7 +127,7 @@ La différence de portée est significative : DFN-AAI/eduGAIN donne à openDesk 
 
 Le catalogue de services est volontairement restreint — la DINUM privilégie la qualité et l'adoption à l'ampleur.
 
-**openDesk Edu** intègre plus de 25 services et est en production au HRZ Marburg. La plateforme comprend :
+**openDesk Edu** intègre plus de 25 services et est en production. La plateforme comprend :
 
 - Suite de collaboration complète (Nextcloud, Collabora, Matrix, courriel)
 - Outils éducatifs (ILIAS, Moodle, BigBlueButton, XWiki)
@@ -142,7 +142,7 @@ La différence de périmètre reflète la cible : les universités ont besoin d'
 
 **La Suite** est un **projet gouvernemental descendant.** La DINUM définit la feuille de route, choisit les outils et contrôle le déploiement. Les retours des utilisateurs passent par des canaux formels. Le code est open source, mais la gouvernance est centralisée.
 
-**openDesk Edu** est un **projet piloté par la communauté.** Bien que le HRZ Marburg dirige le développement, le projet est ouvert sur GitHub et Codeberg, accepte les contributions et publie sa feuille de route publiquement. L'accord de contributeur, les réunions de la communauté de pratique et l'analyse d'écart transparente (le travail de conformité ZKI) reflètent un modèle de gouvernance différent — celui où les institutions collaborent plutôt que reçoivent un service.
+**openDesk Edu** est un **projet piloté par la communauté.** Bien que l'équipe du projet dirige le développement, le projet est ouvert sur GitHub et Codeberg, accepte les contributions et publie sa feuille de route publiquement. L'accord de contributeur, les réunions de la communauté de pratique et l'analyse d'écart transparente (le travail de conformité ZKI) reflètent un modèle de gouvernance différent — celui où les institutions collaborent plutôt que reçoivent un service.
 
 ### 6. Cadres de sécurité et de conformité
 
@@ -197,7 +197,7 @@ Ce n'est pas utopique. Les composants sont déjà partagés. Les projets open so
 Les deux projets s'alignent avec la vision GAIA-X de souveraineté des données européenne — mais sous des angles différents :
 
 - **La Suite** opère sur Bleu, un cloud souverain compatible GAIA-X
-- **openDesk Edu** fonctionne sur Kubernetes sur site au HRZ Marburg, qui pourrait se fédérer avec l'infrastructure GAIA-X
+- **openDesk Edu** fonctionne sur Kubernetes sur site, qui pourrait se fédérer avec l'infrastructure GAIA-X
 
 Une fédération GAIA-X qui connecte les services centralisés de La Suite avec les déploiements fédérés d'openDesk Edu pourrait créer un espace de travail numérique véritablement européen — un où la souveraineté n'est pas seulement nationale, mais continentale.
 
@@ -205,7 +205,7 @@ Une fédération GAIA-X qui connecte les services centralisés de La Suite avec 
 
 L'équipe d'openDesk Edu a pris contact informellement avec ses homologues de la DINUM. La réponse a été positive — il y a un véritable intérêt pour la collaboration. Voici ce que nous proposons :
 
-1. **Un atelier conjoint** sur les espaces de travail numériques souverains dans l'administration publique européenne, co-organisé par la DINUM et le HRZ Marburg
+1. **Un atelier conjoint** sur les espaces de travail numériques souverains dans l'administration publique européenne, co-organisé par la DINUM et l'équipe openDesk Edu
 2. **Une matrice de composants partagée** — cartographiant les services open source utilisés par chaque plateforme, identifiant les opportunités de développement conjoint
 3. **Intégration eduGAIN pour La Suite** — étendre AgentConnect/ProConnect pour participer à la fédération de recherche mondiale
 4. **Une évaluation transfrontalière** — laisser une université française piloter openDesk Edu et une agence allemande piloter La Suite, pour apprendre des deux modèles
@@ -228,3 +228,13 @@ La vraie concurrence n'est pas La Suite contre openDesk Edu. C'est la **souverai
 [Explorez l'architecture et les guides de déploiement d'openDesk Edu](https://opendesk-edu.org)
 
 [En savoir plus sur La Suite numérique (en français)](https://www.numerique.gouv.fr/services/la-suite-numerique/)
+
+[Voir le projet openDesk CE en amont](https://opendesk.eu)
+
+## Avertissement et notice de marque
+
+**Marques :** La Suite numérique est une initiative de la DINUM (Direction interministérielle du numérique), l'unité de transformation numérique du gouvernement français. openDesk et openDesk Edu sont des projets open source. Tous les noms de produits et marques commerciales sont la propriété de leurs propriétaires respectifs. Cet article est une analyse indépendante et n'est ni affilié à, ni approuvé par, ni sponsorisé par la DINUM ou le gouvernement français.
+
+**Avis sur la publicité comparative :** Cet article compare La Suite numérique et openDesk Edu. La comparaison est basée sur des informations publiquement disponibles et l'évaluation des auteurs. Les deux initiatives ont des forces et des faiblesses, et le meilleur choix dépend des circonstances institutionnelles.
+
+**Opinion et évaluation :** Cet article reflète l'opinion et l'évaluation de l'équipe openDesk Edu. Il ne constitue pas un conseil juridique, technique ou d'achat.

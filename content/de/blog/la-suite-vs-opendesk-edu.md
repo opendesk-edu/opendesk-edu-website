@@ -234,3 +234,11 @@ Das openDesk CE-Upstream-Projekt, mit Deployments wie Zendis, beweist, dass eine
 [Mehr über La Suite numérique (auf Französisch)](https://www.numerique.gouv.fr/services/la-suite-numerique/)
 
 [Das openDesk CE Upstream-Projekt ansehen](https://opendesk.eu)
+
+## Haftungsausschluss und Markenrechtlicher Hinweis
+
+**Marken:** La Suite numérique ist eine Initiative der DINUM (Direction interministérielle du numérique), der digitalen Transformationseinheit der französischen Regierung. openDesk und openDesk Edu sind Open-Source-Projekte. Alle Produktnamen und Marken sind Eigentum ihrer jeweiligen Inhaber. Dieser Artikel ist eine unabhängige Analyse und steht in keiner Verbindung zu, wird nicht unterstützt von und ist nicht gesponsert von DINUM oder der französischen Regierung.
+
+**Hinweis zur vergleichenden Werbung:** Dieser Artikel vergleicht La Suite numérique und openDesk Edu. Der Vergleich basiert auf öffentlich verfügbaren Informationen und der Einschätzung der Autoren. Beide Initiativen haben Stärken und Schwächen, und die beste Wahl hängt von den institutionellen Umständen ab.
+
+**Meinung und Einschätzung:** Dieser Artikel spiegelt die Meinung und Einschätzung des openDesk Edu-Teams wider. Er ist keine Rechts-, Technik- oder Beschaffungsberatung.

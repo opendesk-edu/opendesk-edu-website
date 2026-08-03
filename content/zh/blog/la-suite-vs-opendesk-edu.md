@@ -20,7 +20,7 @@ image: "/static/blog/la-suite-vs-opendesk-edu-teaser.svg"
 
 2023年，法国政府推出了 **La Suite numérique**——一个面向公共行政的主权数字工作场所，由 DINUM（法国数字转型部际指导委员会）主导。承诺是：用法国主权基础设施上托管的一组精选开源工具替代 Google Workspace 和 Microsoft 365。
 
-在德国，**openDesk Edu** 诞生于不同的背景——高等教育。由马尔堡大学 IT 中心（HRZ Marburg）托管，建立在 openDesk CE 平台之上，它集成了 25+ 个面向大学的开源服务：不仅是协作工具，还包括学习管理系统、科学计算和研究基础设施。
+在德国，**openDesk Edu** 诞生于不同的背景——高等教育。它建立在 openDesk CE 平台之上，集成了 25+ 个面向大学的开源服务：不仅是协作工具，还包括学习管理系统、科学计算和研究基础设施。
 
 两个项目都源于同一种信念：**欧洲公共机构不应依赖美国云提供商提供核心数字基础设施。** 两者都拒绝 CLOUD Act 风险、供应商锁定和 GAFAM 技术栈不断上涨的许可成本。两者都以开源作为通向主权的路径。
 
@@ -59,7 +59,7 @@ BSI（德国）和 ANSSI（法国）都发布了批评 Microsoft 365 用于公�
 两个项目都不是草根倡议。两者都有机构支持：
 
 - **La Suite** 由 DINUM 运营，DINUM 是法国政府的数字转型部门，资金来自法国国家预算，覆盖所有法国公务员（约 570 万潜在用户）
-- **openDesk Edu** 由马尔堡大学 IT 中心运营，得到黑森州科学和艺术部的支持，面向德国大学（约 300 万学生 + 教职工）
+- **openDesk Edu** 由德国大学团队运营，得到黑森州科学和艺术部的支持，面向德国大学（约 300 万学生 + 教职工）
 
 ### 4. 共同的对手
 
@@ -78,7 +78,7 @@ BSI（德国）和 ANSSI（法国）都发布了批评 Microsoft 365 用于公�
 
 **La Suite** 是一个**集中式 SaaS 平台。** DINUM 在法国主权基础设施上托管服务（目前在 Bleu 上——Thales 和 OVHcloud 之间的法国主权云合资企业——或在 Outscale 上）。法国公务员连接到由 DINUM 管理的单一实例。没有本地部署——你要么使用政府实例，要么不使用 La Suite。
 
-**openDesk Edu** 是一个**联邦式自托管平台。** 每所大学在自己的 Kubernetes 集群上部署自己的实例。马尔堡大学 IT 中心运行参考部署，但每个机构都可以——并被期望——运行自己的实例。GitOps 流水线（ArgoCD + Helmfile）使这可复制，但部署是你自己的。
+**openDesk Edu** 是一个**联邦式自托管平台。** 每所大学在自己的 Kubernetes 集群上部署自己的实例。项目团队运行参考部署，但每个机构都可以——并被期望——运行自己的实例。GitOps 流水线（ArgoCD + Helmfile）使这可复制，但部署是你自己的。
 
 | 方面 | La Suite | openDesk Edu |
 |------|----------|--------------|
@@ -91,7 +91,7 @@ BSI（德国）和 ANSSI（法国）都发布了批评 Microsoft 365 用于公�
 这不是一个小的架构细节。它反映了根本不同的理念：
 
 - **法国** 信任国家为所有公务员运行中央服务。国家有资源、授权和政治意愿在全国范围内运营。
-- **德国** 信任每个机构运行自己的实例。德国高等教育的联邦结构——每所大学都是自治的——使集中式模式在政治上不可能。马尔堡大学 IT 中心可以建立参考，但不能强制采用。
+- **德国** 信任每个机构运行自己的实例。德国高等教育的联邦结构——每所大学都是自治的——使集中式模式在政治上不可能。项目团队可以建立参考，但不能强制采用。
 
 ### 2. 目标用户：公务员 vs. 学术界
 
@@ -127,7 +127,7 @@ BSI（德国）和 ANSSI（法国）都发布了批评 Microsoft 365 用于公�
 
 服务目录有意精简——DINUM 优先考虑质量和采用率而非广度。
 
-**openDesk Edu** 集成了 25+ 个服务，已在马尔堡大学 IT 中心投入生产。平台包括：
+**openDesk Edu** 集成了 25+ 个服务，已在生产环境中运行。平台包括：
 
 - 完整协作套件（Nextcloud、Collabora、Matrix、电子邮件）
 - 教育工具（ILIAS、Moodle、BigBlueButton、XWiki）
@@ -142,7 +142,7 @@ BSI（德国）和 ANSSI（法国）都发布了批评 Microsoft 365 用于公�
 
 **La Suite** 是一个**自上而下的政府项目。** DINUM 设定路线图、选择工具、控制部署。用户反馈通过正式渠道流动。代码是开源的，但治理是集中的。
 
-**openDesk Edu** 是一个**社区驱动的项目。** 虽然马尔堡大学 IT 中心领导开发，但项目在 GitHub 和 Codeberg 上开放，接受贡献，并公开发布路线图。贡献者协议、实践社区会议和透明差距分析（ZKI 合规工作）都反映了不同的治理模式——机构合作而非接受服务。
+**openDesk Edu** 是一个**社区驱动的项目。** 虽然项目团队领导开发，但项目在 GitHub 和 Codeberg 上开放，接受贡献，并公开发布路线图。贡献者协议、实践社区会议和透明差距分析（ZKI 合规工作）都反映了不同的治理模式——机构合作而非接受服务。
 
 ### 6. 安全和合规框架
 
@@ -197,7 +197,7 @@ La Suite 和 openDesk Edu 之间的差异不是缺陷——它们反映了法国
 两个项目都与 GAIA-X 欧洲数据主权愿景一致——但角度不同：
 
 - **La Suite** 在 Bleu 上运行——一个 GAIA-X 兼容的主权云
-- **openDesk Edu** 在马尔堡大学 IT 中心的本地 Kubernetes 上运行，可以与 GAIA-X 基础设施联邦
+- **openDesk Edu** 在本地 Kubernetes 上运行，可以与 GAIA-X 基础设施联邦
 
 一个连接 La Suite 集中式服务和 openDesk Edu 联邦式部署的 GAIA-X 联邦可以创建一个真正的欧洲数字工作场所——一个主权不仅是国家的，而且是大陆性的。
 
@@ -205,7 +205,7 @@ La Suite 和 openDesk Edu 之间的差异不是缺陷——它们反映了法国
 
 openDesk Edu 团队已与 DINUM 对口方进行了非正式接触。反应是积极的——对合作有真正的兴趣。以下是我们提议的：
 
-1. **联合研讨会**——关于欧洲公共行政主权数字工作场所，由 DINUM 和马尔堡大学 IT 中心联合主办
+1. **联合研讨会**——关于欧洲公共行政主权数字工作场所，由 DINUM 和 openDesk Edu 团队联合主办
 2. **共享组件矩阵**——映射每个平台使用的开源服务，识别联合开发机会
 3. **La Suite 的 eduGAIN 集成**——扩展 AgentConnect/ProConnect 以参与全球研究联邦
 4. **跨境评估**——让一所法国大学试点 openDesk Edu，一个德国机构试点 La Suite，从两种模式中学习
@@ -228,3 +228,13 @@ La Suite 和 openDesk Edu 不是竞争者。它们是**同一欧洲理念的互�
 [探索 openDesk Edu 架构和部署指南](https://opendesk-edu.org)
 
 [了解更多关于 La Suite numérique（法语）](https://www.numerique.gouv.fr/services/la-suite-numerique/)
+
+[查看 openDesk CE 上游项目](https://opendesk.eu)
+
+## 免责声明和商标声明
+
+**商标：** La Suite numérique 是法国政府数字转型部门 DINUM（Direction interministérielle du numérique）的一项倡议。openDesk 和 openDesk Edu 是开源项目。所有产品名称和商标均为其各自所有者的财产。本文是独立分析，不隶属于、不受 DINUM 或法国政府认可或赞助。
+
+**比较广告声明：** 本文比较 La Suite numérique 和 openDesk Edu。比较基于公开可用信息和作者的评估。两个倡议都有优势和劣势，最佳选择取决于机构情况。
+
+**观点和评估：** 本文反映 openDesk Edu 团队的观点和评估。它不是法律、技术或采购建议。

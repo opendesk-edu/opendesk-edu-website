@@ -11,14 +11,14 @@ image: "/static/blog/opendesk-edu-1-1-teaser.svg"
 
 Today we are releasing **openDesk Edu 1.1**, tracking upstream [openDesk 1.17](https://gitlab.opencode.de/opencode/opendesk). This is our first milestone release — not just a version number, but a reflection of everything built since we launched openDesk Edu on April 15, 2026.
 
-In just over three months, the project has grown from a launch announcement to a fully operational platform running in production at the University of Marburg, with a growing community of contributors, 22 published articles across four languages, and a clear technical direction. This article tells that story.
+In just over three months, the project has grown from a launch announcement to a fully operational platform running in production, with a growing community of contributors, 22 published articles across four languages, and a clear technical direction. This article tells that story.
 
 ## At a Glance
 
 | Metric | Value |
 |--------|-------|
 | Upstream releases tracked | openDesk 1.13 → 1.17 (4 releases) |
-| Production cluster | HRZ Maui: 57 pods, 33 services, 9 nodes |
+| Production cluster | 57 pods, 33 services, 9 nodes |
 | Blog articles | 22 (EN, DE, FR, ZH — 88 total pages) |
 | Community of Practice | 3 sessions, growing participation |
 | Contributor agreements | 3 signed |
@@ -38,7 +38,7 @@ We've established a streamlined contribution process: a [Contributor License Agr
 
 ### Multi-University Engagement
 
-While the University of Marburg remains the reference deployment, we're in active discussions with several other institutions evaluating openDesk Edu for their own environments. The questions we hear — about SAML federation, S3 storage, backup strategies, and operational staffing — are shaping our roadmap priorities.
+While the reference deployment remains the primary instance, we're in active discussions with several other institutions evaluating openDesk Edu for their own environments. The questions we hear — about SAML federation, S3 storage, backup strategies, and operational staffing — are shaping our roadmap priorities.
 
 ### Multilingual Content Pipeline
 
@@ -46,7 +46,7 @@ All content on this site is published in **English, German, French, and Chinese*
 
 ## Operational Maturity
 
-The HRZ Maui cluster at the University of Marburg is the operational proof point for openDesk Edu. What began as a pilot deployment has matured through two dedicated hardening sprints into a production environment.
+The production cluster is the operational proof point for openDesk Edu. What began as a pilot deployment has matured through two dedicated hardening sprints into a production environment.
 
 ### Production Cluster
 
@@ -86,7 +86,7 @@ Since our launch on openDesk 1.13, the upstream project has released four versio
 | SeaweedFS | — | Added | New S3 storage layer for object storage |
 | Kubernetes secrets | — | Migrated | From Helm-managed to Kubernetes-native secrets |
 
-Beyond version bumps, upstream focused heavily on **security hardening** across releases — addressing CVEs in OpenProject (CVE-2026-1234, CVE-2026-5678), Keycloak, and Collabora, and strengthening the overall platform posture.
+Beyond version bumps, upstream focused heavily on **security hardening** across releases — addressing CVEs in OpenProject, Keycloak, and Collabora, and strengthening the overall platform posture.
 
 ### Key Technical Achievements
 
@@ -102,7 +102,7 @@ The openDesk Edu website now hosts **22 articles** across four language tracks:
 
 - **Strategic:** Digital sovereignty in education, the Microsoft 365 dependency trap, why openDesk Edu chose open source
 - **Technical:** Platform architecture, service landscape, deployment guide, GitOps patterns, secret management, SAML federation
-- **Operational:** Progress reports (Maui cluster), sprint updates, infrastructure deep-dives
+- **Operational:** Progress reports (production cluster), sprint updates, infrastructure deep-dives
 - **Community:** Community of Practice recaps, contributor guides, collaboration tool overviews
 
 Every article is published in EN, DE, FR, and ZH — 88 page variants in total, all statically generated and served from our Docker image.

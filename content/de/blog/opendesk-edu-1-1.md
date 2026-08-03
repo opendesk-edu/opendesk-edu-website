@@ -11,14 +11,14 @@ image: "/static/blog/opendesk-edu-1-1-teaser.svg"
 
 Heute veröffentlichen wir **openDesk Edu 1.1**, das upstream [openDesk 1.17](https://gitlab.opencode.de/opencode/opendesk) abbildet. Dies ist unser erster Meilenstein-Release — nicht nur eine Versionsnummer, sondern ein Spiegelbild all dessen, was seit dem Start von openDesk Edu am 15. April 2026 aufgebaut wurde.
 
-In nur etwas mehr als drei Monaten ist das Projekt von einer Ankündigung zu einer vollständig operativen Plattform gewachsen, die in Produktion an der Universität Marburg läuft — mit einer wachsenden Gemeinschaft von Mitwirkenden, 22 veröffentlichten Artikeln in vier Sprachen und einer klaren technischen Ausrichtung. Dieser Artikel erzählt diese Geschichte.
+In nur etwas mehr als drei Monaten ist das Projekt von einer Ankündigung zu einer vollständig operativen Plattform gewachsen, die in Produktion läuft — mit einer wachsenden Gemeinschaft von Mitwirkenden, 22 veröffentlichten Artikeln in vier Sprachen und einer klaren technischen Ausrichtung. Dieser Artikel erzählt diese Geschichte.
 
 ## Auf einen Blick
 
 | Kennzahl | Wert |
 |----------|------|
 | Upstream-Releases abgebildet | openDesk 1.13 → 1.17 (4 Releases) |
-| Produktionscluster | HRZ Maui: 57 Pods, 33 Dienste, 9 Knoten |
+| Produktionscluster | 57 Pods, 33 Dienste, 9 Knoten |
 | Blog-Artikel | 22 (EN, DE, FR, ZH — 88 Seiten insgesamt) |
 | Community of Practice | 3 Sitzungen, wachsende Beteiligung |
 | Mitwirkendenvereinbarungen | 3 unterzeichnet |
@@ -38,7 +38,7 @@ Wir haben einen optimierten Beitragsprozess etabliert: eine [Mitwirkendenvereinb
 
 ### Engagement mehrerer Universitäten
 
-Während die Universität Marburg das Referenz-Deployment bleibt, führen wir aktive Gespräche mit mehreren anderen Einrichtungen, die openDesk Edu für ihre eigenen Umgebungen evaluieren. Die Fragen, die wir hören — zu SAML-Föderation, S3-Speicher, Backup-Strategien und operativem Personal — prägen unsere Roadmap-Prioritäten.
+Während das Referenz-Deployment die primäre Instanz bleibt, führen wir aktive Gespräche mit mehreren anderen Einrichtungen, die openDesk Edu für ihre eigenen Umgebungen evaluieren. Die Fragen, die wir hören — zu SAML-Föderation, S3-Speicher, Backup-Strategien und operativem Personal — prägen unsere Roadmap-Prioritäten.
 
 ### Mehrsprachige Content-Pipeline
 
@@ -46,7 +46,7 @@ Alle Inhalte auf dieser Website werden in **Englisch, Deutsch, Französisch und 
 
 ## Betriebliche Reife
 
-Der HRZ-Maui-Cluster an der Universität Marburg ist der betriebliche Nachweis für openDesk Edu. Was als Piloteinsatz begann, hat sich durch zwei spezielle Härtungssprints zu einer Produktionsumgebung entwickelt.
+Der Produktionscluster ist der betriebliche Nachweis für openDesk Edu. Was als Piloteinsatz begann, hat sich durch zwei spezielle Härtungssprints zu einer Produktionsumgebung entwickelt.
 
 ### Produktionscluster
 
@@ -86,7 +86,7 @@ Seit unserem Start auf openDesk 1.13 hat das Upstream-Projekt vier Versionen ver
 | SeaweedFS | — | Hinzugefügt | Neuer S3-Speicherlayer für Objektspeicher |
 | Kubernetes-Secrets | — | Migriert | Von Helm-verwaltet zu Kubernetes-nativen Secrets |
 
-Über die Versionssprünge hinaus hat sich Upstream stark auf **Sicherheitshärtung** über alle Releases konzentriert — Adressierung von CVEs in OpenProject (CVE-2026-1234, CVE-2026-5678), Keycloak und Collabora sowie Stärkung der Gesamtplattform-Posture.
+Über die Versionssprünge hinaus hat sich Upstream stark auf **Sicherheitshärtung** über alle Releases konzentriert — Adressierung von CVEs in OpenProject, Keycloak und Collabora sowie Stärkung der Gesamtplattform-Posture.
 
 ### Wichtige technische Errungenschaften
 
@@ -102,7 +102,7 @@ Die openDesk-Edu-Website hostet nun **22 Artikel** in vier Sprachtracks:
 
 - **Strategisch:** Digitale Souveränität in der Bildung, die Microsoft-365-Abhängigkeitsfalle, warum openDesk Edu Open Source gewählt hat
 - **Technisch:** Plattformarchitektur, Service-Landschaft, Deployment-Anleitung, GitOps-Muster, Secret-Management, SAML-Föderation
-- **Operativ:** Fortschrittsberichte (Maui-Cluster), Sprint-Updates, Infrastruktur-Deep-Dives
+- **Operativ:** Fortschrittsberichte (Produktionscluster), Sprint-Updates, Infrastruktur-Deep-Dives
 - **Community:** Community-of-Practice-Zusammenfassungen, Mitwirkenden-Guides, Kollaborationstool-Übersichten
 
 Jeder Artikel wird in EN, DE, FR und ZH veröffentlicht — 88 Seitenvarianten insgesamt, alle statisch generiert und aus unserem Docker-Image ausgeliefert.

@@ -11,14 +11,14 @@ image: "/static/blog/opendesk-edu-1-1-teaser.svg"
 
 Aujourd'hui, nous publions **openDesk Edu 1.1**, intégrant l'upstream [openDesk 1.17](https://gitlab.opencode.de/opencode/opendesk). Il s'agit de notre première version jalon — pas seulement un numéro de version, mais le reflet de tout ce qui a été construit depuis le lancement d'openDesk Edu le 15 avril 2026.
 
-En un peu plus de trois mois, le projet est passé d'une annonce à une plateforme entièrement opérationnelle fonctionnant en production à l'Université de Marbourg, avec une communauté croissante de contributeurs, 22 articles publiés en quatre langues et une direction technique claire. Cet article raconte cette histoire.
+En un peu plus de trois mois, le projet est passé d'une annonce à une plateforme entièrement opérationnelle fonctionnant en production, avec une communauté croissante de contributeurs, 22 articles publiés en quatre langues et une direction technique claire. Cet article raconte cette histoire.
 
 ## En un coup d'œil
 
 | Métrique | Valeur |
 |----------|--------|
 | Versions upstream intégrées | openDesk 1.13 → 1.17 (4 versions) |
-| Cluster de production | HRZ Maui : 57 pods, 33 services, 9 nœuds |
+| Cluster de production | 57 pods, 33 services, 9 nœuds |
 | Articles de blog | 22 (EN, DE, FR, ZH — 88 pages au total) |
 | Community of Practice | 3 sessions, participation croissante |
 | Accords de contributeurs | 3 signés |
@@ -38,7 +38,7 @@ Nous avons établi un processus de contribution simplifié : un [accord de contr
 
 ### Engagement multi-universitaire
 
-Bien que l'Université de Marbourg reste le déploiement de référence, nous sommes en discussions actives avec plusieurs autres institutions évaluant openDesk Edu pour leurs propres environnements. Les questions que nous recevons — concernant la fédération SAML, le stockage S3, les stratégies de sauvegarde et le personnel opérationnel — façonnent les priorités de notre feuille de route.
+Bien que le déploiement de référence reste l'instance principale, nous sommes en discussions actives avec plusieurs autres institutions évaluant openDesk Edu pour leurs propres environnements. Les questions que nous recevons — concernant la fédération SAML, le stockage S3, les stratégies de sauvegarde et le personnel opérationnel — façonnent les priorités de notre feuille de route.
 
 ### Pipeline de contenu multilingue
 
@@ -46,7 +46,7 @@ Tout le contenu de ce site est publié en **anglais, allemand, français et chin
 
 ## Maturité opérationnelle
 
-Le cluster HRZ Maui à l'Université de Marbourg est la preuve opérationnelle d'openDesk Edu. Ce qui a commencé comme un déploiement pilote a mûri à travers deux sprints de durcissement dédiés pour devenir un environnement de production.
+Le cluster de production est la preuve opérationnelle d'openDesk Edu. Ce qui a commencé comme un déploiement pilote a mûri à travers deux sprints de durcissement dédiés pour devenir un environnement de production.
 
 ### Cluster de production
 
@@ -86,7 +86,7 @@ Depuis notre lancement sur openDesk 1.13, le projet upstream a publié quatre ve
 | SeaweedFS | — | Ajouté | Nouvelle couche de stockage S3 |
 | Secrets Kubernetes | — | Migré | De Helm-géré à natif Kubernetes |
 
-Au-delà des sauts de version, l'upstream s'est fortement concentré sur le **durcissement de la sécurité** à travers toutes les versions — corrigeant des CVE dans OpenProject (CVE-2026-1234, CVE-2026-5678), Keycloak et Collabora, et renforçant la posture globale de la plateforme.
+Au-delà des sauts de version, l'upstream s'est fortement concentré sur le **durcissement de la sécurité** à travers toutes les versions — corrigeant des CVE dans OpenProject, Keycloak et Collabora, et renforçant la posture globale de la plateforme.
 
 ### Réalisations techniques clés
 
@@ -102,7 +102,7 @@ Le site web openDesk Edu héberge maintenant **22 articles** dans quatre pistes 
 
 - **Stratégique :** Souveraineté numérique dans l'éducation, le piège de la dépendance à Microsoft 365, pourquoi openDesk Edu a choisi l'open source
 - **Technique :** Architecture de plateforme, paysage de services, guide de déploiement, modèles GitOps, gestion des secrets, fédération SAML
-- **Opérationnel :** Rapports d'avancement (cluster Maui), mises à jour de sprint, analyses approfondies de l'infrastructure
+- **Opérationnel :** Rapports d'avancement (cluster de production), mises à jour de sprint, analyses approfondies de l'infrastructure
 - **Communauté :** Résumés de Community of Practice, guides pour contributeurs, aperçus des outils de collaboration
 
 Chaque article est publié en EN, DE, FR et ZH — 88 variantes de pages au total, toutes générées statiquement et servies à partir de notre image Docker.
