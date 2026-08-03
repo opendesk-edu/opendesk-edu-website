@@ -20,7 +20,7 @@ image: "/static/blog/la-suite-vs-opendesk-edu-teaser.svg"
 
 2023 startete die französische Regierung **La Suite numérique** — einen souveränen digitalen Arbeitsplatz für die öffentliche Verwaltung, geleitet von der DINUM (Direction interministérielle du numérique). Das Versprechen: Google Workspace und Microsoft 365 durch eine kuratierte Auswahl Open-Source-Werkzeuge auf französisch-souveräner Infrastruktur ersetzen.
 
-In Deutschland entstand **openDesk Edu** auf Basis des **openDesk CE**-Upstream-Projekts — einer modularen, erweiterbaren Plattform für die Bereitstellung von Open-Source-Digitaldiensten. Aufgebaut auf Kubernetes mit GitOps bietet openDesk die Grundlage. openDesk Edu erweitert dies um über 25 Bildungs- und Forschungswerkzeuge, darunter Learning-Management-Systeme, wissenschaftliches Rechnen und Forschungsinfrastruktur. Die Plattform wird produktiv bei **Zendis** eingesetzt und beweist damit ihre Praxisreife.
+In Deutschland entstand **openDesk Edu** auf Basis des **openDesk CE**-Upstream-Projekts — einer modularen, erweiterbaren Plattform für die Bereitstellung von Open-Source-Digitaldiensten. Aufgebaut auf Kubernetes mit GitOps bietet openDesk die Grundlage, mit Helm-Charts, die über die **opencode.de**-Registry verteilt werden. openDesk Edu erweitert dies um über 25 Bildungs- und Forschungswerkzeuge, darunter Learning-Management-Systeme, wissenschaftliches Rechnen und Forschungsinfrastruktur. Die Plattform wird produktiv bei **Zendis** eingesetzt und beweist damit ihre Praxisreife.
 
 Beide Projekte entstehen auserselbem Überzeugung: **Europäische öffentliche Einrichtungen sollten für ihre Kern-IT-Infrastruktur nicht von US-Cloud-Anbietern abhängig sein.** Beide lehnen die CLOUD-Act-Exposition, den Vendor-Lock-in und die steigenden Lizenzkosten des GAFAM-Stacks ab. Beide setzen auf Open Source als Weg zur Souveränität.
 
@@ -142,7 +142,7 @@ Der Unterschied im Umfang spiegelt das Ziel wider: Universitäten brauchen ein b
 
 **La Suite** ist ein **Top-Down-Regierungsprojekt**. Die DINUM bestimmt die Roadmap, wählt die Werkzeuge und kontrolliert das Deployment. Nutzer-Feedback fließt über formale Kanäle. Der Code ist Open Source, aber die Governance ist zentralisiert.
 
-**openDesk Edu** ist ein **Community-getriebenes Projekt**. Während es auf dem openDesk CE-Upstream aufbaut, ist das Projekt auf GitHub und Codeberg offen, nimmt Beiträge entgegen und veröffentlicht seine Roadmap öffentlich. Das Contributor Agreement, die Community-of-Practice-Treffen und die transparente Gap-Analyse (die ZKI-Compliance-Arbeit) spiegeln ein anderes Governance-Modell wider — eines, in dem Einrichtungen zusammenarbeiten statt einen Dienst zu empfangen. Die Zendis-Installation ist ein Beweis für diesen Community-ansatz.
+**openDesk Edu** ist ein **Community-getriebenes Projekt**. Während es auf dem openDesk CE-Upstream aufbaut, ist das Projekt auf GitHub und Codeberg offen, nimmt Beiträge entgegen und veröffentlicht seine Roadmap öffentlich. Das Contributor Agreement, die Community-of-Practice-Treffen und die transparente Gap-Analyse (die ZKI-Compliance-Arbeit) spiegeln ein anderes Governance-Modell wider — eines, in dem Einrichtungen zusammenarbeiten statt einen Dienst zu empfangen. Die Zendis-Installation ist ein Beweis für diesen Community-ansatz. Die openDesk-CE-Community koordiniert sich zudem über die **opencode.de**-Plattform, auf der Charts und Release-Artefakte veröffentlicht werden.
 
 ### 6. Sicherheit und Compliance-Rahmenwerke
 
@@ -233,4 +233,4 @@ Das openDesk CE-Upstream-Projekt, mit Deployments wie Zendis, beweist, dass eine
 
 [Mehr über La Suite numérique (auf Französisch)](https://www.numerique.gouv.fr/services/la-suite-numerique/)
 
-[Das openDesk CE Upstream-Projekt ansehen](https://github.com/opendesk-edu/opendesk)
+[Das openDesk CE Upstream-Projekt ansehen](https://opendesk.eu)

@@ -23,7 +23,8 @@
     "contact": "联系方式",
     "copyright": "© {year} openDesk Edu. 基于 Apache-2.0 许可。",
     "sourceCode": "源代码",
-    "rss": "RSS"
+    "rss": "RSS",
+    "aiStatement": "AI 声明"
   },
   "cookieConsent": {
     "message": "我们使用注重隐私的分析工具来了解访客如何使用本站。默认不设置任何 Cookie。",
@@ -188,5 +189,28 @@
     "contactMessagePlaceholder": "您的消息...",
     "contactCancel": "取消",
     "contactNotice": "您的数据将按照我们的隐私政策进行处理。"
+  },
+  "aiStatement": {
+    "title": "AI 声明",
+    "updated": "最后更新：{date}",
+    "updatedDate": "2026年8月",
+    "overviewHeading": "我们对 AI 的态度",
+    "overviewP1": "openDesk Edu 致力于透明、负责任且以人为本地使用人工智能。本声明解释了在本项目和本网站中如何使用 AI。",
+    "contentHeading": "AI 在内容创作中的使用",
+    "contentP1": "我们在以下方面使用 AI 辅助工具：",
+    "contentItem1": "博客文章和文档的研究、起草和结构化 — 始终由人工作者审阅和编辑。",
+    "contentItem2": "翻译和本地化支持 — 发布前由母语者审阅。",
+    "contentItem3": "为本仓库中的开源软件提供代码生成和测试支持 — 由人工开发者审阅和测试。",
+    "contentP2": "所有发布的内容均由署名的人工作者承担最终编辑责任。AI 是工具，不是人类判断的替代品。",
+    "transparencyHeading": "透明度",
+    "transparencyP1": "我们相信对 AI 的使用应该公开、诚实地沟通：",
+    "transparencyItem1": "使用 AI 辅助创作的文章在发布前均经过人工审阅和批准。",
+    "transparencyItem2": "没有任何自动化决策会影响本网站的用户。",
+    "transparencyItem3": "不使用任何 AI 对个人访客进行画像、跟踪或做出决策。",
+    "responsibilityHeading": "责任",
+    "responsibilityP1": "人工作者和维护者对本网站及开源项目中发布的所有内容承担全部责任。如果您认为内容不准确或具有误导性，请联系我们。",
+    "responsibilityEmailLabel": "联系方式：",
+    "contactHeading": "联系",
+    "contactP1": "对本声明有疑问？请通过 info@opendesk-edu.org 联系我们。"
   }
 }

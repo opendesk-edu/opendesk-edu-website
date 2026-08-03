@@ -20,7 +20,7 @@ image: "/static/blog/la-suite-vs-opendesk-edu-teaser.svg"
 
 In 2023, the French government launched **La Suite numérique** — a sovereign digital workspace for public administration, led by DINUM (Direction interministérielle du numérique). The promise: replace Google Workspace and Microsoft 365 with a curated set of open-source tools hosted on French sovereign infrastructure.
 
-In Germany, **openDesk Edu** emerged from the **openDesk CE** upstream project — a modular, extensible platform for deploying open-source digital services. Built on Kubernetes with GitOps, openDesk provides the foundation. openDesk Edu extends it with 25+ education and research services, including learning management systems, scientific computing, and research infrastructure. The platform is used in production at **Zendis**, demonstrating its readiness for real-world deployments.
+In Germany, **openDesk Edu** emerged from the **openDesk CE** upstream project — a modular, extensible platform for deploying open-source digital services. Built on Kubernetes with GitOps, openDesk provides the foundation, with Helm charts distributed via the **opencode.de** registry. openDesk Edu extends it with 25+ education and research services, including learning management systems, scientific computing, and research infrastructure. The platform is used in production at **Zendis**, demonstrating its readiness for real-world deployments.
 
 Both projects are born from the same conviction: **European public institutions should not depend on US cloud providers for their core digital infrastructure**. Both reject the CLOUD Act exposure, the vendor lock-in, and the escalating licensing costs of the GAFAM stack. Both bet on open source as the path to sovereignty.
 
@@ -142,7 +142,7 @@ The scope difference reflects the target: universities need a broader toolset th
 
 **La Suite** is a **top-down government project**. DINUM sets the roadmap, chooses the tools, and controls the deployment. User feedback flows through formal channels. The code is open source, but the governance is centralized.
 
-**openDesk Edu** is a **community-driven project**. While it builds on the openDesk CE upstream, the project is open on GitHub and Codeberg, accepts contributions, and publishes its roadmap publicly. The contributor agreement, the community-of-practice meetings, and the transparent gap analysis (the ZKI compliance work) all reflect a different governance model — one where institutions collaborate rather than receive a service. The Zendis deployment is a testament to this community-driven approach.
+**openDesk Edu** is a **community-driven project**. While it builds on the openDesk CE upstream, the project is open on GitHub and Codeberg, accepts contributions, and publishes its roadmap publicly. The contributor agreement, the community-of-practice meetings, and the transparent gap analysis (the ZKI compliance work) all reflect a different governance model — one where institutions collaborate rather than receive a service. The Zendis deployment is a testament to this community-driven approach. The openDesk CE community also coordinates via the **opencode.de** platform, where charts and release artifacts are published.
 
 ### 6. Security and Compliance Frameworks
 
@@ -233,4 +233,4 @@ The openDesk CE upstream project, with deployments like Zendis, proves that a mo
 
 [Learn more about La Suite numérique (in French)](https://www.numerique.gouv.fr/services/la-suite-numerique/)
 
-[View the openDesk CE upstream project](https://github.com/opendesk-edu/opendesk)
+[View the openDesk CE upstream project](https://opendesk.eu)

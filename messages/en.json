@@ -23,7 +23,8 @@
     "contact": "Contact",
     "copyright": "© {year} openDesk Edu. Licensed under Apache-2.0.",
     "sourceCode": "Source Code",
-    "rss": "RSS"
+    "rss": "RSS",
+    "aiStatement": "AI Statement"
   },
   "cookieConsent": {
     "message": "We use privacy-friendly analytics to understand how visitors use this site. No cookies are set by default.",
@@ -263,5 +264,28 @@
     "maturityMedium": "Stable with active development",
     "maturityLow": "Under active development",
     "cornerAccents": "Service Overview"
+  },
+  "aiStatement": {
+    "title": "AI Statement",
+    "updated": "Last updated: {date}",
+    "updatedDate": "August 2026",
+    "overviewHeading": "Our Approach to AI",
+    "overviewP1": "openDesk Edu is committed to transparent, responsible, and human-centered use of artificial intelligence. This statement explains how AI is used in the context of this project and website.",
+    "contentHeading": "Use of AI in Content Creation",
+    "contentP1": "We use AI-assisted tools in the following ways:",
+    "contentItem1": "Research, drafting, and structuring of blog articles and documentation — always reviewed and edited by human authors.",
+    "contentItem2": "Translation and localization support — reviewed by native speakers before publication.",
+    "contentItem3": "Code generation and testing support for the open-source software in this repository — reviewed and tested by human developers.",
+    "contentP2": "All published content reflects the final editorial responsibility of the named human authors. AI is a tool, not a substitute for human judgment.",
+    "transparencyHeading": "Transparency",
+    "transparencyP1": "We believe in open and honest communication about AI use:",
+    "transparencyItem1": "Articles created with AI assistance are reviewed and approved by humans before publication.",
+    "transparencyItem2": "No automated decision-making affects users of this website.",
+    "transparencyItem3": "No AI is used to profile, track, or make decisions about individual visitors.",
+    "responsibilityHeading": "Responsibility",
+    "responsibilityP1": "Human authors and maintainers remain fully responsible for all content published on this website and in the open-source project. If you believe content is inaccurate or misleading, please contact us.",
+    "responsibilityEmailLabel": "Contact:",
+    "contactHeading": "Contact",
+    "contactP1": "Questions about this AI statement? Contact us at info@opendesk-edu.org."
   }
 }

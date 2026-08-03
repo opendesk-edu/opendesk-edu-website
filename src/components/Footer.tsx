@@ -112,6 +112,12 @@ export default function Footer() {
             >
               {t("privacy")}
             </Link>
+            <Link
+              href="/ai-statement"
+              className="text-sm text-foreground-secondary hover:text-foreground transition-colors"
+            >
+              {t("aiStatement")}
+            </Link>
             <EmailLink className="text-sm text-foreground-secondary hover:text-foreground transition-colors">
               {t("contact")}
             </EmailLink>

@@ -23,7 +23,8 @@
     "contact": "Kontakt",
     "copyright": "© {year} openDesk Edu. Lizenziert unter Apache-2.0.",
     "sourceCode": "Quellcode",
-    "rss": "RSS"
+    "rss": "RSS",
+    "aiStatement": "KI-Erklärung"
   },
   "cookieConsent": {
     "message": "Wir verwenden datenschutzfreundliche Analysen, um zu verstehen, wie Besucher diese Website nutzen. Standardmäßig werden keine Cookies gesetzt.",
@@ -188,5 +189,28 @@
     "contactMessagePlaceholder": "Ihre Nachricht...",
     "contactCancel": "Abbrechen",
     "contactNotice": "Ihre Daten werden gemäß unserer Datenschutzerklärung verarbeitet."
+  },
+  "aiStatement": {
+    "title": "KI-Erklärung",
+    "updated": "Zuletzt aktualisiert: {date}",
+    "updatedDate": "August 2026",
+    "overviewHeading": "Unser Ansatz zu KI",
+    "overviewP1": "openDesk Edu verpflichtet sich zu transparentem, verantwortungsvollem und menschenzentriertem Einsatz künstlicher Intelligenz. Diese Erklärung erläutert, wie KI im Kontext dieses Projekts und dieser Website eingesetzt wird.",
+    "contentHeading": "Einsatz von KI bei der Erstellung von Inhalten",
+    "contentP1": "Wir nutzen KI-gestützte Werkzeuge auf folgende Weise:",
+    "contentItem1": "Recherche, Entwurf und Strukturierung von Blog-Artikeln und Dokumentation — stets von menschlichen Autoren geprüft und überarbeitet.",
+    "contentItem2": "Übersetzungs- und Lokalisierungsunterstützung — vor der Veröffentlichung von Muttersprachlern geprüft.",
+    "contentItem3": "Code-Generierung und Testunterstützung für die Open-Source-Software in diesem Repository — von menschlichen Entwicklern geprüft und getestet.",
+    "contentP2": "Alle veröffentlichten Inhalte unterliegen der endgültigen redaktionellen Verantwortung der genannten menschlichen Autoren. KI ist ein Werkzeug, kein Ersatz für menschliches Urteilsvermögen.",
+    "transparencyHeading": "Transparenz",
+    "transparencyP1": "Wir setzen auf offene und ehrliche Kommunikation über den KI-Einsatz:",
+    "transparencyItem1": "Mit KI-Unterstützung erstellte Artikel werden vor der Veröffentlichung von Menschen geprüft und freigegeben.",
+    "transparencyItem2": "Keine automatisierte Entscheidungsfindung betrifft Nutzer dieser Website.",
+    "transparencyItem3": "Keine KI wird eingesetzt, um einzelne Besucher zu profilieren, zu verfolgen oder Entscheidungen über sie zu treffen.",
+    "responsibilityHeading": "Verantwortung",
+    "responsibilityP1": "Menschliche Autoren und Betreuer tragen die volle Verantwortung für alle Inhalte, die auf dieser Website und im Open-Source-Projekt veröffentlicht werden. Wenn Sie glauben, dass Inhalte ungenau oder irreführend sind, kontaktieren Sie uns bitte.",
+    "responsibilityEmailLabel": "Kontakt:",
+    "contactHeading": "Kontakt",
+    "contactP1": "Fragen zu dieser KI-Erklärung? Kontaktieren Sie uns unter info@opendesk-edu.org."
   }
 }

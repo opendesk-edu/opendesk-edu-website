@@ -23,7 +23,8 @@
     "contact": "Contact",
     "copyright": "© {year} openDesk Edu. Sous licence Apache-2.0.",
     "sourceCode": "Code source",
-    "rss": "RSS"
+    "rss": "RSS",
+    "aiStatement": "Déclaration sur l'IA"
   },
   "cookieConsent": {
     "message": "Nous utilisons des analyses respectueuses de la vie privée pour comprendre comment les visiteurs utilisent ce site. Aucun cookie n'est défini par défaut.",
@@ -118,7 +119,7 @@
     "noResults": "Aucun résultat trouvé",
     "loading": "Chargement...",
     "shortcutHint": "Appuyez sur ⌘K pour rechercher",
-"groupLabels": {
+    "groupLabels": {
       "blog": "Blog"
     }
   },
@@ -188,5 +189,28 @@
     "contactMessagePlaceholder": "Votre message...",
     "contactCancel": "Annuler",
     "contactNotice": "Vos données seront traitées conformément à notre politique de confidentialité."
+  },
+  "aiStatement": {
+    "title": "Déclaration sur l'IA",
+    "updated": "Dernière mise à jour : {date}",
+    "updatedDate": "Août 2026",
+    "overviewHeading": "Notre approche de l'IA",
+    "overviewP1": "openDesk Edu s'engage à une utilisation transparente, responsable et centrée sur l'humain de l'intelligence artificielle. Cette déclaration explique comment l'IA est utilisée dans le cadre de ce projet et de ce site web.",
+    "contentHeading": "Utilisation de l'IA dans la création de contenu",
+    "contentP1": "Nous utilisons des outils assistés par l'IA de la manière suivante :",
+    "contentItem1": "Recherche, rédaction et structuration d'articles de blog et de documentation — toujours relues et éditées par des auteurs humains.",
+    "contentItem2": "Aide à la traduction et à la localisation — relue par des locuteurs natifs avant publication.",
+    "contentItem3": "Génération de code et assistance aux tests pour les logiciels open source de ce dépôt — relues et testées par des développeurs humains.",
+    "contentP2": "Tout le contenu publié relève de la responsabilité éditoriale finale des auteurs humains nommés. L'IA est un outil, pas un substitut au jugement humain.",
+    "transparencyHeading": "Transparence",
+    "transparencyP1": "Nous croyons en une communication ouverte et honnête sur l'utilisation de l'IA :",
+    "transparencyItem1": "Les articles créés avec l'aide de l'IA sont relus et approuvés par des humains avant publication.",
+    "transparencyItem2": "Aucune prise de décision automatisée n'affecte les utilisateurs de ce site web.",
+    "transparencyItem3": "Aucune IA n'est utilisée pour profiler, suivre ou prendre des décisions concernant les visiteurs individuels.",
+    "responsibilityHeading": "Responsabilité",
+    "responsibilityP1": "Les auteurs et mainteneurs humains restent pleinement responsables de tout le contenu publié sur ce site web et dans le projet open source. Si vous estimez qu'un contenu est inexact ou trompeur, veuillez nous contacter.",
+    "responsibilityEmailLabel": "Contact :",
+    "contactHeading": "Contact",
+    "contactP1": "Des questions sur cette déclaration ? Contactez-nous à info@opendesk-edu.org."
   }
 }

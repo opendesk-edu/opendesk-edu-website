@@ -24,6 +24,12 @@ export const routing = defineRouting({
       fr: '/politique-de-confidentialite',
       zh: '/privacy'
     },
+    '/ai-statement': {
+      en: '/ai-statement',
+      de: '/ki-erklaerung',
+      fr: '/declaration-ia',
+      zh: '/ai-statement'
+    },
     '/components': '/components',
     '/blog': '/blog',
     '/blog/tag/[tag]': '/blog/tag/[tag]',
