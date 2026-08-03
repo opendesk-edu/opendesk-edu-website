@@ -9,7 +9,7 @@ image: "/static/blog/deploying-opendesk-edu-teaser.svg"
 
 # Déployer openDesk Edu sur l'infrastructure de votre université
 
-Ce guide vous accompagne dans le déploiement d'openDesk Edu sur l'infrastructure Kubernetes de votre université. À l'issue de ce processus, vous disposerez d'un espace de travail numérique complet avec all services intégrés, tous connectés via un SSO Keycloak unifié.
+Ce guide vous accompagne dans le déploiement d'openDesk Edu sur l'infrastructure Kubernetes de votre université. À l'issue de ce processus, vous disposerez d'un espace de travail numérique complet avec tous les services intégrés, tous connectés via un SSO Keycloak unifié.
 
 ## Prérequis
 

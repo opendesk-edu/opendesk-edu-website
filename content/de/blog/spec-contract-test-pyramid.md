@@ -45,7 +45,7 @@ SPEZIFIKATION         BEREITSTELLUNG       BETRIEB
 
 ### Die Herausforderung von openDesk Edu
 
-openDesk Edu stellt **50+ Dienste** über **12+ Kubernetes-Namespaces** mit **400+ Helm-Chart-Werten** bereit. Mit dieser Komplexität:
+openDesk Edu stellt **eine umfassende Service-Suite** über **mehrere Kubernetes-Namespaces** mit **hunderten Helm-Chart-Werten** bereit. Mit dieser Komplexität:
 
 - Wiki-Seiten werden innerhalb von Tagen veraltet
 - Diagramme entsprechen nicht den tatsächlichen Bereitstellungen
@@ -296,7 +296,7 @@ specs/_registry/
 │  Gesamtabdeckung: 12 % (8 Tests für 65 Spezifikationen)    │
 │                                                             │
 │  Nach Kategorie:                                            │
-│    Dienste (24):       25 %  (6/24 getestet)  ████░░░░        │
+│    Dienste:       25 %  (6/24 getestet)  ████░░░░        │
 │    Plattform (17):     0 %   (0/17 getestet)  ░░░░░░░░        │
 │    Auth (4):           0 %   (0/4 getestet)   ░░░░░░░░        │
 │    Integrationen (6):  0 %   (0/6 getestet)   ░░░░░░░░        │
@@ -523,4 +523,4 @@ Dokumentation muss nicht ein Nachgedanke sein. Mit der Spec-Contract-Test-Pyrami
 
 ---
 
-*Copyright © 2026 HRZ Uni Marburg. Lizenziert unter [AGPL-3.0-only](https://www.gnu.org/licenses/agpl-3.0.html). openDesk Edu ist ein Projekt von [openDesk](https://opendesk.hrz.uni-marburg.de).*
+*Copyright © 2026 openDesk Edu Contributors. Lizenziert unter [AGPL-3.0-only](https://www.gnu.org/licenses/agpl-3.0.html). openDesk Edu ist ein Projekt von [openDesk](https://opendesk-edu.org).*

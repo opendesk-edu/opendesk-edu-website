@@ -90,13 +90,13 @@ Ohne umfassende Spezifikationen stehen Organisationen vor:
 
 ## Die openDesk Edu OpenSpec: Eine Fallstudie zur Digitalen Souveränität
 
-Die **openDesk Edu OpenSpec** ist das umfassendste Beispiel des OpenSpec-Frameworks, angewendet auf einen realen digitalen Arbeitsplatz. Sie spezifiziert 25 integrierte Open-Source-Dienste für Bildungseinrichtungen.
+Die **openDesk Edu OpenSpec** ist das umfassendste Beispiel des OpenSpec-Frameworks, angewendet auf einen realen digitalen Arbeitsplatz. Sie spezifiziert eine umfassende Suite integrierter Open-Source-Dienste für Bildungseinrichtungen.
 
-### Umfang: 25 Dienste, 58 Spezifikationen
+### Umfang: eine umfassende Suite von Diensten, 58 Spezifikationen
 
 Die OpenSpec deckt ab:
 
-**25 Dienstspezifikationen**: Eine pro integriertem Dienst (Nextcloud, Moodle, Keycloak usw.)
+**Dienstspezifikationen**: Eine pro integriertem Dienst (Nextcloud, Moodle, Keycloak usw.)
 **17 Plattformspezifikationen**: Querschnittsthemen (Sicherheit, Backup, Monitoring usw.)
 **6 Integrationsspezifikationen**: Dienstübergreifende Workflows und APIs
 **10 Registry-Dokumente**: Dienstverbindungen, Abdeckungsstatistiken usw.
@@ -141,16 +141,16 @@ Jede Dienstspezifikation in openDesk Edu folgt einer Fünf-Säulen-Struktur:
 
 ### Das Ergebnis: 100% Compliance
 
-Mit der Ralph-Loop-Methodik erreichten wir **100% Compliance** über alle 25 Dienste:
+Mit der Ralph-Loop-Methodik erreichten wir **100% Compliance** über alle Dienste in der Suite:
 
 | Spezifikationssäule | Abdeckung |
 |---------------------|----------|
-| Zweck & Umfang | 25/25 (100%) |
-| Abhängigkeiten | 25/25 (100%) |
-| SLOs | 25/25 (100%) |
-| Disaster Recovery | 25/25 (100%) |
+| Zweck & Umfang | Vollständig (100%) |
+| Abhängigkeiten | Vollständig (100%) |
+| SLOs | Vollständig (100%) |
+| Disaster Recovery | Vollständig (100%) |
 
-**Gesamt: ~3.000 Zeilen operativer Dokumentation** über 25 Dienste hinweg hinzugefügt.
+**Gesamt: ~3.000 Zeilen operativer Dokumentation** über eine umfassende Suite von Diensten hinweg hinzugefügt.
 
 ## Die Architektur des Souveränen Arbeitsplatzes
 
@@ -183,7 +183,7 @@ Die Architektur des Digitalen Souveränen Arbeitsplatzes hat drei Schichten:
 - SAML 2.0 und OIDC für Authentifizierung
 - LDAP für Benutzerverzeichnis
 - DFN-AAI-Integration für föderierte Identität
-- Ein Passwort für alle 25 Dienste
+- Ein Passwort für alle Dienste in der Suite
 
 **Dienstübergreifende Integration:**
 - 80+ dokumentierte Dienstbeziehungen
@@ -194,7 +194,7 @@ Die Architektur des Digitalen Souveränen Arbeitsplatzes hat drei Schichten:
 
 ### Schicht 3: Anwendungsdienste
 
-**Die 25 Dienste** nach Funktion organisiert:
+**Die Service-Suite** nach Funktion organisiert:
 
 **Produktivität & Zusammenarbeit:**
 - Nextcloud (Dateispeicher, 5TB Kontingent)

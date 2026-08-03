@@ -27,7 +27,7 @@ openDesk Edu wird derzeit mit einer **monolithischen ArgoCD-Application** bereit
 | 4–5 | Groupware, Apps (Nextcloud, Jitsi, OX, usw.) |
 | 6–7 | Bootstrap-Jobs und Post-Migrationen |
 
-Das funktioniert. Der Cluster läuft, die Dienste sind gesund und Backups werden durchgeführt. Aber während wir skalieren — mehr Umgebungen (Dev/Staging/Prod), mehr Cluster (HRZ, zukünftige Standorte) und mehr Dienste (6 fehlen noch) — werden die Grenzen einer einzelnen Application deutlich.
+Das funktioniert. Der Cluster läuft, die Dienste sind gesund und Backups werden durchgeführt. Aber während wir skalieren — mehr Umgebungen (Dev/Staging/Prod), mehr Cluster (Produktion, zukünftige Standorte) und mehr Dienste (6 fehlen noch) — werden die Grenzen einer einzelnen Application deutlich.
 
 ### Was im Großen Bricht
 
@@ -252,7 +252,7 @@ Sobald die App-of-Apps-Struktur läuft und stabil ist, ApplicationSets für sich
 ### Was Wir Nicht Tun
 
 - **Helmfile nicht vollständig entfernen.** Das Helmfile-Plugin handhabt die Abhängigkeitsreihenfolge und das Wertetemplating bereits gut. Die Application-Ebene (App of Apps oder ApplicationSet) sollte Helmfile-Releases orchestrieren, nicht ersetzen.
-- **Nicht von Tag eins an vollständig auf ApplicationSet umstellen.** Die Debugging- und Templating-Komplexität ist es für eine Bereitstellung mit einem einzelnen Cluster und einer festen Anzahl von Diensten nicht wert. ApplicationSet zahlt sich aus, wenn Sie 10+ Cluster oder 50+ Dienste erreichen.
+- **Nicht von Tag eins an vollständig auf ApplicationSet umstellen.** Die Debugging- und Templating-Komplexität ist es für eine Bereitstellung mit einem einzelnen Cluster und einer festen Anzahl von Diensten nicht wert. ApplicationSet zahlt sich aus, wenn Sie 10+ Cluster oder eine große Anzahl von Diensten erreichen.
 
 ## Referenzen
 

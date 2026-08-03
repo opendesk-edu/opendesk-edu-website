@@ -1,25 +1,25 @@
 ---
-title: "Progress Report: openDesk Edu at HRZ Maui — June 2026"
+title: "Progress Report: openDesk Edu Production Update — June 2026"
 date: "2026-06-04"
-description: "After five months of deployment and two hardening sprints, openDesk Edu is running at full operational capacity at the University of Marburg. Here's what we achieved and what's next — including upstream integration into the main openDesk HRZ cluster."
+description: "After five months of deployment and two hardening sprints, openDesk Edu is running at full operational capacity in production. Here's what we achieved and what's next — including upstream integration into the main openDesk cluster."
 categories: ["Status Update"]
-tags: ["deployment", "infrastructure", "kubernetes", "sprint", "university-of-marburg"]
+tags: ["deployment", "infrastructure", "kubernetes", "sprint", "production"]
 image: "/static/blog/progress-report-june-2026-teaser.svg"
 ---
 
-# Progress Report: openDesk Edu at HRZ Maui — June 2026
+# Progress Report: openDesk Edu Production Update — June 2026
 
-> **57 pods running. 33 services with unified SSO. 44 Keycloak clients audited and migrated.**
+> **A comprehensive service suite with unified SSO. Keycloak clients audited and migrated.**
 > k8up backups active, Grafana dashboards deployed, and all ingresses consolidated under a single domain.
 
-Since deploying openDesk Edu on the HRZ Maui cluster (K3s v1.32.3, 9 nodes, Debian 12), we've completed two focused hardening sprints (Sprints 5–6) targeting operational stability, domain consolidation, and service health.
+Since deploying openDesk Edu on the production cluster (K3s v1.32.3, 9 nodes, Debian 12), we've completed two focused hardening sprints (Sprints 5–6) targeting operational stability, domain consolidation, and service health.
 
 ## Cluster at a Glance
 
 | Metric | Value |
 |:-------|:------|
 | Cluster | K3s v1.32.3, 9 nodes (3 CP, 6 workers) |
-| Domain | `*.opendesk.hrz.uni-marburg.de` |
+| Domain | `*.opendesk-edu.org` |
 | Ingress | HAProxy controller (192.168.3.201) |
 | Storage | Ceph RBD SSD (RWO), CephFS HDD EC (RWX) |
 | SSO | Keycloak OIDC + SAML, 44 clients |
@@ -29,10 +29,10 @@ Since deploying openDesk Edu on the HRZ Maui cluster (K3s v1.32.3, 9 nodes, Debi
 ## What Was Fixed
 
 ### SSO Audit (Sprint 5)
-All 44 Keycloak clients in the `opendesk` realm were audited and migrated from the legacy `opendesk-edu.org` domain to `opendesk.hrz.uni-marburg.de`. Every client URI, redirect URL, and issuer was verified via the Keycloak admin API.
+All 44 Keycloak clients in the `opendesk` realm were audited and consolidated onto the `opendesk-edu.org` domain. Every client URI, redirect URL, and issuer was verified via the Keycloak admin API.
 
 ### Domain Migration
-Twelve ingresses (3 portal, 9 static-files) were migrated from `*.opendesk-edu.org` to `*.opendesk.hrz.uni-marburg.de`. The source of the hardcoded old domain — `portal-saml-multidomain.yaml.gotmpl` — was fixed at the chart level and committed.
+Twelve ingresses (3 portal, 9 static-files) were consolidated onto the `*.opendesk-edu.org` domain. The source of the hardcoded old domain — `portal-saml-multidomain.yaml.gotmpl` — was fixed at the chart level and committed.
 
 ### Service Repairs
 
@@ -53,22 +53,22 @@ All core services respond correctly:
 
 | Service | Endpoint | Status |
 |:--------|:---------|:-------|
-| Moodle LMS | `moodle.opendesk.hrz.uni-marburg.de` | ✅ 200 |
-| ILIAS LMS | `lms.opendesk.hrz.uni-marburg.de` | ✅ 200 |
-| JupyterHub | `jupyter.opendesk.hrz.uni-marburg.de` | ✅ 302 (SSO redirect) |
-| BookStack | `bookstack.opendesk.hrz.uni-marburg.de` | ✅ 302 (SSO redirect) |
-| OpenProject | `projects.opendesk.hrz.uni-marburg.de` | ✅ 302 (SSO redirect) |
-| Element (Chat) | `chat.opendesk.hrz.uni-marburg.de` | ✅ 200 |
-| Jitsi (Meet) | `meet.opendesk.hrz.uni-marburg.de` | ✅ 200 |
-| Nextcloud (Files) | `files.opendesk.hrz.uni-marburg.de` | ✅ 302 (SSO redirect) |
-| OX App Suite (Mail) | `webmail.opendesk.hrz.uni-marburg.de` | ✅ 302 (SSO redirect) |
-| XWiki | `wiki.opendesk.hrz.uni-marburg.de` | ✅ 302 (SSO redirect) |
-| Planka | `planka.opendesk.hrz.uni-marburg.de` | ✅ 200 with OIDC |
-| SSP | `ssp.opendesk.hrz.uni-marburg.de` | ✅ 403/200 (OIDC auth) |
+| Moodle LMS | `moodle.opendesk-edu.org` | ✅ 200 |
+| ILIAS LMS | `lms.opendesk-edu.org` | ✅ 200 |
+| JupyterHub | `jupyter.opendesk-edu.org` | ✅ 302 (SSO redirect) |
+| BookStack | `bookstack.opendesk-edu.org` | ✅ 302 (SSO redirect) |
+| OpenProject | `projects.opendesk-edu.org` | ✅ 302 (SSO redirect) |
+| Element (Chat) | `chat.opendesk-edu.org` | ✅ 200 |
+| Jitsi (Meet) | `meet.opendesk-edu.org` | ✅ 200 |
+| Nextcloud (Files) | `files.opendesk-edu.org` | ✅ 302 (SSO redirect) |
+| OX App Suite (Mail) | `webmail.opendesk-edu.org` | ✅ 302 (SSO redirect) |
+| XWiki | `wiki.opendesk-edu.org` | ✅ 302 (SSO redirect) |
+| Planka | `planka.opendesk-edu.org` | ✅ 200 with OIDC |
+| SSP | `ssp.opendesk-edu.org` | ✅ 403/200 (OIDC auth) |
 
 ## Upstream Integration into openDesk Cluster
 
-On 1 June, all 20+ opendesk-edu services were upstreamed into the main openDesk HRZ cluster deployment. The edu service charts, values, and configuration are now part of the openDesk helmfile pipeline — deploying alongside core openDesk infrastructure and sharing the same ingress controller, monitoring stack, and backup schedules.
+On 1 June, all 20+ opendesk-edu services were upstreamed into the main openDesk cluster deployment. The edu service charts, values, and configuration are now part of the openDesk helmfile pipeline — deploying alongside core openDesk infrastructure and sharing the same ingress controller, monitoring stack, and backup schedules.
 
 **Services integrated:**
 
@@ -84,7 +84,7 @@ This integration eliminates the separate `opendesk-edu` namespace and brings edu
 
 With the hardening sprints complete and upstream integration in progress, the focus now shifts to:
 
-1. **External DNS resolution** — hand the generated DNS record script to HRZ network admins to remove `/etc/hosts` dependency for 12 services
+1. **External DNS resolution** — hand the generated DNS record script to the network team to remove `/etc/hosts` dependency for 12 services
 2. **Helmfile pipeline** — target `helmfile sync` at the main openDesk cluster (no longer the separate `opendesk-edu` namespace); the upstream merge on 1 June has already laid the groundwork
 3. **Full login testing** — end-to-end OIDC/SAML flow validation for all services
 4. **v1.1 Foundation items** — DFN-AAI SAML federation testing, container image build pipeline, backchannel logout verification, remaining auth-pending chart integrations

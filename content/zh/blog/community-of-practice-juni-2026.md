@@ -37,7 +37,7 @@ k8up 运算符（v2.13.0）目前将 6 个 RWX PVC 备份到 S3。29 个 RWO PVC
 
 Collabora 已有指标、告警和仪表板。Nextcloud 还缺少告警和仪表板。备份健康仪表板和资源告警（CPU > 80%、内存 > 85%、磁盘 > 80%）方面存在空白。
 
-## 5. 已知 HRZ 问题
+## 5. 已知集群问题
 
 - **DNS CNAME 链**：CoreDNS → SERVFAIL，通过 `hostAliases` 解决
 - **Nextcloud AIO 探针 Bug**：`initialDelaySeconds` 配置错误
@@ -50,7 +50,7 @@ Collabora 已有指标、告警和仪表板。Nextcloud 还缺少告警和仪表
 
 **openDesk 1.15.0**（当前版本，2026年5月28日）带来了 SeaweedFS 作为 S3 对象存储、OX App Suite 8.48、Nextcloud 32.0.9 和 HAProxy Ingress 支持。**v1.16.0** 正在准备中，将包含 Nextcloud Worker 调优和 Dovecot/Postfix LoadBalancerIP。
 
-HRZ 集群运行在 K3s v1.32.3（9 个节点，Debian 12）上，使用 Ceph 存储、kube-prometheus-stack 和 ArgoCD。
+生产集群运行在 K3s v1.32.3（9 个节点，Debian 12）上，使用 Ceph 存储、kube-prometheus-stack 和 ArgoCD。
 
 ## 7. 教育领域
 

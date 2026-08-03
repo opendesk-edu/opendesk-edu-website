@@ -9,7 +9,7 @@ image: "/static/blog/infrastructure-autonomy-july-2026-teaser.svg"
 
 # Autonomie de l'Infrastructure — Rapport de Progrès Juillet 2026
 
-Le déploiement openDesk Edu au HRZ Marburg a atteint deux jalons majeurs ce mois-ci : l'intégration SSO complète de tous les services et une autonomie quasi totale vis-à-vis des registries externes.
+Le déploiement openDesk Edu a atteint deux jalons majeurs ce mois-ci : l'intégration SSO complète de tous les services et une autonomie quasi totale vis-à-vis des registries externes.
 
 ## Stalwart v0.16 Remplace Postfix
 
@@ -47,4 +47,4 @@ Quatre dépôts indépendants ont été créés pour se déconnecter des registr
 
 ---
 
-*Déployé sur K3s v1.32.3 · 9 nœuds · Stockage Ceph CSI · HRZ Marburg*
+*Déployé sur K3s v1.32.3 · 9 nœuds · Stockage Ceph CSI · cluster de production*

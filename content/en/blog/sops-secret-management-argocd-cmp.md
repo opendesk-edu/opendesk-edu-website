@@ -15,7 +15,7 @@ tags: ["sops", "secret-management", "argocd", "gitops", "kubernetes", "security"
 
 ## The Problem: Secrets in GitOps
 
-At openDesk Edu, we deploy 25+ integrated services across multiple Kubernetes clusters using a GitOps workflow with ArgoCD and Helmfile. Every piece of configuration — Helm values, environment overrides, service definitions — lives in a Git repository and is automatically synced to the cluster.
+At openDesk Edu, we deploy a comprehensive suite of integrated services across multiple Kubernetes clusters using a GitOps workflow with ArgoCD and Helmfile. Every piece of configuration — Helm values, environment overrides, service definitions — lives in a Git repository and is automatically synced to the cluster.
 
 This is great for everything *except secrets*.
 
@@ -228,7 +228,7 @@ That's it. The Application now transparently decrypts secrets during sync.
 
 ## Verified End-to-End
 
-The CMP sidecar was deployed and tested on the production HRZ cluster (K3s v1.32.3, ArgoCD v3.0.12) in July 2026. We verified:
+The CMP sidecar was deployed and tested on the production cluster (K3s v1.32.3, ArgoCD v3.0.12) in July 2026. We verified:
 
 1. **Encrypted secret committed** — A `test-secret.enc.yaml` was committed to the repository
 2. **ArgoCD detected the change** — The Application's sync status showed a diff
@@ -310,7 +310,7 @@ This approach preserves the core GitOps principles:
 
 1. **Volume mounts are the trickiest part** — The CMP sidecar needs access to the same repo checkout as the main repo-server. The shared `tmp` volume mount is essential.
 
-2. **Proxy configuration matters** — On the HRZ cluster, the `install-sops` initContainer needed `HTTP_PROXY` and `HTTPS_PROXY` environment variables to download the sops binary.
+2. **Proxy configuration matters** — On the production cluster, the `install-sops` initContainer needed `HTTP_PROXY` and `HTTPS_PROXY` environment variables to download the sops binary.
 
 3. **Plugin caching can cause stale secrets** — If a previous sync is cached in Redis, ArgoCD may not re-run the plugin after a secret update. Forcing a cache flush (`redis-cli FLUSHALL`) or bumping the commit hash resolves this.
 

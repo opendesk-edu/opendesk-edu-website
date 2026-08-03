@@ -210,7 +210,7 @@ Nous sommes prêts à contribuer notre temps, notre code et nos ressources pour 
 
 ## Conclusion : La Voie à Suivre
 
-La plateforme openDesk est une réalisation remarquable — 25+ services open source intégrés, conformité à la protection des données allemande, et une véritable alternative aux géants du SaaS américains. Mais son succès à long terme dépend de la **collaboration, pas de la fragmentation**.
+La plateforme openDesk est une réalisation remarquable — une suite complète de services open source intégrés, conformité à la protection des données allemande, et une véritable alternative aux géants du SaaS américains. Mais son succès à long terme dépend de la **collaboration, pas de la fragmentation**.
 
 Nous exhortons ZenDiS à travailler avec la communauté pour établir des **modèles de développement communs** pour les composants partagés comme le service intercom. Il ne s'agit pas seulement de nous faciliter la vie — il s'agit de garantir qu'openDesk reste une **plateforme souveraine viable** pour le long terme.
 
@@ -232,6 +232,6 @@ Ensemble, nous pouvons construire une véritable infrastructure numérique souve
 
 ---
 
-**À Propos des Auteurs** : Cet article a été écrit par la communauté openDesk Edu. openDesk Edu est un déploiement en production de 25 services open source intégrés pour les établissements d'enseignement allemands, basé au HRZ Marburg. Voir [opendesk-edu.org](https://opendesk-edu.org) pour plus d'informations.
+**À Propos des Auteurs** : Cet article a été écrit par la communauté openDesk Edu. openDesk Edu est un déploiement en production d'une suite complète de services open source intégrés pour les établissements d'enseignement allemands. Voir [opendesk-edu.org](https://opendesk-edu.org) pour plus d'informations.
 
 **Licence** : Cet article est sous licence Apache-2.0.

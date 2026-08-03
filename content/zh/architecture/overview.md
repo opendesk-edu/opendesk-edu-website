@@ -53,7 +53,7 @@ openDesk Edu 在 openDesk 协作环境（CE）的基础上扩展了专属的教�
 
 **教育服务层**
 
-在基础层之上，openDesk Edu 新增了 15 个面向教育的服务。这一层包括学习管理系统（ILIAS、Moodle）、虚拟教室（BigBlueButton）、机构邮件（Grommunio）、内容管理系统（TYPO3）、调查工具（LimeSurvey）等。该层所有服务目前处于 Beta 状态，正在持续优化集成方案。
+在基础层之上，openDesk Edu 新增了一系列面向教育的服务。这一层包括学习管理系统（ILIAS、Moodle）、虚拟教室（BigBlueButton）、机构邮件（Grommunio）、内容管理系统（TYPO3）、调查工具（LimeSurvey）等。该层所有服务目前处于 Beta 状态，正在持续优化集成方案。
 
 **SSO 和认证层**
 
@@ -96,7 +96,7 @@ Restic 支持多种存储后端，机构可以将备份定向到本地 NFS、S3 
 
 ## 组件概览
 
-下表列出了 openDesk Edu 栈中的全部 服务，按功能分组。
+下表列出了 openDesk Edu 栈中的所有服务，按功能分组。
 
 | 功能 | 服务 | 版本 | 状态 |
 |------|------|------|------|

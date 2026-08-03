@@ -108,6 +108,6 @@ Die openDesk-Plattform ist eine **strategische Initiative** der deutschen Bundes
 
 ---
 
-**Über die Autoren**: Dieser Artikel wurde von der openDesk Edu Community geschrieben. openDesk Edu ist eine Produktionsbereitstellung von 25 integrierten Open-Source-Diensten für deutsche Bildungseinrichtungen. Siehe [opendesk-edu.org](https://opendesk-edu.org) für weitere Informationen.
+**Über die Autoren**: Dieser Artikel wurde von der openDesk Edu Community geschrieben. openDesk Edu ist eine Produktionsbereitstellung von einer umfassenden Suite integrierter Open-Source-Diensten für deutsche Bildungseinrichtungen. Siehe [opendesk-edu.org](https://opendesk-edu.org) für weitere Informationen.
 
 **Lizenz**: Dieser Artikel ist lizenziert unter Apache-2.0.

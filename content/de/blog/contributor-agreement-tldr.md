@@ -84,7 +84,7 @@ Sobald Ihr erster Merge-Request angenommen und vom Bot verarbeitet wurde, erhalt
 Das openDesk-Projekt umfasst mehrere Repositories mit jeweils spezifischem Fokus:
 
 -   **Deployment:** Die helmfile-basierte Deployment-Konfiguration für openDesk CE.
--   **Bildungsvariante:** openDesk Edu mit 25 integrierten Diensten für Hochschulen.
+-   **Bildungsvariante:** openDesk Edu mit integrierten Diensten für Hochschulen.
 -   **Werkzeuge:** Import-Skripte, Backup-Operatoren (k8up) und Hilfsprogramme.
 -   **Dokumentation:** Architektur-Dokumentation, Entwicklerleitfäden und Betriebshandbücher.
 -   **Charts:** Lokale Helm-Chart-Anpassungen und von der Community gepflegte Chart-Pakete.

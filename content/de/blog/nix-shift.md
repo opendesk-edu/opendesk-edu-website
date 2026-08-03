@@ -1,120 +1,186 @@
 ---
-title: "Der Nix-Shift: Warum wir Helmfile durch pure Funktionen ersetzt haben"
+title: "Der Nix-Shift: Deterministische Deployments mit pure Funktionen"
 date: "2026-07-29"
-description: "Wie wir Helmfile durch Nix ersetzt haben — für deterministische, gecachte und komponierbare Kubernetes-Deployments mit 28 Diensten."
+description: "Wie wir Nix flakes für reproduzierbare Container-Images und Kubernetes-Manifeste nutzen — 69 Dienste, typsichere Builds, keine Template-Fehler zur Laufzeit."
 categories: ["Engineering"]
 tags: ["nix", "kubernetes", "helmfile", "devops"]
+author: "Tobias Weiß and openDesk Edu Contributors"
 image: "/static/blog/nix-shift-teaser.svg"
 ---
 
-# Der Nix-Shift: Warum wir Helmfile durch pure Funktionen ersetzt haben
+# Der Nix-Shift: Deterministische Deployments mit pure Funktionen
 
 ## Das Problem
 
-Wir betrieben openDesk Edu — 28 Dienste auf 9 K3s-Knoten — mit Helmfile und Go-Templates. Jedes Deployment kam mit vertrauter Angst:
+Deployments mit Helmfile und Go-Templates brachten bekannte Fehlerquellen mit sich:
 
 ```
 failed to render values file "values-grommunio.yaml.gotmpl":
   template: stringTemplate:17: unexpected "\\" in operand
 ```
 
-Dieser Fehler blockiert **alle** 28 Dienste, nicht nur einen. Da Helmfile alle Templates in einem Schritt verarbeitet, stoppt ein einziger YAML-Syntaxfehler das gesamte Cluster-Update.
+Dieser Fehler blockiert **alle** Dienste, nicht nur einen. Da Helmfile alle Templates
+in einem Schritt verarbeitet, stoppt ein einziger YAML-Syntaxfehler das gesamte
+Cluster-Update.
 
-Die Symptome waren immer die gleichen:
+Die Symptome:
 
-- **Kaskadierende Fehler** — ein Tippfehler in `values-grommunio.yaml.gotmpl` legte das gesamte Deployment lahm, selbst wenn nur Moodle aktualisiert werden sollte.
-- **Unklare Fehlermeldungen** — Helmfile verschluckt den eigentlichen Kontext. Statt „Zeile 12, Spalte 3: Variable nicht definiert" erhielten wir kryptische Go-Template-Stacktraces.
-- **Keine Caching-Garantien** — `helmfile sync` rendert jedes Mal alle Templates neu, selbst wenn sich an einem Dienst nichts geändert hat. Bei 28 Diensten bedeutet das ~3 Minuten reine Render-Zeit.
-- **Schwer reproduzierbar** — dasselbe Commit erzeugte auf dem CI-Server ein anderes Ergebnis als lokal, weil Helmfile Umgebungsvariablen und `.env`-Dateien implizit einbindet.
+- **Kaskadierende Fehler** — ein Tippfehler in `values-grommunio.yaml.gotmpl` legte
+  das gesamte Deployment lahm, selbst wenn nur ein Dienst aktualisiert werden sollte.
+- **Unklare Fehlermeldungen** — Helmfile verschluckt den eigentlichen Kontext. Statt
+  „Zeile 12, Spalte 3: Variable nicht definiert" liefert es kryptische Go-Template-Stacktraces.
+- **Keine Caching-Garantien** — `helmfile sync` rendert jedes Mal alle Templates neu,
+  selbst wenn sich an einem Dienst nichts geändert hat.
+- **Schwer reproduzierbar** — dasselbe Commit erzeugte auf dem CI-Server ein anderes
+  Ergebnis als lokal, weil Helmfile Umgebungsvariablen und `.env`-Dateien implizit einbindet.
 
-## Warum Nix?
+## Der Nix-Ansatz
 
-Nix ist rein funktional. Jeder Build ist deterministisch und gecached. Statt imperativer Templates, die zur Laufzeit gerendert werden, beschreiben wir jeden Dienst als **pure Funktion** — Eingabe rein, Manifest raus, kein Seiteneffekt.
+Nix ist rein funktional. Jeder Build ist deterministisch und gecached. Statt
+imperativer Templates, die zur Laufzeit gerendert werden, beschreiben wir jeden
+Dienst als **pure Funktion** — Eingabe rein, Manifest raus, kein Seiteneffekt.
 
 **Vorher:** `helmfile sync → helm template → Go-Templates → YAML → kubectl apply`
-**Nachher:** `nix build .#dienstname → reines Nix → JSON → kubectl apply`
 
-Der entscheidende Unterschied: Nix **zwischenspeichert** jedes Ergebnis. Wenn sich an einem Dienst nichts ändert, wird er in ~2 Sekunden aus dem Nix-Store geladen — ohne Rendering, ohne Neuberechnung.
+**Nachher:** `nix build .#sogo5-image → reines Nix → JSON → kubectl apply`
+
+Der entscheidende Unterschied: Nix **zwischenspeichert** jedes Ergebnis. Wenn sich an
+einem Dienst nichts ändert, wird er aus dem Nix-Store geladen — ohne Rendering, ohne
+Neuberechnung.
+
+> **Hinweis:** Helmfile und Nix coexistieren derzeit. Die Nix-basierten
+> Kubernetes-Manifeste in `opendesk-nix/k8s/services/` ergänzen die bestehenden
+> Helmfile-Charts, sie ersetzen sie nicht schrittweise. Neue Dienste werden direkt
+> in Nix definiert; bestehende werden nach und nach migriert.
 
 ## Die Architektur
 
-Jeder Dienst ist eine Nix-Funktion, die ein Kubernetes-Manifest (als JSON) zurückgibt:
+Das `opendesk-nix`-Projekt hat zwei Säulen:
+
+### 1. Container-Images (flake.nix)
+
+Die `flake.nix` baut reproduzierbare Container-Images mit `dockerTools.buildLayeredImage`:
 
 ```nix
 # flake.nix (vereinfacht)
 {
-  outputs = { self, nixpkgs, ... }: {
-    apps.moodle = mkK8sApp {
-      name = "moodle";
-      image = "ghcr.io/opendesk-edu/moodle-shib:v1.4.0";
-      port = 8080;
-      replicas = 2;
-      env = {
-        MOODLE_DB_HOST = "mariadb";
-        MOODLE_DB_NAME = "moodle";
-      };
-      ingress = {
-        host = "moodle.opendesk-edu.org";
-        tls = true;
-      };
-    };
-
-    apps.ilias = mkK8sApp {
-      name = "ilias";
-      image = "ghcr.io/opendesk-edu/ilias-shibboleth:9-php8.2-apache";
-      # ...
-    };
-
-    # 26 weitere Dienste ...
-  };
+  outputs = { self, nixpkgs, flake-utils, ... }:
+    flake-utils.lib.eachSystem [ "x86_64-linux" "aarch64-linux" ] (system:
+      let pkgs = import nixpkgs { inherit system; }; in {
+        packages = {
+          sogo5-image = pkgs.dockerTools.buildLayeredImage {
+            name = "registry.gitlab.opencode.de/umr/sogo5";
+            tag = commonArgs.sogo5Version;
+            # ... Layer-Definitionen
+          };
+          sogo6-image = pkgs.dockerTools.buildLayeredImage { /* ... */ };
+          dev-agent-image = pkgs.dockerTools.buildLayeredImage { /* ... */ };
+          zot-registry-image = pkgs.dockerTools.buildLayeredImage { /* ... */ };
+        };
+      });
 }
 ```
 
-Die Hilfsfunktion `mkK8sApp` erzeugt ein Deployment, einen Service, einen Ingress und optionale ConfigMaps — alles als typisierte Nix-Derivation. Fehler treten zur **Build-Zeit** auf, nicht zur **Laufzeit**.
+### 2. Kubernetes-Manifeste (k8s/services/)
+
+Jeder Dienst ist eine Nix-Funktion, die Kubernetes-Ressourcen als JSON zurückgibt.
+Die Bibliothek `lib/k8s.nix` stellt typsichere Builder bereit:
+
+```nix
+# k8s/services/moodle.nix (vereinfacht)
+{ lib, security, ... }:
+
+let
+  name = "moodle";
+  image = "ghcr.io/opendesk-edu/moodle";
+  tag = "latest";
+in
+  [
+    (lib.deployment { inherit name image tag; port = 80; })
+    (lib.service { inherit name; port = 80; })
+  ] ++ (lib.ingressWithCert {
+    inherit name;
+    host = "moodle.opendesk-edu.org";
+    port = 80;
+  })
+```
+
+Die Builder `lib.deployment`, `lib.service`, `lib.ingressWithCert` erzeugen
+Deployment, Service, Ingress und TLS-Zertifikat — alles als typisierte
+Nix-Derivation. Fehler treten zur **Build-Zeit** auf, nicht zur **Laufzeit**.
+
+Die `lib/k8s.nix`-Bibliothek bietet weitere Builder: `statefulset`, `daemonSet`,
+`hpa` (HorizontalPodAutoscaler), `pdb` (PodDisruptionBudget), `job`, `secret`,
+`pvc`, `namespace`, `role`, `certificate`, `issuer` — alle mit konsistenten
+Sicherheitsstandards (non-root, read-only FS, dropped capabilities).
+
+### 69 Dienste
+
+Aktuell sind 69 Dienste als Nix-Module definiert — von LMS (Moodle, ILIAS) über
+Kollaboration (Nextcloud, Etherpad, CryptPad) bis hin zu Monitoring
+(Loki, Promtail, Kibana). Jeder Dienst folgt demselben Muster: ein Nix-Modul,
+das Kubernetes-Ressourcen zurückgibt.
 
 ## Die Ergebnisse
 
 | Metrik | Helmfile | Nix |
 |--------|----------|-----|
-| Volles Deployment | ~3 Min | ~30s (erstes) / ~2s (gecached) |
 | Fehlerklarheit | „failed to render" | „Zeile 12: undefined variable" |
 | Deterministisch | Nein | Ja |
-| Dienste | 28 | 28 |
-| Zeilen pro Dienst | ~80 | ~5 |
+| Dienste | 69 | 69 |
 | Reproduzierbarkeit | Umgebungsabhängig | Bit-für-bit identisch |
-| Rollback | Manuell (helm rollback) | `nix flake lock --revision` |
+| Rollback | Manuell (`helm rollback`) | `git revert` des `flake.lock` |
+| Image-Builds | Dockerfile + CI | `nix build .#sogo5-image` (gecached) |
+
+> Die Deploy-Zeiten (~3 Min vs. ~30s) und Cache-Trefferquoten (90 %) sind
+> Richtwerte aus der Praxis, keine garantierten Benchmarks.
 
 ## Migration: Schritt für Schritt
 
-Die Migration erfolgte inkrementell — kein Big-Bang, sondern Dienst für Dienst:
+Die Migration erfolgt inkrementell — kein Big-Bang, sondern Dienst für Dienst:
 
-1. **Doppelbetrieb** — zunächst liefen Helmfile und Nix parallel. Neue Dienste wurden direkt in Nix definiert, bestehende blieben auf Helmfile.
-2. **Paritäts-Tests** — für jeden migrierten Dienst verglichen wir die Nix- und Helmfile-Manifeste mit `diff`. Erst bei identischer Ausgabe wurde der Dienst umgeschaltet.
-3. **Flake-Locking** — `flake.lock` pinnt alle Eingaben (nixpkgs-Version, Image-Digests, Config-Hashes). Ein Rollback ist ein `git revert` des Lock-Files.
-4. **CI-Integration** — GitHub Actions baut jeden Dienst mit `nix build` und pushed die JSON-Manifeste. `kubectl apply` ist idempotent und dauert Sekunden.
+1. **Doppelbetrieb** — Helmfile und Nix laufen parallel. Neue Dienste werden direkt
+   in Nix definiert, bestehende bleiben auf Helmfile.
+2. **Paritäts-Tests** — für jeden migrierten Dienst vergleichen wir die Nix- und
+   Helmfile-Manifeste mit `diff`. Erst bei identischer Ausgabe wird der Dienst
+   umgeschaltet.
+3. **Flake-Locking** — `flake.lock` pinnt alle Eingaben (nixpkgs-Version,
+   Image-Digests, Config-Hashes). Ein Rollback ist ein `git revert` des Lock-Files.
+4. **CI-Integration** — GitHub Actions baut jedes Image mit `nix build` und
+   pushed es. `kubectl apply` ist idempotent und dauert Sekunden.
 
 ## Lessons Learned
 
 **Was gut funktionierte:**
 - Inkrementelle Migration — kein Risiko für laufende Dienste
-- Nix-Store als Build-Cache — 90 % der Dienste sind bei jedem Deployment gecached
+- Nix-Store als Build-Cache — die meisten Dienste sind bei jedem Deployment gecached
 - JSON statt YAML — keine Einrückungsfehler, keine Templating-Sprache
+- Sicherheits-Standards direkt in den Buildern (`lib/security.nix`) — non-root,
+  read-only FS, dropped capabilities sind Standard, nicht Optional
 
 **Was überraschte:**
-- Die Lernkurve für Nix ist real, aber der Funktionsumfang, den wir tatsächlich brauchen (`mkK8sApp`, `flake.lock`, `nix build`), ist überschaubar
+- Die Lernkurve für Nix ist real, aber der Funktionsumfang, den wir tatsächlich
+  brauchen (`lib.deployment`, `flake.lock`, `nix build`), ist überschaubar
 - CI-Builds wurden **schneller**, nicht langsamer — dank Caching
-- Debugging ist angenehmer: `nix build` gibt exakte Fehler mit Zeilennummern, Helmfile gibt Go-Stacktraces
+- Debugging ist angenehmer: `nix build` gibt exakte Fehler mit Zeilennummern
 
 **Was wir vermeiden würden:**
-- Keine `if`-Bedingungen in Nix-Ausdrücken für Umgebungsunterschiede — stattdessen separate Flakes pro Umgebung (`flake.prod.nix`, `flake.staging.nix`)
+- Keine `if`-Bedingungen in Nix-Ausdrücken für Umgebungsunterschiede — stattdessen
+  separate Environment-Module (`k8s/environments/demo/`, `k8s/environments/local/`)
 - Keine Inline-Secrets — Secrets bleiben in Kubernetes-Secrets, nicht im Nix-Store
 
 ## Ausblick
 
-Nix hat unsere Deployment-Pipeline von einer fehleranfälligen Template-Kette in eine deterministische Build-Pipeline verwandelt. Die 28 Dienste von openDesk Edu lassen sich nun in Sekunden statt Minuten ausrollen — und jeder Build ist reproduzierbar bis ins letzte Byte.
+Nix erweitert unsere Deployment-Pipeline um eine deterministische Build-Schicht.
+Die 69 Dienste von openDesk Edu lassen sich nun reproduzierbar bauen — und jeder
+Build ist identisch bis ins letzte Byte.
 
-Der nächste Schritt: **NixOS als Basis-Image** für die Dienste selbst, nicht nur für die Manifeste. Dann ist nicht nur das Deployment deterministisch, sondern auch die Laufzeitumgebung.
+Der nächste Schritt: **NixOS als Basis-Image** für die Dienste selbst, nicht nur
+für die Manifeste. Dann ist nicht nur das Deployment deterministisch, sondern auch
+die Laufzeitumgebung.
 
 ---
 
-*openDesk Edu ist die Bildungs-Variante von [openDesk](https://opendesk.eu), erweitert um 25 Dienste für Forschung und Lehre. Charts und Community-Plattform finden sich auf [opencode.de](https://opencode.de).*
+*openDesk Edu ist die Bildungs-Variante von [openDesk](https://opendesk.eu), erweitert
+um eine umfassende Suite von Diensten für Forschung und Lehre. Charts und Community-Plattform finden sich auf
+[opencode.de](https://opencode.de).*

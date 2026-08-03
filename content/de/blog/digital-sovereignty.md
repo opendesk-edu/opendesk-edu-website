@@ -1,7 +1,7 @@
 ---
 title: "Gewinnen Sie Ihre Digitale Souveränität zurück: Das openDesk Edu Open-Source-Ökosystem"
 date: "2026-06-27"
-description: "Wie openDesk Edu Universitäten hilft, sich von Anbieter-Lock-in zu befreien, Kosten um 80-90% zu senken, DSGVO-Compliance zu gewährleisten und ein produktionsreifes Ökosystem aus 25 integrierten Open-Source-Diensten bereitzustellen."
+description: "Wie openDesk Edu Universitäten hilft, sich von Anbieter-Lock-in zu befreien, Kosten um 80-90% zu senken, DSGVO-Compliance zu gewährleisten und ein produktionsreifes Ökosystem aus einer umfassenden Suite integrierter Open-Source-Diensten bereitzustellen."
 categories: ["Digitale Souveränität", "Open Source", "Bildung"]
 tags: ["digitale-souveränität", "dsgvo", "open-source", "bildung", "kubernetes", "anbieterbindung", "deutsche-hochschulen"]
 author: "Tobias Weiß und openDesk Edu Mitwirkende"
@@ -20,9 +20,9 @@ Der Status quo ist unhaltbar. Eine mittelgroße deutsche Universität (10.000 Nu
 
 ## Was ist openDesk Edu?
 
-openDesk Edu ist eine **umfassende, produktionsreife Plattform**, die 25 erstklassige Open-Source-Anwendungen in ein einheitliches Ökosystem für Bildungseinrichtungen integriert. Es ist kein Anbieterangebot — es ist ein **Ökosystem**, das auf den tatsächlichen Open-Source-Projekten aufbaut, die Sie kennen und denen Sie vertrauen, vorkonfiguriert, um nahtlos zusammenzuarbeiten.
+openDesk Edu ist eine **umfassende, produktionsreife Plattform**, die eine umfassende Suite erstklassiger Open-Source-Anwendungen in ein einheitliches Ökosystem für Bildungseinrichtungen integriert. Es ist kein Anbieterangebot — es ist ein **Ökosystem**, das auf den tatsächlichen Open-Source-Projekten aufbaut, die Sie kennen und denen Sie vertrauen, vorkonfiguriert, um nahtlos zusammenzuarbeiten.
 
-### Die 25 Integrierten Dienste
+### Die integrierte Service-Suite
 
 openDesk Edu kombiniert erstklassige Open-Source-Anwendungen in vier Kategorien:
 
@@ -105,7 +105,7 @@ Für europäische Bildungseinrichtungen ist Datensouveränität nicht optional �
 
 openDesk Edu behandelt Datenschutz durch architektonische Entscheidungen, nicht durch nachträgliche Funktionen:
 
-- **Datenresidenz**: Alle Daten werden auf Servern deutscher Universitäten gespeichert (HRZ Marburg Cluster)
+- **Datenresidenz**: Alle Daten werden auf Servern deutscher Universitäten gespeichert (Produktionscluster)
 - **Kein Cloud-Lock-in**: Selbst gehostete Bereitstellung eliminiert Drittanbieter-Datenresidenz-Bedenken
 - **Transparenter Code**: Apache-2.0 und AGPL-3.0 Lizenzierung ermöglicht vollständige Code-Überprüfung
 - **Privacy by Design**: In die Architektur eingebaut, nicht später hinzugefügt
@@ -122,12 +122,12 @@ openDesk Edu integriert sich nahtlos in die **Deutsches Forschungsnetz (DFN)** F
 - **Akzeptiert Anmeldedaten** von jeder teilnehmenden deutschen Universität
 - **Single Sign-On** über alle Dienste mit föderierter Identität
 
-### Produktionsbewährt am HRZ Marburg
+### Produktionsbewährt in der Praxis
 
-Das **Hochschulrechenzentrum (HRZ) Marburg** betreibt eine Produktionsbereitstellung auf einem 9-Knoten-K3s-Cluster:
+Eine Produktionsbereitstellung läuft auf einem 9-Knoten-K3s-Cluster:
 
-- **3 Control-Plane-Knoten** (vhrz2331-2333) für Hochverfügbarkeit
-- **6 Worker-Knoten** (vhrz2334-2339) für Workload-Verteilung
+- **3 Control-Plane-Knoten** für Hochverfügbarkeit
+- **6 Worker-Knoten** für Workload-Verteilung
 - **Ceph-Speicher** (RBD SSD für Datenbanken, CephFS HDD EC für Dateien)
 - **ArgoCD** für GitOps-Bereitstellungen
 - **Prometheus + Grafana** für Monitoring
@@ -214,7 +214,7 @@ Und das sind nur die direkten Kosten. Wenn man berücksichtigt:
 
 ### Nachher: Integriertes Ökosystem
 
-- 1 integriertes Ökosystem, das 25 erstklassige Open-Source-Anwendungen verbindet
+- 1 integriertes Ökosystem, das eine umfassende Suite erstklassiger Open-Source-Anwendungen verbindet
 - 1 Keycloak-SSO über alle Dienste — **keine proprietäre Authentifizierungsschicht**
 - Deutsche Datensouveränität mit On-Premise-Bereitstellung
 - Vorkonfigurierte Integrationen reduzieren IT-Aufwand um 80%
@@ -243,7 +243,7 @@ Und das sind nur die direkten Kosten. Wenn man berücksichtigt:
 - 17 Plattform-Level-Spezifikationen (Backup, Sicherheit, Monitoring, DR)
 - Health-Check-Katalog und Probe-Timing-Dokumentation
 - SLO-Definitionen und Kapazitätsplanungsrichtlinien
-- **25/25 Dienstspezifikationen mit vollständigen SLO- und DR-Dokumentationen**
+- **vollständige Dienstspezifikationen mit vollständigen SLO- und DR-Dokumentationen**
 
 ## Die OpenSpec: Ihr Vollständiger Technischer Leitfaden
 
@@ -255,14 +255,14 @@ Hinter der Einfachheit von openDesk Edu liegt akribische Dokumentation. Unsere *
 - **Leistung**: SLO-Definitionen, Kapazitätsplanung
 - **Infrastruktur**: Backup, Speicher, Netzwerk, Bereitstellung
 
-### Dienstspezifikationen (25 Specs)
-Jeder der 25 Dienste hat eine dedizierte Spezifikation, die abdeckt:
+### Dienstspezifikationen (vollständige Specs)
+Jeder der eine umfassende Suite von Diensten hat eine dedizierte Spezifikation, die abdeckt:
 - Zweck und Umfang
 - Funktionale Anforderungen mit Benutzerszenarien
 - Abhängigkeiten und Integrationspunkte
 - Komponentenreferenz und Konfiguration
-- **Service Level Objectives (SLOs)** — alle 25 Dienste
-- **Disaster Recovery Verfahren** — alle 25 Dienste
+- **Service Level Objectives (SLOs)** — alle Dienste in der Suite
+- **Disaster Recovery Verfahren** — alle Dienste in der Suite
 
 ### Integrationsspezifikationen (6 Specs)
 - API-Verträge zwischen Diensten

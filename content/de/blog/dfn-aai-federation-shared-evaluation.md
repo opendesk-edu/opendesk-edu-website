@@ -34,7 +34,7 @@ Die grundlegende Architekturentscheidung: **Keycloak fungiert sowohl als SAML-SP
 - Die Außenwelt sieht eine SAML-SP-Entität — sauber, einfach, standardkonform
 - Interne Dienste verwenden weiterhin OIDC — keine SAML-Konfiguration pro Dienst erforderlich
 - Attributübersetzung erfolgt an einer Stelle — SAML-eduGAIN-Attribute → OIDC-Ansprüche
-- Backchannel-Logout propagiert von DFN-AAI → Keycloak → alle 25+ Dienste
+- Backchannel-Logout propagiert von DFN-AAI → Keycloak → alle Dienste in der Suite
 
 ```
 ┌──────────────┐     SAML 2.0     ┌──────────────┐     OIDC      ┌──────────────┐
@@ -188,7 +188,7 @@ Das Fundament ist gelegt:
 - SP-Metadatengenerierungsskript mit Zertifikatsunterstützung
 - Zweisprachiger (EN/DE) Testleitfaden für die DFN-AAI-Testföderation
 - 6 Dokumentationsdateien (~4.000 Zeilen) zu Föderation, Aufnahme, Integration, Tests, Fehlerbehebung und Produktionsbereitstellung
-- Backchannel-Logout für alle 25+ openDesk-Edu-Dienste konfiguriert — Logout-Propagierung funktioniert Ende-zu-Ende
+- Backchannel-Logout für alle openDesk-Edu-Dienste konfiguriert — Logout-Propagierung funktioniert Ende-zu-Ende
 
 Was fehlt, ist die gemeinsame Infrastruktur. Und da brauchen wir Sie.
 

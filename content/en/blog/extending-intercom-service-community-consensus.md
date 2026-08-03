@@ -210,7 +210,7 @@ We're ready to contribute our time, code, and resources to make this happen. **T
 
 ## Conclusion: The Path Forward
 
-The openDesk platform is a remarkable achievement—25+ integrated open-source services, German data protection compliance, and a real alternative to US-based SaaS giants. But its long-term success depends on **collaboration, not fragmentation**.
+The openDesk platform is a remarkable achievement—a comprehensive suite of integrated open-source services, German data protection compliance, and a real alternative to US-based SaaS giants. But its long-term success depends on **collaboration, not fragmentation**.
 
 We urge ZenDiS to work with the community to establish **common development patterns** for shared components like the intercom-service. This isn't just about making our lives easier—it's about ensuring that openDesk remains a **viable, sovereign platform** for the long term.
 
@@ -232,6 +232,6 @@ Together, we can build a truly sovereign digital infrastructure for European pub
 
 ---
 
-**About the Authors**: This article was written by the openDesk Edu community. openDesk Edu is a production deployment of 25 integrated open-source services for German educational institutions, based at HRZ Marburg. See [opendesk-edu.org](https://opendesk-edu.org) for more information.
+**About the Authors**: This article was written by the openDesk Edu community. openDesk Edu is a production deployment of a comprehensive suite of integrated open-source services for German educational institutions. See [opendesk-edu.org](https://opendesk-edu.org) for more information.
 
 **License**: This article is licensed under Apache-2.0.

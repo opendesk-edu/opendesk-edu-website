@@ -114,7 +114,7 @@ Die Vorstellung, dass „Open Source teuer ist, weil man 0,5 VZÄ für den Betri
 
 Open-Source-Alternativen (openDesk Edu) haben drei Kostenkomponenten: Infrastruktur, Personal (geschätzt 0,5 VZÄ für 10.000 Nutzer) und Community-Beiträge (kostenlos). Geschätzte jährliche Gesamtkosten: Infrastruktur 30.000 € + Personal 40.000 € = 70.000 €. Dies sind interne Schätzungen, keine offiziellen Angebote. Dies würde etwa ein Zehntel der eskalierten Microsoft-365-Kosten im obigen illustriativen Szenario entsprechen.
 
-Die Einsparungen kommen daher, dass Sie nicht für das Anbietermanagement über 25 Dienste zahlen, die Sie nie einzeln benötigen.
+Die Einsparungen kommen daher, dass Sie nicht für das Anbietermanagement über eine umfassende Suite von Diensten zahlen, die Sie nie einzeln benötigen.
 
 ### Anbieterbindung: Die „Bleiben wir doch"-Selbstzufriedenheit
 
@@ -136,7 +136,7 @@ Die strategische Ausrichtung Ihrer Hochschule ist jetzt an Microsofts Produkt-Ro
 
 Das Open-Source-Ökosystem für digitale Arbeitsplätze ist keine theoretische Alternative mehr. Es ist produktionsreif, mit Enterprise-fähigen Anbietern und nachgewiesenen Bereitstellungen an deutschen Hochschulen.
 
-**openDesk Edu ist keine reine Vendor-Ersatzliste – es ist ein betriebsfähiges Ökosystem**, das 25 erstklassige Open-Source-Anwendungen integriert:
+**openDesk Edu ist keine reine Vendor-Ersatzliste – es ist ein betriebsfähiges Ökosystem**, das eine umfassende Suite erstklassiger Open-Source-Anwendungen integriert:
 
 | Kategorie | 365-Äquivalent | openDesk Edu-Dienst |
 |-----------|----------------|---------------------|
@@ -150,7 +150,7 @@ Das Open-Source-Ökosystem für digitale Arbeitsplätze ist keine theoretische A
 | Wiki | SharePoint | XWiki |
 
 Alle Dienste integriert durch:
-- **Keycloak**: Single Sign-On (einheitlicher Login über 25 Anwendungen)
+- **Keycloak**: Single Sign-On (einheitlicher Login über eine umfassende Suite von Anwendungen)
 - **Matrix**: Föderierte Kommunikation (Element verbindet sich mit anderen Matrix-Servern)
 - **Nextcloud**: Dateifreigaben mit Versionshistorie, Freigabelinks, mobiler Sync
 - **Intercop**: App-SSO-Integration (ein Login für alle Apps)

@@ -44,7 +44,7 @@ SPECIFICATION         DEPLOYMENT          OPERATION
 
 ### The openDesk Edu Challenge
 
-openDesk Edu deploys **50+ services** across **12+ Kubernetes namespaces** with **400+ Helm chart values**. With this complexity:
+openDesk Edu deploys **a comprehensive service suite** across **multiple Kubernetes namespaces** with **hundreds of Helm chart values**. With this complexity:
 
 - Wiki pages become stale within days
 - Diagrams don't match actual deployments
@@ -295,7 +295,7 @@ specs/_registry/
 │  Overall Coverage: 12% (8 tests for 65 specs)               │
 │                                                             │
 │  By Category:                                              │
-│    Services (24):     25%  (6/24 tested)  ████░░░░        │
+│    Services:     25%  (6/24 tested)  ████░░░░        │
 │    Platform (17):     0%   (0/17 tested)  ░░░░░░░░        │
 │    Auth (4):          0%   (0/4 tested)   ░░░░░░░░        │
 │    Integrations (6):  0%   (0/6 tested)   ░░░░░░░░        │
@@ -360,7 +360,7 @@ Total Tests:           8
 Overall Coverage:      12.31%
 
 By Category:
-  Services (24):        25.00%  (6/24 tested)
+  Services:        25.00%  (6/24 tested)
   Platform (17):        0.00%   (0/17 tested)
   Auth (4):             0.00%   (0/4 tested)
 ```
@@ -545,4 +545,4 @@ Documentation doesn't have to be an afterthought. With the Spec-Contract-Test Py
 
 ---
 
-*Copyright © 2026 HRZ Uni Marburg. Licensed under [AGPL-3.0-only](https://www.gnu.org/licenses/agpl-3.0.html). openDesk Edu is an [openDesk](https://opendesk.hrz.uni-marburg.de) project.*
+*Copyright © 2026 openDesk Edu Contributors. Licensed under [AGPL-3.0-only](https://www.gnu.org/licenses/agpl-3.0.html). openDesk Edu is an [openDesk](https://opendesk-edu.org) project.*

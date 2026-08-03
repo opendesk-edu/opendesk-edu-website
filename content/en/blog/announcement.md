@@ -13,7 +13,7 @@ We are excited to announce the launch of openDesk Edu, a new project that brings
 
 ## What is openDesk Edu?
 
-openDesk Edu builds on top of openDesk Community Edition (CE) and adds 15 education-specific services on top of the existing workplace stack. The result is one platform that covers learning management, video conferencing, real-time collaboration, file sharing, productivity, and more. Instead of stitching together a patchwork of proprietary tools, institutions get a fully open-source digital environment that respects data sovereignty and interoperability standards.
+openDesk Edu builds on top of openDesk Community Edition (CE) and adds a range of education-specific services on top of the existing workplace stack. The result is one platform that covers learning management, video conferencing, real-time collaboration, file sharing, productivity, and more. Instead of stitching together a patchwork of proprietary tools, institutions get a fully open-source digital environment that respects data sovereignty and interoperability standards.
 
 ## What's Included
 
@@ -35,11 +35,11 @@ openDesk Edu ships all services across several categories:
 
 **Data sovereignty.** All services run on infrastructure you control. No data leaves your cluster unless you configure it to. This matters for institutions subject to GDPR and national data protection regulations.
 
-**Modular architecture.** Not every institution needs all all services. The configuration system lets you enable only what your users need. Run just ILIAS and Nextcloud, or deploy the full stack. The choice is yours.
+**Modular architecture.** Not every institution needs all services. The configuration system lets you enable only what your users need. Run just ILIAS and Nextcloud, or deploy the full stack. The choice is yours.
 
 ## Education Services in Beta
 
-The 15 services added on top of openDesk CE are released as beta. This means they are functional and tested for basic use cases, but may not yet have the same level of polish and hardening as the core openDesk CE services. We are actively seeking feedback from early adopters.
+The services added on top of openDesk CE are released as beta. This means they are functional and tested for basic use cases, but may not yet have the same level of polish and hardening as the core openDesk CE services. We are actively seeking feedback from early adopters.
 
 Beta services include: ILIAS, Moodle, BigBlueButton, OpenCloud (a Nextcloud-based file sharing variant), Grommunio, Etherpad, BookStack, Planka, Zammad, LimeSurvey, LTB SSP, Draw.io, Excalidraw, and TYPO3.
 

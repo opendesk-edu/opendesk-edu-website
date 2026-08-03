@@ -18,7 +18,7 @@ In nur etwas mehr als drei Monaten ist das Projekt von einer Ankündigung zu ein
 | Kennzahl | Wert |
 |----------|------|
 | Upstream-Releases abgebildet | openDesk 1.13 → 1.17 (4 Releases) |
-| Produktionscluster | 57 Pods, 33 Dienste, 9 Knoten |
+| Produktionscluster | Multi-Knoten-K3s-Cluster mit umfassender Service-Suite |
 | Blog-Artikel | 22 (EN, DE, FR, ZH — 88 Seiten insgesamt) |
 | Community of Practice | 3 Sitzungen, wachsende Beteiligung |
 | Mitwirkendenvereinbarungen | 3 unterzeichnet |
@@ -51,7 +51,7 @@ Der Produktionscluster ist der betriebliche Nachweis für openDesk Edu. Was als 
 ### Produktionscluster
 
 - **Plattform:** K3s v1.32.3 auf 9 Knoten (Debian 12)
-- **Workloads:** 57 Pods mit 33 Diensten
+- **Workloads:** Eine umfassende Service-Suite über mehrere Pods
 - **Identität:** Unified SSO via Keycloak mit 44 auditierten Clients
 - **Domain:** Alle Dienste unter einer einzelnen Domain konsolidiert
 - **Speicher:** SeaweedFS für S3-kompatiblen Objektspeicher

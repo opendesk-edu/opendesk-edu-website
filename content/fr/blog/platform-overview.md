@@ -1,7 +1,7 @@
 ---
 title: "La Plateforme openDesk Edu : Apprentissage Numérique Open Source Complet"
 date: "2026-06-27"
-description: "Découvrez comment openDesk Edu transforme les établissements d'enseignement avec 25 services open source intégrés, un SSO transparent et une conformité totale à la protection des données allemande."
+description: "Découvrez comment openDesk Edu transforme les établissements d'enseignement avec une suite complète de services open source intégrés, un SSO transparent et une conformité totale à la protection des données allemande."
 categories: ["Plateforme", "Open Source", "Éducation"]
 tags: ["plateforme", "edtech", "open-source", "éducation", "conformité-allemande"]
 author: "Tobias Weiß et les contributeurs openDesk Edu"
@@ -12,20 +12,20 @@ image: "/static/blog/platform-overview-teaser.svg"
 
 ## Qu'est-ce qu'openDesk Edu ?
 
-Imaginez une université où étudiants, chercheurs et enseignants accèdent à un écosystème unifié de 25 services intégrés — des systèmes de gestion de l'apprentissage à l'édition collaborative de documents en passant par la gestion de tâches et la visioconférence — le tout avec une authentification unique transparente, une conformité totale à la protection des données allemande et une transparence open source.
+Imaginez une université où étudiants, chercheurs et enseignants accèdent à un écosystème unifié d'une suite complète de services intégrés — des systèmes de gestion de l'apprentissage à l'édition collaborative de documents en passant par la gestion de tâches et la visioconférence — le tout avec une authentification unique transparente, une conformité totale à la protection des données allemande et une transparence open source.
 
 Ceci est **openDesk Edu** : une plateforme de gestion de l'apprentissage de pointe conçue spécifiquement pour les établissements d'enseignement européens.
 
 ### Proposition de Valeur Clé
 
-- **Expérience Unifiée** : Authentification unique (SSO) sur 25 services intégrés via Keycloak
-- **Conformité Souveraine** : Totalement conforme au RGPD, données hébergées sur des serveurs universitaires allemands (HRZ Marburg)
+- **Expérience Unifiée** : Authentification unique (SSO) sur une suite complète de services intégrés via Keycloak
+- **Conformité Souveraine** : Totalement conforme au RGPD, données hébergées sur des serveurs universitaires allemands
 - **Efficacité des Coûts** : L'open source élimine les frais de licence coûteux et le verrouillage fournisseur
 - **Intégration Préconfigurée** : 80+ relations de service documentées et flux de travail inter-services
 - **Prêt pour la Production** : Documentation opérationnelle complète, runbooks et monitoring
 - **Approche Écosystémique** : S'appuie sur des projets open source existants au lieu de créer une plateforme propriétaire — vous rejoignez la communauté mondiale, pas enfermé dans un autre fournisseur
 
-## Les 25 Services Intégrés
+## La Suite de Services Intégrés
 
 openDesk Edu combine les meilleures applications open source en quatre catégories fonctionnelles :
 
@@ -71,9 +71,9 @@ openDesk Edu combine les meilleures applications open source en quatre catégori
 
 ## Comment Tout s'Connecte : La Matrice d'Interconnexion
 
-Ces 25 services ne fonctionnent pas de manière isolée — ils forment un écosystème étroitement intégré avec 80+ relations documentées :
+Ces services ne fonctionnent pas de manière isolée — ils forment un écosystème étroitement intégré avec 80+ relations documentées :
 
-- **Hub d'Authentification** : Les 25 services s'authentifient via Keycloak (SAML 2.0 / OIDC)
+- **Hub d'Authentification** : Tous les services de la suite s'authentifient via Keycloak (SAML 2.0 / OIDC)
 - **API de Stockage de Fichiers** : Nextcloud fournit le stockage central de fichiers auquel accèdent OpenProject, Collabora, CryptPad, Etherpad
 - **Flux de Travail Cross-SSO** : Le service Intercom permet la connexion silencieuse entre les services (Nextcloud ↔ OX, Nextcloud ↔ Element)
 - **Intégration LDAP** : SOGo, XWiki, Zammad, Self-Service Password se synchronisent avec l'annuaire LDAP Nubus
@@ -143,7 +143,7 @@ Nous n'essayons pas de forker le projet de façon permanente. **Nous voulons fus
 
 ## Conclusion : La Voie à Suivre
 
-La plateforme openDesk est une réalisation remarquable — 25+ services open source intégrés, conformité à la protection des données allemande, et une véritable alternative aux géants du SaaS américains. Mais son succès à long terme dépend de **collaboration, pas de fragmentation**.
+La plateforme openDesk est une réalisation remarquable — une suite complète de services open source intégrés, conformité à la protection des données allemande, et une véritable alternative aux géants du SaaS américains. Mais son succès à long terme dépend de **collaboration, pas de fragmentation**.
 
 Nous exhortons ZenDiS à travailler avec la communauté pour établir des **modèles de développement communs** pour les composants partagés comme le service intercom. Il ne s'agit pas seulement de nous faciliter la vie — il s'agit de garantir qu'openDesk reste une **plateforme souveraine viable** pour le long terme.
 
@@ -165,6 +165,6 @@ Ensemble, nous pouvons construire une véritable infrastructure numérique souve
 
 ---
 
-**À Propos des Auteurs** : Cet article a été écrit par la communauté openDesk Edu. openDesk Edu est un déploiement en production de 25 services open source intégrés pour les établissements d'enseignement allemands, basé au HRZ Marburg. Voir [opendesk-edu.org](https://opendesk-edu.org) pour plus d'informations.
+**À Propos des Auteurs** : Cet article a été écrit par la communauté openDesk Edu. openDesk Edu est un déploiement en production d'une suite complète de services open source intégrés pour les établissements d'enseignement allemands. Voir [opendesk-edu.org](https://opendesk-edu.org) pour plus d'informations.
 
 **Licence** : Cet article est sous licence Apache-2.0.

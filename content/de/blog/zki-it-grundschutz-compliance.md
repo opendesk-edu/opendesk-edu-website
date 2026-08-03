@@ -11,7 +11,7 @@ image: "/static/blog/zki-it-grundschutz-compliance-teaser.svg"
 
 > **Die Baseline:** Jedes deutsche Hochschulrechenzentrum arbeitet nach dem ZKI-IT-Grundschutz-Profil — der hochschulspezifischen Adaption der BSI-IT-Grundschutz-Methodik.
 >
-> **Die Realität:** Für eine Plattform aus über 25 Open-Source-Diensten ist Compliance kein Kästchen, das man einmal abhakt. Sie ist eine architektonische Eigenschaft, die kontinuierlich durchgesetzt werden muss — durch Policies, Pipelines und transparente Dokumentation.
+> **Die Realität:** Für eine Plattform aus über eine umfassende Suite von Open-Source-Dienstenn ist Compliance kein Kästchen, das man einmal abhakt. Sie ist eine architektonische Eigenschaft, die kontinuierlich durchgesetzt werden muss — durch Policies, Pipelines und transparente Dokumentation.
 >
 > **Unser Ansatz:** Statt eines Compliance-Bekenntnisses haben wir ein Compliance-System gebaut: über 20 durchsetzbare Kyverno-Policies, eine gehärtete GitOps-Pipeline und eine öffentliche Gap-Analyse, die genau zeigt, wo wir stehen — einschließlich der Lücken.
 

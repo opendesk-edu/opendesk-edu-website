@@ -114,7 +114,7 @@ The notion that "open-source is expensive because you need 0.5 FTE to run it" mi
 
 Open-source alternatives (openDesk Edu) cost three components: infrastructure, personnel (estimated 0.5 FTE for 10,000 users), and community contribution (free). Estimated total annual cost: infrastructure €30k + personnel €40k = €70k. These are internal estimates, not official quotes. This would represent roughly one-tenth of Microsoft 365's escalated costs in the illustrative scenario above.
 
-The savings come from not paying for vendor management across 25 services you never need separately.
+The savings come from not paying for vendor management across a comprehensive suite of services you never need separately.
 
 ### Vendor Lock-In: The Might As Well Stay Complacency
 
@@ -136,7 +136,7 @@ Your university's strategic direction is now aligned with Microsoft's product ro
 
 The open-source ecosystem for digital workplaces is no longer a theoretical alternative. It's production-ready, with enterprise-grade providers and proven deployments across German universities.
 
-**openDesk Edu is not a vendor replacement list — it's an operational ecosystem** that integrates 25 world-class open-source applications:
+**openDesk Edu is not a vendor replacement list — it's an operational ecosystem** that integrates a comprehensive suite of open-source applications:
 
 | Category | 365 Equivalent | openDesk Edu Service |
 |----------|----------------|----------------------|
@@ -150,7 +150,7 @@ The open-source ecosystem for digital workplaces is no longer a theoretical alte
 | Wiki | SharePoint | XWiki |
 
 All services integrated through:
-- **Keycloak**: Single sign-on (unified login across 25 applications)
+- **Keycloak**: Single sign-on (unified login across the full suite of applications)
 - **Matrix**: Federated communication (element connects to other matrix servers)
 - **Nextcloud**: File shares with version history, sharing links, mobile sync
 - **Intercop**: App-SSO integration (one login for all apps)

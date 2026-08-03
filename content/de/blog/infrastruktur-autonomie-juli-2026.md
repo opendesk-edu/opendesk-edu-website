@@ -9,7 +9,7 @@ image: "/static/blog/infrastructure-autonomy-july-2026-teaser.svg"
 
 # Infrastruktur-Autonomie — Fortschrittsbericht Juli 2026
 
-Die openDesk-Edu-Bereitstellung am HRZ Marburg hat diesen Monat zwei bedeutende Meilensteine erreicht: die vollständige SSO-Integration aller Dienste und eine weitgehende Infrastruktur-Autonomie von externen Registries.
+Die openDesk-Edu-Bereitstellung hat diesen Monat zwei bedeutende Meilensteine erreicht: die vollständige SSO-Integration aller Dienste und eine weitgehende Infrastruktur-Autonomie von externen Registries.
 
 ## Stalwart v0.16 ersetzt Postfix
 
@@ -58,7 +58,7 @@ Die ArgoCD-Verwaltung wurde von 2 auf **27 Edu-Anwendungen** erweitert, indem CM
 
 ## Eigene Infrastruktur-Repos
 
-Zur Entkopplung von externen Registries, die vom HRZ-Cluster-Netzwerk aus nicht erreichbar sind, wurden vier unabhängige Repositories erstellt:
+Zur Entkopplung von externen Registries, die vom Cluster-Netzwerk aus nicht erreichbar sind, wurden vier unabhängige Repositories erstellt:
 
 | Repository | GitHub | GitLab | Zweck |
 |-----------|--------|--------|-------|
@@ -73,7 +73,7 @@ Jedes Repository enthält:
 - GitHub-Actions- und GitLab-CI-Pipelines
 - Ausführliche README
 
-Das kubectl-Image wurde nach `registry.gitlab.com/tbsweiss/opendesk-kubectl:1.32.3` und `registry.hrz.uni-marburg.de/opendesk/kubectl` gepusht und ersetzt `bitnami/kubectl` (Tag 1.32 nicht gefunden) sowie `lachlanevenson/k8s-kubectl`.
+Das kubectl-Image wurde nach `registry.gitlab.com/tbsweiss/opendesk-kubectl:1.32.3` und `registry.opendesk-edu.org/opendesk/kubectl` gepusht und ersetzt `bitnami/kubectl` (Tag 1.32 nicht gefunden) sowie `lachlanevenson/k8s-kubectl`.
 
 ## Monitoring und Backups
 
@@ -93,4 +93,4 @@ Das kubectl-Image wurde nach `registry.gitlab.com/tbsweiss/opendesk-kubectl:1.32
 
 ---
 
-*Betrieben auf K3s v1.32.3 · 9 Knoten · Ceph-CSI-Speicher · HRZ Marburg*
+*Betrieben auf K3s v1.32.3 · 9 Knoten · Ceph-CSI-Speicher · Produktionscluster*

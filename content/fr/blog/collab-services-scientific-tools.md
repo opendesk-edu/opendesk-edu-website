@@ -29,7 +29,7 @@ Les nouveaux outils couvrent les carnets interactifs, le LaTeX collaboratif, les
 | **Infrastructure** | [ttyd](https://github.com/tsl0922/ttyd) | Terminal Linux dans le navigateur | ✅ Stable | `term.*` |
 | | [KasmVNC](https://kasmweb.com/) | Bureau Linux complet dans le navigateur | 🟡 Bêta | `desktop.*` |
 
-Chaque service obtient son propre sous-domaine sous le DNS wildcard de l'établissement — `jupyter.universite-marburg.de`, `r.universite-marburg.de`, `latex.universite-marburg.de`, etc. — routé via HAProxy ingress avec des certificats TLS Let's Encrypt automatiques.
+Chaque service obtient son propre sous-domaine sous le DNS wildcard de l'établissement — `jupyter.example.edu`, `r.example.edu`, `latex.example.edu`, etc. — routé via HAProxy ingress avec des certificats TLS Let's Encrypt automatiques.
 
 ## Pourquoi C'est Important
 
@@ -113,13 +113,13 @@ Tous les services s'authentifient via Keycloak en utilisant l'un des deux schém
 
 **Schéma 2 : OIDC natif** — JupyterHub utilise [OAuthenticator](https://oauthenticator.readthedocs.io/) avec la classe GenericOAuthenticator, et Open WebUI a un support OIDC intégré. Les deux pointent directement vers les points de terminaison OIDC standard de Keycloak (`/realms/opendesk/protocol/openid-connect/...`).
 
-Dans l'environnement de production de l'Université Philipps de Marbourg, Keycloak est configuré avec un redirecteur de fournisseur d'identité qui redirige automatiquement vers Shibboleth SAML. Le résultat est une chaîne d'authentification transparente :
+Dans l'environnement de production, Keycloak est configuré avec un redirecteur de fournisseur d'identité qui redirige automatiquement vers Shibboleth SAML. Le résultat est une chaîne d'authentification transparente :
 
 ```
 Utilisateur → Service (ex. RStudio)
   → oauth2-proxy redirige vers Keycloak
     → Keycloak redirige automatiquement vers Shibboleth SAML
-      → Connexion universitaire (weblogin.uni-marburg.de)
+      → Connexion universitaire (weblogin.example.edu)
         → Assertion SAML → Jeton OIDC Keycloak
           → Accès authentifié à RStudio
 ```
@@ -213,11 +213,11 @@ Les clients OIDC Keycloak doivent être créés pour chaque service avant d'acti
 
 ## Vérification
 
-Un script de test de vérification (`scripts/smoke-test.sh`) vérifie que tous les services répondent correctement. Résultats réels du cluster HRZ de l'Université de Marburg le 28 mai 2026 :
+Un script de test de vérification (`scripts/smoke-test.sh`) vérifie que tous les services répondent correctement. Résultats réels du cluster de production le 28 mai 2026 :
 
 ```
 === Test de Vérification Collab Services ===
-Domaine : opendesk.hrz.uni-marburg.de | Ingress : 192.168.3.201
+Domaine : opendesk-edu.org | Ingress : 192.168.3.201
 
   ✅ RStudio (r) → HTTP 302
   ✅ ttyd (term) → HTTP 302
@@ -286,4 +286,4 @@ Les questions, rapports de bogues et contributions sont les bienvenus via [Codeb
 
 *openDesk Edu est une plateforme de travail numérique open-source pour l'enseignement supérieur. Elle étend [openDesk Community Edition](https://www.opencode.de/en/opendesk) avec la gestion de l'apprentissage, la visioconférence, la synchronisation de fichiers et désormais des outils de calcul scientifique — le tout sur Kubernetes avec authentification unique unifiée. Sous licence Apache 2.0.*
 
-*Ce projet est développé au [Hochschulrechenzentrum (HRZ)](https://www.uni-marburg.de/en/hrz) de l'Université Philipps de Marburg dans le cadre de la stratégie de souveraineté numérique de l'université.*
+*Ce projet est développé dans le cadre d'une stratégie de souveraineté numérique universitaire.*

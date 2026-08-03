@@ -114,7 +114,7 @@ L'idée que « l'open-source est cher parce qu'il faut 0,5 ETP pour l'exploiter 
 
 Les alternatives open-source (openDesk Edu) ont trois composantes de coût : infrastructure, personnel (estimé à 0,5 ETP pour 10 000 utilisateurs) et contribution communautaire (gratuite). Coût annuel total estimé : infrastructure 30 000 € + personnel 40 000 € = 70 000 €. Ce sont des estimations internes, et non des devis officiels. Cela représenterait environ un dixième des coûts escaladés de Microsoft 365 dans le scénario illustratif ci-dessus.
 
-Les économies proviennent du fait de ne pas payer pour la gestion de fournisseur sur 25 services dont vous n'avez jamais besoin séparément.
+Les économies proviennent du fait de ne pas payer pour la gestion de fournisseur sur une suite complète de services dont vous n'avez jamais besoin séparément.
 
 ### Verrouillage fournisseur : la résignation « autant rester »
 
@@ -136,7 +136,7 @@ L'orientation stratégique de votre université est désormais alignée sur la f
 
 L'écosystème open-source pour l'environnement de travail numérique n'est plus une alternative théorique. Il est prêt pour la production, avec des fournisseurs de niveau entreprise et des déploiements éprouvés dans les universités allemandes.
 
-**openDesk Edu n'est pas une simple liste de remplacement de fournisseurs — c'est un écosystème opérationnel** qui intègre 25 applications open-source de premier plan :
+**openDesk Edu n'est pas une simple liste de remplacement de fournisseurs — c'est un écosystème opérationnel** qui intègre une suite complète d'applications open-source de premier plan :
 
 | Catégorie | Équivalent 365 | Service openDesk Edu |
 |-----------|----------------|---------------------|
@@ -150,7 +150,7 @@ L'écosystème open-source pour l'environnement de travail numérique n'est plus
 | Wiki | SharePoint | XWiki |
 
 Tous les services intégrés via :
-- **Keycloak** : Authentification unique (connexion unifiée pour 25 applications)
+- **Keycloak** : Authentification unique (connexion unifiée pour la suite complète d'applications)
 - **Matrix** : Communication fédérée (Element se connecte à d'autres serveurs Matrix)
 - **Nextcloud** : Partages de fichiers avec historique des versions, liens de partage, synchronisation mobile
 - **Intercop** : Intégration SSO des applications (une connexion pour toutes les apps)

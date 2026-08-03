@@ -8,7 +8,7 @@ tags: ["architecture", "kubernetes", "saml", "keycloak", "fédération"]
 
 # Vue d'ensemble de l'architecture système
 
-openDesk Edu étend l'environnement de collaboration openDesk (CE) avec une couche dédiée de services éducatifs, créant un espace de travail numérique unifié pour les écoles, les universités et les établissements de recherche. Basé sur openDesk CE v1.13.x, la plateforme regroupe all services dans un cluster Kubernetes unique avec authentification centralisée, sauvegardes automatisées et gestion des certificats par la Bundesdruckerei. Le tout est distribué sous licence Apache-2.0 et se déploie en une seule commande : `helmfile -e default apply`.
+openDesk Edu étend l'environnement de collaboration openDesk (CE) avec une couche dédiée de services éducatifs, créant un espace de travail numérique unifié pour les écoles, les universités et les établissements de recherche. Basé sur openDesk CE v1.13.x, la plateforme regroupe tous les services dans un cluster Kubernetes unique avec authentification centralisée, sauvegardes automatisées et gestion des certificats par la Bundesdruckerei. Le tout est distribué sous licence Apache-2.0 et se déploie en une seule commande : `helmfile -e default apply`.
 
 ## Principes fondamentaux
 
@@ -26,7 +26,7 @@ Toutes les données restent au sein de l'infrastructure de l'établissement. Auc
 
 **Architecture modulaire**
 
-Les all services sont regroupés par fonction et peuvent être activés ou désactivés indépendamment via les valeurs helmfile. Besoin uniquement de la couche LMS ? Déployez ILIAS et Moodle sans la messagerie ni la visioconférence. LimeSurvey n'est pas nécessaire ? Laissez-le de côté. Chaque composant dispose de son propre chart Helm, de son propre volume de stockage et de ses propres paramètres de montée en charge.
+Tous les services sont regroupés par fonction et peuvent être activés ou désactivés indépendamment via les valeurs helmfile. Besoin uniquement de la couche LMS ? Déployez ILIAS et Moodle sans la messagerie ni la visioconférence. LimeSurvey n'est pas nécessaire ? Laissez-le de côté. Chaque composant dispose de son propre chart Helm, de son propre volume de stockage et de ses propres paramètres de montée en charge.
 
 ## Stack technologique
 
@@ -53,7 +53,7 @@ Il s'agit de l'environnement de collaboration openDesk en amont, fournissant les
 
 **Couche des services éducatifs**
 
-Au-dessus de la couche de base, openDesk Edu ajoute 15 services axés sur l'éducation. Cette couche comprend les plateformes d'apprentissage (ILIAS, Moodle), les salles de classe virtuelles (BigBlueButton), la messagerie institutionnelle (Grommunio), un système de gestion de contenu (TYPO3), des outils d'enquête (LimeSurvey) et bien d'autres. Tous les services de cette couche sont en version Beta pendant la stabilisation des patterns d'intégration.
+Au-dessus de la couche de base, openDesk Edu ajoute une gamme de services axés sur l'éducation. Cette couche comprend les plateformes d'apprentissage (ILIAS, Moodle), les salles de classe virtuelles (BigBlueButton), la messagerie institutionnelle (Grommunio), un système de gestion de contenu (TYPO3), des outils d'enquête (LimeSurvey) et bien d'autres. Tous les services de cette couche sont en version Beta pendant la stabilisation des patterns d'intégration.
 
 **Couche SSO et authentification**
 
@@ -96,7 +96,7 @@ Restic prend en charge un large éventail de backends de stockage, permettant au
 
 ## Vue d'ensemble des composants
 
-Le tableau suivant liste les all services de la pile openDesk Edu, regroupés par fonction.
+Le tableau suivant liste tous les services de la pile openDesk Edu, regroupés par fonction.
 
 | Fonction | Service | Version | Statut |
 |----------|---------|---------|--------|

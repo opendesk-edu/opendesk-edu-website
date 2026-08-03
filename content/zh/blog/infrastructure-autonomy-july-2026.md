@@ -9,7 +9,7 @@ image: "/static/blog/infrastructure-autonomy-july-2026-teaser.svg"
 
 # 基础设施自主化 — 2026年7月进展报告
 
-HRZ Marburg 的 openDesk Edu 部署本月达到了两个重要里程碑：所有服务的完全 SSO 集成和对外部注册表的基础设施自主化。
+openDesk Edu 部署本月达到了两个重要里程碑：所有服务的完全 SSO 集成和对外部注册表的基础设施自主化。
 
 ## Stalwart v0.16 取代 Postfix
 
@@ -47,4 +47,4 @@ Stalwart 邮件服务器已从 v0.15 升级到 **v0.16.15**，并承担了主要
 
 ---
 
-*部署于 K3s v1.32.3 · 9 节点 · Ceph CSI 存储 · HRZ Marburg*
+*部署于 K3s v1.32.3 · 9 节点 · Ceph CSI 存储 · 生产集群*

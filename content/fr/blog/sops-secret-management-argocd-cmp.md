@@ -15,7 +15,7 @@ image: "/static/blog/sops-secret-management-argocd-cmp-teaser.svg"
 
 ## Le problème : les secrets dans GitOps
 
-Chez openDesk Edu, nous déployons 25+ services intégrés sur plusieurs clusters Kubernetes en utilisant un workflow GitOps avec ArgoCD et Helmfile. Chaque élément de configuration — valeurs Helm, surcharges d'environnement, définitions de services — vit dans un dépôt Git et est automatiquement synchronisé avec le cluster.
+Chez openDesk Edu, nous déployons une suite complète de services intégrés sur plusieurs clusters Kubernetes en utilisant un workflow GitOps avec ArgoCD et Helmfile. Chaque élément de configuration — valeurs Helm, surcharges d'environnement, définitions de services — vit dans un dépôt Git et est automatiquement synchronisé avec le cluster.
 
 C'est excellent pour tout *sauf les secrets*.
 
@@ -228,7 +228,7 @@ C'est tout. L'application déchiffre désormais les secrets de manière transpar
 
 ## Vérifié de bout en bout
 
-Le sidecar CMP a été déployé et testé sur le cluster HRZ de production (K3s v1.32.3, ArgoCD v3.0.12) en juillet 2026. Nous avons vérifié :
+Le sidecar CMP a été déployé et testé sur le cluster de production (K3s v1.32.3, ArgoCD v3.0.12) en juillet 2026. Nous avons vérifié :
 
 1. **Secret chiffré commité** — Un `test-secret.enc.yaml` a été commité dans le dépôt
 2. **ArgoCD a détecté le changement** — Le statut de synchronisation de l'application montrait un diff
@@ -310,7 +310,7 @@ Cette approche préserve les principes fondamentaux de GitOps :
 
 1. **Les montages de volumes sont la partie la plus délicate** — Le sidecar CMP a besoin d'accéder au même checkout de dépôt que le repo-server principal. Le montage de volume `tmp` partagé est essentiel.
 
-2. **La configuration du proxy est importante** — Sur le cluster HRZ, le conteneur init `install-sops` avait besoin des variables d'environnement `HTTP_PROXY` et `HTTPS_PROXY` pour télécharger le binaire sops.
+2. **La configuration du proxy est importante** — Sur le cluster de production, le conteneur init `install-sops` avait besoin des variables d'environnement `HTTP_PROXY` et `HTTPS_PROXY` pour télécharger le binaire sops.
 
 3. **La mise en cache du plugin peut causer des secrets obsolètes** — Si une synchronisation précédente est mise en cache dans Redis, ArgoCD peut ne pas réexécuter le plugin après une mise à jour de secret. Forcer une vidange du cache (`redis-cli FLUSHALL`) ou augmenter le hash du commit résout ce problème.
 

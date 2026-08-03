@@ -11,7 +11,7 @@ image: "/static/blog/zki-it-grundschutz-compliance-teaser.svg"
 
 > **The baseline:** Every German university IT center operates under the ZKI IT-Grundschutz-Profil — the higher education-specific adaptation of the BSI IT-Grundschutz methodology.
 >
-> **The reality:** For a platform composed of 25+ open-source services, compliance is not a checkbox you tick once. It's an architectural property that must be enforced continuously — through policies, pipelines, and transparent documentation.
+> **The reality:** For a platform composed of a comprehensive suite of open-source services, compliance is not a checkbox you tick once. It's an architectural property that must be enforced continuously — through policies, pipelines, and transparent documentation.
 >
 > **Our approach:** Instead of a compliance statement, we built a compliance system: 20+ enforceable Kyverno policies, a hardened GitOps pipeline, and a public gap analysis that shows exactly where we stand — including the gaps.
 

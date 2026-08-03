@@ -53,7 +53,7 @@ Dies ist die Upstream-openDesk Collaboration Environment mit den zentralen Produ
 
 **Bildungsdienst-Schicht**
 
-Auf der Basisschicht fügt openDesk Edu 15 bildungsspezifische Dienste hinzu. Diese Schicht umfasst Learning-Management-Systeme (ILIAS, Moodle), virtuelle Klassenzimmer (BigBlueButton), institutionelle E-Mail (Grommunio), ein Content-Management-System (TYPO3), Umfragetools (LimeSurvey) und weitere. Alle Dienste dieser Schicht tragen den Status Beta, während die Integrationsmuster stabilisiert werden.
+Auf der Basisschicht fügt openDesk Edu eine Reihe bildungsspezifischer Dienste hinzu. Diese Schicht umfasst Learning-Management-Systeme (ILIAS, Moodle), virtuelle Klassenzimmer (BigBlueButton), institutionelle E-Mail (Grommunio), ein Content-Management-System (TYPO3), Umfragetools (LimeSurvey) und weitere. Alle Dienste dieser Schicht tragen den Status Beta, während die Integrationsmuster stabilisiert werden.
 
 **SSO- und Auth-Schicht**
 

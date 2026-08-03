@@ -34,7 +34,7 @@ The core architectural decision: **Keycloak acts as both SAML SP (to DFN-AAI) an
 - The external world sees one SAML SP entity — clean, simple, standard
 - Internal services continue using OIDC — no SAML configuration needed per service
 - Attribute translation happens in one place — SAML eduGAIN attributes → OIDC claims
-- Backchannel logout propagates from DFN-AAI → Keycloak → all 25+ services
+- Backchannel logout propagates from DFN-AAI → Keycloak → all services in the suite
 
 ```
 ┌──────────────┐     SAML 2.0     ┌──────────────┐     OIDC      ┌──────────────┐
@@ -188,7 +188,7 @@ The foundation is in place:
 - SP metadata generation script with certificate support
 - Bilingual (EN/DE) testing guide for DFN-AAI test federation
 - 6 documentation files (~4,000 lines) covering federation, enrollment, integration, testing, troubleshooting, and production deployment
-- Backchannel logout configured for all 25+ openDesk Edu services — logout propagation works end-to-end
+- Backchannel logout configured for all openDesk Edu services — logout propagation works end-to-end
 
 What's missing is the shared infrastructure. And that's where we need you.
 

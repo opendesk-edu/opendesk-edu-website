@@ -9,7 +9,7 @@ image: "/static/blog/infrastructure-autonomy-july-2026-teaser.svg"
 
 # Infrastructure Autonomy — July 2026 Progress Report
 
-The openDesk Edu deployment at HRZ Marburg reached two significant milestones this month: full SSO integration across all services and near-complete infrastructure autonomy from external registries. Here is what happened.
+The openDesk Edu deployment reached two significant milestones this month: full SSO integration across all services and near-complete infrastructure autonomy from external registries. Here is what happened.
 
 ## Stalwart v0.16 Replaces Postfix
 
@@ -27,7 +27,7 @@ Services now relay SMTP through Stalwart:
 - OpenCloud — `stalwart-stalwart.opendesk.svc.cluster.local:587`
 - All other notification-sending services
 
-The MTA routing configuration uses MX-based delivery for external domains and local delivery for `opendesk.hrz.uni-marburg.de`.
+The MTA routing configuration uses MX-based delivery for external domains and local delivery for `opendesk-edu.org`.
 
 ## Unified SSO via Keycloak
 
@@ -62,7 +62,7 @@ ArgoCD management was extended from 2 to **27 edu applications** by converting C
 
 ## Custom Infrastructure Repos
 
-To decouple from external registries that are unreachable from the HRZ cluster network, four independent repositories were created:
+To decouple from external registries that are unreachable from the cluster network, four independent repositories were created:
 
 | Repository | GitHub | GitLab | Purpose |
 |-----------|--------|--------|---------|
@@ -77,7 +77,7 @@ Each repository includes:
 - GitHub Actions and GitLab CI pipelines
 - Comprehensive README
 
-The kubectl image was pushed to `registry.gitlab.com/tbsweiss/opendesk-kubectl:1.32.3` and `registry.hrz.uni-marburg.de/opendesk/kubectl`, replacing `bitnami/kubectl` (tag 1.32 not found) and `lachlanevenson/k8s-kubectl`.
+The kubectl image was pushed to `registry.gitlab.com/tbsweiss/opendesk-kubectl:1.32.3` and `registry.opendesk-edu.org/opendesk/kubectl`, replacing `bitnami/kubectl` (tag 1.32 not found) and `lachlanevenson/k8s-kubectl`.
 
 ## Monitoring and Backup
 
@@ -97,4 +97,4 @@ The kubectl image was pushed to `registry.gitlab.com/tbsweiss/opendesk-kubectl:1
 
 ---
 
-*Deployed on K3s v1.32.3 · 9 nodes · Ceph CSI storage · HRZ Marburg*
+*Deployed on K3s v1.32.3 · 9 nodes · Ceph CSI storage · production cluster*

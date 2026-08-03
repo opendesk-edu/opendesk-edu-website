@@ -1,7 +1,7 @@
 ---
 title: "Reclaim Your Digital Sovereignty: The openDesk Edu Open-Source Ecosystem"
 date: "2026-06-27"
-description: "How openDesk Edu helps universities break free from vendor lock-in, reduce costs by 80-90%, ensure GDPR compliance, and deploy a production-ready ecosystem of 25 integrated open-source services."
+description: "How openDesk Edu helps universities break free from vendor lock-in, reduce costs by 80-90%, ensure GDPR compliance, and deploy a production-ready ecosystem of a comprehensive suite of integrated open-source services."
 categories: ["Digital Sovereignty", "Open Source", "Education"]
 tags: ["digital-sovereignty", "gdpr", "open-source", "education", "kubernetes", "vendor-lockin", "german-higher-education"]
 author: "Tobias Weiß and openDesk Edu Contributors"
@@ -20,9 +20,9 @@ The status quo is unsustainable. A medium-sized German university (10,000 users)
 
 ## What is openDesk Edu?
 
-openDesk Edu is a **comprehensive, production-ready platform** that integrates 25 world-class open-source applications into a unified ecosystem for educational institutions. It's not a vendor offering—it's an **ecosystem** built on the actual open-source projects you know and trust, pre-configured to work together seamlessly.
+openDesk Edu is a **comprehensive, production-ready platform** that integrates a comprehensive suite of open-source applications into a unified ecosystem for educational institutions. It's not a vendor offering—it's an **ecosystem** built on the actual open-source projects you know and trust, pre-configured to work together seamlessly.
 
-### The 25 Integrated Services
+### The Integrated Service Suite
 
 openDesk Edu combines best-in-class open-source applications across four categories:
 
@@ -105,7 +105,7 @@ For European educational institutions, data sovereignty is not optional—it's l
 
 openDesk Edu addresses data protection through architectural choices, not bolt-on features:
 
-- **Data Residency**: All data stored on German university servers (HRZ Marburg cluster)
+- **Data Residency**: All data stored on German university servers (production cluster)
 - **No Cloud Lock-in**: Self-hosted deployment eliminates third-party data residency concerns
 - **Transparent Code**: Apache-2.0 and AGPL-3.0 licensing enables full code review
 - **Privacy by Design**: Built into the architecture, not added later
@@ -122,12 +122,12 @@ openDesk Edu integrates seamlessly with the **Deutsches Forschungsnetz (DFN)** f
 - **Accept credentials** from any participating German university
 - **Single sign-on** across all services with federated identity
 
-### Production-Proven at HRZ Marburg
+### Production-Proven in Practice
 
-The **Hochschulrechenzentrum (HRZ) Marburg** operates a production deployment on a 9-node K3s cluster:
+A production deployment operates on a 9-node K3s cluster:
 
-- **3 control-plane nodes** (vhrz2331-2333) for high availability
-- **6 worker nodes** (vhrz2334-2339) for workload distribution
+- **3 control-plane nodes** for high availability
+- **6 worker nodes** for workload distribution
 - **Ceph storage** (RBD SSD for databases, CephFS HDD EC for files)
 - **ArgoCD** for GitOps deployments
 - **Prometheus + Grafana** for monitoring
@@ -214,7 +214,7 @@ And these are just the direct costs. When you factor in:
 
 ### After: Integrated Ecosystem
 
-- 1 integrated ecosystem connecting 25 world-class open-source applications
+- 1 integrated ecosystem connecting a comprehensive suite of open-source applications
 - 1 Keycloak SSO across all services — **not a proprietary authentication layer**
 - German data sovereignty with on-premise deployment
 - Pre-wired integrations reduce IT burden by 80%
@@ -243,7 +243,7 @@ And these are just the direct costs. When you factor in:
 - 17 platform-level specifications (backup, security, monitoring, DR)
 - Health check catalog and probe timing documentation
 - SLO definitions and capacity planning guidelines
-- **25/25 service specs with complete SLO and DR documentation**
+- **complete service specifications with complete SLO and DR documentation**
 
 ## The OpenSpec: Your Complete Technical Guide
 
@@ -255,14 +255,14 @@ Behind openDesk Edu's simplicity lies meticulous documentation. Our **OpenSpec**
 - **Performance**: SLO definitions, capacity planning
 - **Infrastructure**: Backup, storage, networking, deployment
 
-### Service Specifications (25 specs)
-Each of the 25 services has a dedicated specification covering:
+### Service Specifications (complete specs)
+Each of the a comprehensive suite of services has a dedicated specification covering:
 - Purpose and scope
 - Functional requirements with user scenarios
 - Dependencies and integration points
 - Component reference and configuration
-- **Service Level Objectives (SLOs)** — all 25 services
-- **Disaster Recovery procedures** — all 25 services
+- **Service Level Objectives (SLOs)** — all services in the suite
+- **Disaster Recovery procedures** — all services in the suite
 
 ### Integration Specifications (6 specs)
 - API contracts between services

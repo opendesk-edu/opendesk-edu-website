@@ -11,7 +11,7 @@ image: "/static/blog/zki-it-grundschutz-compliance-teaser.svg"
 
 > **La baseline :** Chaque centre informatique universitaire allemand travaille selon le profil ZKI IT-Grundschutz — l'adaptation pour l'enseignement supérieur de la méthodologie BSI IT-Grundschutz.
 >
-> **La réalité :** Pour une plateforme composée de plus de 25 services open-source, la conformité n'est pas une case à cocher une fois pour toutes. C'est une propriété architecturale qui doit être appliquée en continu — par des politiques, des pipelines et une documentation transparente.
+> **La réalité :** Pour une plateforme composée d'une suite complète de services open-source, la conformité n'est pas une case à cocher une fois pour toutes. C'est une propriété architecturale qui doit être appliquée en continu — par des politiques, des pipelines et une documentation transparente.
 >
 > **Notre approche :** Plutôt qu'une déclaration de conformité, nous avons construit un système de conformité : plus de 20 politiques Kyverno exécutoires, une pipeline GitOps durcie et une analyse d'écart publique qui montre exactement où nous en sommes — y compris les lacunes.
 

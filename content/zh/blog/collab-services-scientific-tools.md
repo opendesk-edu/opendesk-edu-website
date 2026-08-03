@@ -29,7 +29,7 @@ openDesk Edu 迎来了迄今为止最大的功能更新。**Collab Services**—
 | **基础设施** | [ttyd](https://github.com/tsl0922/ttyd) | 浏览器中的 Linux 终端 | ✅ 稳定 | `term.*` |
 | | [KasmVNC](https://kasmweb.com/) | 浏览器中的完整 Linux 桌面 | 🟡 测试版 | `desktop.*` |
 
-每个服务在机构的通配符 DNS 下获得自己的子域名——`jupyter.uni-marburg.de`、`r.uni-marburg.de`、`latex.uni-marburg.de` 等——通过 HAProxy Ingress 路由，自动配置 Let's Encrypt TLS 证书。
+每个服务在机构的通配符 DNS 下获得自己的子域名——`jupyter.example.edu`、`r.example.edu`、`latex.example.edu` 等——通过 HAProxy Ingress 路由，自动配置 Let's Encrypt TLS 证书。
 
 ## 为何重要
 
@@ -113,13 +113,13 @@ Helmfile 按阶段分组发布，以尊重依赖链：
 
 **模式 2：原生 OIDC**——JupyterHub 使用 [OAuthenticator](https://oauthenticator.readthedocs.io/) 的 GenericOAuthenticator 类，Open WebUI 具有内置 OIDC 支持。两者都直接指向 Keycloak 的标准 OIDC 端点（`/realms/opendesk/protocol/openid-connect/...`）。
 
-在马尔堡菲利普斯大学的实际生产环境中，Keycloak 配置了身份提供者重定向器，自动转发到 Shibboleth SAML。结果是一个无缝的认证链：
+在实际生产环境中，Keycloak 配置了身份提供者重定向器，自动转发到 Shibboleth SAML。结果是一个无缝的认证链：
 
 ```
 用户 → 服务（例如 RStudio）
   → oauth2-proxy 重定向到 Keycloak
     → Keycloak 自动重定向到 Shibboleth SAML
-      → 大学登录（weblogin.uni-marburg.de）
+      → 大学登录（weblogin.example.edu）
         → SAML 断言 → Keycloak OIDC 令牌
           → 经过认证访问 RStudio
 ```
@@ -213,11 +213,11 @@ helm upgrade --install jupyterhub jupyterhub/jupyterhub \
 
 ## 验证
 
-一个烟雾测试脚本（`scripts/smoke-test.sh`）验证所有服务是否正确响应。2026 年 5 月 28 日马尔堡大学 HRZ 集群的实际结果：
+一个烟雾测试脚本（`scripts/smoke-test.sh`）验证所有服务是否正确响应。2026 年 5 月 28 日生产集群的实际结果：
 
 ```
 === Collab Services 烟雾测试 ===
-域名：opendesk.hrz.uni-marburg.de | Ingress：192.168.3.201
+域名：opendesk-edu.org | Ingress：192.168.3.201
 
   ✅ RStudio (r) → HTTP 302
   ✅ ttyd (term) → HTTP 302
@@ -286,4 +286,4 @@ helmfile -e prod apply --selector name=jupyterhub
 
 *openDesk Edu 是一个面向高等教育的开源数字工作平台。它将 [openDesk Community Edition](https://www.opencode.de/en/opendesk) 扩展至学习管理、视频会议、文件同步以及现在的科学计算工具——全部在 Kubernetes 上，具有统一的单点登录。基于 Apache 2.0 许可证。*
 
-*该项目在马尔堡菲利普斯大学的 [Hochschulrechenzentrum (HRZ)](https://www.uni-marburg.de/en/hrz) 开发，作为该大学数字主权战略的一部分。*
+*该项目作为大学数字主权战略的一部分进行开发。*

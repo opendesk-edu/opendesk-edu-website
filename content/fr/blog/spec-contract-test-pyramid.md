@@ -46,7 +46,7 @@ SPÉCIFICATION        DÉPLOIEMENT          EXPLOITATION
 
 ### Le Défi openDesk Edu
 
-openDesk Edu déploie **plus de 50 services** sur **12+ espaces de noms Kubernetes** avec **plus de 400 valeurs de graphiques Helm**. Avec cette complexité :
+openDesk Edu déploie **une suite de services complète** sur **plusieurs espaces de noms Kubernetes** avec **des centaines de valeurs de graphiques Helm**. Avec cette complexité :
 
 - Les pages wiki deviennent obsolètes en quelques jours
 - Les diagrammes ne correspondent pas aux déploiements réels
@@ -297,7 +297,7 @@ specs/_registry/
 │  Couverture globale : 12 % (8 tests pour 65 spécifications) │
 │                                                             │
 │  Par catégorie :                                            │
-│    Services (24) :     25 %  (6/24 testés)  ████░░░░        │
+│    Services :     25 %  (6/24 testés)  ████░░░░        │
 │    Plateforme (17) :   0 %   (0/17 testés)  ░░░░░░░░        │
 │    Auth (4) :          0 %   (0/4 testés)   ░░░░░░░░        │
 │    Intégrations (6) :  0 %   (0/6 testés)   ░░░░░░░░        │
@@ -524,4 +524,4 @@ La documentation ne doit pas être une pensée après coup. Avec la Pyramide Spe
 
 ---
 
-*Copyright © 2026 HRZ Uni Marburg. Sous licence [AGPL-3.0-only](https://www.gnu.org/licenses/agpl-3.0.html). openDesk Edu est un projet [openDesk](https://opendesk.hrz.uni-marburg.de).*
+*Copyright © 2026 openDesk Edu Contributors. Sous licence [AGPL-3.0-only](https://www.gnu.org/licenses/agpl-3.0.html). openDesk Edu est un projet [openDesk](https://opendesk-edu.org).*

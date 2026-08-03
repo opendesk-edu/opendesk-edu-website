@@ -20,7 +20,7 @@ image: "/static/blog/la-suite-vs-opendesk-edu-teaser.svg"
 
 En 2023, le gouvernement français a lancé **La Suite numérique** — un espace de travail numérique souverain pour l'administration publique, piloté par la DINUM (Direction interministérielle du numérique). La promesse : remplacer Google Workspace et Microsoft 365 par un ensemble d'outils open source curatés, hébergés sur une infrastructure souveraine française.
 
-En Allemagne, **openDesk Edu** est né dans un autre contexte — celui de l'enseignement supérieur. Construit sur la plateforme openDesk CE, il intègre plus de 25 services open source pour les universités : non seulement des outils de collaboration, mais aussi des systèmes de gestion de l'apprentissage, du calcul scientifique et de l'infrastructure de recherche.
+En Allemagne, **openDesk Edu** est né dans un autre contexte — celui de l'enseignement supérieur. Construit sur la plateforme openDesk CE, il intègre une suite complète de services open source pour les universités : non seulement des outils de collaboration, mais aussi des systèmes de gestion de l'apprentissage, du calcul scientifique et de l'infrastructure de recherche.
 
 Les deux projets naissent de la même conviction : **les institutions publiques européennes ne devraient pas dépendre des fournisseurs de cloud américains pour leur infrastructure numérique de base.** Les deux rejettent l'exposition au CLOUD Act, l'enfermement propriétaire et l'escalade des coûts de licence du stack GAFAM. Les deux misent sur l'open source comme voie vers la souveraineté.
 
@@ -127,7 +127,7 @@ La différence de portée est significative : DFN-AAI/eduGAIN donne à openDesk 
 
 Le catalogue de services est volontairement restreint — la DINUM privilégie la qualité et l'adoption à l'ampleur.
 
-**openDesk Edu** intègre plus de 25 services et est en production. La plateforme comprend :
+**openDesk Edu** intègre une suite complète de services et est en production. La plateforme comprend :
 
 - Suite de collaboration complète (Nextcloud, Collabora, Matrix, courriel)
 - Outils éducatifs (ILIAS, Moodle, BigBlueButton, XWiki)
@@ -164,7 +164,7 @@ L'approche d'openDesk Edu en matière de conformité — plus de 20 politiques K
 
 1. **L'évaluation centralisée abaisse la barrière.** L'instance unique de La Suite signifie qu'un ministère français peut essayer la plateforme sans rien déployer. Le modèle d'auto-hébergement d'openDesk Edu nécessite une expertise Kubernetes — une barrière élevée pour les petites institutions. Une instance d'évaluation partagée (comme proposé dans l'article DFN-AAI) y remédierait.
 
-2. **Catalogue de services restreint.** La Suite se concentre sur 5 services principaux et les fait bien. Les 25+ services d'openDesk Edu sont une force mais aussi une charge de maintenance. Toutes les universités n'ont pas besoin de tous — un modèle de déploiement par paliers (cœur, étendu, recherche) pourrait aider.
+2. **Catalogue de services restreint.** La Suite se concentre sur 5 services principaux et les fait bien. La suite de services complète d'openDesk Edu est une force mais aussi une charge de maintenance. Toutes les universités n'ont pas besoin de tous — un modèle de déploiement par paliers (cœur, étendu, recherche) pourrait aider.
 
 3. **Mandat gouvernemental comme moteur d'adoption.** La Suite bénéficie d'un mandat explicite du gouvernement français pour les outils numériques souverains. openDesk Edu s'appuie sur l'adoption individuelle des universités — plus lent, mais plus durable.
 

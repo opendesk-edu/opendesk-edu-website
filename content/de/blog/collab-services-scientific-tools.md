@@ -29,7 +29,7 @@ Die neuen Werkzeuge decken interaktive Notebooks, kollaboratives LaTeX, browserb
 | **Infrastruktur** | [ttyd](https://github.com/tsl0922/ttyd) | Linux-Terminal im Browser | ✅ Stabil | `term.*` |
 | | [KasmVNC](https://kasmweb.com/) | Vollständiger Linux-Desktop im Browser | 🟡 Beta | `desktop.*` |
 
-Jeder Dienst erhält eine eigene Subdomain unter der Wildcard-DNS der Institution — `jupyter.uni-marburg.de`, `r.uni-marburg.de`, `latex.uni-marburg.de` — geroutet durch den HAProxy-Ingress mit automatischen Let's-Encrypt-TLS-Zertifikaten.
+Jeder Dienst erhält eine eigene Subdomain unter der Wildcard-DNS der Institution — `jupyter.example.edu`, `r.example.edu`, `latex.example.edu` — geroutet durch den HAProxy-Ingress mit automatischen Let's-Encrypt-TLS-Zertifikaten.
 
 ## Warum das wichtig ist
 
@@ -113,13 +113,13 @@ Alle Dienste authentifizieren sich über Keycloak mit einem von zwei Verfahren:
 
 **Verfahren 2: Natives OIDC** — JupyterHub nutzt [OAuthenticator](https://oauthenticator.readthedocs.io/) mit der GenericOAuthenticator-Klasse, und Open WebUI bietet native OIDC-Unterstützung. Beide zeigen direkt auf die Standard-OIDC-Endpunkte von Keycloak (`/realms/opendesk/protocol/openid-connect/...`).
 
-In der Produktionsumgebung an der Philipps-Universität Marburg ist Keycloak mit einem Identity Provider Redirector konfiguriert, der automatisch an Shibboleth SAML weiterleitet. Das Ergebnis ist eine nahtlose Authentifizierungskette:
+In der Produktionsumgebung ist Keycloak mit einem Identity Provider Redirector konfiguriert, der automatisch an Shibboleth SAML weiterleitet. Das Ergebnis ist eine nahtlose Authentifizierungskette:
 
 ```
 Nutzer → Dienst (z.B. RStudio)
   → oauth2-proxy leitet zu Keycloak weiter
     → Keycloak leitet automatisch zu Shibboleth SAML weiter
-      → Hochschullogin (weblogin.uni-marburg.de)
+      → Hochschullogin (weblogin.example.edu)
         → SAML-Assertion → Keycloak-OIDC-Token
           → Authentifizierter Zugriff auf RStudio
 ```
@@ -208,11 +208,11 @@ Keycloak-OIDC-Clients müssen für jeden Dienst erstellt werden, bevor die Authe
 
 ## Überprüfung
 
-Ein Smoke-Test-Skript (`scripts/smoke-test.sh`) überprüft, ob alle Dienste korrekt antworten. Die tatsächlichen Ergebnisse vom HRZ-Cluster der Universität Marburg vom 28. Mai 2026:
+Ein Smoke-Test-Skript (`scripts/smoke-test.sh`) überprüft, ob alle Dienste korrekt antworten. Die tatsächlichen Ergebnisse vom Produktionscluster vom 28. Mai 2026:
 
 ```
 === Collab Services Smoke Test ===
-Domain: opendesk.hrz.uni-marburg.de | Ingress: 192.168.3.201
+Domain: opendesk-edu.org | Ingress: 192.168.3.201
 
   ✅ RStudio (r) → HTTP 302
   ✅ ttyd (term) → HTTP 302
@@ -281,4 +281,4 @@ Fragen, Fehlermeldungen und Beiträge sind willkommen über [Codeberg Issues](ht
 
 *openDesk Edu ist eine Open-Source-Plattform für den digitalen Arbeitsplatz an Hochschulen. Sie erweitert [openDesk Community Edition](https://www.opencode.de/en/opendesk) um Lernmanagement, Videokonferenzen, Dateisynchronisation und nun wissenschaftliche Rechenwerkzeuge — alles auf Kubernetes mit einheitlichem Single Sign-On. Lizenziert unter Apache 2.0.*
 
-*Dieses Projekt wird am [Hochschulrechenzentrum (HRZ)](https://www.uni-marburg.de/en/hrz) der Philipps-Universität Marburg im Rahmen der Digitalen-Souveränitäts-Strategie der Universität entwickelt.*
+*Dieses Projekt wird im Rahmen einer Digitalen-Souveränitäts-Strategie einer Universität entwickelt.*

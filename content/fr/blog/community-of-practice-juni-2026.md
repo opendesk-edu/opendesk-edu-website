@@ -37,7 +37,7 @@ L'opérateur k8up (v2.13.0) sauvegarde actuellement 6 PVC RWX vers S3. 29 PVC RW
 
 Collabora dispose de métriques, d'alertes et d'un tableau de bord. Nextcloud manque encore d'alertes et d'un tableau de bord. Des lacunes existent pour les tableaux de bord de santé des sauvegardes et les alertes de ressources (CPU > 80 %, Mémoire > 85 %, Disque > 80 %).
 
-## 5. Problèmes connus du HRZ
+## 5. Problèmes connus du cluster
 
 - **Chaînes CNAME DNS** : CoreDNS → SERVFAIL, contournement via `hostAliases`
 - **Bug de probe Nextcloud AIO** : `initialDelaySeconds` incorrect
@@ -50,7 +50,7 @@ Collabora dispose de métriques, d'alertes et d'un tableau de bord. Nextcloud ma
 
 **openDesk 1.15.0** (actuel, 28.05.2026) a apporté SeaweedFS comme stockage objet S3, OX App Suite 8.48, Nextcloud 32.0.9 et le support HAProxy Ingress. **v1.16.0** est en préparation avec l'optimisation des workers Nextcloud et le LoadBalancerIP Dovecot/Postfix.
 
-Le cluster HRZ fonctionne sous K3s v1.32.3 (9 nœuds, Debian 12) avec le stockage Ceph, kube-prometheus-stack et ArgoCD.
+Le cluster de production fonctionne sous K3s v1.32.3 (9 nœuds, Debian 12) avec le stockage Ceph, kube-prometheus-stack et ArgoCD.
 
 ## 7. Secteur éducatif
 

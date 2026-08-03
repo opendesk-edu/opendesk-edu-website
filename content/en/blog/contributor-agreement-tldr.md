@@ -84,7 +84,7 @@ Once your first merge request is accepted and the bot has processed it, you get 
 The openDesk project spans several repositories, each with a specific focus:
 
 -   **Deployment:** The main helmfile-based deployment configuration for openDesk CE.
--   **Education variant:** openDesk Edu with 25 integrated services for universities.
+-   **Education variant:** openDesk Edu with a comprehensive suite of integrated services for universities.
 -   **Tooling:** Import scripts, backup operators (k8up), and utility tools.
 -   **Documentation:** Architecture docs, developer guides, and operational runbooks.
 -   **Charts:** Local Helm chart overrides and community-maintained chart packages.

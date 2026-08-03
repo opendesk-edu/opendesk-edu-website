@@ -1,7 +1,7 @@
 ---
 title: "Reprenez votre souveraineté numérique : l'écosystème open-source openDesk Edu"
 date: "2026-06-27"
-description: "Comment openDesk Edu aide les universités à s'affranchir de la dépendance aux fournisseurs, réduire les coûts de 80 à 90 %, garantir la conformité RGPD et déployer un écosystème de production comprenant 25 services open-source intégrés."
+description: "Comment openDesk Edu aide les universités à s'affranchir de la dépendance aux fournisseurs, réduire les coûts de 80 à 90 %, garantir la conformité RGPD et déployer un écosystème de production comprenant une suite complète de services open-source intégrés."
 categories: ["Souveraineté numérique", "Open Source", "Éducation"]
 tags: ["souveraineté-numérique", "rgpd", "open-source", "éducation", "kubernetes", "dépendance-fournisseur", "enseignement-supérieur-allemand"]
 author: "Tobias Weiß et les contributeurs openDesk Edu"
@@ -20,9 +20,9 @@ Le statu quo est insoutenable. Une université allemande de taille moyenne (10 0
 
 ## Qu'est-ce qu'openDesk Edu ?
 
-openDesk Edu est une **plateforme de production complète et prête à l'emploi** qui intègre 25 applications open-source de premier plan dans un écosystème unifié pour les établissements d'enseignement. Ce n'est pas une offre commerciale — c'est un **écosystème** construit sur les projets open-source que vous connaissez et auxquels vous faites confiance, préconfigurés pour fonctionner ensemble de manière transparente.
+openDesk Edu est une **plateforme de production complète et prête à l'emploi** qui intègre une suite complète d'applications open-source de premier plan dans un écosystème unifié pour les établissements d'enseignement. Ce n'est pas une offre commerciale — c'est un **écosystème** construit sur les projets open-source que vous connaissez et auxquels vous faites confiance, préconfigurés pour fonctionner ensemble de manière transparente.
 
-### Les 25 services intégrés
+### La Suite de Services Intégrés
 
 openDesk Edu combine les meilleures applications open-source dans quatre catégories :
 
@@ -105,7 +105,7 @@ Pour les établissements d'enseignement européens, la souveraineté des donnée
 
 openDesk Edu répond à la protection des données par des choix architecturaux, et non par des fonctionnalités ajoutées après coup :
 
-- **Résidence des données** : Toutes les données sont stockées sur les serveurs des universités allemandes (cluster HRZ Marburg)
+- **Résidence des données** : Toutes les données sont stockées sur les serveurs des universités allemandes (cluster de production)
 - **Pas de dépendance au cloud** : Le déploiement auto-hébergé élimine les préoccupations de résidence des données chez des tiers
 - **Code transparent** : Les licences Apache-2.0 et AGPL-3.0 permettent une révision complète du code
 - **Confidentialité dès la conception** : Intégrée dans l'architecture, pas ajoutée après
@@ -122,12 +122,12 @@ openDesk Edu s'intègre parfaitement à la fédération **Deutsches Forschungsne
 - **Acceptation des identifiants** de toute université allemande participante
 - **Authentification unique** sur tous les services avec identité fédérée
 
-### Prouvé en production au HRZ Marburg
+### Prouvé en production
 
-Le **Hochschulrechenzentrum (HRZ) Marburg** exploite un déploiement de production sur un cluster K3s de 9 nœuds :
+Un déploiement de production fonctionne sur un cluster K3s de 9 nœuds :
 
-- **3 nœuds de plan de contrôle** (vhrz2331-2333) pour la haute disponibilité
-- **6 nœuds de travail** (vhrz2334-2339) pour la répartition de la charge
+- **3 nœuds de plan de contrôle** pour la haute disponibilité
+- **6 nœuds de travail** pour la répartition de la charge
 - **Stockage Ceph** (RBD SSD pour les bases de données, CephFS HDD EC pour les fichiers)
 - **ArgoCD** pour les déploiements GitOps
 - **Prometheus + Grafana** pour la supervision
@@ -214,7 +214,7 @@ Et il ne s'agit que des coûts directs. Lorsque vous ajoutez :
 
 ### Après : écosystème intégré
 
-- 1 écosystème intégré connectant 25 applications open-source de premier plan
+- 1 écosystème intégré connectant une suite complète d'applications open-source de premier plan
 - 1 SSO Keycloak sur tous les services — **pas une couche d'authentification propriétaire**
 - Souveraineté numérique allemande avec déploiement sur site
 - Intégrations pré-câblées réduisant la charge informatique de 80 %
@@ -243,7 +243,7 @@ Et il ne s'agit que des coûts directs. Lorsque vous ajoutez :
 - 17 spécifications au niveau plateforme (sauvegarde, sécurité, supervision, reprise après sinistre)
 - Catalogue de contrôles de santé et documentation des délais de sondes
 - Définitions des SLO et directives de planification de capacité
-- **25/25 fiches de services avec documentation complète des SLO et de la reprise après sinistre**
+- **spécifications de service complètes avec documentation complète des SLO et de la reprise après sinistre**
 
 ## L'OpenSpec : votre guide technique complet
 
@@ -255,14 +255,14 @@ Derrière la simplicité d'openDesk Edu se trouve une documentation minutieuse. 
 - **Performance** : Définitions des SLO, planification de capacité
 - **Infrastructure** : Sauvegarde, stockage, réseau, déploiement
 
-### Spécifications services (25 specs)
-Chacun des 25 services dispose d'une spécification dédiée couvrant :
+### Spécifications services (spécifications complètes)
+Chacun des services de la suite dispose d'une spécification dédiée couvrant :
 - Objectif et périmètre
 - Exigences fonctionnelles avec scénarios utilisateur
 - Dépendances et points d'intégration
 - Référence des composants et configuration
-- **Objectifs de niveau de service (SLO)** — les 25 services
-- **Procédures de reprise après sinistre (DR)** — les 25 services
+- **Objectifs de niveau de service (SLO)** — tous les services de la suite
+- **Procédures de reprise après sinistre (DR)** — tous les services de la suite
 
 ### Spécifications d'intégration (6 specs)
 - Contrats d'API entre services

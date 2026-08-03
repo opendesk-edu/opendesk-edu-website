@@ -18,7 +18,7 @@ In just over three months, the project has grown from a launch announcement to a
 | Metric | Value |
 |--------|-------|
 | Upstream releases tracked | openDesk 1.13 → 1.17 (4 releases) |
-| Production cluster | 57 pods, 33 services, 9 nodes |
+| Production cluster | Multi-node K3s cluster with a comprehensive service suite |
 | Blog articles | 22 (EN, DE, FR, ZH — 88 total pages) |
 | Community of Practice | 3 sessions, growing participation |
 | Contributor agreements | 3 signed |
@@ -51,7 +51,7 @@ The production cluster is the operational proof point for openDesk Edu. What beg
 ### Production Cluster
 
 - **Platform:** K3s v1.32.3 on 9 nodes (Debian 12)
-- **Workloads:** 57 pods running 33 services
+- **Workloads:** A comprehensive service suite across multiple pods
 - **Identity:** Unified SSO via Keycloak with 44 audited clients
 - **Domain:** All services consolidated under a single domain
 - **Storage:** SeaweedFS for S3-compatible object storage

@@ -84,7 +84,7 @@ Une fois votre première demande de fusion acceptée et traitée par le bot, vou
 Le projet openDesk s'étend sur plusieurs dépôts, chacun avec un objectif spécifique :
 
 -   **Déploiement :** La configuration de déploiement principale basée sur helmfile pour openDesk CE.
--   **Variante éducation :** openDesk Edu avec 25 services intégrés pour les universités.
+-   **Variante éducation :** openDesk Edu avec une suite complète de services intégrés pour les universités.
 -   **Outillage :** Scripts d'importation, opérateurs de sauvegarde (k8up) et outils utilitaires.
 -   **Documentation :** Documents d'architecture, guides développeurs et manuels opérationnels.
 -   **Charts :** Remplacements locaux de charts Helm et packages de charts maintenus par la communauté.

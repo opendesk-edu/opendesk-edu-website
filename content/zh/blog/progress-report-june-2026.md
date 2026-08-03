@@ -1,25 +1,25 @@
 ---
-title: "进度报告：openDesk Edu 在 HRZ Maui 的部署 — 2026 年 6 月"
+title: "进度报告：openDesk Edu 生产环境更新 — 2026 年 6 月"
 date: "2026-06-04"
-description: "经过五个月的部署和两个强化 Sprint，openDesk Edu 已在马尔堡大学全面投入运营。以下是我们取得的成就及后续计划——包括向上游集成到主 openDesk HRZ 集群。"
+description: "经过五个月的部署和两个强化 Sprint，openDesk Edu 已在生产环境中全面投入运营。以下是我们取得的成就及后续计划——包括向上游集成到主 openDesk 集群。"
 categories: ["状态更新"]
-tags: ["部署", "基础设施", "kubernetes", "sprint", "马尔堡大学"]
+tags: ["部署", "基础设施", "kubernetes", "sprint", "生产"]
 image: "/static/blog/progress-report-june-2026-teaser.svg"
 ---
 
-# 进度报告：openDesk Edu 在 HRZ Maui 的部署 — 2026 年 6 月
+# 进度报告：openDesk Edu 生产环境更新 — 2026 年 6 月
 
-> **57 个 Pod 运行中。33 个服务实现统一 SSO。44 个 Keycloak 客户端已完成审计和迁移。**
+> **完整的服务套件实现统一 SSO。Keycloak 客户端已完成审计和迁移。**
 > k8up 备份已激活，Grafana 仪表板已部署，所有 ingress 已整合至单一域名下。
 
-自将 openDesk Edu 部署到 HRZ Maui 集群（K3s v1.32.3，9 节点，Debian 12）以来，我们完成了两个专注的强化 Sprint（Sprint 5–6），目标为运维稳定性、域名整合和服务健康。
+自将 openDesk Edu 部署到生产集群（K3s v1.32.3，9 节点，Debian 12）以来，我们完成了两个专注的强化 Sprint（Sprint 5–6），目标为运维稳定性、域名整合和服务健康。
 
 ## 集群概览
 
 | 指标 | 值 |
 |:-------|:------|
 | 集群 | K3s v1.32.3, 9 节点 (3 CP, 6 worker) |
-| 域名 | `*.opendesk.hrz.uni-marburg.de` |
+| 域名 | `*.opendesk-edu.org` |
 | Ingress | HAProxy 控制器 (192.168.3.201) |
 | 存储 | Ceph RBD SSD (RWO), CephFS HDD EC (RWX) |
 | SSO | Keycloak OIDC + SAML, 44 客户端 |
@@ -29,10 +29,10 @@ image: "/static/blog/progress-report-june-2026-teaser.svg"
 ## 已修复的问题
 
 ### SSO 审计（Sprint 5）
-对 `opendesk` 领域中的所有 44 个 Keycloak 客户端进行了审计，并从旧域名 `opendesk-edu.org` 迁移到 `opendesk.hrz.uni-marburg.de`。通过 Keycloak 管理 API 验证了每个客户端的 URI、重定向 URL 和颁发者。
+对 `opendesk` 领域中的所有 44 个 Keycloak 客户端进行了审计，并统一整合到 `opendesk-edu.org` 域名下。通过 Keycloak 管理 API 验证了每个客户端的 URI、重定向 URL 和颁发者。
 
 ### 域名迁移
-十二个 ingress（3 个门户，9 个静态文件）已从 `*.opendesk-edu.org` 迁移到 `*.opendesk.hrz.uni-marburg.de`。硬编码旧域名的来源——`portal-saml-multidomain.yaml.gotmpl`——已在 chart 层面修复并提交。
+十二个 ingress（3 个门户，9 个静态文件）已统一整合到 `*.opendesk-edu.org` 域名下。硬编码旧域名的来源——`portal-saml-multidomain.yaml.gotmpl`——已在 chart 层面修复并提交。
 
 ### 服务修复
 
@@ -53,22 +53,22 @@ image: "/static/blog/progress-report-june-2026-teaser.svg"
 
 | 服务 | 端点 | 状态 |
 |:--------|:---------|:-------|
-| Moodle LMS | `moodle.opendesk.hrz.uni-marburg.de` | ✅ 200 |
-| ILIAS LMS | `lms.opendesk.hrz.uni-marburg.de` | ✅ 200 |
-| JupyterHub | `jupyter.opendesk.hrz.uni-marburg.de` | ✅ 302 (SSO 重定向) |
-| BookStack | `bookstack.opendesk.hrz.uni-marburg.de` | ✅ 302 (SSO 重定向) |
-| OpenProject | `projects.opendesk.hrz.uni-marburg.de` | ✅ 302 (SSO 重定向) |
-| Element (聊天) | `chat.opendesk.hrz.uni-marburg.de` | ✅ 200 |
-| Jitsi (会议) | `meet.opendesk.hrz.uni-marburg.de` | ✅ 200 |
-| Nextcloud (文件) | `files.opendesk.hrz.uni-marburg.de` | ✅ 302 (SSO 重定向) |
-| OX App Suite (邮件) | `webmail.opendesk.hrz.uni-marburg.de` | ✅ 302 (SSO 重定向) |
-| XWiki | `wiki.opendesk.hrz.uni-marburg.de` | ✅ 302 (SSO 重定向) |
-| Planka | `planka.opendesk.hrz.uni-marburg.de` | ✅ 200 带 OIDC |
-| SSP | `ssp.opendesk.hrz.uni-marburg.de` | ✅ 403/200 (OIDC 认证) |
+| Moodle LMS | `moodle.opendesk-edu.org` | ✅ 200 |
+| ILIAS LMS | `lms.opendesk-edu.org` | ✅ 200 |
+| JupyterHub | `jupyter.opendesk-edu.org` | ✅ 302 (SSO 重定向) |
+| BookStack | `bookstack.opendesk-edu.org` | ✅ 302 (SSO 重定向) |
+| OpenProject | `projects.opendesk-edu.org` | ✅ 302 (SSO 重定向) |
+| Element (聊天) | `chat.opendesk-edu.org` | ✅ 200 |
+| Jitsi (会议) | `meet.opendesk-edu.org` | ✅ 200 |
+| Nextcloud (文件) | `files.opendesk-edu.org` | ✅ 302 (SSO 重定向) |
+| OX App Suite (邮件) | `webmail.opendesk-edu.org` | ✅ 302 (SSO 重定向) |
+| XWiki | `wiki.opendesk-edu.org` | ✅ 302 (SSO 重定向) |
+| Planka | `planka.opendesk-edu.org` | ✅ 200 带 OIDC |
+| SSP | `ssp.opendesk-edu.org` | ✅ 403/200 (OIDC 认证) |
 
 ## 向上游集成到 openDesk 集群
 
-6 月 1 日，所有 20+ 个 opendesk-edu 服务已向上游集成到主 openDesk HRZ 集群部署中。教育服务的 chart、值和配置现已成为 openDesk helmfile 流水线的一部分——与核心 openDesk 基础设施一起部署，共享相同的 ingress 控制器、监控栈和备份计划。
+6 月 1 日，所有 20+ 个 opendesk-edu 服务已向上游集成到主 openDesk 集群部署中。教育服务的 chart、值和配置现已成为 openDesk helmfile 流水线的一部分——与核心 openDesk 基础设施一起部署，共享相同的 ingress 控制器、监控栈和备份计划。
 
 **已集成的服务：**
 
@@ -84,7 +84,7 @@ image: "/static/blog/progress-report-june-2026-teaser.svg"
 
 随着强化 Sprint 的完成和上游集成的推进，工作重点现转向：
 
-1. **外部 DNS 解析**——将生成的 DNS 记录脚本交给 HRZ 网络管理员，以消除 12 个服务对 `/etc/hosts` 的依赖
+1. **外部 DNS 解析**——将生成的 DNS 记录脚本交给网络团队，以消除 12 个服务对 `/etc/hosts` 的依赖
 2. **Helmfile 流水线**——目标在主 openDesk 集群上运行 `helmfile sync`（不再是独立的 `opendesk-edu` 命名空间）；6 月 1 日的上游合并已奠定基础
 3. **完整登录测试**——对所有服务进行端到端 OIDC/SAML 流程验证
 4. **v1.1 基础项目**——DFN-AAI SAML 联邦测试、容器镜像构建流水线、反向注销验证、剩余认证待定的 chart 集成

@@ -20,7 +20,7 @@ image: "/static/blog/la-suite-vs-opendesk-edu-teaser.svg"
 
 2023 startete die französische Regierung **La Suite numérique** — einen souveränen digitalen Arbeitsplatz für die öffentliche Verwaltung, geleitet von der DINUM (Direction interministérielle du numérique). Das Versprechen: Google Workspace und Microsoft 365 durch eine kuratierte Auswahl Open-Source-Werkzeuge auf französisch-souveräner Infrastruktur ersetzen.
 
-In Deutschland entstand **openDesk Edu** auf Basis des **openDesk CE**-Upstream-Projekts — einer modularen, erweiterbaren Plattform für die Bereitstellung von Open-Source-Digitaldiensten. Aufgebaut auf Kubernetes mit GitOps bietet openDesk die Grundlage, mit Helm-Charts, die über die **opencode.de**-Registry verteilt werden. openDesk Edu erweitert dies um über 25 Bildungs- und Forschungswerkzeuge, darunter Learning-Management-Systeme, wissenschaftliches Rechnen und Forschungsinfrastruktur. Die Plattform wird produktiv bei **Zendis** eingesetzt und beweist damit ihre Praxisreife.
+In Deutschland entstand **openDesk Edu** auf Basis des **openDesk CE**-Upstream-Projekts — einer modularen, erweiterbaren Plattform für die Bereitstellung von Open-Source-Digitaldiensten. Aufgebaut auf Kubernetes mit GitOps bietet openDesk die Grundlage, mit Helm-Charts, die über die **opencode.de**-Registry verteilt werden. openDesk Edu erweitert dies um eine umfassende Palette an Bildungs- und Forschungswerkzeugen, darunter Learning-Management-Systeme, wissenschaftliches Rechnen und Forschungsinfrastruktur. Die Plattform wird produktiv bei **Zendis** eingesetzt und beweist damit ihre Praxisreife.
 
 Beide Projekte entstehen auserselbem Überzeugung: **Europäische öffentliche Einrichtungen sollten für ihre Kern-IT-Infrastruktur nicht von US-Cloud-Anbietern abhängig sein.** Beide lehnen die CLOUD-Act-Exposition, den Vendor-Lock-in und die steigenden Lizenzkosten des GAFAM-Stacks ab. Beide setzen auf Open Source als Weg zur Souveränität.
 
@@ -127,7 +127,7 @@ Der Unterschied in der Reichweite ist bedeutend: DFN-AAI/eduGAIN gibt openDesk E
 
 Der Dienstkatalog ist bewusst schlank — die DINUM priorisiert Qualität und Adoption über Breite.
 
-**openDesk Edu** integriert über 25 Dienste und baut auf der bewährten openDesk CE-Grundlage auf. Die Plattform umfasst:
+**openDesk Edu** integriert eine umfassende Suite von Diensten und baut auf der bewährten openDesk CE-Grundlage auf. Die Plattform umfasst:
 
 - Vollständige Kollaborations-Suite (Nextcloud, Collabora, Matrix, E-Mail)
 - Bildungswerkzeuge (ILIAS, Moodle, BigBlueButton, XWiki)
@@ -164,7 +164,7 @@ openDesk Edus Ansatz zur Compliance — über 20 durchsetzbare Kyverno-Policies,
 
 1. **Zentralisierte Evaluation senkt die Hürde.** La Suites einzelne Instanz bedeutet, dass ein französischer Dienst die Plattform ausprobieren kann, ohne etwas bereitzustellen. openDesk Edus Self-Hosting-Modell erfordert Kubernetes-Expertise — eine hohe Hürde für kleinere Einrichtungen. Eine gemeinsame Evaluationsinstanz würde das adressieren.
 
-2. **Schlanker Dienstkatalog.** La Suite konzentriert sich auf 5 Kern-Dienste und macht diese gut. openDesk Edus 25+ Dienste sind eine Stärke, aber auch eine Wartungslast. Nicht jede Einrichtung braucht alle — ein gestaffeltes Bereitstellungsmodell (Kern, Erweitert, Forschung) könnte helfen.
+2. **Schlanker Dienstkatalog.** La Suite konzentriert sich auf 5 Kern-Dienste und macht diese gut. openDesk Edus umfassende Service-Suite ist eine Stärke, aber auch eine Wartungslast. Nicht jede Einrichtung braucht alle — ein gestaffeltes Bereitstellungsmodell (Kern, Erweitert, Forschung) könnte helfen.
 
 3. **Regierungsauftrag als Adoptions-Treiber.** La Suite profitiert von einem ausdrücklichen Regierungsauftrag für souveräne digitale Werkzeuge. openDesk Edu verlässt sich auf Community-Adoption — langsamer, aber nachhaltiger und flexibler.
 

@@ -26,7 +26,7 @@ All data stays within the institution's infrastructure. No component phones home
 
 **Modular Architecture**
 
-The all services are grouped by function and can be enabled or disabled independently through helmfile values. Want only the LMS layer? Deploy ILIAS and Moodle without the groupware or video stack. Need groupware but not surveys? Leave LimeSurvey out. Each component has its own Helm chart, its own database or storage claim, and its own scaling parameters.
+All services are grouped by function and can be enabled or disabled independently through helmfile values. Want only the LMS layer? Deploy ILIAS and Moodle without the groupware or video stack. Need groupware but not surveys? Leave LimeSurvey out. Each component has its own Helm chart, its own database or storage claim, and its own scaling parameters.
 
 ## Technology Stack
 
@@ -53,7 +53,7 @@ This is the upstream openDesk Collaboration Environment, providing the core prod
 
 **Education Services Layer**
 
-On top of the base, openDesk Edu adds 15 education-focused services. This layer includes learning management systems (ILIAS, Moodle), virtual classrooms (BigBlueButton), institutional email (Grommunio), a content management system (TYPO3), survey tools (LimeSurvey), and more. All services in this layer carry a Beta status while the integration patterns are hardened.
+On top of the base, openDesk Edu adds a range of education-focused services. This layer includes learning management systems (ILIAS, Moodle), virtual classrooms (BigBlueButton), institutional email (Grommunio), a content management system (TYPO3), survey tools (LimeSurvey), and more. All services in this layer carry a Beta status while the integration patterns are hardened.
 
 **SSO and Auth Layer**
 
@@ -96,7 +96,7 @@ Restic supports a wide range of storage backends, so institutions can direct bac
 
 ## Component Overview
 
-The following table lists all all services in the openDesk Edu stack, grouped by function.
+The following table lists all services in the openDesk Edu stack, grouped by function.
 
 | Function | Service | Version | Status |
 |----------|---------|---------|--------|

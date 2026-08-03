@@ -1,7 +1,7 @@
 ---
 title: "The openDesk Edu Platform: Comprehensive Open-Source Learning Management"
 date: "2026-06-27"
-description: "Discover how openDesk Edu transforms educational institutions with 25 integrated open-source services, seamless SSO, and German data protection compliance."
+description: "Discover how openDesk Edu transforms educational institutions with a comprehensive suite of integrated open-source services, seamless SSO, and German data protection compliance."
 categories: ["Platform", "Open Source", "Education"]
 tags: ["platform", "edtech", "open-source", "education", "german-compliance"]
 author: "Tobias Weiß and openDesk Edu Contributors"
@@ -12,20 +12,20 @@ image: "/static/blog/platform-overview-teaser.svg"
 
 ## What is openDesk Edu?
 
-Imagine a university where students, researchers, and faculty access a unified ecosystem of 25 integrated services — from learning management systems and collaborative document editing to task management and video conferencing — all with seamless single sign-on, German data protection compliance, and open-source transparency.
+Imagine a university where students, researchers, and faculty access a unified ecosystem of a comprehensive suite of integrated services — from learning management systems and collaborative document editing to task management and video conferencing — all with seamless single sign-on, German data protection compliance, and open-source transparency.
 
 This is **openDesk Edu**: a cutting-edge learning management platform designed specifically for European educational institutions.
 
 ### Core Value Proposition
 
-- **Unified Experience**: Single sign-on (SSO) across 25 integrated services via Keycloak
-- **Sovereign compliance**: Fully GDPR-conformant, data resides on German university servers (HRZ Marburg)
+- **Unified Experience**: Single sign-on (SSO) across a comprehensive suite of integrated services via Keycloak
+- **Sovereign compliance**: Fully GDPR-conformant, data resides on German university servers
 - **Cost Efficiency**: Open-source eliminates expensive licensing fees and vendor lock-in
 - **Integration Seamlessly Pre-Wired**: 80+ documented service relationships and cross-service workflows
 - **Production-Ready**: Comprehensive operational documentation, runbooks, and monitoring
 - **Ecosystem Approach**: Builds upon existing open-source projects rather than creating a proprietary platform — you're joining the global community, not locked into another vendor
 
-## The 25 Integrated Services
+## The Integrated Service Suite
 
 openDesk Edu combines the best open-source applications into four functional categories:
 
@@ -60,9 +60,9 @@ openDesk Edu combines the best open-source applications into four functional cat
 
 ## How It All Connects: The Interconnection Matrix
 
-These 25 services don't operate in isolation — they form a tightly integrated ecosystem with 80+ documented relationships:
+These services don't operate in isolation — they form a tightly integrated ecosystem with 80+ documented relationships:
 
-- **Authentication Hub**: All 25 services authenticate via Keycloak (SAML 2.0 / OIDC)
+- **Authentication Hub**: All a comprehensive suite of services authenticate via Keycloak (SAML 2.0 / OIDC)
 - **File Storage API**: Nextcloud provides central file storage accessed by OpenProject, Collabora, CryptPad, Etherpad
 - **Cross-SSO Workflows**: Intercom service enables silent login between services (Nextcloud ↔ OX, Nextcloud ↔ Element)
 - **LDAP Integration**: SOGo, XWiki, Zammad, Self-Service Password sync with Nubus LDAP directory
@@ -75,7 +75,7 @@ This pre-wired integration means institutions don't spend months configuring ind
 openDesk Edu is designed expressly for German and European educational institutions:
 
 ### GDPR Compliance 🔒
-- **Data sovereignty**: All student and faculty data resides on German university servers (HRZ Marburg cluster)
+- **Data sovereignty**: All student and faculty data resides on German university servers
 - **No Cloud Lock-in**: Self-hosted deployment eliminates third-party data residency concerns
 - **Transparent Code**: Open-source licensing (Apache-2.0, AGPL-3.0) enables full code review and security auditing
 - **Compliance Documentation**: Comprehensive security specifications, threat models, and compliance checklists
@@ -85,8 +85,8 @@ openDesk Edu is designed expressly for German and European educational instituti
 - Accept institutional credentials from any participating German university
 - Single sign-on across all services with federated identity
 
-### HRZ Brandenburg Production Cluster 🏢
-- 9-node K3s cluster at University of Marburg (HRZ)
+### Production Cluster 🏢
+- 9-node K3s cluster (Debian 12)
 - Ceph-backed RBD/CEPHFS storage for high availability
 - ArgoCD GitOps for reliable deployments
 - Prometheus + Grafana monitoring and alerting
@@ -141,7 +141,7 @@ openDesk Edu provides a complete path from evaluation to production deployment:
 
 ### 1. Exploration Phase
 - Review comprehensive OpenSpec documentation (58 spec files)
-- Understand service interconnection matrix (25 services, 80+ relationships)
+- Understand service interconnection matrix (the service suite, 80+ relationships)
 - Read operational runbooks and security specifications
 
 ### 2. Proof of Concept
@@ -170,8 +170,8 @@ Behind openDesk Edu's simplicity lies meticulous documentation. Our OpenSpec com
 - **Infrastructure**: Backup strategies, storage architecture, networking, deployment
 - **Automation**: Secret derivation, provisioning workflows, upgrade migration
 
-### Service Specifications (25 specs)
-- Each of the 25 services has a dedicated specification covering:
+### Service Specifications (complete specs)
+- Each of the a comprehensive suite of services has a dedicated specification covering:
   - Purpose and non-goals
   - Functional requirements with user scenarios
   - Dependencies and integration points
@@ -205,7 +205,7 @@ This comprehensive specification is **not just documentation** — it's the blue
 
 ### After: Integrated Ecosystem
 - 1 integrated open-source platform replacing fragmented subscriptions
-- 1 Keycloak SSO across all 25 services
+- 1 Keycloak SSO across all services in the suite
 - German data sovereignty with on-premise deployment
 - Pre-wired integrations reduce IT burden by 80%
 - Open-source eliminates vendor lock-in
@@ -232,7 +232,7 @@ Whether you're an IT director evaluating alternatives, an administrator seeking 
 ## Next Steps
 
 1. **Explore the OpenSpec**: Complete technical documentation
-2. **Review Service Matrix**: 25 services with 80+ relationships
+2. **Review Service Matrix**: the service suite with 80+ relationships
 3. **Try Docker Compose**: Local playground deployment
 4. **Join the Community**: GitHub repository
 

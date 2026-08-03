@@ -1,17 +1,17 @@
 ---
-title: "Sprint 1 完成：Maui 集群基础设施修复"
+title: "Sprint 1 完成：生产集群基础设施修复"
 date: "2026-06-17"
-description: "Maui 集群修复计划的 Sprint 1 已完成 — slidev PVC 卡住问题已解决，SOGo 已迁移到正确命名空间，存储类已审计，所有核心服务的冒烟测试均通过。"
+description: "生产集群修复计划的 Sprint 1 已完成 — slidev PVC 卡住问题已解决，SOGo 已迁移到正确命名空间，存储类已审计，所有核心服务的冒烟测试均通过。"
 image: "/static/blog/maui-cluster-sprint-update-teaser.svg"
 categories: ["状态更新"]
-tags: ["maui", "kubernetes", "sprint", "基础设施", "集群", "k3s"]
+tags: ["生产", "kubernetes", "sprint", "基础设施", "集群", "k3s"]
 ---
 
-# Sprint 1 完成：Maui 集群基础设施修复
+# Sprint 1 完成：生产集群基础设施修复
 
 > **slidev PVC 已解决。SOGo 已迁移。31 个部署的存储类已完成审计。所有冒烟测试通过。**
 
-6 月 14 日，我们发布了 [Maui 集群 Sprint 计划](/zh/blog/hrz-maui-cluster-progress)——通过四个 Sprint 填补六个缺失服务的缺口并强化基础设施。今天，我们报告 Sprint 1 已完成，Sprint 2 的工作已在进行中。
+6 月 14 日，我们发布了[生产集群 Sprint 计划](/zh/blog/maui-cluster-sprint-update)——通过四个 Sprint 填补六个缺失服务的缺口并强化基础设施。今天，我们报告 Sprint 1 已完成，Sprint 2 的工作已在进行中。
 
 ## 已修复的问题
 
@@ -23,7 +23,7 @@ slidev 的 PersistentVolumeClaim 自初始部署以来一直卡在 `Pending` 状
 - 删除了卡住的 PVC（无数据丢失 — slidev 无状态）
 - 使用显式的 `storageClassName: ceph-rbd-ssd` 重新创建
 - Pod 在 PVC 绑定后立即调度
-- 服务在 `slides.opendesk.hrz.uni-marburg.de` 正常响应
+- 服务在 `slides.opendesk-edu.org` 正常响应
 
 ### SOGo 命名空间迁移
 
@@ -77,6 +77,6 @@ Zammad 的部署最为复杂——它需要三个依赖数据库和合适的 ing
 - **Sprint 3**（目标：本周）：Portal 条目（仅 configmap 的 chart）和 Snipr（需要 Dockerfile 构建）
 - **Sprint 4**：强化、文档和完整 ingress 审计
 
-Maui 集群现在运行 **41 个 Pod**，涵盖 **32 个部署**——较 6 月 14 日的 39 个 Pod 和 31 个部署有所增长。我们有望在 6 月底前实现完全的生产就绪。
+生产集群现在运行 **41 个 Pod**，涵盖 **32 个部署**——较 6 月 14 日的 39 个 Pod 和 31 个部署有所增长。我们有望在 6 月底前实现完全的生产就绪。
 
 想要在您的大学部署 openDesk Edu？请参阅我们的[入门指南](/docs/deployment)和[代码仓库](https://codeberg.org/opendesk-edu/opendesk-edu)。

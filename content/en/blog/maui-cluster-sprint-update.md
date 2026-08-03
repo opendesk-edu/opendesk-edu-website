@@ -1,17 +1,17 @@
 ---
-title: "Sprint 1 Complete: Infrastructure Fixes on the Maui Cluster"
+title: "Sprint 1 Complete: Infrastructure Fixes on the Production Cluster"
 date: "2026-06-17"
-description: "Sprint 1 of the Maui cluster remediation plan is complete — the stuck slidev PVC is resolved, SOGo migrated to the correct namespace, storage classes audited, and smoke tests pass for all core services."
+description: "Sprint 1 of the production cluster remediation plan is complete — the stuck slidev PVC is resolved, SOGo migrated to the correct namespace, storage classes audited, and smoke tests pass for all core services."
 image: "/static/blog/maui-cluster-sprint-update-teaser.svg"
 categories: ["Status Update"]
-tags: ["maui", "kubernetes", "sprint", "infrastructure", "cluster", "k3s"]
+tags: ["production", "kubernetes", "sprint", "infrastructure", "cluster", "k3s"]
 ---
 
-# Sprint 1 Complete: Infrastructure Fixes on the Maui Cluster
+# Sprint 1 Complete: Infrastructure Fixes on the Production Cluster
 
 > **slidev PVC unstuck. SOGo migrated. Storage classes audited across 31 deployments. All smoke tests green.**
 
-On June 14, we published the [Maui cluster sprint plan](/en/blog/hrz-maui-cluster-progress) — four sprints to close the gap on six missing services and harden the infrastructure. Today we're reporting that Sprint 1 is complete, and work on Sprint 2 is already under way.
+On June 14, we published the [production cluster sprint plan](/en/blog/maui-cluster-sprint-update) — four sprints to close the gap on six missing services and harden the infrastructure. Today we're reporting that Sprint 1 is complete, and work on Sprint 2 is already under way.
 
 ## What Was Fixed
 
@@ -23,7 +23,7 @@ The slidev PersistentVolumeClaim had been stuck in `Pending` state since initial
 - Deleted the stuck PVC (no data loss — slidev is stateless)
 - Recreated with explicit `storageClassName: ceph-rbd-ssd`
 - Pod scheduled immediately after PVC bound
-- Service responds at `slides.opendesk.hrz.uni-marburg.de`
+- Service responds at `slides.opendesk-edu.org`
 
 ### SOGo Namespace Migration
 
@@ -77,7 +77,7 @@ Zammad deployment is the most complex — it requires three dependent databases 
 - **Sprint 3** (target: this week): Portal entries (configmap-only chart) and Snipr (Dockerfile build required)
 - **Sprint 4**: Hardening, documentation, and full ingress audit
 
-The maui cluster now runs **41 pods** across **32 deployments** — up from 39 pods and 31 deployments on June 14. We're on track for full production readiness by end of June.
+The production cluster now runs **41 pods** across **32 deployments** — up from 39 pods and 31 deployments on June 14. We're on track for full production readiness by end of June.
 
 Want to deploy openDesk Edu at your university? See our [getting started guide](/docs/deployment) and [repository](https://codeberg.org/opendesk-edu/opendesk-edu).
 

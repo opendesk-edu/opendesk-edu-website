@@ -34,7 +34,7 @@ La décision architecturale centrale : **Keycloak agit à la fois comme SAML SP 
 - Le monde extérieur voit une entité SAML SP — propre, simple, standard
 - Les services internes continuent d'utiliser OIDC — aucune configuration SAML par service nécessaire
 - La traduction d'attributs se fait à un seul endroit — attributs SAML eduGAIN → revendications OIDC
-- La déconnexion par canal arrière se propage de DFN-AAI → Keycloak → tous les 25+ services
+- La déconnexion par canal arrière se propage de DFN-AAI → Keycloak → tous les services de la suite
 
 ```
 ┌──────────────┐     SAML 2.0     ┌──────────────┐     OIDC      ┌──────────────┐
@@ -188,7 +188,7 @@ Les fondations sont en place :
 - Script de génération de métadonnées SP avec support de certificat
 - Guide de test bilingue (EN/FR) pour la fédération de test DFN-AAI
 - 6 fichiers de documentation (~4 000 lignes) couvrant la fédération, l'inscription, l'intégration, les tests, le dépannage et le déploiement en production
-- Déconnexion par canal arrière configurée pour tous les 25+ services openDesk Edu — la propagation de la déconnexion fonctionne de bout en bout
+- Déconnexion par canal arrière configurée pour tous les services openDesk Edu — la propagation de la déconnexion fonctionne de bout en bout
 
 Ce qui manque, c'est l'infrastructure partagée. Et c'est là que nous avons besoin de vous.
 

@@ -1,7 +1,7 @@
 ---
 title: "Die openDesk Edu Plattform: Umfassendes Open-Source-Lernmanagement"
 date: "2026-06-27"
-description: "Entdecken Sie, wie openDesk Edu Bildungseinrichtungen mit 25 integrierten Open-Source-Diensten, nahtlosem SSO und deutschem Datenschutz transformiert."
+description: "Entdecken Sie, wie openDesk Edu Bildungseinrichtungen mit einer umfassenden Suite integrierter Open-Source-Diensten, nahtlosem SSO und deutschem Datenschutz transformiert."
 categories: ["Plattform", "Open Source", "Bildung"]
 tags: ["plattform", "edtech", "open-source", "bildung", "deutsche-compliance"]
 author: "Tobias Weiß und openDesk Edu Mitwirkende"
@@ -12,20 +12,20 @@ image: "/static/blog/platform-overview-teaser.svg"
 
 ## Was ist openDesk Edu?
 
-Stellen Sie sich eine Universität vor, in der Studierende, Forscher und Lehrkräfte auf ein einheitliches Ökosystem aus 25 integrierten Diensten zugreifen — von Lernmanagementsystemen und kollaborativer Dokumentbearbeitung bis hin zu Aufgabenverwaltung und Videokonferenzen — alles mit nahtlosem Single Sign-On, deutschem Datenschutz und Open-Source-Transparenz.
+Stellen Sie sich eine Universität vor, in der Studierende, Forscher und Lehrkräfte auf ein einheitliches Ökosystem aus einer umfassenden Suite integrierter Diensten zugreifen — von Lernmanagementsystemen und kollaborativer Dokumentbearbeitung bis hin zu Aufgabenverwaltung und Videokonferenzen — alles mit nahtlosem Single Sign-On, deutschem Datenschutz und Open-Source-Transparenz.
 
 Dies ist **openDesk Edu**: eine hochmoderne Lernmanagementplattform, die speziell für europäische Bildungseinrichtungen entwickelt wurde.
 
 ### Kernwertversprechen
 
-- **Einheitliche Erfahrung**: Single Sign-On (SSO) über 25 integrierte Dienste via Keycloak
-- **Souveräne Compliance**: Vollständig DSGVO-konform, Daten befinden sich auf Servern deutscher Universitäten (HRZ Marburg)
+- **Einheitliche Erfahrung**: Single Sign-On (SSO) über eine umfassende Suite integrierter Dienste via Keycloak
+- **Souveräne Compliance**: Vollständig DSGVO-konform, Daten befinden sich auf Servern deutscher Universitäten
 - **Kosteneffizienz**: Open-Source eliminiert teure Lizenzgebühren und Anbieter-Lock-in
 - **Nahtlos Vorkonfigurierte Integration**: 80+ dokumentierte Dienstbeziehungen und dienstübergreifende Workflows
 - **Produktionsreif**: Umfassende operative Dokumentation, Runbooks und Monitoring
 - **Ökosystem-Ansatz**: Baut auf bestehenden Open-Source-Projekten auf, anstatt eine proprietäre Plattform zu schaffen — Sie treten der globalen Community bei, nicht eingeschlossen in einen weiteren Anbieter
 
-## Die 25 Integrierten Dienste
+## Die integrierte Service-Suite
 
 openDesk Edu kombiniert die besten Open-Source-Anwendungen in vier funktionale Kategorien:
 
@@ -60,9 +60,9 @@ openDesk Edu kombiniert die besten Open-Source-Anwendungen in vier funktionale K
 
 ## Wie Alles Zusammenarbeitet: Die Verbindungs-Matrix
 
-Diese 25 Dienste arbeiten nicht isoliert — sie bilden ein eng integriertes Ökosystem mit 80+ dokumentierten Beziehungen:
+Diese Dienste arbeiten nicht isoliert — sie bilden ein eng integriertes Ökosystem mit 80+ dokumentierten Beziehungen:
 
-- **Authentifizierungs-Hub**: Alle 25 Dienste authentifizieren sich über Keycloak (SAML 2.0 / OIDC)
+- **Authentifizierungs-Hub**: Alle eine umfassende Suite von Diensten authentifizieren sich über Keycloak (SAML 2.0 / OIDC)
 - **Dateispeicher-API**: Nextcloud bietet zentralen Dateispeicher, auf den OpenProject, Collabora, CryptPad, Etherpad zugreifen
 - **Cross-SSO-Workflows**: Intercom-Dienst ermöglicht stilles Login zwischen Diensten (Nextcloud ↔ OX, Nextcloud ↔ Element)
 - **LDAP-Integration**: SOGo, XWiki, Zammad, Self-Service Password synchronisieren mit Nubus-LDAP-Verzeichnis
@@ -75,7 +75,7 @@ Diese vorkonfigurierte Integration bedeutet, dass Institutionen nicht Monate mit
 openDesk Edu ist speziell für deutsche und europäische Bildungseinrichtungen konzipiert:
 
 ### DSGVO-Compliance 🔒
-- **Datensouveränität**: Alle Studierenden- und Lehrkraftdaten befinden sich auf Servern deutscher Universitäten (HRZ Marburg Cluster)
+- **Datensouveränität**: Alle Studierenden- und Lehrkraftdaten befinden sich auf Servern deutscher Universitäten
 - **Kein Cloud-Lock-in**: Selbst gehostete Bereitstellung eliminiert Drittanbieter-Datenresidenz-Bedenken
 - **Transparenter Code**: Open-Source-Lizenzierung (Apache-2.0, AGPL-3.0) ermöglicht vollständige Code-Überprüfung und Sicherheitsaudits
 - **Compliance-Dokumentation**: Umfassende Sicherheitsspezifikationen, Bedrohungsmodelle und Compliance-Checklisten
@@ -85,8 +85,8 @@ openDesk Edu ist speziell für deutsche und europäische Bildungseinrichtungen k
 - Akzeptiert institutionelle Anmeldedaten von jeder teilnehmenden deutschen Universität
 - Single Sign-On über alle Dienste mit föderierter Identität
 
-### HRZ Brandenburg Produktionscluster 🏢
-- 9-Knoten-K3s-Cluster an der Universität Marburg (HRZ)
+### Produktionscluster 🏢
+- 9-Knoten-K3s-Cluster (Debian 12)
 - Ceph-basierter RBD/CEPHFS-Speicher für Hochverfügbarkeit
 - ArgoCD GitOps für zuverlässige Bereitstellungen
 - Prometheus + Grafana Monitoring und Alarmierung
@@ -141,7 +141,7 @@ openDesk Edu bietet einen vollständigen Weg von der Evaluierung bis zur Produkt
 
 ### 1. Erkundungsphase
 - Überprüfen Sie umfassende OpenSpec-Dokumentation (58 Spec-Dateien)
-- Verstehen Sie die Dienstverbindungs-Matrix (25 Dienste, 80+ Beziehungen)
+- Verstehen Sie die Dienstverbindungs-Matrix (die Service-Suite, 80+ Beziehungen)
 - Lesen Sie operative Runbooks und Sicherheitsspezifikationen
 
 ### 2. Proof of Concept
@@ -170,8 +170,8 @@ Hinter der Einfachheit von openDesk Edu liegt akribische Dokumentation. Unsere O
 - **Infrastruktur**: Backup-Strategien, Speicherarchitektur, Netzwerk, Bereitstellung
 - **Automatisierung**: Secret-Ableitung, Bereitstellungs-Workflows, Upgrade-Migration
 
-### Dienstspezifikationen (25 Specs)
-- Jeder der 25 Dienste hat eine dedizierte Spezifikation, die abdeckt:
+### Dienstspezifikationen (vollständige Specs)
+- Jeder der eine umfassende Suite von Diensten hat eine dedizierte Spezifikation, die abdeckt:
   - Zweck und Nicht-Ziele
   - Funktionale Anforderungen mit Benutzerszenarien
   - Abhängigkeiten und Integrationspunkte
@@ -210,7 +210,7 @@ Diese umfassende Spezifikation ist **nicht nur Dokumentation** — sie ist der B
 
 ### Nachher: Integriertes Ökosystem
 - 1 integrierte Open-Source-Plattform ersetzt fragmentierte Abonnements
-- 1 Keycloak-SSO über alle 25 Dienste
+- 1 Keycloak-SSO über alle Dienste in der Suite
 - Deutsche Datensouveränität mit On-Premise-Bereitstellung
 - Vorkonfigurierte Integrationen reduzieren IT-Aufwand um 80%
 - Open-Source eliminiert Anbieter-Lock-in
@@ -237,7 +237,7 @@ Ob Sie IT-Direktor sind, der Alternativen evaluiert, Administrator, der operativ
 ## Nächste Schritte
 
 1. **Erkunden Sie die OpenSpec**: [Vollständige technische Dokumentation](https://github.com/opendesk-edu/opendesk-edu/tree/main/openspec/specs)
-2. **Überprüfen Sie die Dienst-Matrix**: [25 Dienste mit 80+ Beziehungen](https://github.com/opendesk-edu/opendesk-edu/blob/main/openspec/specs/_registry/interconnection-matrix.md)
+2. **Überprüfen Sie die Dienst-Matrix**: [die Service-Suite mit 80+ Beziehungen](https://github.com/opendesk-edu/opendesk-edu/blob/main/openspec/specs/_registry/interconnection-matrix.md)
 3. **Probieren Sie Docker Compose**: [Lokale Spielwiese-Bereitstellung](https://github.com/opendesk-edu/opendesk-edu/blob/main/opendesk-compose)
 4. **Treten Sie der Community bei**: [GitHub-Repository](https://github.com/opendesk-edu/opendesk-edu)
 

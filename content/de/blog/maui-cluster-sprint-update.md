@@ -1,17 +1,17 @@
 ---
-title: "Sprint 1 abgeschlossen: Infrastruktur-Korrekturen im Maui-Cluster"
+title: "Sprint 1 abgeschlossen: Infrastruktur-Korrekturen im Produktionscluster"
 date: "2026-06-17"
-description: "Sprint 1 des Maui-Cluster-Sanierungsplans ist abgeschlossen — der festsitzende slidev-PVC wurde gelöst, SOGo in den richtigen Namespace migriert, Storage-Klassen überprüft und Smoke-Tests für alle Kerndienste bestanden."
+description: "Sprint 1 des Produktionscluster-Sanierungsplans ist abgeschlossen — der festsitzende slidev-PVC wurde gelöst, SOGo in den richtigen Namespace migriert, Storage-Klassen überprüft und Smoke-Tests für alle Kerndienste bestanden."
 image: "/static/blog/maui-cluster-sprint-update-teaser.svg"
 categories: ["status-bericht"]
-tags: ["maui", "kubernetes", "sprint", "infrastruktur", "cluster", "k3s"]
+tags: ["produktion", "kubernetes", "sprint", "infrastruktur", "cluster", "k3s"]
 ---
 
-# Sprint 1 abgeschlossen: Infrastruktur-Korrekturen im Maui-Cluster
+# Sprint 1 abgeschlossen: Infrastruktur-Korrekturen im Produktionscluster
 
 > **slidev-PVC gelöst. SOGo migriert. Storage-Klassen bei 31 Bereitstellungen überprüft. Alle Smoke-Tests grün.**
 
-Am 14. Juni haben wir den [Maui-Cluster-Sprint-Plan](/en/blog/hrz-maui-cluster-progress) veröffentlicht — vier Sprints, um die Lücke bei sechs fehlenden Diensten zu schließen und die Infrastruktur zu härten. Heute können wir berichten, dass Sprint 1 abgeschlossen ist und die Arbeiten an Sprint 2 bereits laufen.
+Am 14. Juni haben wir den [Produktionscluster-Sprint-Plan](/en/blog/maui-cluster-sprint-update) veröffentlicht — vier Sprints, um die Lücke bei sechs fehlenden Diensten zu schließen und die Infrastruktur zu härten. Heute können wir berichten, dass Sprint 1 abgeschlossen ist und die Arbeiten an Sprint 2 bereits laufen.
 
 ## Was Behoben Wurde
 
@@ -23,7 +23,7 @@ Der slidev-PersistentVolumeClaim befand sich seit der ersten Bereitstellung im S
 - Den festsitzenden PVC gelöscht (kein Datenverlust — slidev ist zustandslos)
 - Mit explizitem `storageClassName: ceph-rbd-ssd` neu erstellt
 - Pod sofort gestartet, nachdem der PVC gebunden war
-- Dienst antwortet unter `slides.opendesk.hrz.uni-marburg.de`
+- Dienst antwortet unter `slides.opendesk-edu.org`
 
 ### SOGo-Namespace-Migration
 
@@ -77,7 +77,7 @@ Die Zammad-Bereitstellung ist die komplexeste — sie erfordert drei abhängige 
 - **Sprint 3** (Ziel: diese Woche): Portal-Einträge (Configmap-Only-Chart) und Snipr (Dockerfile-Build erforderlich)
 - **Sprint 4**: Härtung, Dokumentation und vollständiges Ingress-Audit
 
-Der Maui-Cluster betreibt jetzt **41 Pods** über **32 Bereitstellungen** — gegenüber 39 Pods und 31 Bereitstellungen am 14. Juni. Wir liegen im Plan für die vollständige Produktionsbereitschaft bis Ende Juni.
+Der Produktionscluster betreibt jetzt **41 Pods** über **32 Bereitstellungen** — gegenüber 39 Pods und 31 Bereitstellungen am 14. Juni. Wir liegen im Plan für die vollständige Produktionsbereitschaft bis Ende Juni.
 
 Möchten Sie openDesk Edu an Ihrer Universität bereitstellen? Besuchen Sie unseren [Erste-Schritte-Leitfaden](/docs/deployment) und das [Repository](https://codeberg.org/opendesk-edu/opendesk-edu).
 

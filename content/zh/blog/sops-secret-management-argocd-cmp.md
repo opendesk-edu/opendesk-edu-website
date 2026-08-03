@@ -15,7 +15,7 @@ image: "/static/blog/sops-secret-management-argocd-cmp-teaser.svg"
 
 ## 问题：GitOps 中的机密
 
-在 openDesk Edu，我们使用 ArgoCD 和 Helmfile 的 GitOps 工作流在多个 Kubernetes 集群上部署 25+ 集成服务。每项配置（Helm 值、环境覆盖、服务定义）都存在于 Git 仓库中，并自动同步到集群。
+在 openDesk Edu，我们使用 ArgoCD 和 Helmfile 的 GitOps 工作流在多个 Kubernetes 集群上部署 一套完整的集成服务。每项配置（Helm 值、环境覆盖、服务定义）都存在于 Git 仓库中，并自动同步到集群。
 
 这对*除机密以外*的所有内容都非常好。
 
@@ -228,7 +228,7 @@ spec:
 
 ## 端到端验证
 
-CMP Sidecar 于 2026 年 7 月在 HRZ 生产集群（K3s v1.32.3，ArgoCD v3.0.12）上部署和测试。我们验证了：
+CMP Sidecar 于 2026 年 7 月在生产集群（K3s v1.32.3，ArgoCD v3.0.12）上部署和测试。我们验证了：
 
 1. **提交了加密机密**——`test-secret.enc.yaml` 提交到仓库
 2. **ArgoCD 检测到更改**——应用程序的同步状态显示差异
@@ -310,7 +310,7 @@ sops --rotate helmfile/environments/default/secrets.enc.yaml
 
 1. **卷挂载是最棘手的部分**——CMP Sidecar 需要访问与主 repo-server 相同的仓库检出。共享的 `tmp` 卷挂载至关重要。
 
-2. **代理配置很重要**——在 HRZ 集群上，`install-sops` init 容器需要 `HTTP_PROXY` 和 `HTTPS_PROXY` 环境变量来下载 sops 二进制文件。
+2. **代理配置很重要**——在生产集群上，`install-sops` init 容器需要 `HTTP_PROXY` 和 `HTTPS_PROXY` 环境变量来下载 sops 二进制文件。
 
 3. **插件缓存可能导致机密过期**——如果之前的同步缓存在 Redis 中，ArgoCD 在机密更新后可能不会重新运行插件。强制刷新缓存（`redis-cli FLUSHALL`）或增加提交哈希可以解决此问题。
 

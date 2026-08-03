@@ -90,13 +90,13 @@ Without comprehensive specifications, organizations face:
 
 ## The openDesk Edu OpenSpec: A Case Study in Digital Sovereignty
 
-The **openDesk Edu OpenSpec** is the most comprehensive example of the OpenSpec framework applied to a real-world digital workplace. It specifies 25 integrated open-source services serving educational institutions.
+The **openDesk Edu OpenSpec** is the most comprehensive example of the OpenSpec framework applied to a real-world digital workplace. It specifies a comprehensive suite of integrated open-source services serving educational institutions.
 
-### Scope: 25 Services, 58 Specifications
+### Scope: Service Suite, 58 Specifications
 
 The OpenSpec covers:
 
-**25 Service Specifications**: One per integrated service (Nextcloud, Moodle, Keycloak, etc.)
+**Service Specifications**: One per integrated service (Nextcloud, Moodle, Keycloak, etc.)
 **17 Platform Specifications**: Cross-cutting concerns (security, backup, monitoring, etc.)
 **6 Integration Specifications**: Cross-service workflows and APIs
 **10 Registry Documents**: Service interconnections, coverage statistics, etc.
@@ -141,16 +141,16 @@ Every service specification in openDesk Edu follows a five-pillar structure:
 
 ### The Result: 100% Compliance
 
-Using the Ralph Loop methodology, we achieved **100% compliance** across all 25 services:
+Using the Ralph Loop methodology, we achieved **100% compliance** across all services in the suite:
 
 | Specification Pillar | Coverage |
 |---------------------|----------|
-| Purpose & Scope | 25/25 (100%) |
-| Dependencies | 25/25 (100%) |
-| SLOs | 25/25 (100%) |
-| Disaster Recovery | 25/25 (100%) |
+| Purpose & Scope | Complete (100%) |
+| Dependencies | Complete (100%) |
+| SLOs | Complete (100%) |
+| Disaster Recovery | Complete (100%) |
 
-**Total: ~3,000 lines of operational documentation** added across 25 services.
+**Total: ~3,000 lines of operational documentation** added across a comprehensive suite of services.
 
 ## The Sovereign Workplace Architecture
 
@@ -183,7 +183,7 @@ The Digital Sovereign Workplace architecture has three layers:
 - SAML 2.0 and OIDC for authentication
 - LDAP for user directory
 - DFN-AAI integration for federated identity
-- One password for all 25 services
+- One password for all services in the suite
 
 **Cross-Service Integration:**
 - 80+ documented service relationships
@@ -194,7 +194,7 @@ The Digital Sovereign Workplace architecture has three layers:
 
 ### Layer 3: Application Services
 
-**The 25 Services** organized by function:
+**The Services** organized by function:
 
 **Productivity & Collaboration:**
 - Nextcloud (file storage, 5TB quota)

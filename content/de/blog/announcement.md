@@ -13,7 +13,7 @@ Wir freuen uns, den Start von openDesk Edu anzukündigen, ein neues Projekt, das
 
 ## Was ist openDesk Edu?
 
-openDesk Edu baut auf openDesk Community Edition (CE) auf und fügt 15 bildungsspezifische Dienste zum bestehenden Arbeitsplatz-Stack hinzu. Das Ergebnis ist eine Plattform, die Lernmanagement, Videokonferenzen, Echtzeit-Zusammenarbeit, Dateifreigabe, Produktivität und mehr abdeckt. Statt eine Vielzahl proprietärer Werkzeuge zusammenzustellen, erhalten Einrichtungen eine vollständig Open-Source-basierte digitale Umgebung, die Datensouveränität und Interoperabilitätsstandards respektiert.
+openDesk Edu baut auf openDesk Community Edition (CE) auf und fügt eine Reihe bildungsspezifischer Dienste zum bestehenden Arbeitsplatz-Stack hinzu. Das Ergebnis ist eine Plattform, die Lernmanagement, Videokonferenzen, Echtzeit-Zusammenarbeit, Dateifreigabe, Produktivität und mehr abdeckt. Statt eine Vielzahl proprietärer Werkzeuge zusammenzustellen, erhalten Einrichtungen eine vollständig Open-Source-basierte digitale Umgebung, die Datensouveränität und Interoperabilitätsstandards respektiert.
 
 ## Was ist enthalten?
 
@@ -39,7 +39,7 @@ openDesk Edu liefert umfangreiche Dienste in mehreren Kategorien:
 
 ## Bildungsdienste in der Beta-Phase
 
-Die 15 Dienste, die zusätzlich zu openDesk CE hinzukommen, werden als Beta veröffentlicht. Das bedeutet, sie sind funktionsfähig und für grundlegende Anwendungsfälle getestet, haben aber möglicherweise noch nicht denselben Reifegrad und die gleiche Härtung wie die Kern-Dienste von openDesk CE. Wir suchen aktiv nach Rückmeldungen von Early Adoptern.
+Die Dienste, die zusätzlich zu openDesk CE hinzukommen, werden als Beta veröffentlicht. Das bedeutet, sie sind funktionsfähig und für grundlegende Anwendungsfälle getestet, haben aber möglicherweise noch nicht denselben Reifegrad und die gleiche Härtung wie die Kern-Dienste von openDesk CE. Wir suchen aktiv nach Rückmeldungen von Early Adoptern.
 
 Zu den Beta-Diensten gehören: ILIAS, Moodle, BigBlueButton, OpenCloud (eine Nextcloud-basierte Dateifreigabe-Variante), Grommunio, Etherpad, BookStack, Planka, Zammad, LimeSurvey, LTB SSP, Draw.io, Excalidraw und TYPO3.
 

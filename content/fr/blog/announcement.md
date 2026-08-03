@@ -1,7 +1,7 @@
 ---
 title: "Annonce de openDesk Edu"
 date: "2026-04-15"
-description: "openDesk Edu apporte l'espace de travail numérique openDesk à l'enseignement supérieur — all services open source, SSO unifié, déploiement en une seule commande."
+description: "openDesk Edu apporte l'espace de travail numérique openDesk à l'enseignement supérieur — tous les services open source, SSO unifié, déploiement en une seule commande."
 categories: ["annonce", "communauté"]
 tags: ["annonce", "opendesk", "éducation", "open-source"]
 image: "/static/blog/announcement-teaser.svg"
@@ -9,15 +9,15 @@ image: "/static/blog/announcement-teaser.svg"
 
 # Annonce de openDesk Edu
 
-Nous sommes heureux d'annoncer le lancement de openDesk Edu, un nouveau projet qui apporte l'espace de travail numérique openDesk aux établissements d'enseignement supérieur. openDesk Edu combine all services open source en une plateforme cohérente avec authentification unique unifiée, prise en charge de la fédération SAML et déploiement en une seule commande. Le tout est sous licence Apache-2.0 et prêt à être adopté par les universités, les instituts de recherche et les réseaux éducatifs.
+Nous sommes heureux d'annoncer le lancement de openDesk Edu, un nouveau projet qui apporte l'espace de travail numérique openDesk aux établissements d'enseignement supérieur. openDesk Edu combine tous les services open source en une plateforme cohérente avec authentification unique unifiée, prise en charge de la fédération SAML et déploiement en une seule commande. Le tout est sous licence Apache-2.0 et prêt à être adopté par les universités, les instituts de recherche et les réseaux éducatifs.
 
 ## Qu'est-ce que openDesk Edu ?
 
-openDesk Edu s'appuie sur openDesk Community Edition (CE) et ajoute 15 services spécifiques à l'éducation par-dessus la stack de productivité existante. Le résultat est une plateforme couvrant la gestion de l'apprentissage, la visioconférence, la collaboration en temps réel, le partage de fichiers, la productivité et bien plus encore. Au lieu d'assembler un patchwork d'outils propriétaires, les établissements disposent d'un environnement numérique entièrement open source qui respecte la souveraineté des données et les normes d'interopérabilité.
+openDesk Edu s'appuie sur openDesk Community Edition (CE) et ajoute une gamme de services spécifiques à l'éducation par-dessus la stack de productivité existante. Le résultat est une plateforme couvrant la gestion de l'apprentissage, la visioconférence, la collaboration en temps réel, le partage de fichiers, la productivité et bien plus encore. Au lieu d'assembler un patchwork d'outils propriétaires, les établissements disposent d'un environnement numérique entièrement open source qui respecte la souveraineté des données et les normes d'interopérabilité.
 
 ## Ce qui est inclus
 
-openDesk Edu fournit all services répartis en plusieurs catégories :
+openDesk Edu fournit tous les services répartis en plusieurs catégories :
 
 - **Gestion de l'apprentissage** avec ILIAS et Moodle, deux des plateformes LMS les plus utilisées dans l'enseignement supérieur européen.
 - **Visioconférence** avec Jitsi Meet et BigBlueButton, couvrant aussi bien les réunions légères que les classes virtuelles complètes avec tableaux blancs, salles de sous-groupes et enregistrement.
@@ -35,11 +35,11 @@ openDesk Edu fournit all services répartis en plusieurs catégories :
 
 **Souveraineté des données.** Tous les services fonctionnent sur une infrastructure que vous contrôlez. Aucune donnée ne quitte votre cluster sans que vous ne le configuriez. C'est essentiel pour les établissements soumis au RGPD et aux réglementations nationales sur la protection des données.
 
-**Architecture modulaire.** Tous les établissements n'ont pas besoin des all services. Le système de configuration permet d'activer uniquement ce dont vos utilisateurs ont besoin. Faites tourner uniquement ILIAS et Nextcloud, ou déployez la stack complète. Le choix vous appartient.
+**Architecture modulaire.** Tous les établissements n'ont pas besoin de tous les services. Le système de configuration permet d'activer uniquement ce dont vos utilisateurs ont besoin. Faites tourner uniquement ILIAS et Nextcloud, ou déployez la stack complète. Le choix vous appartient.
 
 ## Services éducatifs en version bêta
 
-Les 15 services ajoutés par-dessus openDesk CE sont publiés en version bêta. Cela signifie qu'ils sont fonctionnels et testés pour les cas d'usage de base, mais qu'ils n'ont peut-être pas encore le même niveau de fiabilité que les services principaux de openDesk CE. Nous recherchons activement les retours des early adopters.
+Les services ajoutés par-dessus openDesk CE sont publiés en version bêta. Cela signifie qu'ils sont fonctionnels et testés pour les cas d'usage de base, mais qu'ils n'ont peut-être pas encore le même niveau de fiabilité que les services principaux de openDesk CE. Nous recherchons activement les retours des early adopters.
 
 Les services bêta incluent : ILIAS, Moodle, BigBlueButton, OpenCloud (une variante de partage de fichiers basée sur Nextcloud), Grommunio, Etherpad, BookStack, Planka, Zammad, LimeSurvey, LTB SSP, Draw.io, Excalidraw et TYPO3.
 

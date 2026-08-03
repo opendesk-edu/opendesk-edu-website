@@ -44,7 +44,7 @@ image: "/static/blog/opendesk-edu-1-1-teaser.svg"
 
 ### openDesk Edu 的挑战
 
-openDesk Edu 在 **12+ 个 Kubernetes 命名空间** 中部署 **50+ 个服务**，并使用 **400+ 个 Helm 图表值**。面对这种复杂性：
+openDesk Edu 在 **多个 Kubernetes 命名空间** 中部署 **完整的服务套件**，并使用 **数百个 Helm 图表值**。面对这种复杂性：
 
 - Wiki 页面会在几天内过时
 - 图表与实际部署不符
@@ -295,7 +295,7 @@ specs/_registry/
 │  总体覆盖率: 12% (65 个规范中有 8 个测试)                     │
 │                                                             │
 │  按类别划分:                                              │
-│    服务 (24):        25%  (6/24 已测试)  ████░░░░           │
+│    服务:        25%  (6/24 已测试)  ████░░░░           │
 │    平台 (17):        0%   (0/17 已测试)  ░░░░░░░░           │
 │    认证 (4):         0%   (0/4 已测试)   ░░░░░░░░           │
 │    集成 (6):         0%   (0/6 已测试)   ░░░░░░░░           │
@@ -522,4 +522,4 @@ python scripts/validate-interconnections.py
 
 ---
 
-*版权所有 © 2026 HRZ Uni Marburg。根据 [AGPL-3.0-only](https://www.gnu.org/licenses/agpl-3.0.html) 许可证授权。openDesk Edu 是 [openDesk](https://opendesk.hrz.uni-marburg.de) 项目的一部分。*
+*版权所有 © 2026 openDesk Edu Contributors。根据 [AGPL-3.0-only](https://www.gnu.org/licenses/agpl-3.0.html) 许可证授权。openDesk Edu 是 [openDesk](https://opendesk-edu.org) 项目的一部分。*

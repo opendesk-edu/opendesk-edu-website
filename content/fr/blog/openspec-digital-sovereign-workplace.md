@@ -87,13 +87,13 @@ Sans spécifications complètes, les organisations font face à :
 
 ## L'OpenSpec d'openDesk Edu : Une Étude de Cas
 
-L'**OpenSpec d'openDesk Edu** est l'exemple le plus complet du cadre OpenSpec appliqué à un poste de travail numérique réel. Il spécifie 25 services open source intégrés servant des établissements d'enseignement.
+L'**OpenSpec d'openDesk Edu** est l'exemple le plus complet du cadre OpenSpec appliqué à un poste de travail numérique réel. Il spécifie une suite complète de services open source intégrés servant des établissements d'enseignement.
 
-### Portée : 25 Services, 58 Spécifications
+### Portée : Suite de Services, 58 Spécifications
 
 L'OpenSpec couvre :
 
-**25 Spécifications de Services** : Une par service intégré (Nextcloud, Moodle, Keycloak, etc.)
+**Spécifications de Services** : Une par service intégré (Nextcloud, Moodle, Keycloak, etc.)
 **17 Spécifications de Plateforme** : Préoccupations transversales (sauvegarde, monitoring, sécurité, etc.)
 **6 Spécifications d'Intégration** : Flux de travail inter-services et APIs
 **10 Documents de Registre** : Connexions entre services, couverture des tests, glossaire
@@ -138,16 +138,16 @@ Chaque spécification de service dans openDesk Edu suit une structure à cinq pi
 
 ### Le Résultat : Conformité à 100%
 
-En utilisant la méthodologie Ralph Loop, nous avons atteint une **conformité à 100%** sur les 25 services :
+En utilisant la méthodologie Ralph Loop, nous avons atteint une **conformité à 100%** sur tous les services de la suite :
 
 | Pilier de Spécification | Couverture |
 |--------------------------|----------|
-| Objectif et Portée | 25/25 (100%) |
-| Dépendances | 25/25 (100%) |
-| SLOs | 25/25 (100%) |
-| Reprise après Sinistre | 25/25 (100%) |
+| Objectif et Portée | Complet (100%) |
+| Dépendances | Complet (100%) |
+| SLOs | Complet (100%) |
+| Reprise après Sinistre | Complet (100%) |
 
-**Total : ~3 000 lignes de documentation opérationnelle** ajoutées sur 25 services.
+**Total : ~3 000 lignes de documentation opérationnelle** ajoutées sur une suite complète de services.
 
 ## L'Architecture du Poste de Travail Souverain
 
@@ -180,7 +180,7 @@ L'architecture du Poste de Travail Numérique Souverain comporte trois couches :
 - SAML 2.0 et OIDC pour l'authentification
 - LDAP pour l'annuaire des utilisateurs
 - Intégration DFN-AAI pour l'identité fédérée
-- Un mot de passe pour les 25 services
+- Un mot de passe pour tous les services de la suite
 
 **Intégration Inter-Services :**
 - 80+ relations de service documentées
@@ -191,7 +191,7 @@ L'architecture du Poste de Travail Numérique Souverain comporte trois couches :
 
 ### Couche 3 : Services Applicatifs
 
-**Les 25 Services** organisés par fonction :
+**Les Services** organisés par fonction :
 
 **Productivité et Collaboration :**
 - Nextcloud (stockage de fichiers, 5 To de quota)
@@ -315,6 +315,6 @@ Avec la bonne méthodologie et l'écosystème approprié, la souveraineté numé
 
 ---
 
-**À Propos des Auteurs** : Cet article a été écrit par la communauté openDesk Edu. openDesk Edu est un déploiement en production de 25 services open source intégrés pour les établissements d'enseignement allemands, basé au HRZ Marburg. Voir [opendesk-edu.org](https://opendesk-edu.org) pour plus d'informations.
+**À Propos des Auteurs** : Cet article a été écrit par la communauté openDesk Edu. openDesk Edu est un déploiement en production d'une suite complète de services open source intégrés pour les établissements d'enseignement allemands. Voir [opendesk-edu.org](https://opendesk-edu.org) pour plus d'informations.
 
 **Licence** : Cet article est sous licence Apache-2.0.
