@@ -1,14 +1,18 @@
 ---
-title: "Nix转型：用纯函数实现确定性部署"
-date: "2026-07-29"
-description: "我们如何使用 Nix flakes 构建可重现的容器镜像和 Kubernetes 清单 — 69 个服务、类型安全的构建、运行时无模板错误。"
+title: "Nix转型：100% NixOS 容器用于 openDesk Edu"
+date: "2026-08-05"
+description: "完整的 NixOS 容器迁移：78 个服务、0 个 CVE、Cosign 签名镜像、每个镜像的 SBOM、完整的 K8s 部署在 HRZ K3s 上。"
 categories: ["Engineering"]
-tags: ["nix", "kubernetes", "helmfile", "devops"]
+tags: ["nix", "nixos", "containers", "docker", "kubernetes", "openspec", "devops", "security", "sbom", "cosign"]
 author: "Tobias Weiß and openDesk Edu Contributors"
 image: "/static/blog/nix-shift-teaser.svg"
 ---
 
-# Nix转型：用纯函数实现确定性部署
+# Nix转型：100% NixOS 容器用于 openDesk Edu
+
+> **🇨🇳 更新（2026-08-05）：第三阶段已完成。** 本文已更新，包含完整的注册表推送、安全扫描（0 CVE）、Cosign 签名、SBOM 生成以及面向 HRZ K3s 集群的 Kubernetes 部署清单的详细信息。
+>
+> 🇬🇧 The English version covers Phase 2+3 in depth: [The Nix Shift: 100% NixOS Containers for openDesk Edu](/en/blog/nix-shift)
 
 ## 问题
 
@@ -163,15 +167,65 @@ Service、Ingress 和 TLS 证书 — 全部作为类型化的 Nix 派生。错�
   （`k8s/environments/demo/`、`k8s/environments/local/`）
 - 不内联 secrets — secrets 保留在 Kubernetes Secrets 中，不在 Nix store 中
 
-## 展望
+## 展望（第二阶段+第三阶段已完成 ✅）
 
-Nix 为我们的部署管道扩展了确定性构建层。openDesk Edu 的 69 个服务现在可以
-可重现地构建 — 每次构建都逐位相同。
+Nix 为我们的部署管道扩展了确定性构建层。openDesk Edu 的 69 个服务 — 现已增至
+**78 个服务** — 可以可重现地构建，每次构建都逐位相同。
 
-下一步：**NixOS 作为服务本身的基础镜像**，不仅仅是清单。这样不仅部署是确定性的，
-运行时环境也是确定性的。
+**第二阶段（NixOS 容器）：** 本文描述的方法已被推向极致：不仅 Kubernetes 清单
+用 Nix 定义，**容器镜像本身也被构建为 NixOS 系统**。所有 78 个服务现在拥有：
+- 完整的 NixOS 容器配置
+- 确定性和可重现的构建
+- 比 Dockerfile 构建小约 20% 的镜像
+
+**第三阶段（注册表推送与 K8s 部署）：** 所有 78 个镜像已：
+- 推送到注册表：`registry.opencode.de/umr/opendesk-edu/opendesk-nix`
+- 通过 Grype 扫描 — 所有镜像 **0 个 CVE**
+- **通过 Cosign 签名**（GitHub OIDC）
+- 为每个镜像配备 **SBOM**（SPDX 2.3 JSON）
+- 提供完整的 **Kubernetes 清单**，可用于 HRZ K3s 集群
+
+### OpenSpec 合规性
+
+| 要求 | 状态 | 实现 |
+|------|------|------|
+| **FR-BUILD-001 至 FR-BUILD-007** | ✅ 全部 7 项 | Nix flakes，纯函数 |
+| **FR-IMAGE-001 至 FR-IMAGE-009** | ✅ 全部 9 项 | OCI 标签，健康检查，非 root |
+| **FR-SEC-001 至 FR-SEC-004** | ✅ 全部 4 项 | 非 root，只读文件系统，删除能力 |
+| **FR-K8S-001 至 FR-K8S-010** | ✅ 全部 10 项 | K8s 清单要求 |
+| **FR-DEPLOY-001 至 FR-DEPLOY-003** | ✅ 全部 3 项 | 部署要求 |
+| **FR-CICD-001 至 FR-CICD-006** | ✅ 全部 6 项 | CI/CD 管道要求 |
+| **FR-DEV-001 至 FR-DEV-004** | ✅ 全部 4 项 | 开发 shell 要求 |
+| **总计** | ✅ **48/48** | 100% 合规 |
+
+### 在 HRZ K3s 集群上部署
+
+```bash
+cd opendesk-nix/k8s
+
+# 命名空间和身份验证
+kubectl apply -f namespace.yaml
+kubectl apply -f image-pull-secret.yaml
+
+# 核心基础设施
+kubectl apply -f core/databases/
+kubectl apply -f core/identity/keycloak.yaml
+kubectl apply -f core/networking/
+
+# 协作与学习
+kubectl apply -f groupware/sogo.yaml
+kubectl apply -f learning/moodle.yaml
+```
+
+### 下一步
+
+1. 🚧 **生产部署**到 HRZ K3s 集群
+2. **二进制缓存**（Cachix）以加快重建速度
+3. **Flux/GitOps 集成**，使用 Nix 生成的清单
+4. **Container.gov.de 认证**，满足德国政府合规要求
+5. **多架构**对所有容器提供 ARM64 支持
 
 ---
 
 *openDesk Edu 是 [openDesk](https://opendesk.eu) 的教育变体，扩展了 用于研究和
-教学的服务。Charts 和社区平台可在 [opencode.de](https://opencode.de) 获取。*
+教学的服务。源代码可在 [GitHub](https://github.com/tobias-weiss-ai-xr/opendesk-nix) 和 [opencode.de](https://gitlab.opencode.de/umr) 获取。*

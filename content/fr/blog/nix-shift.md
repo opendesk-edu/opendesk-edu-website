@@ -1,14 +1,18 @@
 ---
-title: "Le Nix Shift : Déploiements déterministes avec fonctions pures"
-date: "2026-07-29"
-description: "Comment nous utilisons les flakes Nix pour des images conteneurs reproductibles et des manifestes Kubernetes — 69 services, builds type-safe, sans erreurs de template à l'exécution."
+title: "Le Nix Shift : 100% Conteneurs NixOS pour openDesk Edu"
+date: "2026-08-05"
+description: "Migration complète vers des conteneurs NixOS : 78 services, 0 CVEs, images signées Cosign, SBOM pour chaque image, déploiement K8s complet sur HRZ K3s."
 categories: ["Engineering"]
-tags: ["nix", "kubernetes", "helmfile", "devops"]
+tags: ["nix", "nixos", "containers", "docker", "kubernetes", "openspec", "devops", "security", "sbom", "cosign"]
 author: "Tobias Weiß and openDesk Edu Contributors"
 image: "/static/blog/nix-shift-teaser.svg"
 ---
 
-# Le Nix Shift : Déploiements déterministes avec fonctions pures
+# Le Nix Shift : 100% Conteneurs NixOS pour openDesk Edu
+
+> **🇫🇷 Mise à jour (05.08.2026) : Phase 3 terminée.** Cet article a été mis à jour avec les détails du push complet vers le registre, des scans de sécurité (0 CVEs), de la signature Cosign, de la génération SBOM et des manifests de déploiement Kubernetes pour le cluster HRZ K3s.
+>
+> 🇬🇧 The English version covers Phase 2+3 in depth: [The Nix Shift: 100% NixOS Containers for openDesk Edu](/en/blog/nix-shift)
 
 ## Le problème
 
@@ -173,18 +177,69 @@ La migration est incrémentale — pas de big bang, mais service par service :
   `k8s/environments/local/`)
 - Pas de secrets inline — les secrets restent dans les Kubernetes Secrets, pas dans le Nix store
 
-## Perspectives
+## Perspectives (Phase 2+3 terminée ✅)
 
 Nix étend notre pipeline de déploiement avec une couche de build déterministe. Les
-69 services d'openDesk Edu peuvent désormais être build de manière reproductible — et
-chaque build est identique jusqu'au dernier bit.
+69 services d'openDesk Edu — désormais **78 services** — peuvent être build de manière
+reproductible, et chaque build est identique jusqu'au dernier bit.
 
-La prochaine étape : **NixOS comme image de base** pour les services eux-mêmes, pas
-seulement pour les manifestes. Alors, non seulement le déploiement sera déterministe,
-mais aussi l'environnement d'exécution.
+**Phase 2 (Conteneurs NixOS) :** L'approche décrite dans cet article a été poussée à
+son extrême : non seulement les manifests Kubernetes sont définis en Nix, mais les
+**images conteneurs elles-mêmes sont construites comme des systèmes NixOS**. Les 78
+services disposent désormais :
+- De configurations complètes de conteneurs NixOS
+- De builds déterministes et reproductibles
+- D'images ~20% plus petites que les builds Dockerfile
+
+**Phase 3 (Registre & Déploiement K8s) :** L'ensemble des 78 images a été :
+- Poussé vers le registre : `registry.opencode.de/umr/opendesk-edu/opendesk-nix`
+- Scanné avec Grype — **0 CVEs** dans toutes les images
+- **Signé avec Cosign** (GitHub OIDC)
+- Équipé d'un **SBOM** (SPDX 2.3 JSON) pour chaque image
+- Accompagné de **manifests Kubernetes complets** pour le cluster HRZ K3s
+
+### Conformité OpenSpec
+
+| Exigence | Statut | Implémentation |
+|----------|--------|----------------|
+| **FR-BUILD-001 à FR-BUILD-007** | ✅ 7/7 | Nix flakes, fonctions pures |
+| **FR-IMAGE-001 à FR-IMAGE-009** | ✅ 9/9 | Labels OCI, health checks, non-root |
+| **FR-SEC-001 à FR-SEC-004** | ✅ 4/4 | Non-root, FS lecture seule, capabilities supprimées |
+| **FR-K8S-001 à FR-K8S-010** | ✅ 10/10 | Exigences manifests K8s |
+| **FR-DEPLOY-001 à FR-DEPLOY-003** | ✅ 3/3 | Exigences de déploiement |
+| **FR-CICD-001 à FR-CICD-006** | ✅ 6/6 | Exigences pipeline CI/CD |
+| **FR-DEV-001 à FR-DEV-004** | ✅ 4/4 | Exigences shells de développement |
+| **Total** | ✅ **48/48** | 100% conforme |
+
+### Déploiement sur le cluster HRZ K3s
+
+```bash
+cd opendesk-nix/k8s
+
+# Namespace et authentification
+kubectl apply -f namespace.yaml
+kubectl apply -f image-pull-secret.yaml
+
+# Infrastructure de base
+kubectl apply -f core/databases/
+kubectl apply -f core/identity/keycloak.yaml
+kubectl apply -f core/networking/
+
+# Groupware & Apprentissage
+kubectl apply -f groupware/sogo.yaml
+kubectl apply -f learning/moodle.yaml
+```
+
+### Prochaines étapes
+
+1. 🚧 **Déploiement en production** sur le cluster HRZ K3s
+2. **Binary Cache** (Cachix) pour des rebuilds plus rapides
+3. **Intégration Flux/GitOps** avec manifests générés par Nix
+4. **Certification Container.gov.de** pour les autorités allemandes
+5. **Multi-architecture** support ARM64 pour tous les conteneurs
 
 ---
 
 *openDesk Edu est la variante éducation d'[openDesk](https://opendesk.eu), étendue avec
-une suite complète de services pour la recherche et l'enseignement. Les charts et la plateforme
-communautaire sont disponibles sur [opencode.de](https://opencode.de).*
+une suite complète de services pour la recherche et l'enseignement. Code source disponible sur
+[GitHub](https://github.com/tobias-weiss-ai-xr/opendesk-nix) et [opencode.de](https://gitlab.opencode.de/umr).*
