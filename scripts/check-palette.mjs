@@ -12,6 +12,8 @@ const ALLOWED_COLORS = new Set([
   "#341291", "#571efa",
   // Brand purple shades (found in actual artwork SVGs)
   "#927afa", "#ddd6fe", "#7c3aed", "#6d28d9", "#a78bfa", "#ede9fe", "#f5f3ff", "#e9e5f5",
+  // Additional purple shades (infrastructure-autonomy-july-2026 teaser)
+  "#1a0040", "#b0a0d0", "#c0b0e0",
   // Neutrals
   "#6b7280", "#e5e7eb", "#f3f4f6", "#9ca3af", "#4b5563", "#d1d5db", "#374151",
   "#ffffff", "#fafbfc", "#f9fafb", "#000000", "#111827", "#1f2937",
@@ -31,6 +33,10 @@ const ALLOWED_COLORS = new Set([
   "#f37726", "#e55b1a", "#c2410c", "#ea580c", "#9a3412",
   "#a855f7",
   "#333333", "#666666", "#e2e8f0", "#a58eb5",
+  // National flag colors (la-suite-vs-opendesk-edu teaser: FR and DE flags)
+  "#0055a4", "#003d7a", "#ef4135", "#c2291f", "#ffce00", "#e6b800",
+  // Near-black neutrals (flag outlines, la-suite teaser)
+  "#1a1a1a", "#0d0d0d",
   "transparent",
 ]);
 
