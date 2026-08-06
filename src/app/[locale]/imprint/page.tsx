@@ -45,6 +45,14 @@ export default async function ImprintPage() {
         <h2>{t('copyrightHeading')}</h2>
         <p>{t('copyrightText')}</p>
 
+        <h2>{t('acknowledgements')}</h2>
+        <p>{t('acknowledgementsIntro')}</p>
+        <ul>
+          <li>{t('ackConsortium')}</li>
+          <li>{t('ackHmwk')}</li>
+          <li>{t('ackHessianAi')}</li>
+        </ul>
+
         <h2>{t('warrantyHeading')}</h2>
         <p>{t('warrantyText')}</p>
 
