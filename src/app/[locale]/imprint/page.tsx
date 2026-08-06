@@ -48,7 +48,6 @@ export default async function ImprintPage() {
         <h2>{t('acknowledgements')}</h2>
         <p>{t('acknowledgementsIntro')}</p>
         <ul>
-          <li>{t('ackConsortium')}</li>
           <li>{t('ackHmwk')}</li>
           <li>{t('ackHessianAi')}</li>
         </ul>
