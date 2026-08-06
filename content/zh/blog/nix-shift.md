@@ -1,7 +1,7 @@
 ---
 title: "Nix转型：100% NixOS 容器用于 openDesk Edu"
 date: "2026-08-05"
-description: "完整的 NixOS 容器迁移：78 个服务、0 个 CVE、Cosign 签名镜像、每个镜像的 SBOM、完整的 K8s 部署在 HRZ K3s 上。"
+description: "完整的 NixOS 容器迁移：78 个服务、0 个 CVE、Cosign 签名镜像、每个镜像的 SBOM、完整的 K8s 部署在生产 K3s 集群上。"
 categories: ["Engineering"]
 tags: ["nix", "nixos", "containers", "docker", "kubernetes", "openspec", "devops", "security", "sbom", "cosign"]
 author: "Tobias Weiß and openDesk Edu Contributors"
@@ -10,7 +10,7 @@ image: "/static/blog/nix-shift-teaser.svg"
 
 # Nix转型：100% NixOS 容器用于 openDesk Edu
 
-> **🇨🇳 更新（2026-08-05）：第三阶段已完成。** 本文已更新，包含完整的注册表推送、安全扫描（0 CVE）、Cosign 签名、SBOM 生成以及面向 HRZ K3s 集群的 Kubernetes 部署清单的详细信息。
+> **更新（2026-08-05）：第三阶段已完成。** 本文已更新，包含完整的注册表推送、安全扫描（0 CVE）、Cosign 签名、SBOM 生成以及面向生产 K3s 集群的 Kubernetes 部署清单的详细信息。
 >
 > 🇬🇧 The English version covers Phase 2+3 in depth: [The Nix Shift: 100% NixOS Containers for openDesk Edu](/en/blog/nix-shift)
 
@@ -183,7 +183,7 @@ Nix 为我们的部署管道扩展了确定性构建层。openDesk Edu 的 69 �
 - 通过 Grype 扫描 — 所有镜像 **0 个 CVE**
 - **通过 Cosign 签名**（GitHub OIDC）
 - 为每个镜像配备 **SBOM**（SPDX 2.3 JSON）
-- 提供完整的 **Kubernetes 清单**，可用于 HRZ K3s 集群
+- 提供完整的 **Kubernetes 清单**，可用于生产 K3s 集群
 
 ### OpenSpec 合规性
 
@@ -198,7 +198,7 @@ Nix 为我们的部署管道扩展了确定性构建层。openDesk Edu 的 69 �
 | **FR-DEV-001 至 FR-DEV-004** | ✅ 全部 4 项 | 开发 shell 要求 |
 | **总计** | ✅ **48/48** | 100% 合规 |
 
-### 在 HRZ K3s 集群上部署
+### 在生产 K3s 集群上部署
 
 ```bash
 cd opendesk-nix/k8s
@@ -219,7 +219,7 @@ kubectl apply -f learning/moodle.yaml
 
 ### 下一步
 
-1. 🚧 **生产部署**到 HRZ K3s 集群
+1. 🚧 **生产部署**到生产 K3s 集群
 2. **二进制缓存**（Cachix）以加快重建速度
 3. **Flux/GitOps 集成**，使用 Nix 生成的清单
 4. **Container.gov.de 认证**，满足德国政府合规要求

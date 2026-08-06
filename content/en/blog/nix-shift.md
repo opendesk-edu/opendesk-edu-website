@@ -1,7 +1,7 @@
 ---
 title: "The Nix Shift: 100% NixOS Containers for openDesk Edu"
 date: "2026-08-05"
-description: "Complete NixOS container migration: 78 services, 0 CVEs, Cosign-signed images, SBOM for every image, full K8s deployment on HRZ K3s."
+description: "Complete NixOS container migration: 78 services, 0 CVEs, Cosign-signed images, SBOM for every image, full K8s deployment on a production K3s cluster."
 categories: ["Engineering"]
 tags: ["nix", "nixos", "containers", "docker", "kubernetes", "openspec", "devops", "security", "sbom", "cosign"]
 author: "Tobias Weiß and openDesk Edu Contributors"
@@ -10,7 +10,7 @@ image: "/static/blog/nix-shift-teaser.svg"
 
 # The Nix Shift: 100% NixOS Containers for openDesk Edu
 
-All 78 openDesk services have been migrated from Dockerfile-based builds to NixOS containers. Every image has been Grype-scanned (0 CVEs), signed with Cosign, and equipped with an SPDX 2.3 SBOM. The complete set of Kubernetes deployment manifests for the HRZ K3s cluster is available in the repository, and all images are hosted at `registry.opencode.de/umr/opendesk-edu/opendesk-nix`.
+All 78 openDesk services have been migrated from Dockerfile-based builds to NixOS containers. Every image has been Grype-scanned (0 CVEs), signed with Cosign, and equipped with an SPDX 2.3 SBOM. The complete set of Kubernetes deployment manifests for the production K3s cluster is available in the repository, and all images are hosted at `registry.opencode.de/umr/opendesk-edu/opendesk-nix`.
 
 ---
 
@@ -42,7 +42,7 @@ configuration.nix → nix build → NixOS Container → OCI Image → Registry �
 **After (Phase 3):**
 ```
 flake.nix → nix build → NixOS Container → OCI Image → Grype scan → Cosign sign → SBOM attach
-    ├── Registry Push (opencode.de) ──→ K8s Manifests (k8s/) ──→ HRZ K3s cluster
+    ├── Registry Push (opencode.de) ──→ K8s Manifests (k8s/) ──→ production K3s cluster
     └── CI/CD Pipeline (.gitlab-ci.yml) ──→ Automated rebuild and push
          ↑
     (deterministic, scanned, signed, verified)
@@ -190,7 +190,7 @@ docker load < result
 ./push-to-opencode.sh              # Push all images to registry
 ```
 
-### Deploying to HRZ K3s
+### Deploying to production K3s
 
 The `k8s/` directory provides ready-to-use manifests:
 
@@ -254,13 +254,13 @@ nix flake check                   # OpenSpec compliance
 ### Completed
 
 - All 78 containers built, Grype-scanned (0 CVEs), Cosign-signed, and pushed to `registry.opencode.de`
-- Kubernetes manifests created for full HRZ K3s cluster deployment
+- Kubernetes manifests created for full production K3s cluster deployment
 - CI/CD pipeline configured via `.gitlab-ci.yml`
 - SBOM (SPDX 2.3) embedded in every image
 
 ### In Progress
 
-- Production deployment to the HRZ K3s cluster
+- Production deployment to the production K3s cluster
 - Binary cache setup (Cachix) for accelerated team rebuilds
 - Flux/GitOps integration using Nix-generated manifests
 - Evaluation of NixOS as Kubernetes node operating system
@@ -285,7 +285,7 @@ nix flake check                   # OpenSpec compliance
 
 ## Conclusion
 
-The migration from Dockerfile-based builds to NixOS containers is complete. All 78 openDesk services now produce deterministic, bit-for-bit identical images that are 15–25% smaller than their predecessors. Every image has been vulnerability-scanned (0 CVEs), signed with Cosign, and equipped with an SPDX 2.3 SBOM. The complete set of Kubernetes manifests for the HRZ K3s cluster is ready, and all images are available from `registry.opencode.de/umr/opendesk-edu/opendesk-nix`.
+The migration from Dockerfile-based builds to NixOS containers is complete. All 78 openDesk services now produce deterministic, bit-for-bit identical images that are 15–25% smaller than their predecessors. Every image has been vulnerability-scanned (0 CVEs), signed with Cosign, and equipped with an SPDX 2.3 SBOM. The complete set of Kubernetes manifests for the production K3s cluster is ready, and all images are available from `registry.opencode.de/umr/opendesk-edu/opendesk-nix`.
 
 The project demonstrates that NixOS containers are viable for production at scale — from migration toolkit to security scanning to registry push to deployment manifests, the entire pipeline is deterministic, reproducible, and verifiable.
 

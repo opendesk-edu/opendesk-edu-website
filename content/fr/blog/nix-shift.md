@@ -1,7 +1,7 @@
 ---
 title: "Le Nix Shift : 100% Conteneurs NixOS pour openDesk Edu"
 date: "2026-08-05"
-description: "Migration complète vers des conteneurs NixOS : 78 services, 0 CVEs, images signées Cosign, SBOM pour chaque image, déploiement K8s complet sur HRZ K3s."
+description: "Migration complète vers des conteneurs NixOS : 78 services, 0 CVEs, images signées Cosign, SBOM pour chaque image, déploiement K8s complet sur un cluster K3s de production."
 categories: ["Engineering"]
 tags: ["nix", "nixos", "containers", "docker", "kubernetes", "openspec", "devops", "security", "sbom", "cosign"]
 author: "Tobias Weiß and openDesk Edu Contributors"
@@ -10,7 +10,7 @@ image: "/static/blog/nix-shift-teaser.svg"
 
 # Le Nix Shift : 100% Conteneurs NixOS pour openDesk Edu
 
-> **🇫🇷 Mise à jour (05.08.2026) : Phase 3 terminée.** Cet article a été mis à jour avec les détails du push complet vers le registre, des scans de sécurité (0 CVEs), de la signature Cosign, de la génération SBOM et des manifests de déploiement Kubernetes pour le cluster HRZ K3s.
+> **Mise à jour (05.08.2026) : Phase 3 terminée.** Cet article a été mis à jour avec les détails du push complet vers le registre, des scans de sécurité (0 CVEs), de la signature Cosign, de la génération SBOM et des manifests de déploiement Kubernetes pour le cluster K3s de production.
 >
 > 🇬🇧 The English version covers Phase 2+3 in depth: [The Nix Shift: 100% NixOS Containers for openDesk Edu](/en/blog/nix-shift)
 
@@ -196,7 +196,7 @@ services disposent désormais :
 - Scanné avec Grype — **0 CVEs** dans toutes les images
 - **Signé avec Cosign** (GitHub OIDC)
 - Équipé d'un **SBOM** (SPDX 2.3 JSON) pour chaque image
-- Accompagné de **manifests Kubernetes complets** pour le cluster HRZ K3s
+- Accompagné de **manifests Kubernetes complets** pour le cluster K3s de production
 
 ### Conformité OpenSpec
 
@@ -211,7 +211,7 @@ services disposent désormais :
 | **FR-DEV-001 à FR-DEV-004** | ✅ 4/4 | Exigences shells de développement |
 | **Total** | ✅ **48/48** | 100% conforme |
 
-### Déploiement sur le cluster HRZ K3s
+### Déploiement sur le cluster K3s de production
 
 ```bash
 cd opendesk-nix/k8s
@@ -232,7 +232,7 @@ kubectl apply -f learning/moodle.yaml
 
 ### Prochaines étapes
 
-1. 🚧 **Déploiement en production** sur le cluster HRZ K3s
+1. 🚧 **Déploiement en production** sur le cluster K3s de production
 2. **Binary Cache** (Cachix) pour des rebuilds plus rapides
 3. **Intégration Flux/GitOps** avec manifests générés par Nix
 4. **Certification Container.gov.de** pour les autorités allemandes

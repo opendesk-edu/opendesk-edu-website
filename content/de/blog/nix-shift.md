@@ -1,7 +1,7 @@
 ---
 title: "Der Nix-Shift: 100% NixOS-Container für openDesk Edu"
 date: "2026-08-05"
-description: "Vollständige NixOS-Container-Migration: 78 Dienste, 0 CVEs, Cosign-signierte Images, SBOM für jedes Image, vollständiges K8s-Deployment im HRZ K3s."
+description: "Vollständige NixOS-Container-Migration: 78 Dienste, 0 CVEs, Cosign-signierte Images, SBOM für jedes Image, vollständiges K8s-Deployment im Produktions-K3s-Cluster."
 categories: ["Engineering"]
 tags: ["nix", "nixos", "containers", "docker", "kubernetes", "openspec", "devops", "security", "sbom", "cosign"]
 author: "Tobias Weiß and openDesk Edu Contributors"
@@ -10,7 +10,7 @@ image: "/static/blog/nix-shift-teaser.svg"
 
 # Der Nix-Shift: 100% NixOS-Container für openDesk Edu
 
-> **🇩🇪 Update (05.08.2026): Phase 3 abgeschlossen.** Dieser Artikel wurde aktualisiert mit Details zur vollständigen Registry-Push, Sicherheitsscans (0 CVEs), Cosign-Signierung, SBOM-Generierung und den Kubernetes-Deployment-Manifesten für den HRZ K3s-Cluster.
+> **Update (05.08.2026): Phase 3 abgeschlossen.** Dieser Artikel wurde aktualisiert mit Details zur vollständigen Registry-Push, Sicherheitsscans (0 CVEs), Cosign-Signierung, SBOM-Generierung und den Kubernetes-Deployment-Manifesten für den Produktions-K3s-Cluster.
 >
 > 🇬🇧 The English version covers Phase 2+3 in depth: [The Nix Shift: 100% NixOS Containers for openDesk Edu](/en/blog/nix-shift)
 
@@ -191,7 +191,7 @@ die **Container-Images selbst als NixOS-Systeme** gebaut. Alle 78 Dienste haben:
 - Mit Grype gescannt — **0 CVEs** in allen Images
 - Mit **Cosign signiert** (GitHub OIDC)
 - Mit einem **SBOM** (SPDX 2.3 JSON) für jedes Image ausgestattet
-- Mit vollständigen **Kubernetes-Manifesten** für den HRZ K3s-Cluster bereitgestellt
+- Mit vollständigen **Kubernetes-Manifesten** für den Produktions-K3s-Cluster bereitgestellt
 
 ### OpenSpec Compliance
 
@@ -206,7 +206,7 @@ die **Container-Images selbst als NixOS-Systeme** gebaut. Alle 78 Dienste haben:
 | **FR-DEV-001 bis FR-DEV-004** | ✅ Alle 4 | Dev-Shell-Anforderungen |
 | **Gesamt** | ✅ **48/48** | 100% compliant |
 
-### Deployment auf dem HRZ K3s-Cluster
+### Deployment auf dem Produktions-K3s-Cluster
 
 ```bash
 cd opendesk-nix/k8s
@@ -227,7 +227,7 @@ kubectl apply -f learning/moodle.yaml
 
 ### Nächste Schritte
 
-1. 🚧 **Produktions-Deployment** auf dem HRZ K3s-Cluster
+1. 🚧 **Produktions-Deployment** auf dem Produktions-K3s-Cluster
 2. **Binary Cache** (Cachix) für schnellere Rebuilds
 3. **Flux/GitOps-Integration** mit Nix-generierten Manifesten
 4. **Container.gov.de**-Zertifizierung für deutsche Behörden
