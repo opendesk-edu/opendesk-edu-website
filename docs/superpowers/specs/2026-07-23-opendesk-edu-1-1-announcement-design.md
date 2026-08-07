@@ -28,12 +28,12 @@ A comprehensive milestone article announcing openDesk Edu 1.1, covering the proj
 ### 2. Community Growth
 - Community of Practice launched, regular sessions
 - Contributor agreements in place
-- Multiple universities engaging (Marburg as reference deployment)
+- Multiple universities engaging (reference deployment in production)
 - 4-locale content pipeline (EN, DE, FR, ZH)
 - Open-source collaboration model
 
 ### 3. Operational Maturity
-- HRZ Maui deployment (57 pods, 33 services, production)
+- Production deployment (57 pods, 33 services, production)
 - CI/CD pipeline (GitHub Actions + Codeberg)
 - Docker deployment workflow
 - Monitoring (Prometheus + Grafana), backups (k8up/restic)

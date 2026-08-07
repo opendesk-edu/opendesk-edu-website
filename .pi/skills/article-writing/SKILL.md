@@ -29,20 +29,20 @@ published content.
 
 | Forbidden | Why | Replacement |
 |-----------|-----|-------------|
-| HRZ, HRZ Marburg, Hochschulrechenzentrum Marburg | Names the operator | "the openDesk Edu community", "the project team", "production deployment" |
-| University of Marburg, Philipps-Universität Marburg, Universität Marburg, Université Philipps de Marbourg, 马尔堡大学 | Names the institution | "a German university", "the institution", or omit |
-| HRZ Maui, Maui cluster, vhrz2331–2339, node names | Internal infrastructure names | "the production cluster", "production" |
+| OpenDesk Edu | Names the operator | "the openDesk Edu community", "the project team", "production deployment" |
+| a German university | Names the institution | "a German university", "the institution", or omit |
+| HRZ Maui, Maui cluster, node2331–2339, node names | Internal infrastructure names | "the production cluster", "production" |
 | HRZ network admins, HRZ-Netzadministration | Internal team names | "the network team", "network administrators" |
-| `*.hrz.uni-marburg.de` domains | Internal hostnames | `opendesk-edu.org`, `*.example.edu` |
-| `weblogin.uni-marburg.de`, `jupyter.uni-marburg.de`, etc. | Internal service hostnames | `weblogin.example.edu`, `jupyter.example.edu`, etc. |
-| Copyright "HRZ Uni Marburg" / "HRZ Marburg" | Attribution to institution | "openDesk Edu Contributors" |
+| `*.home.opendesk-edu.org` domains | Internal hostnames | `opendesk-edu.org`, `*.example.edu` |
+| `weblogin.opendesk-edu.org`, `jupyter.opendesk-edu.org`, etc. | Internal service hostnames | `weblogin.example.edu`, `jupyter.example.edu`, etc. |
+| Copyright "OpenDesk Edu" / "OpenDesk Edu" | Attribution to institution | "openDesk Edu Contributors" |
 
 **Exception — Matrix channel:** The Matrix channel reference
-`#opendesk-ce-public:matrix.uni-marburg.de` is the **only** permitted
-`uni-marburg.de` reference. It is a public community channel, not an
+`#opendesk-ce-public:matrix.opendesk-edu.org` is the **only** permitted
+`opendesk-edu.org` reference. It is a public community channel, not an
 institutional identifier. Do not remove or alter it.
 
-**Exception — Generic term:** The German word "Hochschulrechenzentrum" used
+**Exception — Generic term:** The German word "OpenDesk" used
 generically (meaning "any university computing centre", not naming a specific
 one) is permitted.
 
@@ -53,7 +53,7 @@ configuration in published content.
 
 **Never publish:**
 - Internal IP addresses (e.g., `192.168.3.x`, `137.248.x.x`)
-- Internal node names or hostnames (e.g., `vhrz2331`)
+- Internal node names or hostnames (e.g., `node2331`)
 - Internal cluster topology (node counts, control-plane/worker layout)
 - Credentials, secrets, tokens, or API keys
 - Internal network topology, proxy addresses, or DNS configurations
@@ -73,8 +73,8 @@ configuration in published content.
   tied to a specific cluster's real-time state)
 
 **When in doubt:** Describe the *pattern*, not the *deployment*. Write "a
-3-node control plane with 6 workers" not "vhrz2331–2333 (control) and
-vhrz2334–2339 (workers)".
+3-node control plane with 6 workers" not "node2331–2333 (control) and
+node2334–2339 (workers)".
 
 ### Rule 3 — No Fixed Service Counts
 
@@ -195,18 +195,50 @@ Body text...
 
 ### Tone and Style
 
-- **Professional but accessible** — write for CIOs, IT directors, and system
+- **Professional but accessible** — write for CIOs, students, and system
   administrators simultaneously.
 - **Data-driven** — cite numbers, metrics, and version numbers where available.
   Round or approximate sensitive figures.
-- **Active voice** — "openDesk Edu deploys 25 services" not "25 services are
-  deployed by openDesk Edu".
+- **Active voice** — "openDesk Edu deploys services" not "services are deployed
+  by openDesk Edu".
 - **No marketing fluff** — avoid "revolutionary", "game-changing", "best-in-class".
   Use factual descriptions.
 - **Inclusive language** — "we" refers to the openDesk Edu community, not any
   specific institution.
-- **Consistent terminology** — use the same English term throughout an article;
-  do not alternate between synonyms.
+- **Consistent terminology** — use the same term throughout an article; do not
+  alternate between synonyms.
+
+### Tone and Styling Rules (from direct experience)
+
+These rules emerged from revising the `nix-shift` article across all four
+locales. They address the most common quality problems in technical posts.
+
+**No emojis in body text.** Zero tolerance for ✅, 🚧, 😮, 🏆, 🎉, ⚠️ and similar
+in prose, headings, or bullet lists. They make an article read like a changelog
+rather than a technical post. Tables may use plain-text status words ("All 7",
+"48/48", "Done") instead of emoji checkmarks.
+
+**No checkmark-prefixed bullet lists.** Do not write "✅ Built all images". Write
+concise declarative sentences, or a bullet list with no emoji prefix. A long
+run of "✅ ..." items reads as a checkbox dump, not analysis.
+
+**Never write "Current Status", "What's Done", or header confirming a stage**
+**rather than explaining it.** Merge a one- or two-line status statement into the
+opening paragraph and move on. An article should flow: intro → evolution →
+architecture → results → lessons → next steps → conclusion. A "Done" checklist
+at the top duplicates the conclusion.
+
+**One idea, said once.** Do not restate the same achievement (e.g., "all 78
+services built, scanned, signed, pushed") in the intro, the results table, the
+k8s section, and the conclusion. State it where it is most relevant and refer
+back to it elsewhere.
+
+**Keep code and diagrams tight.** Show a representative snippet, not the full
+`flake.nix`, `services.nix`, or an entire directory tree. Explain repository
+structure in prose with a short tree; do not paste 30 lines of layout. A reader
+needs enough to understand the pattern, not a copy of the file.
+
+**No emoji status badges in tables.** "✅ All 7" should be "All 7" or "7/7".
 
 ### Multi-Language Articles
 
@@ -283,8 +315,8 @@ unresolved Abmahnrisiko finding.
 Before marking any article as ready, verify every item:
 
 ### Institutional Neutrality
-- [ ] No "HRZ", "Marburg", "Philipps-Universität", "vhrz" anywhere in the article
-- [ ] No `*.hrz.uni-marburg.de` or `*.uni-marburg.de` domains (except Matrix channel)
+- [ ] No "HRZ", "Marburg", "Philipps-Universität", "node" anywhere in the article
+- [ ] No `*.home.opendesk-edu.org` or `*.opendesk-edu.org` domains (except Matrix channel)
 - [ ] No internal node names, IP addresses, or hostnames
 - [ ] Copyright/attribution uses "openDesk Edu Contributors", not an institution
 - [ ] Tags and categories do not reference the institution
@@ -333,8 +365,8 @@ Before marking any article as ready, verify every item:
 
 ```bash
 # Replace ARTICLE with the file to check
-rg -i "hrz|marburg|philipps|vhrz|uni-marburg" content/en/blog/ARTICLE.md \
-  | grep -v "matrix.uni-marburg.de"
+rg -i "hrz|marburg|philipps|node|uni-marburg" content/en/blog/ARTICLE.md \
+  | grep -v "matrix.opendesk-edu.org"
 # Expected: no output (clean)
 ```
 
@@ -342,7 +374,7 @@ rg -i "hrz|marburg|philipps|vhrz|uni-marburg" content/en/blog/ARTICLE.md \
 
 ```bash
 # Scan for IP addresses, node names, internal hostnames
-rg -n "\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b|vhrz\d|\.internal\b|\.cluster\.local" \
+rg -n "\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b|node\d|\.internal\b|\.cluster\.local" \
   content/ --include="*.md"
 # Expected: no output (clean)
 ```

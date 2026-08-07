@@ -181,7 +181,7 @@ export const SERVICES: Service[] = [
     icon: '☁️',
     logo: '/static/icons/opencloud.svg',
     links: {
-      homepage: 'https://opencloud.hrz.uni-marburg.de',
+      homepage: 'https://opencloud.opendesk-edu.org',
       documentation: 'https://docs.opendesk-edu.org/opencloud',
     },
     dependsOn: ['keycloak'],

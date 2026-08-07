@@ -1,0 +1,43 @@
+
+> next-opendesk-edu-org@0.1.0 test
+> vitest run --coverage --reporter=text --reporter=json
+
+
+⎯⎯⎯⎯⎯⎯⎯ Startup Error ⎯⎯⎯⎯⎯⎯⎯⎯
+Error: Failed to load custom Reporter from text
+    at loadCustomReporterModule (file:///home/weissto_local/git/opendesk_git/opendesk-edu-website/node_modules/vitest/dist/chunks/cli-api.24X8XwN1.js:11362:9)
+    at file:///home/weissto_local/git/opendesk_git/opendesk-edu-website/node_modules/vitest/dist/chunks/cli-api.24X8XwN1.js:11378:23
+    ... 3 lines matching cause stack trace ...
+    at _createServer (file:///home/weissto_local/git/opendesk_git/opendesk-edu-website/node_modules/vite/dist/node/chunks/node.js:26440:84)
+    at createViteServer (file:///home/weissto_local/git/opendesk_git/opendesk-edu-website/node_modules/vitest/dist/chunks/cli-api.24X8XwN1.js:8835:17)
+    at createVitest (file:///home/weissto_local/git/opendesk_git/opendesk-edu-website/node_modules/vitest/dist/chunks/cli-api.24X8XwN1.js:14221:18)
+    at prepareVitest (file:///home/weissto_local/git/opendesk_git/opendesk-edu-website/node_modules/vitest/dist/chunks/cli-api.24X8XwN1.js:14588:14)
+    at startVitest (file:///home/weissto_local/git/opendesk_git/opendesk-edu-website/node_modules/vitest/dist/chunks/cli-api.24X8XwN1.js:14531:14) {
+  [cause]: Error: Failed to load url text (resolved id: text). Does the file exist?
+      at reviveInvokeError (file:///home/weissto_local/git/opendesk_git/opendesk-edu-website/node_modules/vite/dist/node/module-runner.js:546:14)
+      at Object.invoke (file:///home/weissto_local/git/opendesk_git/opendesk-edu-website/node_modules/vite/dist/node/module-runner.js:562:33)
+      at ServerModuleRunner.getModuleInformation (file:///home/weissto_local/git/opendesk_git/opendesk-edu-website/node_modules/vite/dist/node/module-runner.js:1199:7)
+      at ServerModuleRunner.import (file:///home/weissto_local/git/opendesk_git/opendesk-edu-website/node_modules/vite/dist/node/module-runner.js:1119:23)
+      at loadCustomReporterModule (file:///home/weissto_local/git/opendesk_git/opendesk-edu-website/node_modules/vitest/dist/chunks/cli-api.24X8XwN1.js:11360:26)
+      at file:///home/weissto_local/git/opendesk_git/opendesk-edu-website/node_modules/vitest/dist/chunks/cli-api.24X8XwN1.js:11378:23
+      at async Promise.all (index 0)
+      at Vitest._setServer (file:///home/weissto_local/git/opendesk_git/opendesk-edu-website/node_modules/vitest/dist/chunks/cli-api.24X8XwN1.js:13177:138)
+      at BasicMinimalPluginContext.handler (file:///home/weissto_local/git/opendesk_git/opendesk-edu-website/node_modules/vitest/dist/chunks/cli-api.24X8XwN1.js:14191:5)
+      at _createServer (file:///home/weissto_local/git/opendesk_git/opendesk-edu-website/node_modules/vite/dist/node/chunks/node.js:26440:84) {
+    code: 'ERR_LOAD_URL',
+    runnerError: Error: RunnerError
+        at reviveInvokeError (file:///home/weissto_local/git/opendesk_git/opendesk-edu-website/node_modules/vite/dist/node/module-runner.js:547:64)
+        at Object.invoke (file:///home/weissto_local/git/opendesk_git/opendesk-edu-website/node_modules/vite/dist/node/module-runner.js:562:33)
+        at ServerModuleRunner.getModuleInformation (file:///home/weissto_local/git/opendesk_git/opendesk-edu-website/node_modules/vite/dist/node/module-runner.js:1199:7)
+        at ServerModuleRunner.import (file:///home/weissto_local/git/opendesk_git/opendesk-edu-website/node_modules/vite/dist/node/module-runner.js:1119:23)
+        at loadCustomReporterModule (file:///home/weissto_local/git/opendesk_git/opendesk-edu-website/node_modules/vitest/dist/chunks/cli-api.24X8XwN1.js:11360:26)
+        at file:///home/weissto_local/git/opendesk_git/opendesk-edu-website/node_modules/vitest/dist/chunks/cli-api.24X8XwN1.js:11378:23
+        at async Promise.all (index 0)
+        at Vitest._setServer (file:///home/weissto_local/git/opendesk_git/opendesk-edu-website/node_modules/vitest/dist/chunks/cli-api.24X8XwN1.js:13177:138)
+        at BasicMinimalPluginContext.handler (file:///home/weissto_local/git/opendesk_git/opendesk-edu-website/node_modules/vitest/dist/chunks/cli-api.24X8XwN1.js:14191:5)
+        at _createServer (file:///home/weissto_local/git/opendesk_git/opendesk-edu-website/node_modules/vite/dist/node/chunks/node.js:26440:84)
+  }
+}
+
+
+
