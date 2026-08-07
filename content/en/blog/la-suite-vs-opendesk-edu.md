@@ -1,5 +1,5 @@
 ---
-title: "La Suite vs. openDesk Edu: What France and Germany Have in Common — and What Not"
+title: "La Suite vs. openDesk Edu: Common Ground and Differences"
 date: "2026-08-02"
 description: "France has La Suite numérique, Germany has openDesk Edu. Both pursue digital sovereignty through open source — but their architectures, target audiences, and deployment models diverge sharply. A comparative analysis of Europe's two leading sovereign workplace initiatives."
 categories: ["Digital Sovereignty", "Comparison", "European Collaboration"]
@@ -8,7 +8,7 @@ author: "Tobias Weiß and openDesk Edu Contributors"
 image: "/static/blog/la-suite-vs-opendesk-edu-teaser.svg"
 ---
 
-# La Suite vs. openDesk Edu: What France and Germany Have in Common — and What Not
+# La Suite vs. openDesk Edu: Common Ground and Differences
 
 > **The context:** Two European nations, two sovereign digital workplace initiatives — both built on open source, both rejecting GAFAM dependency, both claiming to protect public-sector data.
 >
