@@ -1,6 +1,6 @@
 ---
 title: "ZKI-IT-Grundschutz-Compliance: openDesk Edu auf dem Weg zur Hochschul-Sicherheitsbaseline"
-date: "2026-08-07"
+date: "2026-08-11"
 description: "openDesk Edu richtet sich systematisch am ZKI-IT-Grundschutz-Profil aus — der hochschulspezifischen Adaption der BSI-Baseline — mit Nix-basierter container.gov.de Compliance, durchsetzbaren Kyverno-Policies, gehärteter GitOps-Pipeline und transparenter Gap-Analyse. Hier steht der Stand."
 categories: ["Sicherheit", "Compliance"]
 tags: ["zki", "it-grundschutz", "bsi", "compliance", "kyverno", "nix", "container-gov-de", "sicherheit", "hochschule", "isms"]

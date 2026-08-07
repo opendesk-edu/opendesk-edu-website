@@ -3,7 +3,7 @@ title: "La Suite vs. openDesk Edu : points communs et différences"
 date: "2026-08-02"
 description: "La France a La Suite numérique, l'Allemagne a openDesk Edu. Les deux poursuivent la souveraineté numérique par l'open source — mais leurs architectures, publics cibles et modèles de déploiement divergent fortement. Une analyse comparative des deux principales initiatives européennes d'espace de travail souverain."
 categories: ["Souveraineté Numérique", "Comparaison", "Collaboration Européenne"]
-tags: ["la-suite", "france", "allemagne", "souverainete-numerique", "open-source", "dinum", "collaboration-europeenne", "secteur-public", "enseignement-superieur"]
+tags: ["la-suite", "souverainete-numerique", "open-source"]
 author: "Tobias Weiß et les contributeurs d'openDesk Edu"
 image: "/static/blog/la-suite-vs-opendesk-edu-teaser.svg"
 ---
