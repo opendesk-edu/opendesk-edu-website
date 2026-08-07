@@ -4,6 +4,7 @@ import { Tag, CategoryBadge, StatusBadge } from "@/components/Badges";
 import TableOfContents from "@/components/TableOfContents";
 import Image from "next/image";
 import ShareButtons from "@/components/ShareButtons";
+import Mermaid from "@/components/Mermaid";
 import type { Post } from "@/lib/content";
 import { SITE_URL, SITE_NAME } from "@/lib/config";
 import { BLUR_TEASER } from "@/lib/blur";
@@ -158,10 +159,7 @@ export default function ArticlePage({ post, backHref, backLabel, locale = 'en' }
         </header>
 
         <div className="flex gap-12">
-          <div
-            className="prose flex-1 min-w-0"
-            dangerouslySetInnerHTML={{ __html: contentWithoutH1 }}
-          />
+          <Mermaid className="prose flex-1 min-w-0" html={contentWithoutH1} />
           <aside className="hidden lg:block w-52 shrink-0">
             <div className="sticky top-24">
               <TableOfContents html={post.htmlContent} />

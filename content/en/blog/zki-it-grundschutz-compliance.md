@@ -1,6 +1,6 @@
 ---
 title: "ZKI IT-Grundschutz Compliance: openDesk Edu's Journey Toward the Higher Education Security Baseline"
-date: "2026-08-01"
+date: "2026-08-07"
 description: "openDesk Edu is systematically aligning with the ZKI IT-Grundschutz-Profil — the higher education adaptation of the BSI baseline — through enforceable Kyverno policies, hardened GitOps pipelines, and a transparent gap analysis. Here's where we stand and what's next."
 categories: ["Security", "Compliance"]
 tags: ["zki", "it-grundschutz", "bsi", "compliance", "kyverno", "security", "higher-education", "isms"]
@@ -27,6 +27,69 @@ The **ZKI IT-Grundschutz-Profil** is the reference security framework for German
 Where BSI IT-Grundschutz provides generic modules (Bausteine) for all organizations, the ZKI profile tailors them to university operations — aligned with DSGVO/GDPR, the HDSG, and ISIS12, the information security standards for German higher education.
 
 For openDesk Edu, this is not a theoretical exercise. German universities cannot adopt a digital workplace platform that fails to align with the security baseline their own IT centers are measured against.
+
+## Nix and container.gov.de: Compliance by Design
+
+A central building block of our compliance strategy is the **Nix-based build pipeline** with full **container.gov.de** compliance. The BSI developed container.gov.de as a standard for secure container images that defines eight requirements (BG-1 through BG-8). openDesk Edu implements all eight requirements in Nix:
+
+```mermaid
+graph TD
+    subgraph Nix["Nix + container.gov.de Pipeline"]
+        direction TB
+        
+        subgraph Row1[" "]
+            BG1["BG-1<br/>Trusted Base Images"]
+            BG2["BG-2<br/>Non-Root User"]
+            BG3["BG-3<br/>Minimal Rights"]
+        end
+        
+        subgraph Row2[" "]
+            BG4["BG-4<br/>No Sensitive Data"]
+            BG5["BG-5<br/>Updates Strategy"]
+            BG6["BG-6<br/>SBOM Generation<br/>SPDX + CycloneDX"]
+        end
+        
+        subgraph Row3[" "]
+            BG7["BG-7<br/>Image Signing<br/>Cosign"]
+            BG8["BG-8<br/>Vulnerability Scanning<br/>Grype + Trivy"]
+            COMPLIANT["✅ 100% COMPLIANT<br/>container.gov.de + Nix"]
+        end
+    end
+    
+    BG1 --> BG2 --> BG3
+    BG3 --> BG4
+    BG4 --> BG5 --> BG6
+    BG6 --> BG7
+    BG7 --> BG8
+    BG8 --> COMPLIANT
+    
+    style Nix fill:#f5f5f5,stroke:#333,stroke-width:2px
+    style COMPLIANT fill:#90EE90,stroke:#228B22,stroke-width:2px
+```
+
+### The Eight container.gov.de Requirements in Nix
+
+| Requirement | Nix Implementation | Compliance Proof |
+|-------------|-------------------|-------------------|
+| **BG-1**: Trusted base images | `nixpkgs` with reproducible builds | `nix flake check` |
+| **BG-2**: Non-root user | `runAsNonRoot: true` in security context | Kyverno policy `zki-require-non-root` |
+| **BG-3**: Minimal rights | `drop: ["ALL"]` for capabilities | Kyverno policy `zki-drop-all-capabilities` |
+| **BG-4**: No sensitive data in image | Multi-stage builds, external secrets | SBOM scan, Grype report |
+| **BG-5**: Update strategy | Nix Flakes with lock files | Reproducible builds |
+| **BG-6**: SBOM generation | SPDX 2.3 + CycloneDX automatic | `nix build .#sbom-<service>` |
+| **BG-7**: Image signing | Cosign with GitHub OIDC | `cosign verify` |
+| **BG-8**: Vulnerability scanning | Grype + Trivy in CI | PolicyReports in cluster |
+
+### Minimal Registry Operation
+
+Another step toward compliance is **reducing the production registry** to the essential minimum. Instead of 78 images in the production registry, we now operate:
+
+- **5 production images**: sogo5, sogo6, dev-agent, stalwart, opencloud
+- **73 build-ready images**: All Nix definitions available, buildable on demand
+
+This reduces the attack surface and makes the registry manageable and auditable — an important building block for ZKI compliance.
+
+**Registry URL:** `registry.opencode.de/umr/opendesk-edu/opendesk-nix/`
 
 ## Where openDesk Edu Already Stands
 
@@ -218,11 +281,12 @@ So the answer to "how far with M365?" is: *~70% of the controls via the Microsof
 
 ## Why This Matters for Universities
 
-For a university evaluating openDesk Edu, the compliance story matters in three concrete ways:
+For a university evaluating openDesk Edu, the compliance story matters in four concrete ways:
 
 1. **It's verifiable.** The gap analysis, the policies, and the roadmap are public. You don't have to trust a marketing claim — you can inspect the policy code.
 2. **It's your baseline, not a vendor's.** ZKI IT-Grundschutz is the framework *your* IT center works under. Alignment means openDesk Edu speaks the same security language as your institution.
 3. **It's continuous.** Compliance is enforced in the pipeline, not asserted in a document. When the platform changes, the policies enforce the baseline — automatically.
+4. **It's reproducible.** With Nix and container.gov.de, all builds are deterministic and verifiable — a decisive advantage over manual Dockerfile builds.
 
 ## Contribute
 

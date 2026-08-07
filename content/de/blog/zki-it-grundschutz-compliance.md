@@ -37,19 +37,19 @@ graph TD
     subgraph Nix["Nix + container.gov.de Pipeline"]
         direction TB
         
-        subgraph Row1[""]
+        subgraph Row1[" "]
             BG1["BG-1<br/>Trusted Base Images"]
             BG2["BG-2<br/>Non-Root User"]
             BG3["BG-3<br/>Minimal Rights"]
         end
         
-        subgraph Row2[""]
+        subgraph Row2[" "]
             BG4["BG-4<br/>No Sensitive Data"]
             BG5["BG-5<br/>Updates Strategy"]
             BG6["BG-6<br/>SBOM Generation<br/>SPDX + CycloneDX"]
         end
         
-        subgraph Row3[""]
+        subgraph Row3[" "]
             BG7["BG-7<br/>Image Signing<br/>Cosign"]
             BG8["BG-8<br/>Vulnerability Scanning<br/>Grype + Trivy"]
             COMPLIANT["✅ 100% COMPLIANT<br/>container.gov.de + Nix"]
@@ -282,7 +282,7 @@ Die Antwort auf "Wie weit mit M365?" lautet also: *~70 % der Kontrollen über de
 
 ## Warum das für Hochschulen wichtig ist
 
-Für eine Hochschule, die openDesk Edu evaluiert, zählt die Compliance-Geschichte in drei konkreten Punkten:
+Für eine Hochschule, die openDesk Edu evaluiert, zählt die Compliance-Geschichte in vier konkreten Punkten:
 
 1. **Sie ist überprüfbar.** Die Gap-Analyse, die Policies und die Roadmap sind öffentlich. Sie müssen keiner Marketing-Behauptung vertrauen — Sie können den Policy-Code inspizieren.
 2. **Es ist Ihre Baseline, nicht die eines Anbieters.** ZKI-IT-Grundschutz ist das Framework, unter dem *Ihr* Rechenzentrum arbeitet. Die Ausrichtung bedeutet, dass openDesk Edu dieselbe Sicherheitssprache spricht wie Ihre Einrichtung.

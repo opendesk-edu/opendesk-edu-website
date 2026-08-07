@@ -1,6 +1,6 @@
 ---
 title: "ZKI IT-Grundschutz 合规：openDesk Edu 迈向高等教育安全基线的旅程"
-date: "2026-08-01"
+date: "2026-08-07"
 description: "openDesk Edu 正在系统地对齐 ZKI IT-Grundschutz 配置文件——BSI 基线的高等教育适配版——通过可执行的 Kyverno 策略、加固的 GitOps 流水线和透明的差距分析。以下是我们的进展。"
 categories: ["安全", "合规"]
 tags: ["zki", "it-grundschutz", "bsi", "合规", "kyverno", "安全", "高等教育", "isms"]
@@ -27,6 +27,69 @@ image: "/static/blog/zki-it-grundschutz-compliance-teaser.svg"
 BSI IT-Grundschutz 为所有组织提供通用模块，而 ZKI 配置文件则针对大学运营进行定制——与 DSGVO/GDPR、HDSG 以及德国高等教育信息安全标准 ISIS12 对齐。
 
 对 openDesk Edu 而言，这不是理论练习。德国大学不能采用一个不符合自身 IT 中心所依据的安全基线的数字工作场所平台。
+
+## Nix 与 container.gov.de：设计即合规
+
+我们合规策略的一个核心基石是**基于 Nix 的构建流水线**，完全符合 **container.gov.de**。BSI 将 container.gov.de 开发为安全容器镜像标准，定义了八项要求（BG-1 至 BG-8）。openDesk Edu 在 Nix 中实现了全部八项要求：
+
+```mermaid
+graph TD
+    subgraph Nix["Nix + container.gov.de Pipeline"]
+        direction TB
+        
+        subgraph Row1[" "]
+            BG1["BG-1<br/>Trusted Base Images"]
+            BG2["BG-2<br/>Non-Root User"]
+            BG3["BG-3<br/>Minimal Rights"]
+        end
+        
+        subgraph Row2[" "]
+            BG4["BG-4<br/>No Sensitive Data"]
+            BG5["BG-5<br/>Updates Strategy"]
+            BG6["BG-6<br/>SBOM Generation<br/>SPDX + CycloneDX"]
+        end
+        
+        subgraph Row3[" "]
+            BG7["BG-7<br/>Image Signing<br/>Cosign"]
+            BG8["BG-8<br/>Vulnerability Scanning<br/>Grype + Trivy"]
+            COMPLIANT["✅ 100% COMPLIANT<br/>container.gov.de + Nix"]
+        end
+    end
+    
+    BG1 --> BG2 --> BG3
+    BG3 --> BG4
+    BG4 --> BG5 --> BG6
+    BG6 --> BG7
+    BG7 --> BG8
+    BG8 --> COMPLIANT
+    
+    style Nix fill:#f5f5f5,stroke:#333,stroke-width:2px
+    style COMPLIANT fill:#90EE90,stroke:#228B22,stroke-width:2px
+```
+
+### Nix 中的八项 container.gov.de 要求
+
+| 要求 | Nix 中的实现 | 合规证明 |
+|------|-------------|---------|
+| **BG-1**：可信基础镜像 | `nixpkgs` 可复现构建 | `nix flake check` |
+| **BG-2**：非 root 用户 | 安全上下文中的 `runAsNonRoot: true` | Kyverno 策略 `zki-require-non-root` |
+| **BG-3**：最小权限 | capabilities 的 `drop: ["ALL"]` | Kyverno 策略 `zki-drop-all-capabilities` |
+| **BG-4**：镜像中无敏感数据 | 多阶段构建，外部 secrets | SBOM 扫描，Grype 报告 |
+| **BG-5**：更新策略 | 带有 lock 文件的 Nix Flakes | 可复现构建 |
+| **BG-6**：SBOM 生成 | SPDX 2.3 + CycloneDX 自动生成 | `nix build .#sbom-<service>` |
+| **BG-7**：镜像签名 | 带有 GitHub OIDC 的 Cosign | `cosign verify` |
+| **BG-8**：漏洞扫描 | CI 中的 Grype + Trivy | 集群中的 PolicyReports |
+
+### 最小化注册表运营
+
+迈向合规的另一个步骤是**将生产注册表精简至最基本的最小规模**。我们不再在生产注册表中维护 78 个镜像，现在运营：
+
+- **5 个生产镜像**：sogo5、sogo6、dev-agent、stalwart、opencloud
+- **73 个可构建镜像**：所有 Nix 定义可用，按需构建
+
+这减少了攻击面，使注册表易于管理和审计——这是 ZKI 合规的重要基石。
+
+**注册表 URL：** `registry.opencode.de/umr/opendesk-edu/opendesk-nix/`
 
 ## openDesk Edu 已处于什么水平
 
@@ -218,11 +281,12 @@ Microsoft 365 结合完整的合规技术栈（Entra ID P2、Purview、Defender�
 
 ## 为什么这对大学很重要
 
-对于评估 openDesk Edu 的大学，合规故事在三个方面具体重要：
+对于评估 openDesk Edu 的大学，合规故事在四个方面具体重要：
 
 1. **它是可验证的。** 差距分析、策略和路线图都是公开的。您不必相信营销声明——您可以检查策略代码。
 2. **这是您的基线，不是供应商的。** ZKI IT-Grundschutz 是*您的* IT 中心所依据的框架。对齐意味着 openDesk Edu 与您的机构使用相同的安全语言。
 3. **它是持续的。** 合规在流水线中执行，而不是在文档中断言。当平台变化时，策略会自动执行基线。
+4. **它是可复现的。** 借助 Nix 和 container.gov.de，所有构建都是确定性的和可验证的——这是相对于手动 Dockerfile 构建的决定性优势。
 
 ## 参与贡献
 

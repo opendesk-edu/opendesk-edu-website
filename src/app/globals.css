@@ -144,6 +144,32 @@ img.img-circle {
   font-size: 0.875em;
 }
 
+/* Mermaid diagrams: rendered client-side from ```mermaid fences.
+   A fixed light surface keeps the diagram's own light palette readable in
+   both light and dark site themes. */
+.prose .mermaid {
+  background: #ffffff;
+  color: #1f2328;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.25em;
+  margin: 1.5em 0;
+  overflow-x: auto;
+  text-align: center;
+}
+
+.prose .mermaid svg {
+  max-width: 100%;
+  height: auto;
+  display: inline-block;
+}
+
+/* While Mermaid is loading, hide the raw diagram source to avoid a flash of
+   unformatted text. The block is restored by the component if rendering fails. */
+.prose pre:has(> code.language-mermaid) {
+  display: none;
+}
+
 .prose table {
   width: 100%;
   border-collapse: collapse;
