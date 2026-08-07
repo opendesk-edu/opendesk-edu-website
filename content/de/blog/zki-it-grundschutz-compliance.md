@@ -1,19 +1,19 @@
 ---
 title: "ZKI-IT-Grundschutz-Compliance: openDesk Edu auf dem Weg zur Hochschul-Sicherheitsbaseline"
-date: "2026-08-01"
-description: "openDesk Edu richtet sich systematisch am ZKI-IT-Grundschutz-Profil aus — der hochschulspezifischen Adaption der BSI-Baseline — mit durchsetzbaren Kyverno-Policies, gehärteter GitOps-Pipeline und transparenter Gap-Analyse. Hier steht der Stand."
+date: "2026-08-07"
+description: "openDesk Edu richtet sich systematisch am ZKI-IT-Grundschutz-Profil aus — der hochschulspezifischen Adaption der BSI-Baseline — mit Nix-basierter container.gov.de Compliance, durchsetzbaren Kyverno-Policies, gehärteter GitOps-Pipeline und transparenter Gap-Analyse. Hier steht der Stand."
 categories: ["Sicherheit", "Compliance"]
-tags: ["zki", "it-grundschutz", "bsi", "compliance", "kyverno", "sicherheit", "hochschule", "isms"]
+tags: ["zki", "it-grundschutz", "bsi", "compliance", "kyverno", "nix", "container-gov-de", "sicherheit", "hochschule", "isms"]
 image: "/static/blog/zki-it-grundschutz-compliance-teaser.svg"
 ---
 
 # ZKI-IT-Grundschutz-Compliance: openDesk Edu auf dem Weg zur Hochschul-Sicherheitsbaseline
 
-> **Die Baseline:** Jedes deutsche Hochschulrechenzentrum arbeitet nach dem ZKI-IT-Grundschutz-Profil — der hochschulspezifischen Adaption der BSI-IT-Grundschutz-Methodik.
+> **Die Baseline:** Jedes deutsche OpenDesk arbeitet nach dem ZKI-IT-Grundschutz-Profil — der hochschulspezifischen Adaption der BSI-IT-Grundschutz-Methodik.
 >
-> **Die Realität:** Für eine Plattform aus über eine umfassende Suite von Open-Source-Dienstenn ist Compliance kein Kästchen, das man einmal abhakt. Sie ist eine architektonische Eigenschaft, die kontinuierlich durchgesetzt werden muss — durch Policies, Pipelines und transparente Dokumentation.
+> **Die Realität:** Für eine Plattform aus über eine umfassende Suite von Open-Source-Diensten ist Compliance kein Kästchen, das man einmal abhakt. Sie ist eine architektonische Eigenschaft, die kontinuierlich durchgesetzt werden muss — durch Policies, Pipelines und transparente Dokumentation.
 >
-> **Unser Ansatz:** Statt eines Compliance-Bekenntnisses haben wir ein Compliance-System gebaut: über 20 durchsetzbare Kyverno-Policies, eine gehärtete GitOps-Pipeline und eine öffentliche Gap-Analyse, die genau zeigt, wo wir stehen — einschließlich der Lücken.
+> **Unser Ansatz:** Statt eines Compliance-Bekenntnisses haben wir ein Compliance-System gebaut: über 20 durchsetzbare Kyverno-Policies, eine Nix-basierte container.gov.de Build-Pipeline, eine gehärtete GitOps-Pipeline und eine öffentliche Gap-Analyse, die genau zeigt, wo wir stehen — einschließlich der Lücken.
 
 ## Was ist das ZKI-IT-Grundschutz-Profil?
 
@@ -27,6 +27,58 @@ Das **ZKI-IT-Grundschutz-Profil** ist das Referenz-Sicherheitsframework für deu
 Wo der BSI-IT-Grundschutz generische Bausteine für alle Organisationen bereitstellt, passt das ZKI-Profil sie an den Hochschulbetrieb an — ausgerichtet auf DSGVO, HDSG und ISIS12, den Informationssicherheitsstandards für die Hochschulen.
 
 Für openDesk Edu ist das keine theoretische Übung. Deutsche Hochschulen können keine Digital-Workplace-Plattform einführen, die nicht der Sicherheitsbaseline entspricht, an der die eigenen Rechenzentren gemessen werden.
+
+## Nix und container.gov.de: Compliance by Design
+
+Ein zentraler Baustein unserer Compliance-Strategie ist die **Nix-basierte Build-Pipeline** mit vollständiger **container.gov.de**-Konformität. Das BSI hat mit container.gov.de einen Standard für sichere Container-Images entwickelt, der acht Anforderungen (BG-1 bis BG-8) definiert. openDesk Edu setzt alle acht Anforderungen in Nix um:
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    Nix + container.gov.de                        │
+│  ┌─────────────┐    ┌─────────────┐    ┌─────────────────────┐ │
+│  │ BG-1        │    │ BG-2        │    │ BG-3                │ │
+│  │ Trusted     │    │ Non-Root    │    │ Minimal Rights      │ │
+│  │ Base Images │◄──►│ User        │◄──►│ Caps Learned        │ │
+│  └─────────────┘    └─────────────┘    └─────────────┬───────┘ │
+│                                                      │          │
+│  ┌─────────────┐    ┌─────────────┐    ┌──────────▼───────┐ │
+│  │ BG-4        │    │ BG-5        │    │ BG-6              │ │
+│  │ No Sens.    │    │ Updates     │    │ SBOM Generation    │ │
+│  │ Data        │◄──►│ Strategy    │◄──►│ SPDX + CycloneDX   │ │
+│  └─────────────┘    └─────────────┘    └─────────────┬─────┘ │
+│                                                      │        │
+│  ┌─────────────┐    ┌─────────────┐    ┌──────────▼───────┐ │
+│  │ BG-7        │    │ BG-8        │    │ 100% COMPLIANT    │ │
+│  │ Image       │    │ Vulnerability│    │ container.gov.de  │ │
+│  │ Signing     │──► │ Scanning    │──► │ + Nix             │ │
+│  │ Cosign      │    │ Grype+Trivy │    │ Standards         │ │
+│  └─────────────┘    └─────────────┘    └─────────────────────┘ │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### Die acht container.gov.de-Anforderungen in Nix
+
+| Anforderung | Umsetzung in Nix | Compliance-Nachweis |
+|-------------|------------------|---------------------|
+| **BG-1**: Vertrauenswürdige Basis-Images | `nixpkgs` mit reproduzierbaren Builds | `nix flake check` |
+| **BG-2**: Nicht-Root-Benutzer | `runAsNonRoot: true` im Security Context | Kyverno Policy `zki-require-non-root` |
+| **BG-3**: Minimale Rechte | `drop: ["ALL"]` für Capabilities | Kyverno Policy `zki-drop-all-capabilities` |
+| **BG-4**: Keine sensiblen Daten im Image | Multi-Stage Builds, Secrets extern | SBOM-Scan, Grype-Report |
+| **BG-5**: Update-Strategie | Nix Flakes mit Lock-Dateien | Reproduzierbare Builds |
+| **BG-6**: SBOM-Generierung | SPDX 2.3 + CycloneDX automatisch | `nix build .#sbom-<service>` |
+| **BG-7**: Image-Signing | Cosign mit GitHub OIDC | `cosign verify` |
+| **BG-8**: Vulnerability-Scanning | Grype + Trivy in CI | PolicyReports im Cluster |
+
+### Minimaler Registry-Betrieb
+
+Ein weiterer Schritt zur Compliance ist die **Reduktion der Production-Registry** auf das essentielle Minimum. Statt 78 Images in der Production-Registry betreiben wir nun:
+
+- **5 Production-Images**: sogo5, sogo6, dev-agent, stalwart, opencloud
+- **73 Build-Ready Images**: Alle Nix-Definitionen verfügbar, bei Bedarf buildbar
+
+Dies reduziert die Angriffsfläche und macht die Registry überschaubar und auditierbar — ein wichtiger Baustein für ZKI-Compliance.
+
+**Registry-URL:** `registry.opencode.de/umr/opendesk-edu/opendesk-nix/`
 
 ## Wo openDesk Edu bereits steht
 
@@ -159,6 +211,7 @@ Das Change-Management von openDesk Edu *ist* seine GitOps-Pipeline:
 - **Version-Pinning** — Images per Digest gepinnt
 - **SOPS** für Secrets im Git mit age/OpenPGP-Verschlüsselung
 - **REUSE-Compliance** mit SPDX-Headern auf jeder Datei
+- **Nix Flakes** für reproduzierbare Builds
 
 Jede Änderung ist ein Commit; jeder Commit ist ein Audit-Trail.
 
@@ -186,7 +239,7 @@ Unsere Roadmap ist konkret — vier Phasen über etwa sechzehn Wochen:
 
 ## Und Microsoft 365? Wie weit käme man damit?
 
-Eine Frage, die wir bei Evaluierungen von Universitäten ständig hören: *„Könnten wir mit Microsoft 365 nicht dasselbe Compliance-Niveau erreichen?“* Die ehrliche Antwort verdient einen eigenen Abschnitt — denn sie ist weitgehend *ja*, und die Lücke ist aufschlussreich.
+Eine Frage, die wir bei Evaluierungen von Universitäten ständig hören: *"Könnten wir mit Microsoft 365 nicht dasselbe Compliance-Niveau erreichen?"* Die ehrliche Antwort verdient einen eigenen Abschnitt — denn sie ist weitgehend *ja*, und die Lücke ist aufschlussreich.
 
 ### Was M365 gut abdeckt
 
@@ -214,7 +267,7 @@ Weitere **~15–20 %** sind nur über *Provider-Bescheinigungen* statt eigener D
 
 Einen **Hybridweg** fahren deutsche Hochschulen tatsächlich: M365 A3/A5 für die Zusammenarbeit, souveräne Open-Source-Dienste für sensible Workloads, Drittanbieter-Backup, Sentinel als SIEM und die eigene Governance-Dokumentation. Damit erreicht man nach unserer Einschätzung den ~85–90-%-Bereich — aber es ist keine reine M365-Geschichte mehr, und die letzten ~10 % sind Politik, nicht Technik.
 
-Die Antwort auf „Wie weit mit M365?“ lautet also: *~70 % der Kontrollen über den Microsoft-Compliance-Stack, ~20 % über BSI-C5-Bescheinigungen, ~10 % struktureller Rest, der Souveränitätsentscheidungen verlangt — und genau dieser Rest ist der Grund, warum openDesk existiert.* (Alle Prozentangaben sind interne Schätzungen, keine zertifizierten Audit-Werte.)
+Die Antwort auf "Wie weit mit M365?" lautet also: *~70 % der Kontrollen über den Microsoft-Compliance-Stack, ~20 % über BSI-C5-Bescheinigungen, ~10 % struktureller Rest, der Souveränitätsentscheidungen verlangt — und genau dieser Rest ist der Grund, warum openDesk existiert.* (Alle Prozentangaben sind interne Schätzungen, keine zertifizierten Audit-Werte.)
 
 ## Warum das für Hochschulen wichtig ist
 
@@ -223,6 +276,7 @@ Für eine Hochschule, die openDesk Edu evaluiert, zählt die Compliance-Geschich
 1. **Sie ist überprüfbar.** Die Gap-Analyse, die Policies und die Roadmap sind öffentlich. Sie müssen keiner Marketing-Behauptung vertrauen — Sie können den Policy-Code inspizieren.
 2. **Es ist Ihre Baseline, nicht die eines Anbieters.** ZKI-IT-Grundschutz ist das Framework, unter dem *Ihr* Rechenzentrum arbeitet. Die Ausrichtung bedeutet, dass openDesk Edu dieselbe Sicherheitssprache spricht wie Ihre Einrichtung.
 3. **Sie ist kontinuierlich.** Compliance wird in der Pipeline durchgesetzt, nicht in einem Dokument behauptet. Wenn sich die Plattform ändert, setzen die Policies die Baseline automatisch durch.
+4. **Sie ist reproduzierbar.** Mit Nix und container.gov.de sind alle Builds deterministisch und überprüfbar — ein entscheidender Vorteil gegenüber manuellen Dockerfile-Builds.
 
 ## Mitwirken
 
@@ -237,7 +291,7 @@ Die ZKI-Compliance-Arbeit ist Open Source wie alles bei openDesk Edu. Wenn Ihre 
 ## Hinweise und Quellen
 
 - **Kein offizieller Audit:** Die in diesem Artikel genannten Prozentwerte (37 %, 81 %, 60–70 %, 85–90 %) sind interne Selbsteinschätzungen des openDesk-Edu-Teams, keine zertifizierten Audit-Befunde und keine offizielle BSI- oder ZKI-Bewertung.
-- **Keine ZKI- oder BSI-Endorsement:** Die Verwendung von „ZKI" in Policy-Namen (z. B. `zki-require-non-root`) ist eine Referenz auf das ZKI-IT-Grundschutz-Profil, keine offizielle Zertifizierung oder Empfehlung durch das ZKI oder das BSI. openDesk Edu ist nicht von ZKI oder BSI zertifiziert.
-- **Markenrechtlicher Hinweis:** Alle in diesem Artikel genannten Produkt- und Dienstleistungsbezeichnungen (Microsoft 365, Entra ID, Purview, Defender, Compliance Manager, Sentinel, Veeam, AvePoint, Keycloak, ArgoCD, Shibboleth, DFN-AAI, Loki, Prometheus, Grafana, BitLocker, Intune, ILIAS, Moodle, JupyterHub, Nextcloud, Matrix) sind Marken oder eingetragene Marken ihrer jeweiligen Inhaber. Die Nennung dient ausschließlich der Information und Beschreibung technischer Eigenschaften.
-- **Quellen:** [BSI-Hinweis zu Microsoft 365 (2023)](https://www.bsi.bund.de/SharedDocs/CyberSicherheitswarnungen/TechnischeWarnungen/2023/Hinweis_Microsoft_365_public_cloud.html) · [BSI IT-Grundschutz](https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/IT-Grundschutz/IT-Grundschutz_node.html) · [BSI C5-Attestierung](https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/Cloud-Computing/C5/c5_node.html) · [CLOUD Act](https://www.congress.gov/bill/115th-congress/house-bill/4943)
+- **Keine ZKI- oder BSI-Endorsement:** Die Verwendung von "ZKI" in Policy-Namen (z. B. `zki-require-non-root`) ist eine Referenz auf das ZKI-IT-Grundschutz-Profil, keine offizielle Zertifizierung oder Empfehlung durch das ZKI oder das BSI. openDesk Edu ist nicht von ZKI oder BSI zertifiziert.
+- **Markenrechtlicher Hinweis:** Alle in diesem Artikel genannten Produkt- und Dienstleistungsbezeichnungen (Microsoft 365, Entra ID, Purview, Defender, Compliance Manager, Sentinel, Veeam, AvePoint, Keycloak, ArgoCD, Shibboleth, DFN-AAI, Loki, Prometheus, Grafana, BitLocker, Intune, ILIAS, Moodle, JupyterHub, Nextcloud, Matrix, Nix) sind Marken oder eingetragene Marken ihrer jeweiligen Inhaber. Die Nennung dient ausschließlich der Information und Beschreibung technischer Eigenschaften.
+- **Quellen:** [BSI-Hinweis zu Microsoft 365 (2023)](https://www.bsi.bund.de/SharedDocs/CyberSicherheitswarnungen/TechnischeWarnungen/2023/Hinweis_Microsoft_365_public_cloud.html) · [BSI IT-Grundschutz](https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/IT-Grundschutz/IT-Grundschutz_node.html) · [BSI C5-Attestierung](https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/Cloud-Computing/C5/c5_node.html) · [CLOUD Act](https://www.congress.gov/bill/115th-congress/house-bill/4943) · [Nix Flakes](https://nixos.org/manual/nix/stable/command-ref/new-cli/nix3-flake.html)
 - **Vergleichender Hinweis:** Die Gegenüberstellung mit Microsoft 365 dient ausschließlich der Information und soll weder Microsoft noch seine Produkte herabsetzen noch irreführend darstellen. Die genannten Eigenschaften von Microsoft 365 sind der öffentlichen Dokumentation entnommen.
