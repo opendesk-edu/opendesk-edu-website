@@ -32,28 +32,39 @@ Für openDesk Edu ist das keine theoretische Übung. Deutsche Hochschulen könne
 
 Ein zentraler Baustein unserer Compliance-Strategie ist die **Nix-basierte Build-Pipeline** mit vollständiger **container.gov.de**-Konformität. Das BSI hat mit container.gov.de einen Standard für sichere Container-Images entwickelt, der acht Anforderungen (BG-1 bis BG-8) definiert. openDesk Edu setzt alle acht Anforderungen in Nix um:
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                    Nix + container.gov.de                        │
-│  ┌─────────────┐    ┌─────────────┐    ┌─────────────────────┐ │
-│  │ BG-1        │    │ BG-2        │    │ BG-3                │ │
-│  │ Trusted     │    │ Non-Root    │    │ Minimal Rights      │ │
-│  │ Base Images │◄──►│ User        │◄──►│ Caps Learned        │ │
-│  └─────────────┘    └─────────────┘    └─────────────┬───────┘ │
-│                                                      │          │
-│  ┌─────────────┐    ┌─────────────┐    ┌──────────▼───────┐ │
-│  │ BG-4        │    │ BG-5        │    │ BG-6              │ │
-│  │ No Sens.    │    │ Updates     │    │ SBOM Generation    │ │
-│  │ Data        │◄──►│ Strategy    │◄──►│ SPDX + CycloneDX   │ │
-│  └─────────────┘    └─────────────┘    └─────────────┬─────┘ │
-│                                                      │        │
-│  ┌─────────────┐    ┌─────────────┐    ┌──────────▼───────┐ │
-│  │ BG-7        │    │ BG-8        │    │ 100% COMPLIANT    │ │
-│  │ Image       │    │ Vulnerability│    │ container.gov.de  │ │
-│  │ Signing     │──► │ Scanning    │──► │ + Nix             │ │
-│  │ Cosign      │    │ Grype+Trivy │    │ Standards         │ │
-│  └─────────────┘    └─────────────┘    └─────────────────────┘ │
-└─────────────────────────────────────────────────────────────────┘
+```mermaid
+graph TD
+    subgraph Nix["Nix + container.gov.de Pipeline"]
+        direction TB
+        
+        subgraph Row1[""]
+            BG1["BG-1<br/>Trusted Base Images"]
+            BG2["BG-2<br/>Non-Root User"]
+            BG3["BG-3<br/>Minimal Rights"]
+        end
+        
+        subgraph Row2[""]
+            BG4["BG-4<br/>No Sensitive Data"]
+            BG5["BG-5<br/>Updates Strategy"]
+            BG6["BG-6<br/>SBOM Generation<br/>SPDX + CycloneDX"]
+        end
+        
+        subgraph Row3[""]
+            BG7["BG-7<br/>Image Signing<br/>Cosign"]
+            BG8["BG-8<br/>Vulnerability Scanning<br/>Grype + Trivy"]
+            COMPLIANT["✅ 100% COMPLIANT<br/>container.gov.de + Nix"]
+        end
+    end
+    
+    BG1 --> BG2 --> BG3
+    BG3 --> BG4
+    BG4 --> BG5 --> BG6
+    BG6 --> BG7
+    BG7 --> BG8
+    BG8 --> COMPLIANT
+    
+    style Nix fill:#f5f5f5,stroke:#333,stroke-width:2px
+    style COMPLIANT fill:#90EE90,stroke:#228B22,stroke-width:2px
 ```
 
 ### Die acht container.gov.de-Anforderungen in Nix
