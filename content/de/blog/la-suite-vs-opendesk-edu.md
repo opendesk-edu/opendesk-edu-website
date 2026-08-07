@@ -3,7 +3,7 @@ title: "La Suite vs. openDesk Edu: Gemeinsamkeiten und Unterschiede"
 date: "2026-08-02"
 description: "Frankreich hat La Suite numérique, Deutschland hat openDesk Edu. Beide verfolgen digitale Souveränität durch Open Source — aber ihre Architekturen, Zielgruppen und Bereitstellungsmodelle weichen stark voneinander ab. Eine vergleichende Analyse der beiden führenden souveränen Arbeitsplatz-Initiativen Europas."
 categories: ["Digitale Souveränität", "Vergleich", "Europäische Zusammenarbeit"]
-tags: ["la-suite", "frankreich", "deutschland", "digitale-souveränität", "open-source", "dinum", "europäische-zusammenarbeit", "öffentlicher-sektor", "hochschule", "zendis"]
+tags: ["la-suite", "digitale-souveränität", "open-source"]
 author: "Tobias Weiß und openDesk Edu Mitwirkende"
 image: "/static/blog/la-suite-vs-opendesk-edu-teaser.svg"
 ---
