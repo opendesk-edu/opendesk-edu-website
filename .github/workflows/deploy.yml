@@ -33,7 +33,7 @@ concurrency:
 jobs:
   validate:
     name: Validate
-    runs-on: [self-hosted, linux]
+    runs-on: [self-hosted, linux, ubuntu-latest]
     outputs:
       should_deploy: ${{ steps.validation.outputs.should_deploy }}
     steps:
@@ -66,7 +66,7 @@ jobs:
     name: Test
     needs: validate
     if: needs.validate.outputs.should_deploy == 'true'
-    runs-on: [self-hosted, linux]
+    runs-on: [self-hosted, linux, ubuntu-latest]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -98,7 +98,7 @@ jobs:
     if: |
       needs.validate.outputs.should_deploy == 'true' &&
       (needs.test.result == 'success' || github.event.inputs.force == 'true')
-    runs-on: [self-hosted, linux]
+    runs-on: [self-hosted, linux, ubuntu-latest]
     environment:
       name: staging
       url: https://staging.opendesk-edu.org
@@ -173,7 +173,7 @@ jobs:
       needs.validate.outputs.should_deploy == 'true' &&
       needs.deploy-staging.result == 'success' &&
       github.event.inputs.target == 'live'
-    runs-on: [self-hosted, linux]
+    runs-on: [self-hosted, linux, ubuntu-latest]
     environment:
       name: production
       url: https://opendesk-edu.org
