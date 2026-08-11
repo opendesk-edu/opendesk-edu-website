@@ -1,6 +1,6 @@
 ---
 title: "ZKI IT-Grundschutz Compliance: openDesk Edu's Journey Toward the Higher Education Security Baseline"
-date: "2026-08-07"
+date: "2026-08-11"
 description: "openDesk Edu is systematically aligning with the ZKI IT-Grundschutz-Profil — the higher education adaptation of the BSI baseline — through enforceable Kyverno policies, hardened GitOps pipelines, and a transparent gap analysis. Here's where we stand and what's next."
 categories: ["Security", "Compliance"]
 tags: ["zki", "it-grundschutz", "bsi", "compliance", "kyverno", "security", "higher-education", "isms"]

@@ -1,6 +1,6 @@
 ---
 title: "ZKI IT-Grundschutz 合规：openDesk Edu 迈向高等教育安全基线的旅程"
-date: "2026-08-07"
+date: "2026-08-11"
 description: "openDesk Edu 正在系统地对齐 ZKI IT-Grundschutz 配置文件——BSI 基线的高等教育适配版——通过可执行的 Kyverno 策略、加固的 GitOps 流水线和透明的差距分析。以下是我们的进展。"
 categories: ["安全", "合规"]
 tags: ["zki", "it-grundschutz", "bsi", "合规", "kyverno", "安全", "高等教育", "isms"]
