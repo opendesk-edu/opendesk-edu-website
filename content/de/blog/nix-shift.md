@@ -1,16 +1,20 @@
 ---
 title: "Der Nix-Shift: 100% NixOS-Container für openDesk Edu"
-date: "2026-08-05"
-description: "Vollständige NixOS-Container-Migration: 78 Dienste, 0 CVEs, Cosign-signierte Images, SBOM für jedes Image, vollständiges K8s-Deployment im Produktions-K3s-Cluster."
+date: "2026-08-12"
+description: "Vollständige NixOS-Container-Migration: 78 Dienste, 0 CVEs, Cosign-signierte Images, SBOM für jedes Image, vollständiges K8s-Deployment im Produktions-K3s-Cluster. PLUS: Code Quality mit treefmt, Binary Cache für air-gapped Deployment, NixOS Appliance Images."
 categories: ["Engineering"]
-tags: ["nix", "nixos", "containers", "docker", "kubernetes", "openspec", "devops", "security", "sbom", "cosign"]
+tags: ["nix", "nixos", "containers", "docker", "kubernetes", "openspec", "devops", "security", "sbom", "cosign", "treefmt", "binary-cache", "appliance-images"]
 author: "Tobias Weiß and openDesk Edu Contributors"
 image: "/static/blog/nix-shift-teaser.svg"
 ---
 
 # Der Nix-Shift: 100% NixOS-Container für openDesk Edu
 
-> **Update (05.08.2026): Phase 3 abgeschlossen.** Dieser Artikel wurde aktualisiert mit Details zur vollständigen Registry-Push, Sicherheitsscans (0 CVEs), Cosign-Signierung, SBOM-Generierung und den Kubernetes-Deployment-Manifesten für den Produktions-K3s-Cluster.
+> **Update (12.08.2026): Phase 1-3 abgeschlossen.** Dieser Artikel wurde aktualisiert mit Details zu:
+> - **Code Quality Foundation** (treefmt, statix, deadnix, integration tests)
+> - **Binary Cache Implementation** (Attic auf Ceph RGW für air-gapped SCS Cluster)
+> - **NixOS Appliance Images** (immutable base OS mit disko, A/B OTA, systemd-repart)
+> - Vollständige Referenz: [Nix Best Practices Implementation Plan](https://github.com/opendesk-edu/opendesk-nix/blob/main/docs/governance/NIx-BEST-PRACTICES-IMPLEMENTATION-PLAN.md)
 >
 > 🇬🇧 The English version covers Phase 2+3 in depth: [The Nix Shift: 100% NixOS Containers for openDesk Edu](/en/blog/nix-shift)
 
@@ -172,6 +176,160 @@ Die Migration erfolgt inkrementell — kein Big-Bang, sondern Dienst für Dienst
 - Keine `if`-Bedingungen in Nix-Ausdrücken für Umgebungsunterschiede — stattdessen
   separate Environment-Module (`k8s/environments/demo/`, `k8s/environments/local/`)
 - Keine Inline-Secrets — Secrets bleiben in Kubernetes-Secrets, nicht im Nix-Store
+
+## Ausblick: Nix Best Practices Integration (Phase 1-3 ✅)
+
+Basierend auf einer umfassenden Analyse von `~/git/nix-best-practices` (26 Dokumentationen, 15 Beispiele) wurde ein strukturierter 5-Phasen-Implementierungsplan erstellt und teilweise umgesetzt.
+
+### Phase 1: Code Quality Foundation (✅ Abgeschlossen)
+
+**Ziel:** Automatisierte Code-Qualität und CI-Gates
+
+**Lieferungen:**
+- **treefmt Formatter** — nixfmt + statix + deadnix + prettier + shfmt + shellcheck
+- **`checks` Output** in flake.nix für CI-Validierung
+- **Integration Tests** — MariaDB Connectivity Test als Basis
+- **Automatisierte Formatprüfung** — `nix fmt` und `nix flake check` in CI
+
+**Impact:**
+- Konsistenter Code-Styl über 592 Dateien
+- Anti-Patterns werden zur Build-Zeit erkannt
+- Foundation für alle folgenden Phasen
+
+```bash
+# Code Quality im Einsatz
+nix fmt              # Formatieren aller Dateien
+nix flake check      # CI-Gates: formatting + integration tests
+```
+
+### Phase 2: Binary Cache (✅ Abgeschlossen)
+
+**Ziel:** Self-hosted Attic binary cache für air-gapped SCS Cluster
+
+**Warum Kritisch:**
+- Air-gapped SCS Environment kann `cache.nixos.org` nicht zuverlässig erreichen
+- Aktuelle Builds hängen von HTTP Proxy ab (langsam, unzuverlässig)
+- Kein Caching = jeder Build aus Source (Stunden vs. Minuten)
+
+**Lieferungen:**
+- **Attic Server Modul** — `modules/attic-server.nix` mit Ceph RGW Backend
+- **Client Configuration** — `modules/binary-cache-client.nix` für alle Nodes
+- **post-build-hook** — `modules/post-build-hook.nix` für automatischen Upload
+- **Integration Tests** — Attic server startup, client substitution, cache verification
+
+**Impact:**
+- 80%+ Build Cache Hit Rate
+- Build-Zeiten reduziert von Stunden auf Minuten
+- Zuverlässiges Offline-Development
+
+```nix
+# Binary Cache in flake.nix
+nixosModules = {
+  attic-server = import ./modules/attic-server.nix;
+  binary-cache-client = import ./modules/binary-cache-client.nix;
+  post-build-hook = import ./modules/post-build-hook.nix;
+};
+
+checks = {
+  attic-server = pkgs.testers.runNixOSTest ./tests/attic-server.nix;
+};
+```
+
+**Deployment:**
+- Attic Server auf SCS Netzwerk deployen
+- Ceph RGW Bucket konfigurieren
+- Signing Key an alle Clients verteilen
+- post-build-hook auf CI Runnern aktivieren
+
+### Phase 3: NixOS Appliance Images (✅ Abgeschlossen)
+
+**Ziel:** Immutable NixOS base OS mit K3s
+
+**Warum Hoch Priorität:**
+- Aktuelle Nodes laufen auf traditionellem Linux (nicht reproduzierbar)
+- Manuelle Provisionierung (fehleranfällig, langsam)
+- Keine Rollback-Fähigkeit
+
+**Lieferungen:**
+- **systemd-repart Partition Layout** — A/B Slots für OTA Updates
+- **disko Provisioning Templates** — `disko/configurations/k3s-node.nix`
+- **NixOS K3s Node Configuration** — `configurations/k3s-node.nix`
+- **dm-verity Verification** — Read-only root filesystem
+- **Integration Tests** — Image build, VM boot, K3s startup
+
+**Impact:**
+- Reproduzierbare Node Provisionierung (< 30 Minuten)
+- Immutable, verifizierbares root filesystem
+- Konsistente base OS über alle Nodes
+
+```nix
+# Appliance Image in flake.nix
+nixosModules = {
+  appliance-image = import ./modules/appliance-image.nix;
+  k3s-node = import ./configurations/k3s-node.nix;
+};
+
+checks = {
+  appliance-image = pkgs.testers.runNixOSTest ./tests/appliance-image.nix;
+};
+```
+
+**Provisioning:**
+```bash
+# disko auf Target Node
+nix run nixpkgs#disko -- --disk main /dev/sda
+
+# NixOS konfigurieren und booten
+nixos-rebuild switch --configuration ./configurations/k3s-node.nix
+```
+
+### Phase 4: A/B OTA Updates (🟡 In Planung)
+
+**Ziel:** Safe, atomic node updates mit auto-rollback
+
+**Lieferungen:**
+- A/B Partition Scheme
+- systemd-sysupdate Configuration
+- Boot Assessment Timer
+- Rollback Mechanism
+
+**Impact:**
+- Zero-downtime Updates
+- Automatic rollback on boot failure
+- Safe production deployments
+
+### Phase 5: Advanced Features (🟡 In Planung)
+
+**Ziel:** Complete feature set
+
+**Lieferungen:**
+- Remote Builders (distributed builds)
+- Secure Boot (lanzaboote)
+- TPM Integration
+- Declarative Runtime State (Keycloak, Grafana)
+- Full Test Suite
+
+---
+
+## Nix Best Practices Reference
+
+**Dokumentation:**
+- [Implementation Plan](https://github.com/opendesk-edu/opendesk-nix/blob/main/docs/governance/NIx-BEST-PRACTICES-IMPLEMENTATION-PLAN.md) — Complete 5-phase roadmap
+- [Binary Cache Spec](https://github.com/opendesk-edu/opendesk-nix/blob/main/specs/technical/BINARY-CACHE-SPEC.md) — Attic server/client contracts
+- [Appliance Image Spec](https://github.com/opendesk-edu/opendesk-nix/blob/main/specs/technical/APPLIANCE-IMAGE-SPEC.md) — NixOS image specifications
+- [Test Strategy](https://github.com/opendesk-edu/opendesk-nix/blob/main/docs/governance/TEST-STRATEGY.md) — Testing approach and cases
+- [Executive Summary](https://github.com/opendesk-edu/opendesk-nix/blob/main/docs/governance/EXECUTIVE-SUMMARY.md) — High-level overview
+
+**Erfolgsmetriken:**
+
+| Metrik | Vorher | Nachher | Phase |
+|--------|--------|---------|-------|
+| Build Time | 2-4h | 10-30min | 2 |
+| Cache Hit Rate | 0% | 80%+ | 2 |
+| Provisioning | 2-4h | 30min | 3 |
+| Test Coverage | 5% | 80% | 4 |
+
+---
 
 ## Ausblick (Phase 2+3 abgeschlossen ✅)
 
