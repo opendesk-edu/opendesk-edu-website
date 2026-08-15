@@ -50,7 +50,14 @@ jobs:
 
       - name: Notify on vulnerabilities
         if: failure() && steps.audit.outcome == 'failure'
-        uses: rtCamp/action-slack-notify@v2
+      - name: Log in to GHCR (slack-notify image is hosted there)
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_COLOR: danger
@@ -98,7 +105,14 @@ jobs:
 
       - name: Notify on outdated critical packages
         if: failure()
-        uses: rtCamp/action-slack-notify@v2
+      - name: Log in to GHCR (slack-notify image is hosted there)
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_COLOR: warning
