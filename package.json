@@ -67,7 +67,7 @@
     "eslint-config-next": "16.2.1",
     "husky": "^9.1.7",
     "jsdom": "^29.1.1",
-    "lint-staged": "^16.4.0",
+    "lint-staged": "^17.3.0",
     "sharp": "0.35.3",
     "svgo": "^4.0.1",
     "tailwindcss": "^4",
