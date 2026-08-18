@@ -291,5 +291,10 @@
     "responsibilityEmailLabel": "Contact:",
     "contactHeading": "Contact",
     "contactP1": "Questions about this AI statement? Contact us at info@opendesk-edu.org."
+  },
+  "vote": {
+    "title": "🏆 Vote for openDesk Edu",
+    "description": "openDesk Edu is nominated for the Open Source Competition. Every vote counts — support us now!",
+    "button": "Vote now"
   }
 }

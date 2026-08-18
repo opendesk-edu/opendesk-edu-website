@@ -393,6 +393,83 @@
 }
 
 /* ============================================================
+   Vote banner — open-source competition
+   ============================================================ */
+.vote-banner {
+  background: linear-gradient(135deg, #0d9488 0%, #6366f1 50%, #8b5cf6 100%);
+  color: #fff;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+}
+
+.vote-banner__content {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.vote-banner__title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.vote-banner__description {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  opacity: 0.92;
+  margin: 0;
+}
+
+.vote-banner__button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #fff;
+  color: #0d9488;
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 0.85rem 2.5rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+.vote-banner__button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.vote-banner__icon {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+@media (max-width: 640px) {
+  .vote-banner {
+    padding: 1.75rem 1rem;
+  }
+
+  .vote-banner__title {
+    font-size: 1.4rem;
+  }
+
+  .vote-banner__description {
+    font-size: 1rem;
+  }
+
+  .vote-banner__button {
+    font-size: 1rem;
+    padding: 0.75rem 2rem;
+  }
+}
+
+/* ============================================================
    Reduced motion — disable all animations
    ============================================================ */
 @media (prefers-reduced-motion: reduce) {

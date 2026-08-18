@@ -216,5 +216,10 @@
     "responsibilityEmailLabel": "联系方式：",
     "contactHeading": "联系",
     "contactP1": "对本声明有疑问？请通过 info@opendesk-edu.org 联系我们。"
+  },
+  "vote": {
+    "title": "🏆 为 openDesk Edu 投票",
+    "description": "openDesk Edu 已入围开源竞赛评选。每一票都很重要——立即支持我们！",
+    "button": "立即投票"
   }
 }

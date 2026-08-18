@@ -216,5 +216,10 @@
     "responsibilityEmailLabel": "Contact :",
     "contactHeading": "Contact",
     "contactP1": "Des questions sur cette déclaration ? Contactez-nous à info@opendesk-edu.org."
+  },
+  "vote": {
+    "title": "🏆 Votez pour openDesk Edu",
+    "description": "openDesk Edu est nominé pour le concours Open Source. Chaque vote compte — soutenez-nous maintenant !",
+    "button": "Voter maintenant"
   }
 }

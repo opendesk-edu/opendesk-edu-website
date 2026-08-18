@@ -122,6 +122,27 @@ export default async function Home({ params }: PageProps) {
         </div>
       </section>
 
+      {/* Vote banner — open-source competition */}
+      <section className="vote-banner" aria-label="Open Source Competition Voting">
+        <div className="vote-banner__content">
+          <div className="vote-banner__text">
+            <h2 className="vote-banner__title">{t('vote.title')}</h2>
+            <p className="vote-banner__description">{t('vote.description')}</p>
+          </div>
+          <a
+            href="https://open-source-wettbewerb.de/voting/opendesk-edu/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="vote-banner__button"
+          >
+            {t('vote.button')}
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="vote-banner__icon" aria-hidden="true">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </a>
+        </div>
+      </section>
+
       {/* Page content below hero */}
       <div className="mx-auto max-w-4xl px-6 py-12">
         {/* Latest Posts */}

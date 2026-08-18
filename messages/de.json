@@ -216,5 +216,10 @@
     "responsibilityEmailLabel": "Kontakt:",
     "contactHeading": "Kontakt",
     "contactP1": "Fragen zu dieser KI-Erklärung? Kontaktieren Sie uns unter info@opendesk-edu.org."
+  },
+  "vote": {
+    "title": "🏆 Abstimmen für openDesk Edu",
+    "description": "openDesk Edu ist beim Open-Source-Wettbewerb nominiert. Jede Stimme zählt — unterstützen Sie uns jetzt!",
+    "button": "Jetzt abstimmen"
   }
 }
