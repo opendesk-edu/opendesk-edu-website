@@ -19,8 +19,20 @@ function readConsent(): ConsentState {
   return "undecided";
 }
 
+const OPENDASK_UMAMI_URL = "https://analytics.opendesk-edu.org/script.js";
+const OPENDASK_UMAMI_ID = "2a3018c7-757c-40cb-b4ce-4c70d851c348";
+
 function loadAnalyticsScripts(): void {
   if (typeof document === "undefined") return;
+
+  // Self-hosted Umami (analytics.opendesk-edu.org)
+  if (OPENDASK_UMAMI_URL && OPENDASK_UMAMI_ID) {
+    const umami = document.createElement("script");
+    umami.defer = true;
+    umami.dataset.websiteId = OPENDASK_UMAMI_ID;
+    umami.src = OPENDASK_UMAMI_URL;
+    document.head.appendChild(umami);
+  }
 
   // Plausible Analytics (self-hosted)
   if (PLAUSIBLE_DOMAIN) {
