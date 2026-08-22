@@ -72,13 +72,37 @@ describe("ArticlePage", () => {
 
   it("renders category badges", () => {
     render(<ArticlePage post={mockPost} backHref="/blog" backLabel="Blog" />);
-    expect(screen.getByText("Tutorial")).toBeInTheDocument();
+    // header + footer
+    expect(screen.getAllByText("Tutorial").length).toBe(2);
   });
 
   it("renders tags", () => {
     render(<ArticlePage post={mockPost} backHref="/blog" backLabel="Blog" />);
-    expect(screen.getByText("setup")).toBeInTheDocument();
-    expect(screen.getByText("deployment")).toBeInTheDocument();
+    // header + footer
+    expect(screen.getAllByText("setup").length).toBe(2);
+    expect(screen.getAllByText("deployment").length).toBe(2);
+  });
+
+  it("renders tags in a footer below the article content", () => {
+    const { container } = render(
+      <ArticlePage post={mockPost} backHref="/blog" backLabel="Blog" />
+    );
+    const footer = container.querySelector("article > footer");
+    expect(footer).not.toBeNull();
+    expect(footer!.textContent).toContain("setup");
+    expect(footer!.textContent).toContain("deployment");
+    expect(footer!.textContent).toContain("Tutorial");
+  });
+
+  it("does not render the tag footer when no tags or categories", () => {
+    const { container } = render(
+      <ArticlePage
+        post={{ ...mockPost, tags: [], categories: [] }}
+        backHref="/blog"
+        backLabel="Blog"
+      />
+    );
+    expect(container.querySelector("article > footer")).toBeNull();
   });
 
   it("renders the back link with correct href", () => {

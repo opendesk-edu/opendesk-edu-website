@@ -166,6 +166,19 @@ export default function ArticlePage({ post, backHref, backLabel, locale = 'en' }
             </div>
           </aside>
         </div>
+
+        {(post.categories?.length || post.tags?.length) && (
+          <footer className="mt-14 pt-8 border-t border-border">
+            <div className="flex flex-wrap gap-2">
+              {post.categories?.map((category) => (
+                <CategoryBadge key={category}>{category}</CategoryBadge>
+              ))}
+              {post.tags?.map((tag) => (
+                <Tag key={tag}>{tag}</Tag>
+              ))}
+            </div>
+          </footer>
+        )}
         <ShareButtons url={`${SITE_URL}/${locale}/${post.section}/${post.slug}`} />
       </article>
     </>
