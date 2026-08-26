@@ -31,7 +31,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
       - run: npm ci
-      - run: npm audit --audit-level=high # Blocks only CRITICAL vulnerabilities; HIGH and below are accepted
+      - run: npm audit --audit-level=critical # Blocks only CRITICAL vulnerabilities; HIGH and below are accepted
 
   # Content Validation
   validate:
