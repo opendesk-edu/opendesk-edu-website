@@ -1,5 +1,6 @@
 import { getAllPosts } from "@/lib/content";
 import { SITE_NAME, SITE_URL } from "@/lib/config";
+import { escapeXml } from "@/lib/xml";
 import type { NextRequest } from "next/server";
 
 export async function GET(
@@ -20,25 +21,25 @@ export async function GET(
 
     return `
     <item>
-      <title>${post.title}</title>
-      <link>${url}</link>
-      <guid>${url}</guid>
+      <title>${escapeXml(post.title)}</title>
+      <link>${escapeXml(url)}</link>
+      <guid>${escapeXml(url)}</guid>
       <pubDate>${pubDate}</pubDate>
-      <description>${post.description || ""}</description>
+      <description>${escapeXml(post.description ?? "")}</description>
       ${post.htmlContent ? `<content:encoded><![CDATA[${post.htmlContent}]]></content:encoded>` : ""}
-      <category>${post.section}</category>
-      ${post.image ? `<media:content url="${SITE_URL}${post.image}" medium="image" width="1200" height="630" />` : ""}
+      <category>${escapeXml(post.section)}</category>
+      ${post.image ? `<media:content url="${escapeXml(`${SITE_URL}${post.image}`)}" medium="image" width="1200" height="630" />` : ""}
     </item>`;
   }).join("");
 
   const rss = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:media="http://search.yahoo.com/mrss/">
   <channel>
-    <title>${SITE_NAME}</title>
-    <link>${SITE_URL}/${locale}</link>
-    <atom:link href="${SITE_URL}/${locale}/rss" rel="self" type="application/rss+xml"/>
-    <language>${locale}</language>
-    <description>Latest posts from ${SITE_NAME}</description>
+    <title>${escapeXml(SITE_NAME)}</title>
+    <link>${escapeXml(`${SITE_URL}/${locale}`)}</link>
+    <atom:link href="${escapeXml(`${SITE_URL}/${locale}/rss`)}" rel="self" type="application/rss+xml"/>
+    <language>${escapeXml(locale)}</language>
+    <description>Latest posts from ${escapeXml(SITE_NAME)}</description>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
     ${feedItems}
   </channel>

@@ -109,4 +109,22 @@ describe("RSS feed route", () => {
     const response = await GET(request, { params: Promise.resolve({ locale: "en" }) });
     expect(response.headers.get("Cache-Control")).toContain("public");
   });
+
+  it("escapes XML entities in title, description, link and section", async () => {
+    mockGetAllPosts.mockResolvedValue([
+      makePost({
+        title: "Backup & Restore <for> uni's",
+        slug: "backup-and-restore",
+        section: "blog",
+        description: "café & bräu > quell",
+      }),
+    ]);
+    const request = new NextRequest("http://localhost/en/rss");
+    const response = await GET(request, { params: Promise.resolve({ locale: "en" }) });
+    const text = await response.text();
+    expect(text).toContain("Backup &amp; Restore &lt;for&gt; uni&apos;s");
+    expect(text).toContain("café &amp; bräu &gt; quell");
+    // No raw unescaped entity ampersands should leak into the XML.
+    expect(text).not.toMatch(/<title>[^<]*&(?!amp;|lt;|gt;|quot;|apos;)[^<]*<\/title>/);
+  });
 });
