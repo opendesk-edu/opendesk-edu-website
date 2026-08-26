@@ -1,0 +1,54 @@
+/* Self-contained styling for the global 404 page (public/static/404.css).
+   Served directly so the root not-found boundary needs no Tailwind build. */
+:root {
+  color-scheme: light dark;
+  --accent: #1677ff;
+  --fg: #1f2329;
+  --fg-2: #5a6472;
+  --bg: #ffffff;
+  --border: #e5e7eb;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --fg: #e6e8eb; --fg-2: #a0a9b4; --bg: #0f1115; --border: #2b3138; --accent: #4d9dff; }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+.nf-wrap { max-width: 64rem; margin: 0 auto; padding: 5rem 1.5rem; text-align: center; }
+.nf-code { font-size: 4rem; font-weight: 700; color: var(--accent); margin: 0 0 1rem; }
+.nf-heading { font-size: 1.875rem; margin: 0 0 1rem; }
+.nf-message { color: var(--fg-2); margin: 0 auto 2rem; max-width: 34rem; }
+.nf-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-bottom: 3rem; }
+.nf-btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: filter 0.2s ease;
+}
+.nf-btn:hover { filter: brightness(1.1); }
+.nf-link {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border);
+  color: var(--fg);
+  font-weight: 600;
+  text-decoration: none;
+}
+.nf-link:hover { background: rgba(128, 128, 128, 0.08); }
+.nf-articles { text-align: left; }
+.nf-articles h2 { font-size: 1.5rem; margin: 0 0 1.5rem; }
+.nf-grid { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.nf-card { display: block; text-decoration: none; color: inherit; }
+.nf-card h3 { margin: 0 0 0.5rem; font-size: 1.125rem; color: var(--accent); }
+.nf-card p { margin: 0; color: var(--fg-2); font-size: 0.9rem; }

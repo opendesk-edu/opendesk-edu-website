@@ -79,7 +79,7 @@ Die Zammad-Bereitstellung ist die komplexeste — sie erfordert drei abhängige 
 
 Der Produktionscluster betreibt jetzt **41 Pods** über **32 Bereitstellungen** — gegenüber 39 Pods und 31 Bereitstellungen am 14. Juni. Wir liegen im Plan für die vollständige Produktionsbereitschaft bis Ende Juni.
 
-Möchten Sie openDesk Edu an Ihrer Universität bereitstellen? Besuchen Sie unseren [Erste-Schritte-Leitfaden](/docs/deployment) und das [Repository](https://codeberg.org/opendesk-edu/opendesk-edu).
+Möchten Sie openDesk Edu an Ihrer Universität bereitstellen? Besuchen Sie unseren [Erste-Schritte-Leitfaden](/blog/deployment-guide) und das [Repository](https://codeberg.org/opendesk-edu/opendesk-edu).
 
 ### Diesen Artikel teilen
 

@@ -15,7 +15,8 @@
       "label": "切换菜单"
     },
     "searchLabel": "搜索",
-    "docs": "架构"
+    "docs": "架构",
+    "architecture": "架构"
   },
   "footer": {
     "imprint": "法律声明",
@@ -130,7 +131,8 @@
     "loading": "加载中...",
     "shortcutHint": "按 ⌘K 搜索",
     "groupLabels": {
-      "blog": "博客"
+      "blog": "博客",
+      "architecture": "架构"
     }
   },
   "privacy": {

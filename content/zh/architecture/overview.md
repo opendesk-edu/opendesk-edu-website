@@ -137,4 +137,4 @@ Restic 支持多种存储后端，机构可以将备份定向到本地 NFS、S3 
 - **文件存储**：Nextcloud 或 OpenCloud
 - **白板**：Excalidraw 或 CryptPad
 
-每个替代方案都使用相同的 Keycloak 认证、相同的备份管道和相同的证书基础设施。在替代方案之间切换只需在 helmfile 配置中启用或禁用对应的 chart 即可。如需详细了解功能、许可证和资源需求的对比，请参阅[组件对比页面](/components/comparison)。
+每个替代方案都使用相同的 Keycloak 认证、相同的备份管道和相同的证书基础设施。在替代方案之间切换只需在 helmfile 配置中启用或禁用对应的 chart 即可。如需详细了解功能、许可证和资源需求的对比，请参阅[组件对比页面](/architecture/component-alternatives)。

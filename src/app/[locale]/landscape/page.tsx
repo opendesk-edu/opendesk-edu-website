@@ -5,6 +5,10 @@ import { getTranslations } from 'next-intl/server';
 import { motion } from 'framer-motion';
 import LandscapeVisualization from '@/components/Landscape/LandscapeVisualization';
 
+// This page renders a framer-motion <motion.div> directly in a Server
+// Component, which cannot be statically prerendered. Keep it on-demand.
+export const dynamic = 'force-dynamic';
+
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: 'Landscape' });
 

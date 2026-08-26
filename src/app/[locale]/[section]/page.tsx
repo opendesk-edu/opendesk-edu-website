@@ -11,7 +11,15 @@ import { getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
 import PostList from "@/components/PostList";
 
-export const revalidate = 3600;
+// Unknown sections must return a real 404 (not a streamed soft-404).
+// dynamicParams=false makes Next serve a true 404 for params not covered by
+// generateStaticParams().
+//
+// NB: revalidate must NOT be set here. ISR + dynamicParams=false still renders
+// unlisted params on-demand (streaming), which turns notFound() into a 200
+// soft-404. Without revalidate the route is fully static, so Next answers
+// unknown params with a real 404. Content changes are picked up on rebuild.
+export const dynamicParams = false;
 
 interface SectionPageProps {
   params: Promise<{ locale: string; section: string }>;

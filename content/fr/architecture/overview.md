@@ -137,4 +137,4 @@ Plusieurs domaines fonctionnels offrent plusieurs options de services, permettan
 - **Stockage de fichiers** : Nextcloud ou OpenCloud
 - **Tableau blanc** : Excalidraw ou CryptPad
 
-Chaque alternative utilise la même authentification Keycloak, la même pipeline de sauvegarde et la même infrastructure de certificats. Le passage d'une alternative à l'autre se fait en activant ou désactivant le chart correspondant dans les valeurs helmfile. Pour une comparaison détaillée des fonctionnalités, des licences et des ressources requises, consultez la [page de comparaison des composants](/components/comparison).
+Chaque alternative utilise la même authentification Keycloak, la même pipeline de sauvegarde et la même infrastructure de certificats. Le passage d'une alternative à l'autre se fait en activant ou désactivant le chart correspondant dans les valeurs helmfile. Pour une comparaison détaillée des fonctionnalités, des licences et des ressources requises, consultez la [page de comparaison des composants](/architecture/component-alternatives).

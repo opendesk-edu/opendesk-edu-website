@@ -89,4 +89,4 @@ With the hardening sprints complete and upstream integration in progress, the fo
 3. **Full login testing** — end-to-end OIDC/SAML flow validation for all services
 4. **v1.1 Foundation items** — DFN-AAI SAML federation testing, container image build pipeline, backchannel logout verification, remaining auth-pending chart integrations
 
-Want to deploy openDesk Edu at your university? See our [getting started guide](/docs/deployment) and [repository](https://codeberg.org/opendesk-edu/opendesk-edu).
+Want to deploy openDesk Edu at your university? See our [getting started guide](/blog/deployment-guide) and [repository](https://codeberg.org/opendesk-edu/opendesk-edu).

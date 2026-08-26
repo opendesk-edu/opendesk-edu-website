@@ -15,7 +15,8 @@
       "label": "Toggle menu"
     },
     "searchLabel": "Search",
-    "docs": "Architecture"
+    "docs": "Architecture",
+    "architecture": "Architecture"
   },
   "footer": {
     "imprint": "Imprint",
@@ -130,7 +131,8 @@
     "loading": "Loading...",
     "shortcutHint": "Press ⌘K to search",
     "groupLabels": {
-      "blog": "Blog"
+      "blog": "Blog",
+      "architecture": "Architecture"
     }
   },
   "privacy": {

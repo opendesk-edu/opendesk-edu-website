@@ -79,4 +79,4 @@ Zammad 的部署最为复杂——它需要三个依赖数据库和合适的 ing
 
 生产集群现在运行 **41 个 Pod**，涵盖 **32 个部署**——较 6 月 14 日的 39 个 Pod 和 31 个部署有所增长。我们有望在 6 月底前实现完全的生产就绪。
 
-想要在您的大学部署 openDesk Edu？请参阅我们的[入门指南](/docs/deployment)和[代码仓库](https://codeberg.org/opendesk-edu/opendesk-edu)。
+想要在您的大学部署 openDesk Edu？请参阅我们的[入门指南](/blog/deployment-guide)和[代码仓库](https://codeberg.org/opendesk-edu/opendesk-edu)。

@@ -16,7 +16,7 @@ interface SearchDialogProps {
   onClose: () => void;
 }
 
-const SECTION_ORDER = ["blog"] as const;
+const SECTION_ORDER = ["blog", "architecture"] as const;
 
 function groupBySection(entries: SearchEntry[]): Map<string, SearchEntry[]> {
   const groups = new Map<string, SearchEntry[]>();
@@ -267,6 +267,7 @@ export default function SearchDialog({ open, onClose }: SearchDialogProps) {
       components: "groupLabels.components",
       docs: "groupLabels.docs",
       blog: "groupLabels.blog",
+      architecture: "groupLabels.architecture",
     };
     return t(keyMap[section] ?? section);
   };

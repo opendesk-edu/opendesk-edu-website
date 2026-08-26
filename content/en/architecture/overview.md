@@ -137,4 +137,4 @@ Several functional areas offer multiple service options, letting institutions ch
 - **File Storage**: Nextcloud or OpenCloud
 - **Whiteboard**: Excalidraw or CryptPad
 
-Each alternative uses the same Keycloak authentication, the same backup pipeline, and the same certificate infrastructure. Switching between alternatives is a matter of enabling one chart and disabling another in your helmfile values. For a detailed comparison of features, licensing, and resource requirements, see the [component comparison page](/components/comparison).
+Each alternative uses the same Keycloak authentication, the same backup pipeline, and the same certificate infrastructure. Switching between alternatives is a matter of enabling one chart and disabling another in your helmfile values. For a detailed comparison of features, licensing, and resource requirements, see the [component comparison page](/architecture/component-alternatives).

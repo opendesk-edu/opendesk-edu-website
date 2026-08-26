@@ -12,7 +12,9 @@ import ArticlePage from "@/components/ArticlePage";
 import RelatedPosts from "@/components/RelatedPosts";
 import { routing } from "@/i18n/routing";
 
-export const revalidate = 3600;
+// Real 404 (not a streamed soft-404) for unknown slugs: see comment in
+// [section]/page.tsx — dynamicParams=false must not be combined with revalidate.
+export const dynamicParams = false;
 
 interface PageProps {
   params: Promise<{ locale: string; section: string; slug: string }>;
@@ -21,9 +23,9 @@ interface PageProps {
 export async function generateStaticParams() {
   const paths: { locale: string; section: string; slug: string }[] = [];
   for (const section of SECTION_INFO) {
-    const slugs = await getStaticPathsForSection(section.slug);
-    for (const slug of slugs) {
-      for (const locale of routing.locales) {
+    for (const locale of routing.locales) {
+      const slugs = await getStaticPathsForSection(section.slug, locale);
+      for (const slug of slugs) {
         paths.push({ locale, section: section.slug, slug });
       }
     }

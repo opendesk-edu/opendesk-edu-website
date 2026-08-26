@@ -185,6 +185,11 @@ export interface SectionInfo {
 
 const SECTION_METADATA: Record<string, Omit<SectionInfo, 'slug'>> = {
   blog: { name: "Blog", title: "Blog", description: "News, announcements, community stories, and insights on open-source digital infrastructure in higher education." },
+  architecture: {
+    name: "Architecture",
+    title: "Architecture",
+    description: "Reference documentation of the openDesk Edu system architecture — Kubernetes orchestration, SAML federation, SSO, storage and component alternatives.",
+  },
 };
 
 export const SECTION_INFO: SectionInfo[] = SECTIONS.map((slug) => ({

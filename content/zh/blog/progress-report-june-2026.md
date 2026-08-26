@@ -89,4 +89,4 @@ image: "/static/blog/progress-report-june-2026-teaser.svg"
 3. **完整登录测试**——对所有服务进行端到端 OIDC/SAML 流程验证
 4. **v1.1 基础项目**——DFN-AAI SAML 联邦测试、容器镜像构建流水线、反向注销验证、剩余认证待定的 chart 集成
 
-想要在您的大学部署 openDesk Edu？请参阅我们的[入门指南](/docs/deployment)和[代码仓库](https://codeberg.org/opendesk-edu/opendesk-edu)。
+想要在您的大学部署 openDesk Edu？请参阅我们的[入门指南](/blog/deployment-guide)和[代码仓库](https://codeberg.org/opendesk-edu/opendesk-edu)。

@@ -89,4 +89,4 @@ Nach den Härtungs-Sprints und der begonnenen Upstream-Integration liegt der Fok
 3. **Vollständigen Login-Tests** — End-to-End-Validierung der OIDC/SAML-Flows für alle Dienste
 4. **v1.1 Foundation** — DFN-AAI-SAML-Föderationstests, Container-Image-Build-Pipeline, Backchannel-Logout-Verifikation, Integration der ausstehenden Charts
 
-Sie möchten openDesk Edu an Ihrer Hochschule einsetzen? Zum [Getting Started Guide](/docs/deployment) und [Repository](https://codeberg.org/opendesk-edu/opendesk-edu).
+Sie möchten openDesk Edu an Ihrer Hochschule einsetzen? Zum [Getting Started Guide](/blog/deployment-guide) und [Repository](https://codeberg.org/opendesk-edu/opendesk-edu).

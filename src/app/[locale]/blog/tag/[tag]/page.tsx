@@ -6,7 +6,9 @@ import { getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
 import PostList from "@/components/PostList";
 
-export const revalidate = 3600;
+// Real 404 for unknown tags: see comment in [section]/page.tsx —
+// dynamicParams=false must not be combined with revalidate.
+export const dynamicParams = false;
 
 interface TagPageProps {
   params: Promise<{ locale: string; tag: string }>;

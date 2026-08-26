@@ -61,14 +61,9 @@ describe("SECTIONS", () => {
   });
 
   it("should contain expected content sections", () => {
-    // SECTIONS is defined as ['blog'] in the actual file
-    // This test verifies the current state
-    expect(SECTIONS).toContain("blog");
-    
-    // Verify it's a tuple type (as const)
-    // In TypeScript, SECTIONS is ['blog'] as const
-    // So it should be exactly ['blog']
-    expect(SECTIONS).toEqual(["blog"]);
+    // Content sections published on the site. Blog plus the reference
+    // architecture documentation.
+    expect(SECTIONS).toEqual(["blog", "architecture"]);
   });
 
   it("should have all string elements", () => {
@@ -82,6 +77,6 @@ describe("SECTIONS", () => {
     // Arrays defined with 'as const' are not frozen, but we can test
     // that the array itself is the expected value
     expect(Object.isFrozen(SECTIONS)).toBe(false); // as const doesn't freeze
-    expect(SECTIONS).toEqual(["blog"]);
+    expect(SECTIONS).toEqual(["blog", "architecture"]);
   });
 });

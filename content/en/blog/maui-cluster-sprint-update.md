@@ -79,7 +79,7 @@ Zammad deployment is the most complex — it requires three dependent databases 
 
 The production cluster now runs **41 pods** across **32 deployments** — up from 39 pods and 31 deployments on June 14. We're on track for full production readiness by end of June.
 
-Want to deploy openDesk Edu at your university? See our [getting started guide](/docs/deployment) and [repository](https://codeberg.org/opendesk-edu/opendesk-edu).
+Want to deploy openDesk Edu at your university? See our [getting started guide](/blog/deployment-guide) and [repository](https://codeberg.org/opendesk-edu/opendesk-edu).
 
 ### Share this article
 

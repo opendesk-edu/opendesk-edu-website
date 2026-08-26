@@ -79,7 +79,7 @@ Le déploiement de Zammad est le plus complexe — il nécessite trois bases de 
 
 Le cluster de production exécute maintenant **41 pods** sur **32 déploiements** — contre 39 pods et 31 déploiements le 14 juin. Nous sommes en bonne voie pour une préparation complète à la production d'ici la fin juin.
 
-Vous souhaitez déployer openDesk Edu dans votre université ? Consultez notre [guide de démarrage](/fr/docs/deployment) et notre [dépôt](https://codeberg.org/opendesk-edu/opendesk-edu).
+Vous souhaitez déployer openDesk Edu dans votre université ? Consultez notre [guide de démarrage](/fr/blog/deployment-guide) et notre [dépôt](https://codeberg.org/opendesk-edu/opendesk-edu).
 
 ### Partager cet article
 

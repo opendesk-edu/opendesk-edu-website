@@ -15,7 +15,8 @@
       "label": "Basculer le menu"
     },
     "searchLabel": "Rechercher",
-    "docs": "Architecture"
+    "docs": "Architecture",
+    "architecture": "Architecture"
   },
   "footer": {
     "imprint": "Mentions légales",
@@ -130,7 +131,8 @@
     "loading": "Chargement...",
     "shortcutHint": "Appuyez sur ⌘K pour rechercher",
     "groupLabels": {
-      "blog": "Blog"
+      "blog": "Blog",
+      "architecture": "Architecture"
     }
   },
   "privacy": {

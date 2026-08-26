@@ -89,4 +89,4 @@ Les sprints de durcissement étant terminés et l'intégration amont en cours, l
 3. **Tests de connexion complets** — validation de bout en bout du flux OIDC/SAML pour tous les services
 4. **Éléments de la v1.1** — tests de fédération SAML DFN-AAI, pipeline de construction d'images conteneur, vérification de la déconnexion par canal de retour, intégrations des charts en attente d'authentification
 
-Vous souhaitez déployer openDesk Edu dans votre université ? Consultez notre [guide de démarrage](/fr/docs/deployment) et notre [dépôt](https://codeberg.org/opendesk-edu/opendesk-edu).
+Vous souhaitez déployer openDesk Edu dans votre université ? Consultez notre [guide de démarrage](/fr/blog/deployment-guide) et notre [dépôt](https://codeberg.org/opendesk-edu/opendesk-edu).

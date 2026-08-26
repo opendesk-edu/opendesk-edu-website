@@ -137,4 +137,4 @@ Mehrere Funktionsbereiche bieten mehrere Service-Optionen, sodass Einrichtungen 
 - **Dateispeicher**: Nextcloud oder OpenCloud
 - **Whiteboard**: Excalidraw oder CryptPad
 
-Jede Alternative nutzt dieselbe Keycloak-Authentifizierung, dieselbe Backup-Pipeline und dieselbe Zertifikatsinfrastruktur. Der Wechsel zwischen Alternativen erfolgt durch Aktivieren bzw. Deaktivieren des entsprechenden Charts in den helmfile-Werten. Einen detaillierten Feature-, Lizenz- und Ressourcenvergleich finden Sie auf der [Komponentenvergleichsseite](/components/comparison).
+Jede Alternative nutzt dieselbe Keycloak-Authentifizierung, dieselbe Backup-Pipeline und dieselbe Zertifikatsinfrastruktur. Der Wechsel zwischen Alternativen erfolgt durch Aktivieren bzw. Deaktivieren des entsprechenden Charts in den helmfile-Werten. Einen detaillierten Feature-, Lizenz- und Ressourcenvergleich finden Sie auf der [Komponentenvergleichsseite](/architecture/component-alternatives).
