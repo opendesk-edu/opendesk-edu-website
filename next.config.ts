@@ -38,7 +38,7 @@ const nextConfig: NextConfig = {
   output: "standalone",
   poweredByHeader: false,
   turbopack: { root: path.resolve(__dirname, "..") },
-  images: { unoptimized: false },
+  images: { unoptimized: false, dangerouslyAllowSVG: true },
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
   async headers() {
     return [
