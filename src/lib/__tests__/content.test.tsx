@@ -94,12 +94,15 @@ describe("content.ts", () => {
     it("returns true for valid sections", () => {
       expect(isValidSection("blog")).toBe(true);
       expect(isValidSection("blog")).toBe(true);
+      expect(isValidSection("architecture")).toBe(true);
     });
 
     it("returns false for invalid sections", () => {
       expect(isValidSection("invalid")).toBe(false);
       expect(isValidSection("")).toBe(false);
       expect(isValidSection("blog-extra")).toBe(false);
+      expect(isValidSection("docs")).toBe(false);
+      expect(isValidSection("components")).toBe(false);
     });
   });
 
@@ -109,6 +112,13 @@ describe("content.ts", () => {
       expect(section).toBeDefined();
       expect(section?.slug).toBe("blog");
       expect(section?.title).toBe("Blog");
+    });
+
+    it("returns section info for the architecture doc section", () => {
+      const section = getSectionBySlug("architecture");
+      expect(section).toBeDefined();
+      expect(section?.slug).toBe("architecture");
+      expect(section?.title).toBe("Architecture");
     });
 
     it("returns undefined for invalid slug", () => {

@@ -46,4 +46,22 @@ describe("i18n request module", () => {
     const result = await mod.default({ locale: undefined } as never);
     expect(result.locale).toBe("en");
   });
+
+  it("resolves synchronously (no Promise) so routes can be generated statically", async () => {
+    // Regression guard for the soft-404 fix: an async getRequestConfig forces
+    // the whole [locale] tree to render dynamically, which streams notFound()
+    // as HTTP 200. The config must stay synchronous.
+    const mod = await import("./request");
+    const result = mod.default({ locale: "de" } as never);
+    expect(result).not.toBeInstanceOf(Promise);
+  });
+
+  it("returns statically-imported messages for the resolved locale", async () => {
+    const mod = await import("./request");
+    const en = await mod.default({ locale: "en" } as never);
+    const de = await mod.default({ locale: "de" } as never);
+    const localeOf = (cfg: unknown) => (cfg as { locale: string }).locale;
+    expect(localeOf(en)).toBe("en");
+    expect(localeOf(de)).toBe("de");
+  });
 });

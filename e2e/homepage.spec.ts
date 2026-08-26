@@ -40,12 +40,17 @@ test.describe("Homepage", () => {
     await expect(searchButton).toBeVisible();
   });
 
-  test("should handle 404 gracefully", async ({ page }) => {
-    // next-intl middleware redirects unknown paths to the locale'd not-found
-    // page, so the final status may be 200 while the not-found UI is rendered.
-    await page.goto("/nonexistent-page");
-    // The not-found page renders a heading and section navigation links
-    await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+  test("should handle 404 gracefully with a real 404 status", async ({ page }) => {
+    // Any unknown path is redirected by the middleware to the localized page,
+    // which must now return a real 404 (soft-404 regression guard) with the
+    // styled not-found UI.
+    const resp = await page.goto("/nonexistent-page");
+    expect(resp?.status()).toBe(404);
+    await expect(page).toHaveTitle(/404/);
+    // The styled root 404 page is served instead of a bare error.
+    await expect(
+      page.locator('link[rel="stylesheet"][href="/static/404.css"]')
+    ).toBeAttached();
     await expect(page.getByRole("link", { name: /blog/i }).first()).toBeVisible();
   });
 });

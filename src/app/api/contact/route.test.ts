@@ -174,4 +174,89 @@ describe("Contact API", () => {
     expect(blocked.status).toBe(429);
     expect(body.error).toContain("Too many requests");
   });
+
+  it("rate-limits per IP, not globally (different IPs are not blocked together)", async () => {
+    vi.stubEnv("SMTP_HOST", "smtp.example.com");
+    vi.stubEnv("SMTP_USER", "user");
+    vi.stubEnv("SMTP_PASS", "pass");
+
+    // Exhaust IP A's window.
+    for (let i = 0; i < 5; i++) {
+      await POST(
+        new Request("http://localhost/api/contact", {
+          method: "POST",
+          body: JSON.stringify(validBody),
+          headers: { "x-forwarded-for": "198.51.100.9" },
+        })
+      );
+    }
+    // A different IP is unaffected.
+    const ok = await POST(
+      new Request("http://localhost/api/contact", {
+        method: "POST",
+        body: JSON.stringify(validBody),
+        headers: { "x-forwarded-for": "198.51.100.99" },
+      })
+    );
+    expect(ok.status).toBe(200);
+
+    // The exhausted IP is still blocked.
+    const blocked = await POST(
+      new Request("http://localhost/api/contact", {
+        method: "POST",
+        body: JSON.stringify(validBody),
+        headers: { "x-forwarded-for": "198.51.100.9" },
+      })
+    );
+    expect(blocked.status).toBe(429);
+  });
+
+  it("returns 400 for a message that is too long", async () => {
+    const request = new Request("http://localhost/api/contact", {
+      method: "POST",
+      body: JSON.stringify({ email: "test@example.com", message: "x".repeat(10001) }),
+    });
+    const response = await POST(request);
+    expect(response.status).toBe(400);
+    const body = await response.json();
+    expect(body.error).toContain("Message");
+  });
+
+  it("accepts a message at the minimum length boundary", async () => {
+    vi.stubEnv("SMTP_HOST", "smtp.example.com");
+    vi.stubEnv("SMTP_USER", "user");
+    vi.stubEnv("SMTP_PASS", "pass");
+    const request = new Request("http://localhost/api/contact", {
+      method: "POST",
+      body: JSON.stringify({ email: "test@example.com", message: "1234567890" }),
+    });
+    const response = await POST(request);
+    expect(response.status).toBe(200);
+  });
+
+  it("uses the first x-forwarded-for IP and honours cf-connecting-ip fallback", async () => {
+    vi.stubEnv("SMTP_HOST", "smtp.example.com");
+    vi.stubEnv("SMTP_USER", "user");
+    vi.stubEnv("SMTP_PASS", "pass");
+    // Exhaust cf-connecting-ip bucket, then confirm it is independent of the
+    // x-forwarded-for list value.
+    const hdr = { "x-forwarded-for": "10.0.0.5, 10.0.0.6", "cf-connecting-ip": "203.0.113.50" };
+    for (let i = 0; i < 5; i++) {
+      await POST(
+        new Request("http://localhost/api/contact", {
+          method: "POST",
+          body: JSON.stringify(validBody),
+          headers: hdr,
+        })
+      );
+    }
+    const resp = await POST(
+      new Request("http://localhost/api/contact", {
+        method: "POST",
+        body: JSON.stringify(validBody),
+        headers: { "x-forwarded-for": "10.0.0.5, 10.0.0.6", "cf-connecting-ip": "203.0.113.50" },
+      })
+    );
+    expect(resp.status).toBe(429);
+  });
 });
