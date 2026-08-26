@@ -84,7 +84,13 @@
     "tryAgain": "Réessayer"
   },
   "section": {
-    "noPosts": "Aucun article disponible dans cette section."
+    "noPosts": "Aucun article disponible dans cette section.",
+    "filterAll": "Tous",
+    "previous": "« Précédent",
+    "next": "Suivant »",
+    "pageOf": "Page {current} sur {total}",
+    "showAllFilters": "Afficher les {count} filtres",
+    "showLessFilters": "Afficher moins"
   },
   "imprint": {
     "title": "Mentions légales",

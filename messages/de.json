@@ -84,7 +84,13 @@
     "tryAgain": "Erneut versuchen"
   },
   "section": {
-    "noPosts": "In diesem Bereich sind noch keine Beiträge verfügbar."
+    "noPosts": "In diesem Bereich sind noch keine Beiträge verfügbar.",
+    "filterAll": "Alle",
+    "previous": "« Zurück",
+    "next": "Weiter »",
+    "pageOf": "Seite {current} von {total}",
+    "showAllFilters": "Alle {count} Filter anzeigen",
+    "showLessFilters": "Weniger anzeigen"
   },
   "imprint": {
     "title": "Impressum",

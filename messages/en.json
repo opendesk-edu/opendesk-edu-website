@@ -84,7 +84,13 @@
     "tryAgain": "Try again"
   },
   "section": {
-    "noPosts": "No posts available in this section yet."
+    "noPosts": "No posts available in this section yet.",
+    "filterAll": "All",
+    "previous": "« Previous",
+    "next": "Next »",
+    "pageOf": "Page {current} of {total}",
+    "showAllFilters": "Show all {count} filters",
+    "showLessFilters": "Show less"
   },
   "imprint": {
     "title": "Imprint",

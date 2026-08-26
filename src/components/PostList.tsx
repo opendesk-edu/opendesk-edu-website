@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState, useMemo } from "react";
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { formatDate } from "@/lib/format";
 import { Tag, CategoryBadge, StatusBadge } from "@/components/Badges";
@@ -9,6 +10,8 @@ import { BLUR_TEASER } from "@/lib/blur";
 import type { Post } from "@/lib/content";
 
 const ITEMS_PER_PAGE = 10;
+/** Number of filter chips shown before the "show all filters" toggle. */
+const MAX_VISIBLE_FILTERS = 14;
 
 interface PostListProps {
   posts: Post[];
@@ -17,8 +20,10 @@ interface PostListProps {
 }
 
 export default function PostList({ posts, section, locale }: PostListProps) {
+  const t = useTranslations("section");
   const [currentPage, setCurrentPage] = useState(1);
   const [activeFilter, setActiveFilter] = useState<string | null>(null);
+  const [showAllFilters, setShowAllFilters] = useState(false);
 
   const allFilters = useMemo(() => {
     const tagSet = new Set<string>();
@@ -33,6 +38,31 @@ export default function PostList({ posts, section, locale }: PostListProps) {
     };
   }, [posts]);
 
+  // Rank filters by how many posts use them so the most relevant chips surface
+  // when the list is collapsed. Categories are shown ahead of tags.
+  const filterFreq = useMemo(() => {
+    const freq = new Map<string, number>();
+    for (const post of posts) {
+      post.categories?.forEach((c) => freq.set(c, (freq.get(c) ?? 0) + 1));
+      post.tags?.forEach((tag) => freq.set(tag, (freq.get(tag) ?? 0) + 1));
+    }
+    return freq;
+  }, [posts]);
+
+  const categorySet = useMemo(() => new Set(allFilters.categories), [allFilters]);
+  const orderedFilters = useMemo(() => {
+    const byFreq = (a: string, b: string) => (filterFreq.get(b) ?? 0) - (filterFreq.get(a) ?? 0);
+    const cats = [...allFilters.categories].sort(byFreq);
+    const tags = [...allFilters.tags].sort(byFreq);
+    return [...cats, ...tags];
+  }, [allFilters, filterFreq]);
+
+  const hasMoreFilters = orderedFilters.length > MAX_VISIBLE_FILTERS;
+  const hiddenFilterCount = Math.max(0, orderedFilters.length - MAX_VISIBLE_FILTERS);
+  const visibleFilters = showAllFilters
+    ? orderedFilters
+    : orderedFilters.slice(0, MAX_VISIBLE_FILTERS);
+
   const filteredPosts = useMemo(() => {
     if (!activeFilter) return posts;
     return posts.filter(
@@ -43,7 +73,8 @@ export default function PostList({ posts, section, locale }: PostListProps) {
   }, [posts, activeFilter]);
 
   const totalPages = Math.max(1, Math.ceil(filteredPosts.length / ITEMS_PER_PAGE));
-  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const currentPageClamped = Math.min(currentPage, totalPages);
+  const startIndex = (currentPageClamped - 1) * ITEMS_PER_PAGE;
   const visiblePosts = filteredPosts.slice(startIndex, startIndex + ITEMS_PER_PAGE);
 
   const handleFilter = (filter: string | null) => {
@@ -55,46 +86,53 @@ export default function PostList({ posts, section, locale }: PostListProps) {
 
   const hasFilters = allFilters.categories.length > 0 || allFilters.tags.length > 0;
 
+  const chipClass = (isActive: boolean) =>
+    `px-3 py-1 rounded-full text-sm font-medium transition-colors cursor-pointer ${
+      isActive
+        ? "bg-accent text-white"
+        : "bg-background-secondary text-foreground-secondary hover:bg-border"
+    }`;
+
   return (
     <>
       {hasFilters && (
-        <div className="flex flex-wrap gap-2 mb-8" role="group" aria-label="Filter by topic">
-          <button
-            onClick={() => handleFilter(null)}
-            className={`px-3 py-1 rounded-full text-sm font-medium transition-colors cursor-pointer ${
-              activeFilter === null
-                ? "bg-accent text-white"
-                : "bg-background-secondary text-foreground-secondary hover:bg-border"
+        <div className="mb-8">
+          <div
+            className={`flex flex-wrap gap-2 ${
+              showAllFilters ? "max-h-72 overflow-y-auto" : ""
             }`}
+            role="group"
+            aria-label="Filter by topic"
           >
-            All
-          </button>
-          {allFilters.categories.map((cat) => (
             <button
-              key={`cat-${cat}`}
-              onClick={() => handleFilter(cat)}
-              className={`px-3 py-1 rounded-full text-sm font-medium transition-colors cursor-pointer ${
-                activeFilter === cat
-                  ? "bg-accent text-white"
-                  : "bg-background-secondary text-foreground-secondary hover:bg-border"
-              }`}
+              onClick={() => handleFilter(null)}
+              className={chipClass(activeFilter === null)}
             >
-              {cat}
+              {t("filterAll")}
             </button>
-          ))}
-          {allFilters.tags.map((tag) => (
+            {visibleFilters.map((filter) => {
+              const isCat = categorySet.has(filter);
+              return (
+                <button
+                  key={`${isCat ? "cat" : "tag"}-${filter}`}
+                  onClick={() => handleFilter(filter)}
+                  className={chipClass(activeFilter === filter)}
+                >
+                  {filter}
+                </button>
+              );
+            })}
+          </div>
+          {hasMoreFilters && (
             <button
-              key={`tag-${tag}`}
-              onClick={() => handleFilter(tag)}
-              className={`px-3 py-1 rounded-full text-sm font-medium transition-colors cursor-pointer ${
-                activeFilter === tag
-                  ? "bg-accent text-white"
-                  : "bg-background-secondary text-foreground-secondary hover:bg-border"
-              }`}
+              onClick={() => setShowAllFilters((v) => !v)}
+              className="mt-3 text-sm font-medium text-accent hover:underline transition-colors"
             >
-              {tag}
+              {showAllFilters
+                ? t("showLessFilters")
+                : t("showAllFilters", { count: hiddenFilterCount })}
             </button>
-          ))}
+          )}
         </div>
       )}
 
@@ -168,20 +206,23 @@ export default function PostList({ posts, section, locale }: PostListProps) {
         <div className="flex items-center justify-center gap-4 mt-12">
           <button
             onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
-            disabled={currentPage === 1}
+            disabled={currentPageClamped === 1}
             className="text-sm text-foreground-secondary hover:text-foreground transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
           >
-            « Previous
+            {t("previous")}
           </button>
           <span className="text-sm text-foreground-secondary">
-            Page {currentPage} of {totalPages}
+            {t("pageOf", {
+              current: currentPageClamped,
+              total: totalPages,
+            })}
           </span>
           <button
             onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
-            disabled={currentPage === totalPages}
+            disabled={currentPageClamped === totalPages}
             className="text-sm text-foreground-secondary hover:text-foreground transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
           >
-            Next »
+            {t("next")}
           </button>
         </div>
       )}

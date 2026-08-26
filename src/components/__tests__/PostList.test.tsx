@@ -18,6 +18,30 @@ vi.mock("next/image", () => ({
   },
 }));
 
+// PostList now localizes UI strings via next-intl. Provide a minimal mock so
+// the component renders without a NextIntlClientProvider wrapper. The English
+// strings mirror messages/en.json (the assertions in this file expect them).
+vi.mock("next-intl", () => {
+  const section: Record<string, string> = {
+    filterAll: "All",
+    previous: "« Previous",
+    next: "Next »",
+    pageOf: "Page {current} of {total}",
+    showAllFilters: "Show all {count} filters",
+    showLessFilters: "Show less",
+  };
+  return {
+    useTranslations: () =>
+      (key: string, values?: Record<string, number>) => {
+        const str = section[key] ?? key;
+        if (!values) return str;
+        return str.replace(/\{(current|total|count)\}/g, (_, k: string) =>
+          String((values as Record<string, number>)[k])
+        );
+      },
+  };
+});
+
 vi.mock("@/lib/format", () => ({
   formatDate: (date: string) => {
     const d = new Date(date);
