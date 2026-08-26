@@ -35,6 +35,6 @@ export default defineConfig({
     command: `npm run build && npm run start -- --port ${port}`,
     url: baseURL,
     reuseExistingServer: !isCI,
-    timeout: 300 * 1000,
+    timeout: 480 * 1000,
   },
 });
