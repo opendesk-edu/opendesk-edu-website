@@ -2,12 +2,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
-import { motion } from 'framer-motion';
 import LandscapeVisualization from '@/components/Landscape/LandscapeVisualization';
-
-// This page renders a framer-motion <motion.div> directly in a Server
-// Component, which cannot be statically prerendered. Keep it on-demand.
-export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: 'Landscape' });
@@ -101,11 +96,7 @@ export default function LandscapePage() {
         {/* Scroll indicator */}
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 text-center">
           <div className="w-8 h-12 border-2 border-purple-500/40 rounded-full flex justify-center">
-            <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className="w-1 h-2 bg-purple-500 rounded-full mt-2"
-            />
+            <div className="w-1 h-2 bg-purple-500 rounded-full mt-2 animate-bounce" />
           </div>
           <span className="mt-4 text-sm text-muted-foreground">Scroll to explore</span>
         </div>
