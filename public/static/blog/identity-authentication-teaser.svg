@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <title>openDesk Edu — Identity &amp; Authentication Architecture</title>
+  <desc>Branded teaser image for the openDesk Edu Identity and Authentication Architecture article. Dark purple gradient background with a federation/identity icon, grid pattern, and article title.</desc>
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0014"/>
+      <stop offset="50%" stop-color="#0d0020"/>
+      <stop offset="100%" stop-color="#0a0014"/>
+    </linearGradient>
+    <linearGradient id="authGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#571EFA"/>
+      <stop offset="100%" stop-color="#927AFA"/>
+    </linearGradient>
+    <linearGradient id="accentLeft" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#571EFA" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#571EFA" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="accentRight" x1="100%" y1="0%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#927AFA" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#927AFA" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="iconGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#571EFA"/>
+      <stop offset="100%" stop-color="#927AFA"/>
+    </linearGradient>
+    <filter id="glowWide" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="40"/>
+    </filter>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#571EFA" stroke-width="0.5" opacity="0.06"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGrad)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+
+  <!-- Left accent glow -->
+  <ellipse cx="200" cy="315" rx="300" ry="400" fill="url(#accentLeft)"/>
+  <!-- Right accent glow -->
+  <ellipse cx="1000" cy="315" rx="300" ry="400" fill="url(#accentRight)"/>
+
+  <!-- Identity/Federation icon: shield + key + nodes -->
+  <g transform="translate(190, 200)">
+    <!-- Glow behind icon -->
+    <circle cx="100" cy="115" r="90" fill="url(#iconGrad)" opacity="0.15" filter="url(#glowWide)"/>
+
+    <!-- Federation nodes (interconnected circles) -->
+    <g stroke="url(#authGrad)" stroke-width="2" fill="none" opacity="0.8">
+      <!-- Connection lines -->
+      <line x1="50" y1="60" x2="150" y2="60"/>
+      <line x1="50" y1="60" x2="100" y2="140"/>
+      <line x1="150" y1="60" x2="100" y2="140"/>
+      <line x1="100" y1="140" x2="50" y2="170"/>
+      <line x1="100" y1="140" x2="150" y2="170"/>
+    </g>
+
+    <!-- Node circles -->
+    <circle cx="50" cy="60" r="14" fill="url(#authGrad)" opacity="0.9"/>
+    <circle cx="150" cy="60" r="14" fill="url(#authGrad)" opacity="0.9"/>
+    <circle cx="100" cy="140" r="18" fill="url(#authGrad)"/>
+    <circle cx="50" cy="170" r="10" fill="url(#authGrad)" opacity="0.7"/>
+    <circle cx="150" cy="170" r="10" fill="url(#authGrad)" opacity="0.7"/>
+
+    <!-- Shield outline (security) -->
+    <path d="M 100 25 L 130 40 L 130 80 Q 130 100 100 115 Q 70 100 70 80 L 70 40 Z"
+          fill="none" stroke="url(#authGrad)" stroke-width="2.5" opacity="0.6"/>
+    <!-- Keyhole in shield -->
+    <circle cx="100" cy="65" r="5" fill="url(#authGrad)" opacity="0.8"/>
+    <rect x="97" y="65" width="6" height="14" rx="2" fill="url(#authGrad)" opacity="0.8"/>
+  </g>
+
+  <!-- Title text -->
+  <text x="580" y="260" font-family="system-ui, -apple-system, sans-serif" font-size="42" font-weight="700" fill="#ffffff" text-anchor="start" letter-spacing="-0.5">
+    Identity &amp; Authentication
+  </text>
+  <text x="580" y="310" font-family="system-ui, -apple-system, sans-serif" font-size="42" font-weight="700" fill="url(#authGrad)" text-anchor="start" letter-spacing="-0.5">
+    Architecture
+  </text>
+
+  <!-- Subtitle -->
+  <text x="580" y="360" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="400" fill="#a0a0c0" text-anchor="start">
+    Federation · SAML · OIDC · Keycloak · Shibboleth
+  </text>
+
+  <!-- Bottom accent line -->
+  <rect x="580" y="390" width="340" height="3" rx="1.5" fill="url(#authGrad)" opacity="0.6"/>
+
+  <!-- openDesk Edu branding -->
+  <text x="580" y="560" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="500" fill="#666680" text-anchor="start">
+    openDesk Edu · Architecture Reference
+  </text>
+</svg>
