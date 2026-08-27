@@ -20,13 +20,13 @@
 
 ## 3. Article 3: Storage & Data Management Architecture
 
-- [ ] 3.1 Write EN article `content/en/architecture/storage-data-management.md` covering: persistent storage (PVs, storage classes, access modes), database backends (MariaDB, PostgreSQL, Redis), backup integration, data lifecycle and migration, capacity planning guidance
-- [ ] 3.2 Create SVG teaser `public/static/blog/storage-data-management-teaser.svg`
-- [ ] 3.3 Verify EN article passes pre-publication checklist
-- [ ] 3.4 Translate to DE: `content/de/architecture/storage-data-management.md`
-- [ ] 3.5 Translate to FR: `content/fr/architecture/storage-data-management.md`
-- [ ] 3.6 Translate to ZH: `content/zh/architecture/storage-data-management.md`
-- [ ] 3.7 Verify all 4 locale files have identical frontmatter structure
+- [x] 3.1 Write EN article `content/en/architecture/storage-data-management.md` covering: persistent storage (PVs, storage classes, access modes), database backends (MariaDB, PostgreSQL, Redis), backup integration, data lifecycle and migration, capacity planning guidance
+- [x] 3.2 Create SVG teaser `public/static/blog/storage-data-management-teaser.svg`
+- [x] 3.3 Verify EN article passes pre-publication checklist
+- [x] 3.4 Translate to DE: `content/de/architecture/storage-data-management.md`
+- [x] 3.5 Translate to FR: `content/fr/architecture/storage-data-management.md`
+- [x] 3.6 Translate to ZH: `content/zh/architecture/storage-data-management.md`
+- [x] 3.7 Verify all 4 locale files have identical frontmatter structure
 
 ## 4. Article 4: Security Architecture
 
