@@ -10,13 +10,13 @@
 
 ## 2. Article 2: Networking & Traffic Flow Architecture
 
-- [ ] 2.1 Write EN article `content/en/architecture/networking-traffic-flow.md` covering: traffic flow path (DNS → ingress → TLS → routing → pod), TLS certificate management, ingress and routing, DNS architecture, network segmentation and policies
-- [ ] 2.2 Create SVG teaser `public/static/blog/networking-traffic-flow-teaser.svg`
-- [ ] 2.3 Verify EN article passes pre-publication checklist
-- [ ] 2.4 Translate to DE: `content/de/architecture/networking-traffic-flow.md`
-- [ ] 2.5 Translate to FR: `content/fr/architecture/networking-traffic-flow.md`
-- [ ] 2.6 Translate to ZH: `content/zh/architecture/networking-traffic-flow.md`
-- [ ] 2.7 Verify all 4 locale files have identical frontmatter structure
+- [x] 2.1 Write EN article `content/en/architecture/networking-traffic-flow.md` covering: traffic flow path (DNS → ingress → TLS → routing → pod), TLS certificate management, ingress and routing, DNS architecture, network segmentation and policies
+- [x] 2.2 Create SVG teaser `public/static/blog/networking-traffic-flow-teaser.svg`
+- [x] 2.3 Verify EN article passes pre-publication checklist
+- [x] 2.4 Translate to DE: `content/de/architecture/networking-traffic-flow.md`
+- [x] 2.5 Translate to FR: `content/fr/architecture/networking-traffic-flow.md`
+- [x] 2.6 Translate to ZH: `content/zh/architecture/networking-traffic-flow.md`
+- [x] 2.7 Verify all 4 locale files have identical frontmatter structure
 
 ## 3. Article 3: Storage & Data Management Architecture
 

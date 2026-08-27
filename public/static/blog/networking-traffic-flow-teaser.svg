@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <title>openDesk Edu — Networking &amp; Traffic Flow Architecture</title>
+  <desc>Branded teaser image for the openDesk Edu Networking and Traffic Flow Architecture article. Dark purple gradient background with a network routing icon, grid pattern, and article title.</desc>
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0014"/>
+      <stop offset="50%" stop-color="#0d0020"/>
+      <stop offset="100%" stop-color="#0a0014"/>
+    </linearGradient>
+    <linearGradient id="netGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#571EFA"/>
+      <stop offset="100%" stop-color="#927AFA"/>
+    </linearGradient>
+    <linearGradient id="accentLeft" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#571EFA" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#571EFA" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="accentRight" x1="100%" y1="0%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#927AFA" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#927AFA" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="iconGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#571EFA"/>
+      <stop offset="100%" stop-color="#927AFA"/>
+    </linearGradient>
+    <filter id="glowWide" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="40"/>
+    </filter>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#571EFA" stroke-width="0.5" opacity="0.06"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGrad)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+
+  <!-- Left accent glow -->
+  <ellipse cx="200" cy="315" rx="300" ry="400" fill="url(#accentLeft)"/>
+  <!-- Right accent glow -->
+  <ellipse cx="1000" cy="315" rx="300" ry="400" fill="url(#accentRight)"/>
+
+  <!-- Network/traffic flow icon: interconnected nodes with flow arrows -->
+  <g transform="translate(180, 195)">
+    <!-- Glow behind icon -->
+    <circle cx="110" cy="120" r="90" fill="url(#iconGrad)" opacity="0.15" filter="url(#glowWide)"/>
+
+    <!-- Flow arrows (left to right) -->
+    <g stroke="url(#netGrad)" stroke-width="2" fill="none" opacity="0.6">
+      <line x1="20" y1="60" x2="85" y2="60" stroke-dasharray="4 3"/>
+      <line x1="135" y1="60" x2="200" y2="60" stroke-dasharray="4 3"/>
+      <line x1="20" y1="120" x2="85" y2="120" stroke-dasharray="4 3"/>
+      <line x1="135" y1="120" x2="200" y2="120" stroke-dasharray="4 3"/>
+      <line x1="20" y1="180" x2="85" y2="180" stroke-dasharray="4 3"/>
+      <line x1="135" y1="180" x2="200" y2="180" stroke-dasharray="4 3"/>
+    </g>
+
+    <!-- Node circles (3 columns: DNS → Ingress → Pod) -->
+    <!-- Column 1: DNS -->
+    <circle cx="20" cy="60" r="12" fill="url(#netGrad)" opacity="0.7"/>
+    <circle cx="20" cy="120" r="12" fill="url(#netGrad)" opacity="0.7"/>
+    <circle cx="20" cy="180" r="12" fill="url(#netGrad)" opacity="0.7"/>
+
+    <!-- Column 2: Ingress (larger) -->
+    <circle cx="110" cy="60" r="16" fill="url(#netGrad)" opacity="0.9"/>
+    <circle cx="110" cy="120" r="16" fill="url(#netGrad)"/>
+    <circle cx="110" cy="180" r="16" fill="url(#netGrad)" opacity="0.9"/>
+
+    <!-- Column 3: Pods -->
+    <circle cx="200" cy="60" r="12" fill="url(#netGrad)" opacity="0.7"/>
+    <circle cx="200" cy="120" r="12" fill="url(#netGrad)" opacity="0.7"/>
+    <circle cx="200" cy="180" r="12" fill="url(#netGrad)" opacity="0.7"/>
+
+    <!-- Arrowheads -->
+    <g fill="url(#netGrad)" opacity="0.8">
+      <polygon points="85,55 95,60 85,65"/>
+      <polygon points="200,55 210,60 200,65"/>
+      <polygon points="85,115 95,120 85,125"/>
+      <polygon points="200,115 210,120 200,125"/>
+      <polygon points="85,175 95,180 85,185"/>
+      <polygon points="200,175 210,180 200,185"/>
+    </g>
+  </g>
+
+  <!-- Title text -->
+  <text x="580" y="260" font-family="system-ui, -apple-system, sans-serif" font-size="42" font-weight="700" fill="#ffffff" text-anchor="start" letter-spacing="-0.5">
+    Networking &amp; Traffic Flow
+  </text>
+  <text x="580" y="310" font-family="system-ui, -apple-system, sans-serif" font-size="42" font-weight="700" fill="url(#netGrad)" text-anchor="start" letter-spacing="-0.5">
+    Architecture
+  </text>
+
+  <!-- Subtitle -->
+  <text x="580" y="360" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="400" fill="#a0a0c0" text-anchor="start">
+    DNS · TLS · Ingress · Routing · Network Policies
+  </text>
+
+  <!-- Bottom accent line -->
+  <rect x="580" y="390" width="340" height="3" rx="1.5" fill="url(#netGrad)" opacity="0.6"/>
+
+  <!-- openDesk Edu branding -->
+  <text x="580" y="560" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="500" fill="#666680" text-anchor="start">
+    openDesk Edu · Architecture Reference
+  </text>
+</svg>
