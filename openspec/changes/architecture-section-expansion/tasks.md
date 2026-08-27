@@ -30,18 +30,18 @@
 
 ## 4. Article 4: Security Architecture
 
-- [ ] 4.1 Write EN article `content/en/architecture/security.md` covering: security architecture overview, secret management (SOPS + age + ArgoCD CMP), network security and isolation, RBAC and access control, audit logging, compliance framework mapping (BSI IT-Grundschutz, GDPR, ISO 27001)
-- [ ] 4.2 Create SVG teaser `public/static/blog/security-architecture-teaser.svg`
-- [ ] 4.3 Verify EN article passes pre-publication checklist
-- [ ] 4.4 Translate to DE: `content/de/architecture/security.md`
-- [ ] 4.5 Translate to FR: `content/fr/architecture/security.md`
-- [ ] 4.6 Translate to ZH: `content/zh/architecture/security.md`
-- [ ] 4.7 Verify all 4 locale files have identical frontmatter structure
+- [x] 4.1 Write EN article `content/en/architecture/security.md` covering: security architecture overview, secret management (SOPS + age + ArgoCD CMP), network security and isolation, RBAC and access control, audit logging, compliance framework mapping (BSI IT-Grundschutz, GDPR, ISO 27001)
+- [x] 4.2 Create SVG teaser `public/static/blog/security-architecture-teaser.svg`
+- [x] 4.3 Verify EN article passes pre-publication checklist
+- [x] 4.4 Translate to DE: `content/de/architecture/security.md`
+- [x] 4.5 Translate to FR: `content/fr/architecture/security.md`
+- [x] 4.6 Translate to ZH: `content/zh/architecture/security.md`
+- [x] 4.7 Verify all 4 locale files have identical frontmatter structure
 
 ## 5. Cross-Article Verification
 
-- [ ] 5.1 Verify all cross-references between architecture articles use correct relative paths and resolve in all locales
-- [ ] 5.2 Verify architecture section listing page (`/[locale]/architecture`) shows all 6 articles (2 existing + 4 new) in all locales
-- [ ] 5.3 Run the editorial-rule scan (grep for institutional names, internal data, fixed service counts) across all 16 new files
+- [x] 5.1 Verify all cross-references between architecture articles use correct relative paths and resolve in all locales
+- [x] 5.2 Verify architecture section listing page (`/[locale]/architecture`) shows all 6 articles (2 existing + 4 new) in all locales
+- [x] 5.3 Run the editorial-rule scan (grep for institutional names, internal data, fixed service counts) across all 16 new files
 - [ ] 5.4 Run the build to verify all 4 new articles × 4 locales generate correctly (657 + 16 = 673 pages expected)
 - [ ] 5.5 Commit and push all changes
