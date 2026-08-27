@@ -37,6 +37,7 @@ const cacheHeaders = [
 const nextConfig: NextConfig = {
   output: "standalone",
   poweredByHeader: false,
+  staticPageGenerationTimeout: 300,
   turbopack: { root: path.resolve(__dirname, "..") },
   images: { unoptimized: false, dangerouslyAllowSVG: true },
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
