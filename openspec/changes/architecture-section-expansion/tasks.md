@@ -43,5 +43,5 @@
 - [x] 5.1 Verify all cross-references between architecture articles use correct relative paths and resolve in all locales
 - [x] 5.2 Verify architecture section listing page (`/[locale]/architecture`) shows all 6 articles (2 existing + 4 new) in all locales
 - [x] 5.3 Run the editorial-rule scan (grep for institutional names, internal data, fixed service counts) across all 16 new files
-- [ ] 5.4 Run the build to verify all 4 new articles × 4 locales generate correctly (657 + 16 = 673 pages expected)
-- [ ] 5.5 Commit and push all changes
+- [x] 5.4 Run the build to verify all 4 new articles × 4 locales generate correctly (657 + 16 = 673 pages expected)
+- [x] 5.5 Commit and push all changes
