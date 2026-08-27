@@ -30,7 +30,7 @@ vi.mock("remark", () => ({
 }));
 
 // Import after mocks
-import { getPostBySlug, getPostsBySection, getAllPosts, isValidSection, getSectionBySlug, getStaticPathsForSection, getPostsByTag, getAllTags, getStaticPathsForTags } from "@/lib/content";
+import { getPostBySlug, getPostsBySection, getAllPosts, isValidSection, getSectionBySlug, getStaticPathsForSection, getPostsByTag, getAllTags, getStaticPathsForTags, clearContentCache } from "@/lib/content";
 
 const mockExistsSync = vi.mocked(fs.existsSync);
 const mockReaddirSync = vi.mocked(fs.readdirSync);
@@ -55,6 +55,7 @@ const sampleData = {
 
 beforeEach(() => {
   vi.clearAllMocks();
+  clearContentCache();
   mockExistsSync.mockReturnValue(true);
   mockReaddirSync.mockImplementation(((source: string) => {
     if (source.includes("blog")) return ["test-post.md", "tagged-post.md"];

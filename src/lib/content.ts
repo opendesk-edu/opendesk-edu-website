@@ -105,13 +105,29 @@ function getContentDirectory(locale: string): string {
   return path.join(process.cwd(), "content", locale);
 }
 
+const slugCache = new Map<string, Post | null>();
+const sectionCache = new Map<string, Post[]>();
+
+/** Clear the in-memory content cache. Call after modifying content files (e.g., in tests or dev HMR). */
+export function clearContentCache(): void {
+  slugCache.clear();
+  sectionCache.clear();
+}
+
 export async function getPostBySlug(
   section: string,
   slug: string,
   locale: string = 'en'
 ): Promise<Post | null> {
+  const cacheKey = `${section}:${slug}:${locale}`;
+  const cached = slugCache.get(cacheKey);
+  if (cached !== undefined) return cached;
+
   const sectionDir = path.join(getContentDirectory(locale), section);
-  if (!fs.existsSync(sectionDir)) return null;
+  if (!fs.existsSync(sectionDir)) {
+    slugCache.set(cacheKey, null);
+    return null;
+  }
 
   // Fast path: try direct filename match first (covers the common case)
   const candidatePath = path.join(sectionDir, `${slug}.md`);
@@ -135,15 +151,25 @@ export async function getPostBySlug(
     const fileSlug = getSlugFromFilename(file, data);
      if (fileSlug === slug) {
        const htmlContent = await markdownToHtml(content);
-       return buildPost(data, htmlContent, fileSlug, section, content);
+       const post = buildPost(data, htmlContent, fileSlug, section, content);
+       slugCache.set(cacheKey, post);
+       return post;
      }
   }
+  slugCache.set(cacheKey, null);
   return null;
 }
 
 export async function getPostsBySection(section: string, locale: string = 'en'): Promise<Post[]> {
+  const cacheKey = `${section}:${locale}`;
+  const cached = sectionCache.get(cacheKey);
+  if (cached) return cached;
+
   const sectionDir = path.join(getContentDirectory(locale), section);
-  if (!fs.existsSync(sectionDir)) return [];
+  if (!fs.existsSync(sectionDir)) {
+    sectionCache.set(cacheKey, []);
+    return [];
+  }
 
   const files = fs.readdirSync(sectionDir).filter(isValidContentFile);
 
@@ -162,9 +188,12 @@ export async function getPostsBySection(section: string, locale: string = 'en'):
     })
   );
 
-  return posts
+  const result = posts
     .filter((p): p is Post => p !== null)
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+  sectionCache.set(cacheKey, result);
+  return result;
 }
 
 export async function getAllPosts(locale: string = 'en'): Promise<Post[]> {
