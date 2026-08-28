@@ -8,7 +8,7 @@ tags: ["架构", "kubernetes", "saml", "keycloak", "联邦认证"]
 
 # 系统架构概览
 
-openDesk Edu 在 openDesk 协作环境（CE）的基础上扩展了专属的教育服务层，为学校、大学和科研机构打造统一的数字化工作空间。基于 openDesk CE v1.13.x 构建，平台将 服务打包到一个可部署的 Kubernetes 集群中，提供集中认证、自动备份以及由 Bundesdruckerei 提供的证书管理。全部代码采用 Apache-2.0 许可证发布，仅需一条命令即可部署：`helmfile -e default apply`。
+openDesk Edu 在 openDesk 协作环境（CE）的基础上扩展了专属的教育服务层，为学校、大学和科研机构打造统一的数字化工作空间。基于 openDesk CE v1.13.x 构建，平台将服务打包到一个可部署的 Kubernetes 集群中，提供集中认证、自动备份以及由 Bundesdruckerei 提供的证书管理。详细的容量分析与治理模型技术伴随文档请查阅 [容量分析与治理模型](/architecture/capacity-and-governance)。全部代码采用 Apache-2.0 许可证发布，仅需一条命令即可部署：`helmfile -e default apply`。
 
 ## 核心原则
 

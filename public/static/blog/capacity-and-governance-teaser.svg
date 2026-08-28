@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <title>openDesk Edu — Capacity Analysis and Governance Model</title>
+  <desc>Branded teaser image for the openDesk Edu Capacity and Governance article. Dark purple gradient background with a balance scale icon and gears, grid pattern, and article title.</desc>
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0014"/>
+      <stop offset="50%" stop-color="#0d0020"/>
+      <stop offset="100%" stop-color="#0a0014"/>
+    </linearGradient>
+    <linearGradient id="secGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#571EFA"/>
+      <stop offset="100%" stop-color="#927AFA"/>
+    </linearGradient>
+    <linearGradient id="accentLeft" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#571EFA" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#571EFA" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="accentRight" x1="100%" y1="0%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#927AFA" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#927AFA" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="iconGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#571EFA"/>
+      <stop offset="100%" stop-color="#927AFA"/>
+    </linearGradient>
+    <filter id="glowWide" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="40"/>
+    </filter>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#571EFA" stroke-width="0.5" opacity="0.06"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGrad)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+
+  <!-- Left accent glow -->
+  <ellipse cx="200" cy="315" rx="300" ry="400" fill="url(#accentLeft)"/>
+  <!-- Right accent glow -->
+  <ellipse cx="1000" cy="315" rx="300" ry="400" fill="url(#accentRight)"/>
+
+  <!-- Governance icon: balance scale with gears -->
+  <g transform="translate(190, 195)">
+    <!-- Glow behind icon -->
+    <circle cx="100" cy="120" r="90" fill="url(#iconGrad)" opacity="0.15" filter="url(#glowWide)"/>
+
+    <!-- Balance scale base -->
+    <rect x="80" y="180" width="40" height="6" rx="2" fill="url(#secGrad)" opacity="0.9"/>
+    
+    <!-- Balance scale arm -->
+    <line x1="100" y1="180" x2="100" y2="120" stroke="url(#secGrad)" stroke-width="3" opacity="0.9"/>
+    
+    <!-- Left pan -->
+    <path d="M 50 120 L 65 105 L 85 105 L 100 120 Z" fill="none" stroke="url(#secGrad)" stroke-width="2" opacity="0.8"/>
+    <path d="M 55 105 L 65 115 L 80 115 L 70 105 Z" fill="url(#secGrad)" opacity="0.6"/>
+    
+    <!-- Right pan -->
+    <path d="M 150 120 L 135 105 L 115 105 L 100 120 Z" fill="none" stroke="url(#secGrad)" stroke-width="2" opacity="0.8"/>
+    <path d="M 115 105 L 130 115 L 145 115 L 130 105 Z" fill="url(#secGrad)" opacity="0.6"/>
+    
+    <!-- Fulfillment symbol (checkmark) in left pan -->
+    <g stroke="url(#secGrad)" stroke-width="2" fill="none" opacity="0.9" transform="translate(0, -2)">
+      <path d="M 60 102 L 68 110 L 80 98"/>
+    </g>
+    
+    <!-- Gears below balance (representing capacity/operations) -->
+    <g transform="translate(-20, 50)">
+      <!-- Gear 1 -->
+      <circle cx="80" cy="200" r="15" fill="none" stroke="url(#secGrad)" stroke-width="2" opacity="0.7"/>
+      <g stroke="url(#secGrad)" stroke-width="1.5" opacity="0.7">
+        <line x1="80" y1="200" x2="80" y2="185"/>
+        <line x1="80" y1="200" x2="80" y2="215"/>
+        <line x1="80" y1="200" x2="85" y2="200"/>
+        <line x1="80" y1="200" x2="75" y2="200"/>
+        <line x1="83.5" y1="183.5" x2="76.5" y2="196.5"/>
+        <line x1="83.5" y1="216.5" x2="76.5" y2="203.5"/>
+        <line x1="83.5" y1="203.5" x2="76.5" y2="216.5"/>
+        <line x1="83.5" y1="196.5" x2="76.5" y2="183.5"/>
+      </g>
+      
+      <!-- Gear 2 -->
+      <circle cx="120" cy="200" r="12" fill="none" stroke="url(#secGrad)" stroke-width="2" opacity="0.7"/>
+      <g stroke="url(#secGrad)" stroke-width="1.5" opacity="0.7">
+        <line x1="120" y1="200" x2="120" y2="188"/>
+        <line x1="120" y1="200" x2="120" y2="212"/>
+        <line x1="120" y1="200" x2="124" y2="200"/>
+        <line x1="120" y1="200" x2="116" y2="200"/>
+        <line x1="122.8" y1="185.2" x2="117.2" y2="197.2"/>
+        <line x1="122.8" y1="214.8" x2="117.2" y2="202.8"/>
+        <line x1="122.8" y1="202.8" x2="117.2" y2="214.8"/>
+        <line x1="122.8" y1="197.2" x2="117.2" y2="185.2"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- Title text -->
+  <text x="580" y="240" font-family="system-ui, -apple-system, sans-serif" font-size="42" font-weight="700" fill="#ffffff" text-anchor="start" letter-spacing="-0.5">
+    Capacity Analysis</text>
+  <text x="580" y="290" font-family="system-ui, -apple-system, sans-serif" font-size="42" font-weight="700" fill="#ffffff" text-anchor="start" letter-spacing="-0.5">
+    and Governance Model</text>
+  <text x="580" y="345" font-family="system-ui, -apple-system, sans-serif" font-size="34" font-weight="600" fill="url(#secGrad)" text-anchor="start" letter-spacing="-0.5">
+    Scaling · Operations · Lifecycle</text>
+
+  <!-- Subtitle -->
+  <text x="580" y="395" font-family="system-ui, -apple-system, sans-serif" font-size="19" font-weight="400" fill="#a0a0c0" text-anchor="start">
+    Sizing Guidelines · Tier-Based Deployment · Change Management · Risk and Compliance</text>
+
+  <!-- Bottom accent line -->
+  <rect x="580" y="425" width="440" height="3" rx="1.5" fill="url(#secGrad)" opacity="0.6"/>
+
+  <!-- openDesk Edu branding -->
+  <text x="580" y="560" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="500" fill="#666680" text-anchor="start">
+    openDesk Edu · Architecture Reference · Companion Document</text>
+</svg>

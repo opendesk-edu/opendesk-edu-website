@@ -8,7 +8,7 @@ tags: ["architecture", "kubernetes", "saml", "keycloak", "fédération"]
 
 # Vue d'ensemble de l'architecture système
 
-openDesk Edu étend l'environnement de collaboration openDesk (CE) avec une couche dédiée de services éducatifs, créant un espace de travail numérique unifié pour les écoles, les universités et les établissements de recherche. Basé sur openDesk CE v1.13.x, la plateforme regroupe tous les services dans un cluster Kubernetes unique avec authentification centralisée, sauvegardes automatisées et gestion des certificats par la Bundesdruckerei. Le tout est distribué sous licence Apache-2.0 et se déploie en une seule commande : `helmfile -e default apply`.
+openDesk Edu étend l'environnement de collaboration openDesk (CE) avec une couche dédiée de services éducatifs, créant un espace de travail numérique unifié pour les écoles, les universités et les établissements de recherche. Basé sur openDesk CE v1.13.x, la plateforme regroupe tous les services dans un cluster Kubernetes unique avec authentification centralisée, sauvegardes automatisées et gestion des certificats par la Bundesdruckerei. Un document technique compagnon détaillé, l'analyse de capacité et le modèle de gouvernance, est disponible à l'adresse [Analyse de capacité et modèle de gouvernance](/architecture/capacity-and-governance). Le tout est distribué sous licence Apache-2.0 et se déploie en une seule commande : `helmfile -e default apply`.
 
 ## Principes fondamentaux
 
