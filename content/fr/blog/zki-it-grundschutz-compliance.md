@@ -89,7 +89,7 @@ Une autre étape vers la conformité est la **réduction du registre de producti
 
 Cela réduit la surface d'attaque et rend le registre gérable et auditable — un pilier important pour la conformité ZKI.
 
-**URL du registre :** `registry.opencode.de/umr/opendesk-edu/opendesk-nix/`
+**URL du registre :** `ghcr.io/tobias-weiss-ai-xr/umr/opendesk-edu/opendesk-nix/`
 
 ## Où openDesk Edu en est déjà
 

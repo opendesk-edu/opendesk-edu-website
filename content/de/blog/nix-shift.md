@@ -345,7 +345,7 @@ die **Container-Images selbst als NixOS-Systeme** gebaut. Alle 78 Dienste haben:
 - ~20% kleinere Images als Dockerfile-Builds
 
 **Phase 3 (Registry-Push & K8s-Deployment):** Sämtliche 78 Images wurden:
-- In die Registry gepusht: `registry.opencode.de/umr/opendesk-edu/opendesk-nix`
+- In die Registry gepusht: `ghcr.io/tobias-weiss-ai-xr/umr/opendesk-edu/opendesk-nix`
 - Mit Grype gescannt — **0 CVEs** in allen Images
 - Mit **Cosign signiert** (GitHub OIDC)
 - Mit einem **SBOM** (SPDX 2.3 JSON) für jedes Image ausgestattet

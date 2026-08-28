@@ -10,7 +10,7 @@ image: "/static/blog/nix-shift-teaser.svg"
 
 # The Nix Shift: 100% NixOS Containers for openDesk Edu
 
-All 78 openDesk services have been migrated from Dockerfile-based builds to NixOS containers. Every image has been Grype-scanned (0 CVEs), signed with Cosign, and equipped with an SPDX 2.3 SBOM. The complete set of Kubernetes deployment manifests for the production K3s cluster is available in the repository, and all images are hosted at `registry.opencode.de/umr/opendesk-edu/opendesk-nix`.
+All 78 openDesk services have been migrated from Dockerfile-based builds to NixOS containers. Every image has been Grype-scanned (0 CVEs), signed with Cosign, and equipped with an SPDX 2.3 SBOM. The complete set of Kubernetes deployment manifests for the production K3s cluster is available in the repository, and all images are hosted at `ghcr.io/tobias-weiss-ai-xr/umr/opendesk-edu/opendesk-nix`.
 
 ---
 
@@ -180,7 +180,7 @@ Compared to the previous Dockerfile-based builds, the key difference is enforcem
 
 ## Registry and Deployment
 
-All 78 images are hosted at `registry.opencode.de/umr/opendesk-edu/opendesk-nix` (total ~25 GB, average ~325 MB per image). The repository at `gitlab.opencode.de/umr/opendesk-edu/opendesk-nix` contains the complete build definitions.
+All 78 images are hosted at `ghcr.io/tobias-weiss-ai-xr/umr/opendesk-edu/opendesk-nix` (total ~25 GB, average ~325 MB per image). The repository at `gitlab.opencode.de/umr/opendesk-edu/opendesk-nix` contains the complete build definitions.
 
 ### Building and Pushing
 
@@ -204,7 +204,7 @@ kubectl apply -f groupware/sogo.yaml
 kubectl apply -f learning/moodle.yaml
 ```
 
-Image tags follow the pattern `registry.opencode.de/umr/opendesk-edu/opendesk-nix/<service>:<version>-nixos`.
+Image tags follow the pattern `ghcr.io/tobias-weiss-ai-xr/umr/opendesk-edu/opendesk-nix/<service>:<version>-nixos`.
 
 ### Verification
 
@@ -276,7 +276,7 @@ nix flake check                   # OpenSpec compliance
 ## Resources
 
 - **Repository**: [github.com/tobias-weiss-ai-xr/opendesk-nix](https://github.com/tobias-weiss-ai-xr/opendesk-nix) and [gitlab.opencode.de/umr/opendesk-edu/opendesk-nix](https://gitlab.opencode.de/umr/opendesk-edu/opendesk-nix)
-- **Container Registry**: `registry.opencode.de/umr/opendesk-edu/opendesk-nix`
+- **Container Registry**: `ghcr.io/tobias-weiss-ai-xr/umr/opendesk-edu/opendesk-nix`
 - **Deployment Guide**: [k8s/DEPLOYMENT-GUIDE.md](https://github.com/tobias-weiss-ai-xr/opendesk-nix/tree/main/k8s/DEPLOYMENT-GUIDE.md)
 - **OpenSpec**: [opendesk-edu-spec](https://github.com/tobias-weiss-ai-xr/opendesk-edu-spec)
 - **Compliance**: [TEST_SUITE_SUMMARY.md](https://github.com/tobias-weiss-ai-xr/opendesk-nix/blob/main/TEST_SUITE_SUMMARY.md)
@@ -285,7 +285,7 @@ nix flake check                   # OpenSpec compliance
 
 ## Conclusion
 
-The migration from Dockerfile-based builds to NixOS containers is complete. All 78 openDesk services now produce deterministic, bit-for-bit identical images that are 15–25% smaller than their predecessors. Every image has been vulnerability-scanned (0 CVEs), signed with Cosign, and equipped with an SPDX 2.3 SBOM. The complete set of Kubernetes manifests for the production K3s cluster is ready, and all images are available from `registry.opencode.de/umr/opendesk-edu/opendesk-nix`.
+The migration from Dockerfile-based builds to NixOS containers is complete. All 78 openDesk services now produce deterministic, bit-for-bit identical images that are 15–25% smaller than their predecessors. Every image has been vulnerability-scanned (0 CVEs), signed with Cosign, and equipped with an SPDX 2.3 SBOM. The complete set of Kubernetes manifests for the production K3s cluster is ready, and all images are available from `ghcr.io/tobias-weiss-ai-xr/umr/opendesk-edu/opendesk-nix`.
 
 The project demonstrates that NixOS containers are viable for production at scale — from migration toolkit to security scanning to registry push to deployment manifests, the entire pipeline is deterministic, reproducible, and verifiable.
 

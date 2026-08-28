@@ -89,7 +89,7 @@ Ein weiterer Schritt zur Compliance ist die **Reduktion der Production-Registry*
 
 Dies reduziert die Angriffsfläche und macht die Registry überschaubar und auditierbar — ein wichtiger Baustein für ZKI-Compliance.
 
-**Registry-URL:** `registry.opencode.de/umr/opendesk-edu/opendesk-nix/`
+**Registry-URL:** `ghcr.io/tobias-weiss-ai-xr/umr/opendesk-edu/opendesk-nix/`
 
 ## Wo openDesk Edu bereits steht
 

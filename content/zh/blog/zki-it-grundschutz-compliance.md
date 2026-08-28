@@ -89,7 +89,7 @@ graph TD
 
 这减少了攻击面，使注册表易于管理和审计——这是 ZKI 合规的重要基石。
 
-**注册表 URL：** `registry.opencode.de/umr/opendesk-edu/opendesk-nix/`
+**注册表 URL：** `ghcr.io/tobias-weiss-ai-xr/umr/opendesk-edu/opendesk-nix/`
 
 ## openDesk Edu 已处于什么水平
 

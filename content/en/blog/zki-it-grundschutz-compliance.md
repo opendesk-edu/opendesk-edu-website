@@ -89,7 +89,7 @@ Another step toward compliance is **reducing the production registry** to the es
 
 This reduces the attack surface and makes the registry manageable and auditable — an important building block for ZKI compliance.
 
-**Registry URL:** `registry.opencode.de/umr/opendesk-edu/opendesk-nix/`
+**Registry URL:** `ghcr.io/tobias-weiss-ai-xr/umr/opendesk-edu/opendesk-nix/`
 
 ## Where openDesk Edu Already Stands
 

@@ -179,7 +179,7 @@ Nix 为我们的部署管道扩展了确定性构建层。openDesk Edu 的 69 �
 - 比 Dockerfile 构建小约 20% 的镜像
 
 **第三阶段（注册表推送与 K8s 部署）：** 所有 78 个镜像已：
-- 推送到注册表：`registry.opencode.de/umr/opendesk-edu/opendesk-nix`
+- 推送到注册表：`ghcr.io/tobias-weiss-ai-xr/umr/opendesk-edu/opendesk-nix`
 - 通过 Grype 扫描 — 所有镜像 **0 个 CVE**
 - **通过 Cosign 签名**（GitHub OIDC）
 - 为每个镜像配备 **SBOM**（SPDX 2.3 JSON）

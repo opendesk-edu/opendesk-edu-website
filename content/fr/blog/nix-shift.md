@@ -192,7 +192,7 @@ services disposent désormais :
 - D'images ~20% plus petites que les builds Dockerfile
 
 **Phase 3 (Registre & Déploiement K8s) :** L'ensemble des 78 images a été :
-- Poussé vers le registre : `registry.opencode.de/umr/opendesk-edu/opendesk-nix`
+- Poussé vers le registre : `ghcr.io/tobias-weiss-ai-xr/umr/opendesk-edu/opendesk-nix`
 - Scanné avec Grype — **0 CVEs** dans toutes les images
 - **Signé avec Cosign** (GitHub OIDC)
 - Équipé d'un **SBOM** (SPDX 2.3 JSON) pour chaque image
