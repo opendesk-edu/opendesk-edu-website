@@ -123,6 +123,7 @@ export default async function LocaleLayout({
         <meta name="theme-color" content="#341291" />
         <ThemeScript />
         <JsonLdOrganization locale={locale} />
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8452353139685392" crossOrigin="anonymous"></script>
         <link rel="alternate" type="application/rss+xml" title={`openDesk Edu - ${locale.toUpperCase()}`} href={`/${locale}/rss`} />
         <link rel="icon" type="image/svg+xml" href="/static/brand/favicon.svg" />
       </head>
