@@ -33,6 +33,7 @@ export default defineConfig({
     // against a stable server, and this also tests the real deployed behavior
     // (SSG with dynamicParams=false + static not-found boundary).
     command: `npm run build && npm run start -- --port ${port}`,
+    env: { PORT: String(port) },
     url: baseURL,
     reuseExistingServer: !isCI,
     timeout: 480 * 1000,

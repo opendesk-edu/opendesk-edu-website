@@ -35,7 +35,7 @@ const cacheHeaders = [
 ];
 
 const nextConfig: NextConfig = {
-  output: "standalone",
+  output: process.env.DOCKER_BUILD === "1" ? "standalone" : undefined,
   poweredByHeader: false,
   staticPageGenerationTimeout: 300,
   turbopack: { root: path.resolve(__dirname, "..") },

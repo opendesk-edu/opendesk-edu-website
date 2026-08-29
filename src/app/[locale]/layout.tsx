@@ -1,7 +1,7 @@
 import '../globals.css';
 
 import {NextIntlClientProvider} from 'next-intl';
-import {getMessages} from 'next-intl/server';
+import {getMessages, setRequestLocale} from 'next-intl/server';
 import {notFound} from 'next/navigation';
 import {routing} from '@/i18n/routing';
 import type {Metadata} from 'next';
@@ -115,6 +115,7 @@ export default async function LocaleLayout({
   if (!routing.locales.includes(locale as typeof routing.locales[number])) {
     notFound();
   }
+  setRequestLocale(locale);
   const messages = await getMessages();
 
   return (
@@ -135,7 +136,7 @@ export default async function LocaleLayout({
           >
             Skip to content
           </a>
-          <NextIntlClientProvider messages={messages}>
+          <NextIntlClientProvider locale={locale} messages={messages}>
             <SearchProvider>
               <Header />
             <ErrorBoundary>

@@ -15,6 +15,7 @@ RUN npm run build
 FROM base AS runner
 WORKDIR /app
 ENV NODE_ENV=production
+ENV DOCKER_BUILD=1
 # Create user and group (compatible with both BuildKit and non-BuildKit)
 RUN addgroup -g 1001 -S nodejs && \
     adduser -u 1001 -S -G nodejs nextjs
