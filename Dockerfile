@@ -8,6 +8,7 @@ RUN npm install -g npm@11 && npm ci
 
 FROM base AS builder
 WORKDIR /app
+ENV DOCKER_BUILD=1
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 RUN npm run build
