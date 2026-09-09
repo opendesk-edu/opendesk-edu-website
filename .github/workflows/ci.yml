@@ -129,6 +129,11 @@ jobs:
         with:
           path: ~/.cache/ms-playwright
           key: ${{ runner.os }}-playwright-${{ hashFiles('package-lock.json') }}
+          # Fall back to any cached browser set: an unrelated package-lock
+          # change keeps the pinned Playwright (and thus browser revision)
+          # identical, so re-downloading chromium from the CDN is pure waste
+          # on this box's slow uplink.
+          restore-keys: ${{ runner.os }}-playwright-
       - run: npm ci
       - name: Install Playwright browsers
         run: npx playwright install chromium
