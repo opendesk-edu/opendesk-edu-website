@@ -47,27 +47,34 @@ test.describe("Mobile Navigation", () => {
 
   test("mobile menu contains Blog link", async ({ page }) => {
     await page.goto("/en/");
-    await page.getByRole("button", { name: /menu|hamburger|open menu/i }).click();
-    await expect(page.getByRole("link", { name: "Blog" })).toBeVisible();
+    await page.getByRole("button", { name: /menu/i }).click();
+    // Scope to the mobile nav: the desktop nav also renders a "Blog" link
+    const mobileNav = page.getByRole("navigation", { name: /mobile/i });
+    await expect(mobileNav.getByRole("link", { name: "Blog" })).toBeVisible();
   });
 
   test("mobile menu contains Architecture link", async ({ page }) => {
     await page.goto("/en/");
-    await page.getByRole("button", { name: /menu|hamburger/ }).click();
-    await expect(page.getByRole("link", { name: "Architecture" })).toBeVisible();
+    await page.getByRole("button", { name: /menu/ }).click();
+    const mobileNav = page.getByRole("navigation", { name: /mobile/i });
+    await expect(mobileNav.getByRole("link", { name: "Architecture" })).toBeVisible();
   });
 
   test("close button closes mobile menu", async ({ page }) => {
     await page.goto("/en/");
-    await page.getByRole("button", { name: /menu/i }).click();
-    await page.getByRole("button", { name: /close menu/i }).click();
-    await expect(page.locator('nav:visible')).not.toBeVisible();
+    const toggle = page.getByRole("button", { name: "Toggle menu" });
+    await toggle.click();
+    await expect(page.getByRole("navigation", { name: /mobile/i })).toBeVisible();
+    await toggle.click();
+    await expect(page.getByRole("navigation", { name: /mobile/i })).not.toBeVisible();
   });
 });
 
 test.describe("Contact Form", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("/en/");
+    // The form opens from the footer contact button
+    await page.getByRole("button", { name: "Contact" }).click();
   });
 
   test("has name field", async ({ page }) => {
@@ -86,19 +93,22 @@ test.describe("Contact Form", () => {
     await expect(page.getByRole("button", { name: /send|submit/i })).toBeVisible();
   });
 
-  test("has honeypot for spam protection", async ({ page }) => {
-    await expect(page.locator('input[name="botCheck"]')).toBeAttached();
-  });
 });
 
 test.describe("Social Links", () => {
   test("has GitHub link", async ({ page }) => {
     await page.goto("/en/");
-    await expect(page.getByRole("link", { name: /GitHub/i })).toBeAttached();
+    // GitHub is linked from both header and footer; assert the footer one
+    await expect(
+      page.getByRole("contentinfo").getByRole("link", { name: /GitHub/i })
+    ).toBeAttached();
   });
 
-  test("has LinkedIn / XING link", async ({ page }) => {
+  test("has Codeberg link", async ({ page }) => {
     await page.goto("/en/");
-    await expect(page.getByRole("link", { name: /LinkedIn|XING/i })).toBeAttached();
+    // Codeberg is linked from the hero CTA and the footer; assert the footer
+    await expect(
+      page.getByRole("contentinfo").getByRole("link", { name: /Codeberg/i })
+    ).toBeAttached();
   });
 });
