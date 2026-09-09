@@ -145,6 +145,14 @@ export default async function Home({ params }: PageProps) {
 
       {/* Page content below hero */}
       <div className="mx-auto max-w-4xl px-6 py-12">
+        {/* About — editorial intro; the homepage's main textual content */}
+        <section className="mb-16">
+          <h2 className="text-2xl font-bold text-foreground mb-6">{t("home.about.title")}</h2>
+          <p className="text-foreground-secondary mb-4 leading-relaxed">{t("home.about.p1")}</p>
+          <p className="text-foreground-secondary mb-4 leading-relaxed">{t("home.about.p2")}</p>
+          <p className="text-foreground-secondary leading-relaxed">{t("home.about.p3")}</p>
+        </section>
+
         {/* Latest Posts */}
         {blogPosts.length > 0 && (
           <section className="mb-16">

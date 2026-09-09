@@ -122,7 +122,13 @@
   },
   "home": {
     "getInTouch": "联系我们",
-    "getInTouchDescription": "您是否希望在大学部署 openDesk Edu？我们期待您的来信。"
+    "getInTouchDescription": "您是否希望在大学部署 openDesk Edu？我们期待您的来信。",
+    "about": {
+      "title": "什么是 openDesk Edu？",
+      "p1": "openDesk Edu 是面向高等教育的开源数字办公套件：31 个集成服务、完全可自托管——从用于文档的 Collabora 和 CryptPad，到用于教学的 Jitsi 和 BigBlueButton，再到用于课程运营的 Ilias 和 JupyterHub。本网站是该项目的文档与知识库。",
+      "p2": "架构板块讲解平台的设计与运维：身份与认证、网络与流量、存储、安全与容量规划——内容来自真实的部署经验。组件板块记录每个集成服务：它的作用、选择理由以及配置方式。",
+      "p3": "这里的一切都是开源并公开记录的。博客追踪项目进展——基础设施决策、BSI IT-Grundschutz 合规工作、备份，以及与 SCS、Proxmox、La Suite 等替代方案的诚实比较。如果贵校正在评估专有云套件的主权替代方案，请从架构概览开始。"
+    }
   },
   "search": {
     "placeholder": "搜索博客文章...",

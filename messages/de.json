@@ -122,7 +122,13 @@
   },
   "home": {
     "getInTouch": "Kontakt aufnehmen",
-    "getInTouchDescription": "Sie möchten openDesk Edu an Ihrer Hochschule einsetzen? Wir freuen uns auf Ihre Nachricht."
+    "getInTouchDescription": "Sie möchten openDesk Edu an Ihrer Hochschule einsetzen? Wir freuen uns auf Ihre Nachricht.",
+    "about": {
+      "title": "Was ist openDesk Edu?",
+      "p1": "openDesk Edu ist eine Open-Source-Digitale-Arbeitsplatz-Suite für Hochschulen: 31 integrierte Dienste, komplett selbst hostbar — von Collabora und CryptPad für Dokumente über Jitsi und BigBlueButton für die Lehre bis zu Ilias und JupyterHub für den Lehrbetrieb. Diese Website ist die Dokumentation und Wissensbasis des Projekts.",
+      "p2": "Der Architektur-Bereich erklärt, wie die Plattform aufgebaut und betrieben wird: Identität und Authentifizierung, Netzwerk und Datenfluss, Speicher, Sicherheit und Kapazitätsplanung — geschrieben aus realer Betriebserfahrung. Der Komponenten-Bereich dokumentiert jeden integrierten Dienst: was er tut, warum er gewählt wurde und wie er konfiguriert ist.",
+      "p3": "Alles hier ist Open Source und offen dokumentiert. Der Blog begleitet das Projekt — Infrastruktur-Entscheidungen, Compliance-Arbeit wie BSI IT-Grundschutz, Backups und ehrliche Vergleiche mit Alternativen wie SCS, Proxmox und La Suite. Wenn Ihre Hochschule eine souveräne Alternative zu proprietären Cloud-Suiten prüft, beginnen Sie mit der Architektur-Übersicht."
+    }
   },
   "search": {
     "placeholder": "Blog-Beiträge suchen...",
