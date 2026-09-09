@@ -1,30 +1,8 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import LanguageSwitcher from "../LanguageSwitcher";
 
 // --- Helper: create mock modules with configurable current locale and pathname ---
-
-function createMockModules(currentLocale: string, rawPathname: string) {
-  return {
-    "@/i18n/navigation": {
-      useRouter: () => ({ replace: vi.fn() }),
-    },
-    "@/i18n/routing": {
-      routing: { locales: ["en", "de", "fr", "zh"], defaultLocale: "en" },
-    },
-    "next-intl": {
-      useTranslations: () => (key: string) => {
-        const translations: Record<string, string> = { label: "Language" };
-        return translations[key] || key;
-      },
-      useLocale: () => currentLocale,
-    },
-    "next/navigation": {
-      usePathname: () => rawPathname,
-    },
-  };
-}
 
 describe("LanguageSwitcher", () => {
   let mockReplace: ReturnType<typeof vi.fn>;
@@ -697,7 +675,7 @@ describe("LanguageSwitcher", () => {
         routing: { locales: ["en", "de", "fr", "zh"], defaultLocale: "en" },
       }));
       vi.doMock("next-intl", () => ({
-        useTranslations: () => (key: string) => "Language",
+        useTranslations: () => () => "Language",
         useLocale: () => "en",
       }));
       vi.doMock("next/navigation", () => ({

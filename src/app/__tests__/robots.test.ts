@@ -13,14 +13,19 @@ describe("robots.ts", () => {
 
   it("allows all user agents", () => {
     const result = robots();
-    expect(result.rules).toHaveLength(1);
-    expect(result.rules[0].userAgent).toBe("*");
-    expect(result.rules[0].allow).toBe("/");
+    const rules = result.rules as Array<{
+      userAgent?: string | string[];
+      allow?: string | string[];
+      disallow?: string | string[];
+    }>;
+    expect(rules).toHaveLength(1);
+    expect(rules[0].userAgent).toBe("*");
+    expect(rules[0].allow).toBe("/");
   });
 
   it("disallows /api/ path", () => {
     const result = robots();
-    expect(result.rules[0].disallow).toEqual(["/api/"]);
+    expect((result.rules as Array<{ disallow?: string | string[] }>)[0].disallow).toEqual(["/api/"]);
   });
 
   it("includes sitemap URL", () => {

@@ -19,7 +19,6 @@ import { test, expect } from "@playwright/test";
  *   from the dropdown.
  */
 
-const BASE = ""; // baseURL from playwright.config.ts
 
 // --- Helper ---
 

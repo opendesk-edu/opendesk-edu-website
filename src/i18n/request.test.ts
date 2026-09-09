@@ -102,7 +102,8 @@ describe("i18n request module", () => {
       locale: undefined,
       requestLocale: Promise.resolve("zh"),
     } as never);
-    const msgOf = (cfg: unknown) => (cfg as { messages: Record<string, unknown> }).messages;
+    const msgOf = (cfg: unknown) =>
+      (cfg as { messages: { header: Record<string, string> } }).messages;
     expect(msgOf(de).header.home).toBe("Startseite");
     expect(msgOf(fr).header.home).toBe("Accueil");
     expect(msgOf(zh).header.home).toBe("首页");

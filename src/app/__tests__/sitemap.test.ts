@@ -121,31 +121,34 @@ describe("sitemap generation", () => {
   it("builds alternates languages for root page", async () => {
     const result = await sitemap();
     const enHome = result.find((e) => e.url === "https://opendesk-edu.org/en")!;
-    expect(enHome.alternates?.languages).toBeDefined();
+    const langs = enHome.alternates?.languages;
+    expect(langs).toBeDefined();
     // Root pathname config is "/" so alternates carry the trailing slash
-    expect(enHome.alternates?.languages.en).toBe("https://opendesk-edu.org/en/");
-    expect(enHome.alternates?.languages.de).toBe("https://opendesk-edu.org/de/");
-    expect(enHome.alternates?.languages.fr).toBe("https://opendesk-edu.org/fr/");
-    expect(enHome.alternates?.languages.zh).toBe("https://opendesk-edu.org/zh/");
+    expect(langs?.en).toBe("https://opendesk-edu.org/en/");
+    expect(langs?.de).toBe("https://opendesk-edu.org/de/");
+    expect(langs?.fr).toBe("https://opendesk-edu.org/fr/");
+    expect(langs?.zh).toBe("https://opendesk-edu.org/zh/");
   });
 
   it("builds alternates languages for localized about page", async () => {
     const result = await sitemap();
     const deAbout = result.find((e) => e.url === "https://opendesk-edu.org/de/ueber-uns")!;
-    expect(deAbout.alternates?.languages.de).toBe("https://opendesk-edu.org/de/ueber-uns");
-    expect(deAbout.alternates?.languages.en).toBe("https://opendesk-edu.org/en/about");
-    expect(deAbout.alternates?.languages.fr).toBe("https://opendesk-edu.org/fr/a-propos");
-    expect(deAbout.alternates?.languages.zh).toBe("https://opendesk-edu.org/zh/about");
+    const langs = deAbout.alternates?.languages;
+    expect(langs?.de).toBe("https://opendesk-edu.org/de/ueber-uns");
+    expect(langs?.en).toBe("https://opendesk-edu.org/en/about");
+    expect(langs?.fr).toBe("https://opendesk-edu.org/fr/a-propos");
+    expect(langs?.zh).toBe("https://opendesk-edu.org/zh/about");
   });
 
   it("builds post alternates only for locales that have the post", async () => {
     const result = await sitemap();
     const enPost = result.find((e) => e.url === "https://opendesk-edu.org/en/blog/email-arch")!;
-    expect(enPost.alternates?.languages.en).toBe("https://opendesk-edu.org/en/blog/email-arch");
-    expect(enPost.alternates?.languages.de).toBe("https://opendesk-edu.org/de/blog/email-arch");
+    const langs = enPost.alternates?.languages;
+    expect(langs?.en).toBe("https://opendesk-edu.org/en/blog/email-arch");
+    expect(langs?.de).toBe("https://opendesk-edu.org/de/blog/email-arch");
     // fr/zh do not have this post → no alternates for them
-    expect(enPost.alternates?.languages.fr).toBeUndefined();
-    expect(enPost.alternates?.languages.zh).toBeUndefined();
+    expect(langs?.fr).toBeUndefined();
+    expect(langs?.zh).toBeUndefined();
   });
 
   it("calls getAllPosts for every locale", async () => {

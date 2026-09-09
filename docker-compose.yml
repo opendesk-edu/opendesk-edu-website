@@ -3,6 +3,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      # Build steps share the host network: creating bridge endpoints
+      # fails on this kernel with iptables 'Memory allocation problem'.
+      network: host
     image: opendesk-edu:latest
     container_name: opendesk-edu
     restart: unless-stopped

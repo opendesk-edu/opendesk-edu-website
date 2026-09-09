@@ -1,5 +1,4 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import React from "react";
 import { render, screen } from "@testing-library/react";
 
 const getTranslationsMock = vi.fn();
@@ -96,7 +95,7 @@ describe("About page", () => {
     });
 
     it("renders all 4 service cards", async () => {
-      const { container } = render(await AboutPage());
+      render(await AboutPage());
       // Services are rendered as grid items
       const serviceTitles = ["Learning", "Cloud", "Sovereignty", "SSO"];
       for (const title of serviceTitles) {

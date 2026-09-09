@@ -69,7 +69,7 @@ describe("Landscape page", () => {
 
     it("returns openGraph metadata", async () => {
       const md = await generateMetadata({ params: { locale: "en" } } as never);
-      expect(md.openGraph?.type).toBe("website");
+      expect((md.openGraph as unknown as { type?: string }).type).toBe("website");
       expect(md.openGraph?.siteName).toBe("openDesk Edu");
       expect((md.openGraph as { locale?: string }).locale).toBe("en");
     });
@@ -85,7 +85,7 @@ describe("Landscape page", () => {
 
     it("includes twitter card metadata", async () => {
       const md = await generateMetadata({ params: { locale: "en" } } as never);
-      expect(md.twitter?.card).toBe("summary_large_image");
+      expect((md.twitter as unknown as { card?: string }).card).toBe("summary_large_image");
       expect(md.twitter?.images).toEqual(["/api/og/landscape"]);
     });
 
@@ -182,7 +182,7 @@ describe("Landscape page", () => {
     it("renders next/link components for documentation", () => {
       renderElement(<LandscapePage />);
       const calls = NextLinkMock.mock.calls;
-      const hrefs = calls.map((c: [Record<string, unknown>]) => c[0].href);
+      const hrefs = calls.map((c) => (c[0] as { href?: string }).href);
       expect(hrefs).toContain("/docs");
       expect(hrefs).toContain("/docs/getting-started");
       expect(hrefs).toContain("/docs/deployment");

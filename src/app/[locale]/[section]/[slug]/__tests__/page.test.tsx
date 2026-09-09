@@ -117,7 +117,7 @@ describe("[section]/[slug] page", () => {
       const md = await generateMetadata({
         params: Promise.resolve({ locale: "en", section: "architecture", slug: "identity" }),
       });
-      expect(md.openGraph?.type).toBe("article");
+      expect((md.openGraph as unknown as { type?: string }).type).toBe("article");
       expect((md.openGraph as { url?: string }).url).toBe(
         "https://opendesk-edu.org/en/architecture/identity"
       );
@@ -167,7 +167,9 @@ describe("[section]/[slug] page", () => {
       const page = await ArticleSlugPage({
         params: Promise.resolve({ locale: "de", section: "architecture", slug: "identity" }),
       });
-      const reactElem = page as React.ReactElement;
+      const reactElem = page as React.ReactElement<{
+        children: React.ReactElement<Record<string, unknown>>[];
+      }>;
       expect(reactElem.props.children[0].props).toMatchObject({
         locale: "de",
         backHref: "/architecture",
@@ -206,7 +208,9 @@ describe("[section]/[slug] page", () => {
       const page = await ArticleSlugPage({
         params: Promise.resolve({ locale: "en", section: "architecture", slug: "identity" }),
       });
-      const reactElem = page as React.ReactElement;
+      const reactElem = page as React.ReactElement<{
+        children: React.ReactElement<Record<string, unknown>>[];
+      }>;
       expect(reactElem.props.children[0].props.backLabel).toBe("Architecture");
     });
   });

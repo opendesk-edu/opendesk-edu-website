@@ -141,7 +141,7 @@ describe("[locale] layout", () => {
       const md = await generateMetadata({
         params: Promise.resolve({ locale: "en" }),
       });
-      expect(md.openGraph?.type).toBe("website");
+      expect((md.openGraph as unknown as { type?: string }).type).toBe("website");
     });
 
     it("sets openGraph url with locale", async () => {
@@ -201,7 +201,7 @@ describe("[locale] layout", () => {
       const md = await generateMetadata({
         params: Promise.resolve({ locale: "en" }),
       });
-      expect(md.twitter?.card).toBe("summary_large_image");
+      expect((md.twitter as unknown as { card?: string }).card).toBe("summary_large_image");
     });
 
     it("sets icons with svg", async () => {
@@ -260,7 +260,7 @@ describe("[locale] layout", () => {
         children: React.createElement("div"),
         params: Promise.resolve({ locale: "fr" }),
       });
-      const htmlEl = result as React.ReactElement;
+      const htmlEl = result as React.ReactElement<{ lang?: string }>;
       expect(htmlEl.type).toBe("html");
       expect(htmlEl.props.lang).toBe("fr");
     });

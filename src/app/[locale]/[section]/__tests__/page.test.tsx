@@ -123,7 +123,7 @@ describe("[section]/page.tsx", () => {
       const md = await generateMetadata({
         params: Promise.resolve({ locale: "en", section: "blog" }),
       });
-      expect(md.openGraph?.type).toBe("website");
+      expect((md.openGraph as unknown as { type?: string }).type).toBe("website");
       expect(md.openGraph?.title).toBe("Blog");
       expect(md.openGraph?.siteName).toBe("openDesk Edu");
     });
@@ -142,7 +142,7 @@ describe("[section]/page.tsx", () => {
         params: Promise.resolve({ locale: "en", section: "blog" }),
       });
       expect(elem).toBeTruthy();
-      const reactElem = elem as React.ReactElement;
+      const reactElem = elem as React.ReactElement<Record<string, unknown>>;
       expect(reactElem.type).toBeTruthy();
     });
 
@@ -162,10 +162,11 @@ describe("[section]/page.tsx", () => {
       const jsonLd = findJsonLd(reactElem);
       expect(jsonLd).toBeDefined();
       expect(jsonLd!["@type"]).toBe("BreadcrumbList");
-      expect(jsonLd!.itemListElement).toHaveLength(2);
-      expect(jsonLd!.itemListElement[0].name).toBe("Home");
-      expect(jsonLd!.itemListElement[1].name).toBe("Blog");
-      expect(jsonLd!.itemListElement[1].item).toBe("https://opendesk-edu.org/en/blog");
+      const items = jsonLd!.itemListElement as Array<{ name: string; item?: string }>;
+      expect(items).toHaveLength(2);
+      expect(items[0].name).toBe("Home");
+      expect(items[1].name).toBe("Blog");
+      expect(items[1].item).toBe("https://opendesk-edu.org/en/blog");
     });
 
     it("renders section title as h1", async () => {
@@ -220,16 +221,19 @@ describe("[section]/page.tsx", () => {
 
 // Helpers to traverse React elements without rendering to DOM
 function findJsonLd(elem: React.ReactElement): Record<string, unknown> | undefined {
-  if (elem.props?.dangerouslySetInnerHTML) {
+  const props = elem.props as Record<string, unknown> | undefined;
+  const danger = props?.dangerouslySetInnerHTML as { __html: string } | undefined;
+  if (danger) {
     try {
-      return JSON.parse(elem.props.dangerouslySetInnerHTML.__html);
+      return JSON.parse(danger.__html);
     } catch {
       return undefined;
     }
   }
-  if (elem.props?.children) {
-    const children = Array.isArray(elem.props.children) ? elem.props.children : [elem.props.children];
-    for (const child of children) {
+  const children = props?.children;
+  if (children) {
+    const list = Array.isArray(children) ? children : [children];
+    for (const child of list) {
       if (React.isValidElement(child)) {
         const found = findJsonLd(child);
         if (found) return found;
@@ -244,12 +248,14 @@ function findElementByText(
   tag: string,
   text: string,
 ): React.ReactElement | null {
-  if (elem.type === tag && elem.props?.children === text) {
+  const props = elem.props as Record<string, unknown> | undefined;
+  if (elem.type === tag && props?.children === text) {
     return elem;
   }
-  if (elem.props?.children) {
-    const children = Array.isArray(elem.props.children) ? elem.props.children : [elem.props.children];
-    for (const child of children) {
+  const children = props?.children;
+  if (children) {
+    const list = Array.isArray(children) ? children : [children];
+    for (const child of list) {
       if (React.isValidElement(child)) {
         const found = findElementByText(child, tag, text);
         if (found) return found;

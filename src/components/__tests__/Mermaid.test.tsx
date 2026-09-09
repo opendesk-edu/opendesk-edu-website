@@ -80,7 +80,7 @@ describe("Mermaid component", () => {
   it("hides raw source during rendering to avoid flash", async () => {
     const { container } = render(<Mermaid html={mermaidFence("graph TD; A-->B;")} />);
     // Immediately after render, the div should exist with visibility hidden
-    const div = container.querySelector("div.mermaid");
+    const div = container.querySelector<HTMLDivElement>("div.mermaid");
     expect(div?.style.visibility).toBe("hidden");
 
     await act(async () => {
@@ -113,7 +113,7 @@ describe("Mermaid component", () => {
   });
 
   it("is idempotent across StrictMode double-invocation", async () => {
-    const { container } = render(<Mermaid html={mermaidFence("graph TD; A-->B;")} />);
+    render(<Mermaid html={mermaidFence("graph TD; A-->B;")} />);
     await act(async () => {
       await Promise.resolve();
       await Promise.resolve();
