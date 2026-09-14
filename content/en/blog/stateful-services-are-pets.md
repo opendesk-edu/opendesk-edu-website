@@ -5,6 +5,7 @@ description: "A one-line config change in the app repo's compose file let a rout
 categories: ["Engineering", "DevOps"]
 tags: ["deploy", "stateful", "databases", "docker-compose", "dgraph", "postgres", "disaster-recovery", "operability"]
 author: "Tobias Weiß and openDesk Edu Contributors"
+image: "/static/blog/stateful-services-are-pets-teaser.svg"
 ---
 
 # Stateful Services Are Pets: why your app deploy must never touch the database
