@@ -21,11 +21,11 @@
     </linearGradient>
     <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="0%" y2="100%">
       <stop offset="0%" stop-color="#571EFA"/>
-      <stop offset="100%" stop-color="#2B0A5E"/>
+      <stop offset="100%" stop-color="#1a0a30"/>
     </linearGradient>
     <linearGradient id="heartGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#FF6B8A"/>
-      <stop offset="100%" stop-color="#C81E5A"/>
+      <stop offset="0%" stop-color="#ef4444"/>
+      <stop offset="100%" stop-color="#dc2626"/>
     </linearGradient>
     <filter id="glowWide" x="-100%" y="-100%" width="300%" height="300%">
       <feGaussianBlur in="SourceGraphic" stdDeviation="40"/>
@@ -80,7 +80,7 @@
     <path d="M 39,50 L 39,66 M 71,50 L 71,66" stroke="white" stroke-width="1.8" fill="none"/>
     <path d="M 39,66 A 16 4.5 0 0 0 71 66" fill="none" stroke="white" stroke-width="1.8"/>
     <!-- Heart (the "pet", loved stateful service) sitting on the cylinder -->
-    <path d="M 55,46 C 40,37 40,20 55,30 C 70,20 70,37 55,46 Z" fill="url(#heartGrad)" stroke="#FFD1DC" stroke-width="1"/>
+    <path d="M 55,46 C 40,37 40,20 55,30 C 70,20 70,37 55,46 Z" fill="url(#heartGrad)" stroke="#f5f3ff" stroke-width="1"/>
     <!-- Deku: heart holds a tiny no-deps check -->
     <path d="M 47,33 L 51,37 L 60,28" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
