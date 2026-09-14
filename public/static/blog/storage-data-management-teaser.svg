@@ -82,7 +82,7 @@
   </text>
 
   <!-- Subtitle -->
-  <text x="580" y="360" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="400" fill="#a0a0c0" text-anchor="start">
+  <text x="580" y="360" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="400" fill="#a58eb5" text-anchor="start">
     Persistent Volumes · Databases · Backup · Lifecycle
   </text>
 
@@ -90,7 +90,7 @@
   <rect x="580" y="390" width="340" height="3" rx="1.5" fill="url(#storageGrad)" opacity="0.6"/>
 
   <!-- openDesk Edu branding -->
-  <text x="580" y="560" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="500" fill="#666680" text-anchor="start">
+  <text x="580" y="560" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="500" fill="#6b7280" text-anchor="start">
     openDesk Edu · Architecture Reference
   </text>
 </svg>

@@ -103,13 +103,13 @@
     Scaling · Operations · Lifecycle</text>
 
   <!-- Subtitle -->
-  <text x="580" y="395" font-family="system-ui, -apple-system, sans-serif" font-size="19" font-weight="400" fill="#a0a0c0" text-anchor="start">
+  <text x="580" y="395" font-family="system-ui, -apple-system, sans-serif" font-size="19" font-weight="400" fill="#a58eb5" text-anchor="start">
     Sizing Guidelines · Tier-Based Deployment · Change Management · Risk and Compliance</text>
 
   <!-- Bottom accent line -->
   <rect x="580" y="425" width="440" height="3" rx="1.5" fill="url(#secGrad)" opacity="0.6"/>
 
   <!-- openDesk Edu branding -->
-  <text x="580" y="560" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="500" fill="#666680" text-anchor="start">
+  <text x="580" y="560" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="500" fill="#6b7280" text-anchor="start">
     openDesk Edu · Architecture Reference · Companion Document</text>
 </svg>

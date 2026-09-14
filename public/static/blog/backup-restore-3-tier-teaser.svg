@@ -21,7 +21,7 @@
     </linearGradient>
     <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="0%" y2="100%">
       <stop offset="0%" stop-color="#571EFA"/>
-      <stop offset="100%" stop-color="#2B0A5E"/>
+      <stop offset="100%" stop-color="#1a0a30"/>
     </linearGradient>
     <filter id="glowWide" x="-100%" y="-100%" width="300%" height="300%">
       <feGaussianBlur in="SourceGraphic" stdDeviation="40"/>
