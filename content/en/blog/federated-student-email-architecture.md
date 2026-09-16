@@ -65,7 +65,7 @@ Each Bundesland operates its own instance, serving the students enrolled at inst
 A Land instance provides:
 
 - **Email** (SMTP, IMAP, POP3, JMAP) with spam and antivirus filtering
-- **File storage** (Nextcloud)
+- **File storage** (OpenCloud)
 - **Calendar and contacts** (CalDAV, CardDAV)
 - **Messaging** (Matrix, federated)
 - **Collaborative document editing**
@@ -86,7 +86,7 @@ The three tiers are connected by standard protocols, not by a central authority:
 - **SMTP**: Email is natively federated — a student at a Land instance can email a staff member at a self-hosted institution without either party leaving their environment.
 - **Matrix**: Federated messaging across instances and self-hosted deployments.
 - **CalDAV/CardDAV**: Calendar and contact sharing across institutional boundaries.
-- **Nextcloud Federation**: File sharing between Land instances and self-hosted instances.
+- **OpenCloud Federation**: File sharing between Land instances and self-hosted instances.
 - **DFN-AAI**: Identity federation — students authenticate with their institutional credentials, validated through their home institution's identity provider.
 
 Federation is the mechanism that replaces centralisation. No single operator holds all student data. Each Land controls its own instance. Each institution controls its own domain. Interoperability is ensured by open standards, not by a central authority.
@@ -131,12 +131,12 @@ The per-student cost is approximately €0.04–€0.07 per month for email-focu
 The individual components are in production use today:
 
 - **Stalwart Mail** (AGPL-3.0): a Rust-based mail server providing IMAP, POP3, SMTP, and JMAP with native full-text search. The AGPL-3.0 licence ensures that modifications remain open; a commercial licence is available for organisations that cannot comply with AGPL terms.
-- **Nextcloud** (AGPL-3.0): file storage, sharing, and collaboration.
+- **OpenCloud** (Apache-2.0): file storage, sharing, and collaboration.
 - **Matrix/Element** (AGPL-3.0): federated messaging.
 - **Keycloak** (Apache-2.0): identity and access management, SAML/OIDC.
 - Additional components for calendar, contacts, and video conferencing, deployed via container-native packaging (Kubernetes, Helm) and configuration management (Ansible).
 
-The open-source licences are mixed (AGPL-3.0, Apache-2.0, MPL-2.0). The AGPL-3.0 components (Stalwart, Nextcloud, Matrix) require that any modifications distributed to users over the network be published under the same licence — a stronger copyleft than Apache-2.0, and one that reinforces rather than undermines sovereignty: institutions that modify the software are obliged to share their modifications, preventing private forks from undermining the commons.
+The open-source licences are mixed (AGPL-3.0, Apache-2.0, MPL-2.0). The AGPL-3.0 components (Stalwart, Matrix) require that any modifications distributed to users over the network be published under the same licence — a stronger copyleft than Apache-2.0, and one that reinforces rather than undermines sovereignty: institutions that modify the software are obliged to share their modifications, preventing private forks from undermining the commons.
 
 The technical challenge at scale is operational orchestration — provisioning mailboxes across multiple Land instances, handling ~280 million inbound messages per day, and maintaining responsive IMAP performance. These are scaling problems with known solutions; the open-source ecosystem has addressed them at comparable scales in other sectors.
 
@@ -177,7 +177,7 @@ What remains is not a technical question. It is a question of coordination: alig
 
 ---
 
-## Further Reading
+## Next Steps
 
 1. **Companion document.** A detailed capacity analysis and governance model is available as a companion technical document.
 2. **Evaluate the stack.** The open-source components can be deployed from Ansible playbooks on a single node for evaluation.

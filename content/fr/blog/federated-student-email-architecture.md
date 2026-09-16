@@ -65,7 +65,7 @@ Chaque Land exploite sa propre instance, desservant les étudiants inscrits dans
 Une instance de Land fournit :
 
 - **Messagerie** (SMTP, IMAP, POP3, JMAP) avec filtrage anti-spam et antivirus
-- **Stockage de fichiers** (Nextcloud)
+- **Stockage de fichiers** (OpenCloud)
 - **Calendrier et contacts** (CalDAV, CardDAV)
 - **Messagerie instantanée** (Matrix, fédéré)
 - **Édition collaborative de documents**
@@ -86,7 +86,7 @@ Les trois niveaux sont reliés par des protocoles standards, non par une autorit
 - **SMTP** : Le courriel est nativement fédéré — un étudiant d'une instance de Land peut écrire à un membre du personnel d'un établissement auto-hébergé sans qu'aucun des deux ne quitte son environnement.
 - **Matrix** : Messagerie fédérée entre instances et déploiements auto-hébergés.
 - **CalDAV/CardDAV** : Partage de calendriers et de contacts entre établissements.
-- **Fédération Nextcloud** : Partage de fichiers entre instances de Land et instances auto-hébergées.
+- **Fédération OpenCloud** : Partage de fichiers entre instances de Land et instances auto-hébergées.
 - **DFN-AAI** : Fédération d'identité — les étudiants s'authentifient avec leurs identifiants institutionnels, validés via le fournisseur d'identité de leur établissement.
 
 La fédération est le mécanisme qui remplace la centralisation. Aucun opérateur unique ne détient toutes les données étudiantes. Chaque Land contrôle sa propre instance. Chaque établissement contrôle son propre domaine. L'interopérabilité est assurée par des standards ouverts, non par une autorité centrale.
@@ -131,12 +131,12 @@ Le coût par étudiant est d'environ 0,04–0,07 € par mois pour un déploieme
 Les composants individuels sont en production aujourd'hui :
 
 - **Stalwart Mail** (AGPL-3.0) : un serveur mail en Rust offrant IMAP, POP3, SMTP et JMAP avec recherche plein texte native. La licence AGPL-3.0 garantit que les modifications restent ouvertes ; une licence commerciale est disponible pour les organisations qui ne peuvent pas se conformer aux termes AGPL.
-- **Nextcloud** (AGPL-3.0) : stockage, partage et collaboration de fichiers.
+- **OpenCloud** (Apache-2.0) : stockage, partage et collaboration de fichiers.
 - **Matrix/Element** (AGPL-3.0) : messagerie fédérée.
 - **Keycloak** (Apache-2.0) : gestion d'identité et d'accès, SAML/OIDC.
 - Des composants supplémentaires pour le calendrier, les contacts et la visioconférence, déployés via des conteneurs natifs (Kubernetes, Helm) et la gestion de configuration (Ansible).
 
-Les licences open source sont mixtes (AGPL-3.0, Apache-2.0, MPL-2.0). Les composants AGPL-3.0 (Stalwart, Nextcloud, Matrix) exigent que les modifications distribuées aux utilisateurs via le réseau soient publiées sous la même licence — un copyleft plus fort qu'Apache-2.0, et qui renforce plutôt qu'il ne mine la souveraineté : les établissements qui modifient le logiciel sont tenus de partager leurs modifications, empêchant les forks privés de saper les communs.
+Les licences open source sont mixtes (AGPL-3.0, Apache-2.0, MPL-2.0). Les composants AGPL-3.0 (Stalwart, Matrix) exigent que les modifications distribuées aux utilisateurs via le réseau soient publiées sous la même licence — un copyleft plus fort qu'Apache-2.0, et qui renforce plutôt qu'il ne mine la souveraineté : les établissements qui modifient le logiciel sont tenus de partager leurs modifications, empêchant les forks privés de saper les communs.
 
 Le défi technique à grande échelle est l'orchestration opérationnelle — provisionner des boîtes mail à travers plusieurs instances de Land, traiter ~280 millions de messages entrants par jour et maintenir des temps de réponse IMAP réactifs. Ce sont des problèmes de mise à l'échelle avec des solutions connues ; l'écosystème open source les a résolus à des échelles comparables dans d'autres secteurs.
 
@@ -177,7 +177,7 @@ Ce qui reste n'est pas une question technique. C'est une question de coordinatio
 
 ---
 
-## Pour aller plus loin
+## Prochaines étapes
 
 1. **Document compagnon.** Une analyse de capacité détaillée et le modèle de gouvernance sont disponibles en tant que document technique compagnon.
 2. **Évaluer la pile.** Les composants open source peuvent être déployés depuis des playbooks Ansible sur un nœud unique pour évaluation.

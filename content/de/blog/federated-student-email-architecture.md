@@ -65,7 +65,7 @@ Jedes Bundesland betreibt seine eigene Instanz, die den Studierenden an den Einr
 Eine Landesinstanz bietet:
 
 - **E-Mail** (SMTP, IMAP, POP3, JMAP) mit Spam- und Virenfilterung
-- **Dateispeicher** (Nextcloud)
+- **Dateispeicher** (OpenCloud)
 - **Kalender und Kontakte** (CalDAV, CardDAV)
 - **Messenger** (Matrix, föderiert)
 - **Kollaborative Dokumentbearbeitung**
@@ -86,7 +86,7 @@ Die drei Schichten sind durch Standardprotokolle verbunden, nicht durch eine Zen
 - **SMTP**: E-Mail ist nativ föderiert — eine Studierende an einer Landesinstanz kann einer Beschäftigten an einer selbstgehosteten Einrichtung schreiben, ohne dass eine von beiden ihre Umgebung verlässt.
 - **Matrix**: Föderierter Messenger über Instanzen und Eigenbetrieb hinweg.
 - **CalDAV/CardDAV**: Kalender- und Kontaktfreigaben über Einrichtungsgrenzen.
-- **Nextcloud-Föderation**: Dateifreigaben zwischen Landesinstanzen und selbstgehosteten Instanzen.
+- **OpenCloud-Föderation**: Dateifreigaben zwischen Landesinstanzen und selbstgehosteten Instanzen.
 - **DFN-AAI**: Identitätsföderation — Studierende authentifizieren sich mit ihren institutionellen Credentials, validiert über den Identitätsanbieter ihrer Heimseinrichtung.
 
 Föderation ist der Mechanismus, der Zentralisierung ersetzt. Kein einzelner Betreiber hält alle Studierendendaten. Jedes Land kontrolliert seine eigene Instanz. Jede Einrichtung kontrolliert ihre eigene Domain. Interoperabilität wird durch offene Standards gewährleistet, nicht durch eine Zentralbehörde.
@@ -131,12 +131,12 @@ Die Kosten pro Studierende liegen bei etwa 0,04–0,07 € pro Monat für E-Mail
 Die einzelnen Komponenten sind heute im produktiven Einsatz:
 
 - **Stalwart Mail** (AGPL-3.0): ein Rust-basierter Mailserver mit IMAP, POP3, SMTP und JMAP sowie nativer Volltextsuche. Die AGPL-3.0-Lizenz stellt sicher, dass Modifikationen offen bleiben; eine kommerzielle Lizenz ist für Organisationen verfügbar, die den AGPL-Bedingungen nicht nachkommen können.
-- **Nextcloud** (AGPL-3.0): Dateispeicher, Freigabe und Kollaboration.
+- **OpenCloud** (Apache-2.0): Dateispeicher, Freigabe und Kollaboration.
 - **Matrix/Element** (AGPL-3.0): föderierter Messenger.
 - **Keycloak** (Apache-2.0): Identity- und Access-Management, SAML/OIDC.
 - Weitere Komponenten für Kalender, Kontakte und Videokonferenzen, deployt als container-native Pakete (Kubernetes, Helm) und über Konfigurationsmanagement (Ansible).
 
-Die Quelloffen-Lizenzen sind gemischt (AGPL-3.0, Apache-2.0, MPL-2.0). Die AGPL-3.0-Komponenten (Stalwart, Nextcloud, Matrix) verlangen, dass Modifikationen, die Nutzern über das Netz bereitgestellt werden, unter derselben Lizenz veröffentlicht werden — ein stärkeres Copyleft als Apache-2.0, und eines, das die Souveränität eher verstärkt als untergräbt: Einrichtungen, die die Software modifizieren, müssen ihre Modifikationen teilen, was private Forks am Untergraben der Commons hindert.
+Die Quelloffen-Lizenzen sind gemischt (AGPL-3.0, Apache-2.0, MPL-2.0). Die AGPL-3.0-Komponenten (Stalwart, Matrix) verlangen, dass Modifikationen, die Nutzern über das Netz bereitgestellt werden, unter derselben Lizenz veröffentlicht werden — ein stärkeres Copyleft als Apache-2.0, und eines, das die Souveränität eher verstärkt als untergräbt: Einrichtungen, die die Software modifizieren, müssen ihre Modifikationen teilen, was private Forks am Untergraben der Commons hindert.
 
 Die technische Herausforderung im großen Maßstab ist die operative Orchestrierung — Bereitstellung von Mailboxen über mehrere Landesinstanzen, Verarbeitung von ~280 Millionen eingehenden Nachrichten pro Tag und Aufrechterhaltung responsiver IMAP-Antwortzeiten. Dies sind Skalierungsprobleme mit bekannten Lösungen; das Quelloffen-Ökosystem hat sie in anderen Sektoren in vergleichbaren Dimensionen gelöst.
 
@@ -177,7 +177,7 @@ Was bleibt, ist keine technische Frage. Es ist eine Frage der Koordination: die 
 
 ---
 
-## Weiterführende Literatur
+## Nächste Schritte
 
 1. **Begleitdokument.** Eine detaillierte Kapazitätsanalyse und das Governance-Modell sind als technisches Begleitdokument verfügbar.
 2. **Den Stack evaluieren.** Die Quelloffen-Komponenten können aus Ansible-Playbooks auf einem einzelnen Knoten zur Evaluierung deployt werden.
