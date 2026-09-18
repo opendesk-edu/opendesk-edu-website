@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>openDesk Edu - Fokusgruppen Fragebogen</title>
+    <meta name="description" content="Anonymer Fragebogen zur Priorisierung von Funktionen für openDesk Edu">
+    <style>
+        :root {
+            --primary: #0066cc;
+            --primary-dark: #004499;
+            --secondary: #ff6600;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #28a745;
+            --danger: #dc3545;
+            --warning: #ffc107;
+            --border: #dee2e6;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 30px;
+        }
+        
+        header img {
+            max-width: 150px;
+            margin-bottom: 15px;
+        }
+        
+        header h1 {
+            color: var(--primary);
+            font-size: 2rem;
+        }
+        
+        header p {
+            color: #666;
+        }
+        
+        .form-section {
+            margin-bottom: 30px;
+        }
+        
+        .form-section h2 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        
+        .form-section p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .form-group label .required {
+            color: var(--danger);
+        }
+        
+        .form-group .help-text {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        select, input[type="text"], input[type="email"], input[type="number"], textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        select:focus, input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0,102,204,0.1);
+        }
+        
+        .likert-scale {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .likert-scale label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            padding: 10px;
+            border: 2px solid var(--border);
+            border-radius: 4px;
+            transition: all 0.3s;
+            min-width: 60px;
+            text-align: center;
+        }
+        
+        .likert-scale label:hover {
+            background-color: #f0f4ff;
+        }
+        
+        .likert-scale input:checked + label {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .likert-scale .scale-label {
+            font-size: 0.8rem;
+            margin-top: 5px;
+            font-weight: 600;
+        }
+        
+        .question-grid {
+            display: grid;
+            gap: 20px;
+        }
+        
+        .question-item {
+            border: 1px solid var(--border);
+            padding: 15px;
+            border-radius: 4px;
+            background: var(--light);
+        }
+        
+        .question-item h4 {
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .question-item p {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 10px;
+        }
+        
+        .spam-check {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .spam-check input {
+            width: auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+        }
+        
+        .btn:hover {
+            background: var(--primary-dark);
+        }
+        
+        .btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        
+        .btn-secondary {
+            background: var(--secondary);
+        }
+        
+        .btn-secondary:hover {
+            background: #e05500;
+        }
+        
+        .success-message {
+            display: none;
+            background: #d4edda;
+            color: #155724;
+            padding: 20px;
+            border-radius: 4px;
+            margin: 20px 0;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .success-message.show {
+            display: block;
+        }
+        
+        .error-message {
+            color: var(--danger);
+            font-size: 0.9rem;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .error-message.show {
+            display: block;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-size: 0.85rem;
+        }
+        
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Responsive */
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+            .likert-scale {
+                flex-wrap: wrap;
+            }
+            .likert-scale label {
+                min-width: 50px;
+                font-size: 0.8rem;
+            }
+        }
+        
+        /* Accessibility */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🎓 openDesk Edu - Fokusgruppen Fragebogen</h1>
+        <p>Anonymer Fragebogen zur Priorisierung von Funktionen für Ihre digitale Arbeitsumgebung</p>
+    </header>
+    
+    <div class="container">
+        <div class="success-message" id="successMessage">
+            <h2>✅ Vielen Dank für Ihre Teilnahme!</h2>
+            <p>Ihre Antworten wurden anonym gespeichert und helfen uns, openDesk Edu besser an Ihre Bedürfnisse anzupassen.</p>
+        </div>
+        
+        <form id="surveyForm" action="https://formspree.io/f/mjvqvqwo" method="POST">
+            <!-- Mandatory: Fachbereich -->
+            <div class="form-section">
+                <h2>1. Fachbereich / Einrichtung <span class="required">*</span></h2>
+                <p>Bitte wählen Sie Ihren Fachbereich oder Ihre Einrichtung aus. Diese Angabe ist <strong>verpflichtend</strong> für die Auswertung.</p>
+                
+                <div class="form-group">
+                    <label for="fachbereich">Fachbereich / Einrichtung <span class="required">*</span></label>
+                    <select name="fachbereich" id="fachbereich" required>
+                        <option value="" disabled selected>Bitte wählen...</option>
+                        <optgroup label="Fachbereiche (Universität Marburg)">
+                            <option value="fb01">Fachbereich 01: Evangelische Theologie</option>
+                            <option value="fb02">Fachbereich 02: Katholische Theologie</option>
+                            <option value="fb03">Fachbereich 03: Gesellschaftswissenschaften und Philosophie</option>
+                            <option value="fb04">Fachbereich 04: Psychologie</option>
+                            <option value="fb05">Fachbereich 05: Rechtswissenschaften</option>
+                            <option value="fb06">Fachbereich 06: Wirtschaftswissenschaften</option>
+                            <option value="fb07">Fachbereich 07: Geschichts- und Kulturwissenschaften</option>
+                            <option value="fb08">Fachbereich 08: Fremdsprachen und Kulturen</option>
+                            <option value="fb09">Fachbereich 09: Geographie</option>
+                            <option value="fb10">Fachbereich 10: Biologie</option>
+                            <option value="fb11">Fachbereich 11: Chemie</option>
+                            <option value="fb12">Fachbereich 12: Mathematik und Informatik</option>
+                            <option value="fb13">Fachbereich 13: Physik</option>
+                            <option value="fb14">Fachbereich 14: Geowissenschaften</option>
+                            <option value="fb15">Fachbereich 15: Medizin</option>
+                        </optgroup>
+                        <optgroup label="Zentrale Einrichtungen">
+                            <option value="hrz">Hochschulrechenzentrum (HRZ)</option>
+                            <option value="ub">Universitätsbibliothek</option>
+                            <option value="admin">Administration / Dezernate</option>
+                            <option value="pr">Präsidium / Rektorat</option>
+                        </optgroup>
+                        <optgroup label="Externe (ZenDiS)">
+                            <option value="zendis">ZenDiS-Projektpartner (Bundesweit)</option>
+                            <option value="landesrz">Landesrechenzentrum</option>
+                            <option value="andere-hochschule">Andere Hochschule / Forschungseinrichtung</option>
+                        </optgroup>
+                        <optgroup label="Sonstige">
+                            <option value="studierende">Studierendenschaft (Fachschaft, AStA)</option>
+                            <option value="sonstige">Sonstige (bitte angeben)</option>
+                        </optgroup>
+                    </select>
+                    <div class="error-message" id="fachbereichError">Bitte wählen Sie Ihren Fachbereich aus.</div>
+                </div>
+                
+                <div class="form-group" id="sonstigeFachbereichGroup" style="display: none;">
+                    <label for="sonstigeFachbereich">Bitte spezifizieren:</label>
+                    <input type="text" name="sonstigeFachbereich" id="sonstigeFachbereich" placeholder="Name des Fachbereichs / der Einrichtung">
+                </div>
+            </div>
+            
+            <!-- Spam Protection -->
+            <div class="form-section">
+                <h2>2. Spam-Schutz <span class="required">*</span></h2>
+                <p>Bitte beantworten Sie diese einfache Frage, um Spam zu verhindern.</p>
+                
+                <div class="form-group">
+                    <label>Was ist 3 + 5? <span class="required">*</span></label>
+                    <div class="spam-check">
+                        <input type="radio" name="spamCheck" id="spam8" value="8" required>
+                        <label for="spam8">8</label>
+                        <input type="radio" name="spamCheck" id="spam9" value="9">
+                        <label for="spam9">9</label>
+                        <input type="radio" name="spamCheck" id="spam10" value="10">
+                        <label for="spam10">10</label>
+                    </div>
+                    <div class="error-message" id="spamError">Bitte beantworten Sie diese Frage korrekt.</div>
+                </div>
+            </div>
+            
+            <!-- Likert Scale Questions -->
+            
+            <div class="form-section">
+                <h2>3. Wichtigkeit von Funktionen (Likert-Skala)</h2>
+                <p>Bewerten Sie bitte, wie wichtig die folgenden Funktionen für Ihren Fachbereich sind. 
+                <strong>1 = Überhaupt nicht wichtig, 5 = Sehr wichtig</strong>.</p>
+                
+                <div class="question-grid">
+                    <!-- Dateiablage & Kollaboration -->
+                    <div class="question-item">
+                        <h4>📁 Dateiablage & Synchronisation (Nextcloud)</h4>
+                        <p>Cloud-Speicher mit Dateifreigabe und Synchronisation über alle Geräte</p>
+                        <div class="likert-scale">
+                            <input type="radio" name="q1" id="q1_1" value="1" required>
+                            <label for="q1_1">1<span class="scale-label">Nicht wichtig</span></label>
+                            <input type="radio" name="q1" id="q1_2" value="2">
+                            <label for="q1_2">2</label>
+                            <input type="radio" name="q1" id="q1_3" value="3">
+                            <label for="q1_3">3</label>
+                            <input type="radio" name="q1" id="q1_4" value="4">
+                            <label for="q1_4">4</label>
+                            <input type="radio" name="q1" id="q1_5" value="5">
+                            <label for="q1_5">5<span class="scale-label">Sehr wichtig</span></label>
+                        </div>
+                    </div>
+                    
+                    <div class="question-item">
+                        <h4>📧 E-Mail & Groupware (SOGo)</h4>
+                        <p>E-Mail, Kalender, Kontakte und Aufgaben in einer Anwendung</p>
+                        <div class="likert-scale">
+                            <input type="radio" name="q2" id="q2_1" value="1" required>
+                            <label for="q2_1">1<span class="scale-label">Nicht wichtig</span></label>
+                            <input type="radio" name="q2" id="q2_2" value="2">
+                            <label for="q2_2">2</label>
+                            <input type="radio" name="q2" id="q2_3" value="3">
+                            <label for="q2_3">3</label>
+                            <input type="radio" name="q2" id="q2_4" value="4">
+                            <label for="q2_4">4</label>
+                            <input type="radio" name="q2" id="q2_5" value="5">
+                            <label for="q2_5">5<span class="scale-label">Sehr wichtig</span></label>
+                        </div>
+                    </div>
+                    
+                    <div class="question-item">
+                        <h4>💬 Messenger & Chat (Element/Matrix)</h4>
+                        <p>Dezentrale, verschlüsselte Chats für 1:1 und Gruppenkommunikation</p>
+                        <div class="likert-scale">
+                            <input type="radio" name="q3" id="q3_1" value="1" required>
+                            <label for="q3_1">1<span class="scale-label">Nicht wichtig</span></label>
+                            <input type="radio" name="q3" id="q3_2" value="2">
+                            <label for="q3_2">2</label>
+                            <input type="radio" name="q3" id="q3_3" value="3">
+                            <label for="q3_3">3</label>
+                            <input type="radio" name="q3" id="q3_4" value="4">
+                            <label for="q3_4">4</label>
+                            <input type="radio" name="q3" id="q3_5" value="5">
+                            <label for="q3_5">5<span class="scale-label">Sehr wichtig</span></label>
+                        </div>
+                    </div>
+                    
+                    <div class="question-item">
+                        <h4>🎥 Videokonferenzen (Jitsi & BigBlueButton)</h4>
+                        <p>Videomeetings mit Bildschirmfreigabe, Whiteboard und Breakout-Räumen</p>
+                        <div class="likert-scale">
+                            <input type="radio" name="q4" id="q4_1" value="1" required>
+                            <label for="q4_1">1<span class="scale-label">Nicht wichtig</span></label>
+                            <input type="radio" name="q4" id="q4_2" value="2">
+                            <label for="q4_2">2</label>
+                            <input type="radio" name="q4" id="q4_3" value="3">
+                            <label for="q4_3">3</label>
+                            <input type="radio" name="q4" id="q4_4" value="4">
+                            <label for="q4_4">4</label>
+                            <input type="radio" name="q4" id="q4_5" value="5">
+                            <label for="q4_5">5<span class="scale-label">Sehr wichtig</span></label>
+                        </div>
+                    </div>
+                    
+                    <div class="question-item">
+                        <h4>📚 Lernmanagementsystem (Moodle / ILIAS)</h4>
+                        <p>Kursmanagement, Aufgaben, Tests und Foren für die Lehre</p>
+                        <div class="likert-scale">
+                            <input type="radio" name="q5" id="q5_1" value="1" required>
+                            <label for="q5_1">1<span class="scale-label">Nicht wichtig</span></label>
+                            <input type="radio" name="q5" id="q5_2" value="2">
+                            <label for="q5_2">2</label>
+                            <input type="radio" name="q5" id="q5_3" value="3">
+                            <label for="q5_3">3</label>
+                            <input type="radio" name="q5" id="q5_4" value="4">
+                            <label for="q5_4">4</label>
+                            <input type="radio" name="q5" id="q5_5" value="5">
+                            <label for="q5_5">5<span class="scale-label">Sehr wichtig</span></label>
+                        </div>
+                    </div>
+                    
+                    <div class="question-item">
+                        <h4>📝 Kollaborative Dokumente (CryptPad / Collabora)</h4>
+                        <p>Echtzeit-Bearbeitung von Texten, Tabellen und Präsentationen</p>
+                        <div class="likert-scale">
+                            <input type="radio" name="q6" id="q6_1" value="1" required>
+                            <label for="q6_1">1<span class="scale-label">Nicht wichtig</span></label>
+                            <input type="radio" name="q6" id="q6_2" value="2">
+                            <label for="q6_2">2</label>
+                            <input type="radio" name="q6" id="q6_3" value="3">
+                            <label for="q6_3">3</label>
+                            <input type="radio" name="q6" id="q6_4" value="4">
+                            <label for="q6_4">4</label>
+                            <input type="radio" name="q6" id="q6_5" value="5">
+                            <label for="q6_5">5<span class="scale-label">Sehr wichtig</span></label>
+                        </div>
+                    </div>
+                    
+                    <div class="question-item">
+                        <h4>📊 Projektmanagement (OpenProject / Planka)</h4>
+                        <p>Projektplanung mit Aufgaben, Zeitplänen und Team-Kollaboration</p>
+                        <div class="likert-scale">
+                            <input type="radio" name="q7" id="q7_1" value="1" required>
+                            <label for="q7_1">1<span class="scale-label">Nicht wichtig</span></label>
+                            <input type="radio" name="q7" id="q7_2" value="2">
+                            <label for="q7_2">2</label>
+                            <input type="radio" name="q7" id="q7_3" value="3">
+                            <label for="q7_3">3</label>
+                            <input type="radio" name="q7" id="q7_4" value="4">
+                            <label for="q7_4">4</label>
+                            <input type="radio" name="q7" id="q7_5" value="5">
+                            <label for="q7_5">5<span class="scale-label">Sehr wichtig</span></label>
+                        </div>
+                    </div>
+                    
+                    <div class="question-item">
+                        <h4>🎨 Wiki & Dokumentation (XWiki / BookStack)</h4>
+                        <p>Wissensdatenbank für interne Dokumentation und Anleitungen</p>
+                        <div class="likert-scale">
+                            <input type="radio" name="q8" id="q8_1" value="1" required>
+                            <label for="q8_1">1<span class="scale-label">Nicht wichtig</span></label>
+                            <input type="radio" name="q8" id="q8_2" value="2">
+                            <label for="q8_2">2</label>
+                            <input type="radio" name="q8" id="q8_3" value="3">
+                            <label for="q8_3">3</label>
+                            <input type="radio" name="q8" id="q8_4" value="4">
+                            <label for="q8_4">4</label>
+                            <input type="radio" name="q8" id="q8_5" value="5">
+                            <label for="q8_5">5<span class="scale-label">Sehr wichtig</span></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Kriterien Bewertung -->
+            <div class="form-section">
+                <h2>4. Entscheidungs-Kriterien (Likert-Skala)</h2>
+                <p>Wie wichtig sind Ihnen die folgenden Kriterien bei der Wahl einer digitalen Arbeitsumgebung?</p>
+                
+                <div class="question-grid">
+                    <div class="question-item">
+                        <h4>🛡️ Datenhoheit & Souveränität (Keine Abhängigkeit von US-Anbietern)</h4>
+                        <div class="likert-scale">
+                            <input type="radio" name="k1" id="k1_1" value="1" required>
+                            <label for="k1_1">1</label>
+                            <input type="radio" name="k1" id="k1_2" value="2">
+                            <label for="k1_2">2</label>
+                            <input type="radio" name="k1" id="k1_3" value="3">
+                            <label for="k1_3">3</label>
+                            <input type="radio" name="k1" id="k1_4" value="4">
+                            <label for="k1_4">4</label>
+                            <input type="radio" name="k1" id="k1_5" value="5">
+                            <label for="k1_5">5</label>
+                        </div>
+                    </div>
+                    
+                    <div class="question-item">
+                        <h4>🔒 Datenschutz & DSGVO-Konformität</h4>
+                        <div class="likert-scale">
+                            <input type="radio" name="k2" id="k2_1" value="1" required>
+                            <label for="k2_1">1</label>
+                            <input type="radio" name="k2" id="k2_2" value="2">
+                            <label for="k2_2">2</label>
+                            <input type="radio" name="k2" id="k2_3" value="3">
+                            <label for="k2_3">3</label>
+                            <input type="radio" name="k2" id="k2_4" value="4">
+                            <label for="k2_4">4</label>
+                            <input type="radio" name="k2" id="k2_5" value="5">
+                            <label for="k2_5">5</label>
+                        </div>
+                    </div>
+                    
+                    <div class="question-item">
+                        <h4>💰 Kostenersparnis (Keine Lizenzgebühren)</h4>
+                        <div class="likert-scale">
+                            <input type="radio" name="k3" id="k3_1" value="1" required>
+                            <label for="k3_1">1</label>
+                            <input type="radio" name="k3" id="k3_2" value="2">
+                            <label for="k3_2">2</label>
+                            <input type="radio" name="k3" id="k3_3" value="3">
+                            <label for="k3_3">3</label>
+                            <input type="radio" name="k3" id="k3_4" value="4">
+                            <label for="k3_4">4</label>
+                            <input type="radio" name="k3" id="k3_5" value="5">
+                            <label for="k3_5">5</label>
+                        </div>
+                    </div>
+                    
+                    <div class="question-item">
+                        <h4>🎯 Benutzerfreundlichkeit</h4>
+                        <div class="likert-scale">
+                            <input type="radio" name="k4" id="k4_1" value="1" required>
+                            <label for="k4_1">1</label>
+                            <input type="radio" name="k4" id="k4_2" value="2">
+                            <label for="k4_2">2</label>
+                            <input type="radio" name="k4" id="k4_3" value="3">
+                            <label for="k4_3">3</label>
+                            <input type="radio" name="k4" id="k4_4" value="4">
+                            <label for="k4_4">4</label>
+                            <input type="radio" name="k4" id="k4_5" value="5">
+                            <label for="k4_5">5</label>
+                        </div>
+                    </div>
+                    
+                    <div class="question-item">
+                        <h4>🔄 Integration in bestehende Systeme</h4>
+                        <div class="likert-scale">
+                            <input type="radio" name="k5" id="k5_1" value="1" required>
+                            <label for="k5_1">1</label>
+                            <input type="radio" name="k5" id="k5_2" value="2">
+                            <label for="k5_2">2</label>
+                            <input type="radio" name="k5" id="k5_3" value="3">
+                            <label for="k5_3">3</label>
+                            <input type="radio" name="k5" id="k5_4" value="4">
+                            <label for="k5_4">4</label>
+                            <input type="radio" name="k5" id="k5_5" value="5">
+                            <label for="k5_5">5</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Optional: Freitext -->
+            <div class="form-section">
+                <h2>5. Freitext-Fragen (optional)</h2>
+                
+                <div class="form-group">
+                    <label for="missingFunctions">Welche Funktionen fehlen Ihnen in der obigen Liste?</label>
+                    <textarea name="missingFunctions" id="missingFunctions" rows="3" placeholder="z. B. spezielle Fachbereichs-Software..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="migrationHelp">Welche Unterstützung benötigen Sie bei der Migration von Ihrer aktuellen Lösung zu openDesk Edu?</label>
+                    <textarea name="migrationHelp" id="migrationHelp" rows="3" placeholder="z. B. Schulungen, Datenmigration, technische Beratung..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="comments">Weitere Anmerkungen oder Feedback:</label>
+                    <textarea name="comments" id="comments" rows="3" placeholder="Ihre Gedanken zu openDesk Edu..."></textarea>
+                </div>
+            </div>
+            
+            <!-- Submit -->
+            <div class="form-group">
+                <p><em>Alle Angaben sind anonym und werden nur in aggregierter Form ausgewertet.</em></p>
+                <button type="submit" class="btn" id="submitBtn">Umfrage abschließen</button>
+            </div>
+            
+            <!-- Hidden fields for Formspree -->
+            <input type="hidden" name="_subject" value="openDesk Edu Fokusgruppen-Fragebogen">
+            <input type="hidden" name="_next" value="https://opendesk-edu.org/fokusgruppen-fragebogen/danke.html">
+        </form>
+    </div>
+    
+    <footer>
+        <p>
+            <a href="https://opendesk-edu.org">openDesk Edu</a> | 
+            <a href="https://github.com/tobias-weiss-ai-xr/opendesk-nix">GitHub</a> | 
+            <a href="https://gitlab.hrz.uni-marburg.de/hrz/kubernetes/opendesk">HRZ GitLab</a>
+        </p>
+        <p>© 2026 Philipps-Universität Marburg | <a href="/impressum">Impressum</a> | <a href="/datenschutz">Datenschutz</a></p>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('surveyForm');
+            const fachbereichSelect = document.getElementById('fachbereich');
+            const sonstigeFachbereichGroup = document.getElementById('sonstigeFachbereichGroup');
+            const spamCheck = document.querySelector('input[name="spamCheck"]:checked');
+            const successMessage = document.getElementById('successMessage');
+            const submitBtn = document.getElementById('submitBtn');
+            
+            // Show/hide "Sonstige" input
+            fachbereichSelect.addEventListener('change', function() {
+                if (this.value === 'sonstige') {
+                    sonstigeFachbereichGroup.style.display = 'block';
+                } else {
+                    sonstigeFachbereichGroup.style.display = 'none';
+                }
+            });
+            
+            // Form validation
+            form.addEventListener('submit', function(e) {
+                let isValid = true;
+                
+                // Check fachbereich
+                if (!fachbereichSelect.value) {
+                    document.getElementById('fachbereichError').classList.add('show');
+                    isValid = false;
+                } else {
+                    document.getElementById('fachbereichError').classList.remove('show');
+                }
+                
+                // Check spam
+                const spamValue = document.querySelector('input[name="spamCheck"]:checked')?.value;
+                if (!spamValue || spamValue !== '8') {
+                    document.getElementById('spamError').classList.add('show');
+                    isValid = false;
+                } else {
+                    document.getElementById('spamError').classList.remove('show');
+                }
+                
+                // Check all likert questions
+                const likertQuestions = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'k1', 'k2', 'k3', 'k4', 'k5'];
+                likertQuestions.forEach(q => {
+                    const selected = document.querySelector(`input[name="${q}"]:checked`);
+                    if (!selected) {
+                        isValid = false;
+                        alert('Bitte beantworten Sie alle Fragen auf der Likert-Skala.');
+                    }
+                });
+                
+                if (!isValid) {
+                    e.preventDefault();
+                }
+            });
+            
+            // Disable submit until all required fields are filled
+            form.addEventListener('input', function() {
+                const fachbereichFilled = !!fachbereichSelect.value;
+                const spamFilled = document.querySelector('input[name="spamCheck"]:checked')?.value === '8';
+                const allLikertFilled = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'k1', 'k2', 'k3', 'k4', 'k5']
+                    .every(q => document.querySelector(`input[name="${q}"]:checked`));
+                
+                submitBtn.disabled = !(fachbereichFilled && spamFilled && allLikertFilled);
+            });
+        });
+    </script>
+</body>
+</html>
