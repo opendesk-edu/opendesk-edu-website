@@ -180,7 +180,7 @@ Compared to the previous Dockerfile-based builds, the key difference is enforcem
 
 ## Registry and Deployment
 
-All 78 images are hosted at `ghcr.io/tobias-weiss-ai-xr/umr/opendesk-edu/opendesk-nix` (total ~25 GB, average ~325 MB per image). The repository at `gitlab.opencode.de/umr/opendesk-edu/opendesk-nix` contains the complete build definitions.
+All 78 images are hosted at `ghcr.io/tobias-weiss-ai-xr/umr/opendesk-edu/opendesk-nix` (total ~25 GB, average ~325 MB per image). The source code repository was migrated from `gitlab.opencode.de/umr/opendesk-edu/opendesk-nix` to `github.com/tobias-weiss-ai-xr/opendesk-nix` in September 2026 to consolidate development workflows and improve collaboration.
 
 ### Building and Pushing
 
@@ -275,7 +275,7 @@ nix flake check                   # OpenSpec compliance
 
 ## Resources
 
-- **Repository**: [github.com/tobias-weiss-ai-xr/opendesk-nix](https://github.com/tobias-weiss-ai-xr/opendesk-nix) and [gitlab.opencode.de/umr/opendesk-edu/opendesk-nix](https://gitlab.opencode.de/umr/opendesk-edu/opendesk-nix)
+- **Repository**: [github.com/tobias-weiss-ai-xr/opendesk-nix](https://github.com/tobias-weiss-ai-xr/opendesk-nix) *(migrated from opencode.de GitLab in Sep 2026)*
 - **Container Registry**: `ghcr.io/tobias-weiss-ai-xr/umr/opendesk-edu/opendesk-nix`
 - **Deployment Guide**: [k8s/DEPLOYMENT-GUIDE.md](https://github.com/tobias-weiss-ai-xr/opendesk-nix/tree/main/k8s/DEPLOYMENT-GUIDE.md)
 - **OpenSpec**: [opendesk-edu-spec](https://github.com/tobias-weiss-ai-xr/opendesk-edu-spec)
